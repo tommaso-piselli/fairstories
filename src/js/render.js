@@ -251,8 +251,9 @@ function assign_node_coordinates(timesteps, max_timesteps, solution_lines, graph
   iterate_for_better_bendiness(graph, timesteps, max_timesteps, visualization_options);
 }
 
+// this funcition is to be finished still - do not trust
 function iterate_for_better_bendiness(graph, timesteps, max_timesteps, visualization_options){
-  let max_iterations = 2;
+  let max_iterations = 1;
   let starting_bendiness = count_total_bendiness(graph);
 
   console.log("starting bendiness", starting_bendiness);
@@ -282,30 +283,37 @@ function iterate_for_better_bendiness(graph, timesteps, max_timesteps, visualiza
         return a_y - b_y;
       });
 
-      // console.log(interaction_groups)
+      if (j == 33) console.log(interaction_groups)
+
+      let found = false;
 
       for (let g = 0; g < interaction_groups.length; g ++){
+        if (found) break;
         // move all the nodes in the group down, provided that there is space
         let group = interaction_groups[interaction_groups.length - g - 1];
+        if (j == 33) console.log("group", g, interaction_groups.length - g - 1);
         let nodes_in_group = nodes_at_this_timestep.filter(n => group.includes(n.name));
         let max_y = Math.max(...nodes_in_group.map(n => n.y));
         let space_below = 0;
+        if (j == 33) console.log(interaction_groups.length, interaction_groups.length - g);
 
-        if (g < interaction_groups.length - 1){
-          let next_group = interaction_groups[interaction_groups.length - g - 1];
+        if (g == 0){
+          space_below = visualization_options.height - max_y;
+        } else {
+          let next_group = interaction_groups[interaction_groups.length - g];
+          if (j == 33) console.log("next group", interaction_groups.length - g);
           let nodes_in_next_group = nodes_at_this_timestep.filter(n => next_group.includes(n.name));
+          if (j == 33) console.log(nodes_in_group, nodes_in_next_group)
           let min_y_next = Math.min(...nodes_in_next_group.map(n => n.y));
           space_below = min_y_next - max_y;
-        } else {
-          space_below = visualization_options.height - max_y;
         }
 
-        console.log("space below", space_below);
+        if (j == 33) console.log("space below", space_below);
 
         if (space_below < visualization_options.base_node_vertical_distance) continue;
         else {
           for (let node of nodes_in_group){
-            // node.y += visualization_options.base_node_vertical_distance;
+            node.y += visualization_options.base_node_vertical_distance;
           }
         }
         // check if bendiness has improved
@@ -317,6 +325,7 @@ function iterate_for_better_bendiness(graph, timesteps, max_timesteps, visualiza
           }
         } else {
           starting_bendiness = new_bendiness;
+          found = true;
         }
       }
 
