@@ -63,63 +63,92 @@ def read_sl_file(filepath):
 # Usage example:
 subject = 'JurassicPark'
 filepath = f"./data/sl/{subject}.sl"
+groups_file = f'./data/groups/{subject}_groups.txt'
 interactions, t_activechars, t_interactions, num_chars = read_sl_file(filepath)
 
+with open(groups_file, 'r') as file:
+    content = file.readlines()
 
-# Example of how to check the parsed data
-# print(f"Number of characters: {num_chars}")
-# print("\nFirst few active characters by timestep:")
-# for t in range(min(5, len(t_activechars))):
-#     print(f"Timestep {t}: {t_activechars[t]}")
+character_in_groups = []
+# print(content)
+for line in content:
+    line = line.strip().split('\n')
+    for elem in line:
+        elem = elem.strip().split(':')
+        id_char = elem[0].strip()
+        abbr_char = elem[1].strip()
+        group_char = elem[2].strip()
 
-# print("\nFirst few interactions:")
-# for t in range(min(5, len(t_interactions))):
-#     print(f"Timestep {t}: {t_interactions[t]}")
+        character = {
+            'id': id_char,
+            'char': abbr_char,
+            'group': group_char
+        }
+
+        character_in_groups.append(character)
+
+# print(character_in_groups)
 
 
-def write_ilp_model(filepath, t_activechars, t_interactions, num_chars):
+def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1000.0):
     # Keep track of all binary variables
-    ordering_vars = set()  # x variables
-    crossing_vars = set()  # y variables
+    ordering_vars = set()  # x variables for character orderings
+    crossing_vars = set()  # y variables for crossings between characters
 
-    # Start writing the LP file
+    # Create one skewness variable for each character (0 to num_chars-1)
+    skewness_vars = {f"S_{i}" for i in range(num_chars)}
+
     with open(filepath, 'w') as file:
-        # Write objective function
         file.write("Minimize\n")
-        objective = ""
 
-        # For each pair of consecutive timesteps
+        # Build objective function terms
+        obj_terms = []
+
+        # Add skewness terms - one for each character
+        if lambda1 != 0:
+            for i in range(num_chars):
+                obj_terms.append(f"{lambda1} S_{i}")
+
+        # Add crossing terms
         for t in range(len(t_activechars) - 1):
-
-            # Find characters present in both layers t and t+1
             chars_t = set(t_activechars[t])
             chars_t1 = set(t_activechars[t+1])
             common_chars = sorted(list(chars_t & chars_t1))
 
-            # For each pair of common characters
             for i in range(len(common_chars)):
                 for j in range(i + 1, len(common_chars)):
                     char1 = common_chars[i]
                     char2 = common_chars[j]
-                    # Add crossing variable to objective
                     var_name = f"y_{t}_{char1}_{char2}"
 
-                    # if t == 0:
-                    #     print(var_name)
-
-                    objective += f"{var_name} + "
+                    if lambda2 != 0:
+                        obj_terms.append(f"{lambda2} {var_name}")
                     crossing_vars.add(var_name)
-
-                    # Add ordering variables for these characters
                     ordering_vars.add(f"x_{t}_{char1}_{char2}")
                     ordering_vars.add(f"x_{t+1}_{char1}_{char2}")
 
-        # Write objective (remove last ' + ')
-        file.write(objective[:-3] if objective else "0")
+        objective = " + ".join(obj_terms) if obj_terms else "0"
+        file.write(objective + "\n")
 
         # Start constraints section
         file.write("\nSubject To\n")
 
+        # Write skewness constraints for each crossing
+        for t in range(len(t_activechars) - 1):
+            chars_t = set(t_activechars[t])
+            chars_t1 = set(t_activechars[t+1])
+            common_chars = sorted(list(chars_t & chars_t1))
+
+            for i in range(len(common_chars)):
+                for j in range(i + 1, len(common_chars)):
+                    char1 = common_chars[i]
+                    char2 = common_chars[j]
+                    y_var = f"y_{t}_{char1}_{char2}"
+
+                    # For each crossing, one of its characters must be marked for skewness
+                    file.write(f"S_{char1} + S_{char2} - {y_var} >= 0\n")
+
+        # [Rest of the constraints remain unchanged]
         # Write crossing detection constraints
         for t in range(len(t_activechars) - 1):
             chars_t = set(t_activechars[t])
@@ -134,12 +163,10 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars):
                     x_t = f"x_{t}_{char1}_{char2}"
                     x_t1 = f"x_{t+1}_{char1}_{char2}"
 
-                    # y_{t,i,j} ≥ x_{t,i,j} - x_{t+1,i,j}
                     file.write(f"{y_var} - {x_t} + {x_t1} >= 0\n")
-                    # y_{t,i,j} ≥ x_{t+1,i,j} - x_{t,i,j}
                     file.write(f"{y_var} + {x_t} - {x_t1} >= 0\n")
 
-        # file.write("\n# Ordering constraints\n")
+        # Write ordering constraints
         for t in range(len(t_activechars)):
             active_chars = t_activechars[t]
             for i in range(len(active_chars)):
@@ -149,19 +176,13 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars):
                     x_ij = f"x_{t}_{char1}_{char2}"
                     x_ji = f"x_{t}_{char2}_{char1}"
 
-                    # Either char1 is above char2 or char2 is above char1
                     file.write(f"{x_ij} + {x_ji} = 1\n")
-
-                    # Add both variables to ordering_vars set
                     ordering_vars.add(x_ij)
                     ordering_vars.add(x_ji)
 
-        # Add transitivity constraints
-        # file.write("\n# Transitivity constraints\n")
+        # Write transitivity constraints
         for t in range(len(t_activechars)):
             active_chars = t_activechars[t]
-            # print(active_chars)
-            # For each triple of characters (i,j,k)
             for i in range(len(active_chars)):
                 for j in range(i + 1, len(active_chars)):
                     for k in range(j + 1, len(active_chars)):
@@ -173,52 +194,41 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars):
                         x_jk = f"x_{t}_{char2}_{char3}"
                         x_ik = f"x_{t}_{char1}_{char3}"
 
-                        # If i above j and j above k, then i must be above k
                         file.write(f"{x_ij} + {x_jk} - {x_ik} <= 1\n")
                         file.write(f"{x_ij} + {x_jk} - {x_ik} >= 0\n")
 
-                        # Add variables to ordering_vars set
-                        ordering_vars.add(x_ij)
-                        ordering_vars.add(x_jk)
-                        ordering_vars.add(x_ik)
-
-        # Add tree constraints
-        # file.write("\n# Tree constraints\n")
+        # Write tree constraints
         for t in range(len(t_activechars)):
-            # For each interaction at this timestep
             for interaction in t_interactions[t]:
                 int_chars = interaction['characters']
-                # Find characters not in this interaction
                 outside_chars = [
                     c for c in t_activechars[t] if c not in int_chars]
 
-                # For each pair of characters in the interaction
                 for i in range(len(int_chars)):
                     for j in range(i + 1, len(int_chars)):
                         char1 = int_chars[i]
                         char2 = int_chars[j]
 
-                        # For each character outside the interaction
                         for out_char in outside_chars:
-                            # Ensure out_char is either above or below both char1 and char2
-                            # but not between them
                             x_1out = f"x_{t}_{char1}_{out_char}"
                             x_2out = f"x_{t}_{char2}_{out_char}"
-
                             file.write(f"{x_1out} - {x_2out} = 0\n")
-
-                            # Add variables to ordering_vars set
                             ordering_vars.add(x_1out)
                             ordering_vars.add(x_2out)
 
         # Write binary variable declarations
-        file.write("Binaries\n")
+        file.write("\nBinaries\n")
+        # Skewness variables - one per character
+        for var in skewness_vars:
+            file.write(f"{var}\n")
+        # Other binary variables
         for var in ordering_vars:
-            file.write(f"{var} ")
+            file.write(f"{var}\n")
         for var in crossing_vars:
-            file.write(f"{var} ")
+            file.write(f"{var}\n")
 
 
-# Usage:
+# Usage remains the same
 output_file = f'{subject}_skew.lp'
-write_ilp_model(output_file, t_activechars, t_interactions, num_chars)
+write_ilp_model(output_file, t_activechars, t_interactions,
+                num_chars, lambda1=1, lambda2=1)

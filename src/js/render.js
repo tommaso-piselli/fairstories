@@ -3,9 +3,9 @@ async function render() {
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
-  let solution = await d3.text(`../results/${subject}_fair_replaced.sol`);
+  let solution = await d3.text(`../results/${subject}_skew.sol`);
   //let solution = await d3.text(`../results/${subject}_replaced.sol`);
-  
+
   let graph = {
     nodes: [],
     edges: [],
@@ -16,7 +16,7 @@ async function render() {
     height: 1000,
     padding: { left: 20, right: 20, top: 20, bottom: 20 },
     base_node_vertical_distance: 30,
-  }
+  };
 
   // Read and parse the groups file
   let groupsText = await d3.text(`../data/groups/${subject}_groups.txt`);
@@ -81,36 +81,56 @@ async function render() {
     .attr("height", visualization_options.height);
 
   let space_between_timesteps =
-    (visualization_options.width - visualization_options.padding.left - visualization_options.padding.right) / max_timesteps;
+    (visualization_options.width -
+      visualization_options.padding.left -
+      visualization_options.padding.right) /
+    max_timesteps;
 
   // GET COORDINATES FOR NODES
-  assign_node_coordinates(timesteps, max_timesteps, solution_lines, graph, visualization_options, space_between_timesteps);
+  assign_node_coordinates(
+    timesteps,
+    max_timesteps,
+    solution_lines,
+    graph,
+    visualization_options,
+    space_between_timesteps
+  );
 
   // EDGES
   let char_line_coords = {};
 
-  for (let char of Object.keys(character_colors)){
+  for (let char of Object.keys(character_colors)) {
     char_line_coords[char] = [];
-    for (let i = 0; i < max_timesteps; i++){
-      let char_in_t1 = graph.nodes.find(n => n.name == char && n.timestep == i);
+    for (let i = 0; i < max_timesteps; i++) {
+      let char_in_t1 = graph.nodes.find(
+        (n) => n.name == char && n.timestep == i
+      );
       if (char_in_t1 == undefined) continue;
       else {
-        char_line_coords[char].push({x: char_in_t1.x - space_between_timesteps*0.1, y: char_in_t1.y});
-        char_line_coords[char].push({x: char_in_t1.x, y: char_in_t1.y});
-        char_line_coords[char].push({x: char_in_t1.x + space_between_timesteps*0.1, y: char_in_t1.y});
+        char_line_coords[char].push({
+          x: char_in_t1.x - space_between_timesteps * 0.1,
+          y: char_in_t1.y,
+        });
+        char_line_coords[char].push({ x: char_in_t1.x, y: char_in_t1.y });
+        char_line_coords[char].push({
+          x: char_in_t1.x + space_between_timesteps * 0.1,
+          y: char_in_t1.y,
+        });
       }
     }
   }
 
-  for (let char of Object.keys(character_colors)){
+  for (let char of Object.keys(character_colors)) {
     let line_coords = char_line_coords[char];
     // make a path from the line_coords
-    let line = d3.line()
-      .x(d => d.x)
-      .y(d => d.y)
+    let line = d3
+      .line()
+      .x((d) => d.x)
+      .y((d) => d.y)
       .curve(d3.curveCatmullRom.alpha(0.8));
 
-    svg.append("path")
+    svg
+      .append("path")
       .datum(line_coords)
       .attr("fill", "none")
       .attr("stroke", character_colors[char])
@@ -126,7 +146,10 @@ async function render() {
       svg
         .append("circle")
         .attr("r", 5)
-        .attr("cx", i * space_between_timesteps + 2 * visualization_options.padding.left)
+        .attr(
+          "cx",
+          i * space_between_timesteps + 2 * visualization_options.padding.left
+        )
         .attr("cy", nodes_at_this_timestep[j].y)
         .attr("fill", character_colors[nodes_at_this_timestep[j].name])
         .on("mouseover", () =>
@@ -152,8 +175,14 @@ async function render() {
     .on("click", savePNG);
 }
 
-
-function assign_node_coordinates(timesteps, max_timesteps, solution_lines, graph, visualization_options, space_between_timesteps) {
+function assign_node_coordinates(
+  timesteps,
+  max_timesteps,
+  solution_lines,
+  graph,
+  visualization_options,
+  space_between_timesteps
+) {
   for (let i = 0; i < max_timesteps; i++) {
     let timestep_line = timesteps.split("\n")[i];
     if (!timestep_line) {
@@ -195,7 +224,8 @@ function assign_node_coordinates(timesteps, max_timesteps, solution_lines, graph
     let baseY = visualization_options.padding.top;
     for (let j = 0; j < nodes_at_this_timestep.length; j++) {
       let curr_node = nodes_at_this_timestep[j];
-      curr_node.x = i * space_between_timesteps + 2 * visualization_options.padding.left;
+      curr_node.x =
+        i * space_between_timesteps + 2 * visualization_options.padding.left;
 
       if (j == 0) {
         curr_node.y = baseY;
@@ -205,9 +235,11 @@ function assign_node_coordinates(timesteps, max_timesteps, solution_lines, graph
         let prev_group = findInteractionGroup(prev_node.name);
 
         if (curr_group == prev_group) {
-          curr_node.y = prev_node.y + visualization_options.base_node_vertical_distance;
+          curr_node.y =
+            prev_node.y + visualization_options.base_node_vertical_distance;
         } else {
-          curr_node.y = prev_node.y + visualization_options.base_node_vertical_distance * 2;
+          curr_node.y =
+            prev_node.y + visualization_options.base_node_vertical_distance * 2;
         }
       }
     }
@@ -216,18 +248,16 @@ function assign_node_coordinates(timesteps, max_timesteps, solution_lines, graph
   iterate_for_better_bendiness(graph, timesteps);
 }
 
-function iterate_for_better_bendiness(graph, timesteps){
+function iterate_for_better_bendiness(graph, timesteps) {
   let max_iterations = 1;
 
-  for (let i = 0; i < max_iterations; i++){
-    
-  }
+  for (let i = 0; i < max_iterations; i++) {}
 }
 
-function count_total_bendiness(graph){
+function count_total_bendiness(graph) {
   let result = 0;
-  for (let node of graph.nodes){
-    let edge = graph.edges.find(e => e.source.id == node.id);
+  for (let node of graph.nodes) {
+    let edge = graph.edges.find((e) => e.source.id == node.id);
     if (edge == undefined) continue;
     let target = edge.target;
     result += Math.abs(node.y - target.y);
