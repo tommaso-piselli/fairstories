@@ -231,4 +231,4 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 # Usage remains the same
 output_file = f'{subject}_skew.lp'
 write_ilp_model(output_file, t_activechars, t_interactions,
-                num_chars, lambda1=100, lambda2=1)
+                num_chars, lambda1=1, lambda2=1)
