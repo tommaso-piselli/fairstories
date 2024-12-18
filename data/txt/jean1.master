@@ -1,0 +1,180 @@
+* File "jean.dat" from the Stanford GraphBase (C) 1993 Stanford University
+* Les Mis\'erables, by Victor Hugo
+* This file may be freely copied but please do not change it in any way!
+* (Checksum parameters 437,862053837)
+AZ Anzelma, daughter of TH and TM
+BA Bahorel, `Friends of the ABC' cutup
+BB Babet, tooth-pulling bandit of Paris
+BJ Brujon, notorious criminal
+BL Blacheville, Parisian student from Montauban
+BM Monsieur Bamatabois, idler of M-- sur M--
+BO Bossuet (Lesgle), `Friends of the ABC' klutz
+BR Brevet, convict in the galleys with JV
+BS Bruneseau, explorer and mapper of the sewers of Paris
+BT Baroness of T--, friend of GI
+BU Madame Burgon, new landlady at Gorbeau House
+BZ Boulatruelle, former convict and road mender in Montfermeil
+CC Cochepaille, convict in the galleys with JV
+CH Champmathieu, accused thief mistaken for JV
+CL Countess de L\^o, distant relative of MY
+CM Combeferre, `Friends of the ABC' guide
+CN Chenildieu, convict in the galleys with JV
+CO Cosette, daughter of FN and FT
+CR Courfeyrac, `Friends of the ABC' center
+CV Cravatte, mountain bandit
+DA Dahlia, lover of LI
+EN Enjolras, `Friends of the ABC' chief
+EP Eponine, daughter of TH and TM
+FA Fameuil, Parisian student from Limoges
+FE Feuilly, `Friends of the ABC' political idealist
+FF Fauchelevent, aged notary of M-- sur M--
+FN Fantine, lover of FT
+FT F\'elix Tholomy\`es, Parisian student from Toulouse
+FV Favourite, lover of BL
+GA Gavroche, young urchin living at Gorbeau House
+GE G\'eborand, retired merchant of D--
+GG G--, former member of National Convention
+GI Monsieur Luke Esprit Gillenormand, grand bourgeois
+GP George Pontmercy, father of MA and son-in-law of GI
+GR Gribier, new gravedigger at cemetery
+GT Grantaire, `Friends of the ABC' skeptic
+GU Gueulemer, Herculean bandit of Paris
+HL Madame Hucheloup, keeper of Corinth Inn
+IS Isabeau, baker
+JA Javert, police officer of M-- sur M--
+JD Jondrette, father of GA
+JL Jacquin Labarre, innkeeper of La Croix de Calbas
+JO Joly, `Friends of the ABC' medic
+JP Jean Prouvaire, `Friends of the ABC' poet
+JU Judge of Douai, judge at the court trying CH
+JV Jean Valjean, thief of bread
+LI Listolier, Parisian student from Cahors
+LL Old woman 2, landlady of JV in Paris at Gorbeau House
+LP Louis Philippe, Orleans King of France
+MA Marius, grandson of GI
+MB Mademoiselle Baptistine, sister of MY
+MC Marquis de Champtercier, ultra-royalist miser
+ME Madame Magloire, housekeeper to MY
+MG Madamoiselle Gillenormand, unmarried daughter of GI
+MI Mother Innocent, prioress of Convent of Petite Rue Picpus
+MM Monsieur Mabeuf, prefect of church
+MN Magnon, servant of GI
+MO Montparnasse, genteel bandit of Paris
+MP Madame Pontmercy, younger daughter of GI
+MR Madame de R--, Marquise de R--
+MT Marguerite, old lady who teaches FN to live poor
+MV Madamoiselle Vaubois, friend of MG
+MY Monsieur Charles Fran\c{c}ois Bienvenu Myriel, Bishop of D--
+NP Napoleon, Emperor of France
+PG Petit Gervais, a small boy in D--
+PL Mother Plutarch, maid of MM
+PO Old woman 1, portress of JV in M-- sur M--
+QU Claquesous, night-like bandit of Paris
+SC Monsieur Scaufflaire, keeper of horses and chaises in M-- sur M--
+SN Count ***, `philosophic' senator
+SP Sister Perp\'etue, stout nun at infirmary in M-- sur M--
+SS Sister Simplice, saintly nun at infirmary in M-- sur M--
+TG Lieutenant Theodule Gillenormand, soldier and grandnephew of GI
+TH Th\'enardier, sergeant of Waterloo and keeper of a chophouse
+TM Madame Th\'enardier, wife of TH
+TS Toussaint, servant of JV at Rue Plumet
+VI Madame Victurnien, snoop in M-- sur M--
+XA Child 1, son of TH sold to MN
+XB Child 2, son of TH sold to MN
+ZE Zephine, lover of FA
+
+1.1.1 : MY,NP : MY,NP
+1.1.1 : MY,MB : MY,MB
+1.1.2 : MY,ME;MB : MY,ME
+1.1.2 : ME,MB;MY : ME,MB
+1.1.3 : MY;MB;ME : MY
+1.1.4 : MY,ME;MB : MY,ME
+1.1.4 : MY,CL;MB;ME : MY,CL
+1.1.4 : MY,GE;MB;ME : MY,GE
+1.1.4 : MY,MC;MB;ME : MY,MC
+1.1.4 : MY,MB;ME : MY,MB
+1.1.5 : MY,MB,ME : MY,MB,ME
+1.1.6 : ME,MY;MB : ME,MY
+1.1.7 : MY,CV;MB;ME : MY,CV
+1.1.7 : MY,MB,ME : MY,MB,ME
+1.1.8 : SN,MY;MB;ME : SN,MY
+1.1.9 : MB;MY;ME;SN : MB
+1.1.10 : MY,GG;MB;ME;SN : MY,GG
+1.1.11 : MY;MB;ME;SN : MY
+1.1.12 : MY;MB;ME;SN : MY
+1.1.13 : MY;MB;ME;SN : MY
+1.1.14 : MY,SN;MB;ME : MY,SN
+1.2.1 : JL,JV;MY;MB;ME : JL,JV
+1.2.1 : JV,MT;MY;MB;ME : JV,MT
+1.2.1 : MR,JV;MY;MB;ME;MT : MR,JV
+1.2.2 : ME,MB,MY;JV;MT : ME,MB,MY
+1.2.3 : ME,MB,MY,JV;MT : ME,MB,MY,JV
+1.2.4 : MY,JV,MB;ME;MT : MY,JV,MB
+1.2.4 : MY,JV,MB,ME;MT : MY,JV,MB,ME
+1.2.5 : MY,ME,JV;MT : MY,ME,JV
+1.2.6 : JV,IS;MY;ME;MT : JV,IS
+1.2.7 : JV;MY;ME;MT : JV
+1.2.9 : JV;MY;ME;MT : JV
+1.2.10 : JV;MY;ME;MT : JV
+1.2.11 : JV;MY;ME;MT : JV
+1.2.12 : MY,ME;JV;MT : MY,ME
+1.2.12 : MY,JV;MT : MY,JV
+1.2.13 : PG,JV;MY;MT : PG,JV
+1.3.2 : FT,LI,FA,BL;MY;JV;MT : FT,LI,FA,BL
+1.3.3 : FT,LI,FA,BL,FV,DA,ZE,FN;MY;JV;MT : FT,LI,FA,BL,FV,DA,ZE,FN
+1.3.4 : FT,LI,FA,BL,FV,DA,ZE,FN;MY;JV;MT : FT,LI,FA,BL,FV,DA,ZE,FN
+1.3.6 : BL,FV;MY;JV;MT;FT;LI;FA;DA;ZE;FN : BL,FV
+1.3.6 : FV,DA;MY;JV;MT;FT;LI;FA;BL;ZE;FN : FV,DA
+1.3.7 : FT;MY;JV;MT;LI;FA;BL;FV;DA;ZE;FN : FT
+1.3.8 : FT,LI,FA,BL,FV,DA,ZE,FN;MY;JV;MT : FT,LI,FA,BL,FV,DA,ZE,FN
+1.3.9 : FV,DA,ZE,FN;MY;JV;MT : FV,DA,ZE,FN
+1.4.1 : TM,FN;MY;JV;MT : TM,FN
+1.4.1 : TH,TM,FN;MY;JV;MT : TH,TM,FN
+1.4.3 : CO;MY;JV;MT;FN;TM;TH : CO
+1.4.3 : TH;MY;JV;MT;FN;TM : TH
+1.4.3 : TM;MY;JV;MT;FN : TM
+1.5.1 : JV;MY;MT;FN : JV
+1.5.2 : JV;MY;MT;FN : JV
+1.5.3 : JV;MY;MT;FN : JV
+1.5.4 : MY;JV;MT;FN : MY
+1.5.5 : JA;JV;MT;FN : JA
+1.5.6 : FF,JV,JA;MT;FN : FF,JV,JA
+1.5.7 : FF;JV;MT;FN;JA : FF
+1.5.8 : VI;JV;MT;FN;JA : VI
+1.5.8 : FN;JV;MT;JA;VI : FN
+1.5.9 : VI;JV;MT;FN;JA : VI
+1.5.9 : MT,FN;JV;JA : MT,FN
+1.5.10 : MT,FN;JV;JA : MT,FN
+1.5.12 : BM,FN,JA;JV : BM,FN,JA
+1.5.13 : FN,JA;JV;BM : FN,JA
+1.5.13 : FN,JA,JV;BM : FN,JA,JV
+1.5.13 : JA,JV;FN;BM : JA,JV
+1.5.13 : JV,FN;JA;BM : JV,FN
+1.6.1 : JV,FN;JA;BM : JV,FN
+1.6.2 : JV,JA;FN;BM : JV,JA
+1.7.1 : SP,SS;JV;FN;JA;BM : SP,SS
+1.7.1 : JV,SS;FN;JA;BM;SP : JV,SS
+1.7.1 : JV,FN;JA;BM;SP;SS : JV,FN
+1.7.2 : JV,SC;FN;JA;BM;SP;SS : JV,SC
+1.7.3 : JV;FN;JA;BM;SP;SS : JV
+1.7.4 : JV,PO;FN;JA;BM;SP;SS : JV,PO
+1.7.5 : JV;FN;JA;BM;SP;SS;PO : JV
+1.7.6 : SS,FN;JV;JA;BM;SP;PO : SS,FN
+1.7.7 : JV;FN;JA;BM;SP;SS;PO : JV
+1.7.8 : JV;FN;JA;BM;SP;SS;PO : JV
+1.7.9 : JV,JU,CH,BM;FN;JA;SP;SS;PO : JV,JU,CH,BM
+1.7.10 : JU,CH,BR,CN,CC,JV,BM;FN;JA;SP;SS;PO : JU,CH,BR,CN,CC,JV,BM
+1.7.11 : JV,BR,CN,CC,JU,CH;FN;JA;SP;SS;PO : JV,BR,CN,CC,JU,CH
+1.8.1 : SS,JV;FN;JA;SP;PO : SS,JV
+1.8.1 : JV,FN;JA;SP;SS;PO : JV,FN
+1.8.2 : JV,FN;JA;SP;SS;PO : JV,FN
+1.8.3 : JV,FN,JA;SP;SS;PO : JV,FN,JA
+1.8.4 : JV,FN;JA;SP;SS;PO : JV,FN
+1.8.4 : JV,JA;FN;SP;SS;PO : JV,JA
+1.8.4 : JA,FN,JV;SP;SS;PO : JA,FN,JV
+1.8.4 : JA,JV;FN;SP;SS;PO : JA,JV
+1.8.5 : JV,PO;FN;JA;SP;SS : JV,PO
+1.8.5 : FN,SP,SS;JV;JA;PO : FN,SP,SS
+1.8.5 : JV,SS;JA;PO : JV,SS
+1.8.5 : PO,JA;SS : PO,JA
+1.8.5 : JA,SS : JA,SS
