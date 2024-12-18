@@ -3,20 +3,21 @@ async function render() {
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
-  let solution = await d3.text(`../results/${subject}_skew.sol`);
+  // let solution = await d3.text(`../results/${subject}_fair_replaced.sol`);
   //let solution = await d3.text(`../results/${subject}_replaced.sol`);
-
+  let solution = await d3.text(`../results/${subject}_skew_replaced.sol`);
+  
   let graph = {
     nodes: [],
     edges: [],
   };
 
   let visualization_options = {
-    width: 2000,
+    width: 4000,
     height: 1000,
     padding: { left: 20, right: 20, top: 20, bottom: 20 },
     base_node_vertical_distance: 30,
-  };
+  }
 
   // Read and parse the groups file
   let groupsText = await d3.text(`../data/groups/${subject}_groups.txt`);
@@ -30,6 +31,7 @@ async function render() {
   });
 
   let max_timesteps = timesteps.split("\n").length - 1;
+  // let max_timesteps = 5;
   console.log("max_timesteps:", max_timesteps);
   console.log("actual timesteps:", timesteps.split("\n").length);
 
@@ -81,61 +83,73 @@ async function render() {
     .attr("height", visualization_options.height);
 
   let space_between_timesteps =
-    (visualization_options.width -
-      visualization_options.padding.left -
-      visualization_options.padding.right) /
-    max_timesteps;
+    (visualization_options.width - visualization_options.padding.left - visualization_options.padding.right) / max_timesteps;
 
   // GET COORDINATES FOR NODES
-  assign_node_coordinates(
-    timesteps,
-    max_timesteps,
-    solution_lines,
-    graph,
-    visualization_options,
-    space_between_timesteps
-  );
+  assign_node_coordinates(timesteps, max_timesteps, solution_lines, graph, visualization_options, space_between_timesteps);
+
+  // DRAW GROUPS
+  for (let t = 0; t < max_timesteps; t++) {
+    let interactions_at_this_timestep = timesteps.split("\n")[t].split(":")[1];
+    let interaction_groups = interactions_at_this_timestep
+      .split(";")
+      .map((group) => group.split(",").map((char) => char.trim()));
+
+    for (let group of interaction_groups) {
+      let nodes_in_group = graph.nodes.filter((n) => n.timestep == t && group.includes(n.name));
+      if (nodes_in_group.length == 1) continue;
+      let y_values = nodes_in_group.map((n) => n.y);
+      let min_y = Math.min(...y_values);
+      let max_y = Math.max(...y_values);
+
+      svg
+        .append("rect")
+        .attr("x", t * space_between_timesteps + visualization_options.padding.left - space_between_timesteps*.125)
+        .attr("y", min_y - visualization_options.base_node_vertical_distance*.4)
+        .attr("width", space_between_timesteps*.25)
+        .attr("height", max_y - min_y + visualization_options.base_node_vertical_distance*.8)
+        .attr("fill", "orange")
+        .attr("fill-opacity", 0.3)
+        .attr("rx", 10)
+        .attr("ry", 10);
+    }
+  }
 
   // EDGES
   let char_line_coords = {};
 
-  for (let char of Object.keys(character_colors)) {
+  for (let char of Object.keys(character_colors)){
     char_line_coords[char] = [];
-    for (let i = 0; i < max_timesteps; i++) {
-      let char_in_t1 = graph.nodes.find(
-        (n) => n.name == char && n.timestep == i
-      );
+    for (let i = 0; i < max_timesteps; i++){
+      let char_in_t1 = graph.nodes.find(n => n.name == char && n.timestep == i);
       if (char_in_t1 == undefined) continue;
       else {
-        char_line_coords[char].push({
-          x: char_in_t1.x - space_between_timesteps * 0.1,
-          y: char_in_t1.y,
-        });
-        char_line_coords[char].push({ x: char_in_t1.x, y: char_in_t1.y });
-        char_line_coords[char].push({
-          x: char_in_t1.x + space_between_timesteps * 0.1,
-          y: char_in_t1.y,
-        });
+        char_line_coords[char].push({x: char_in_t1.x - space_between_timesteps*0.1, y: char_in_t1.y});
+        char_line_coords[char].push({x: char_in_t1.x, y: char_in_t1.y});
+        char_line_coords[char].push({x: char_in_t1.x + space_between_timesteps*0.1, y: char_in_t1.y});
       }
     }
   }
 
-  for (let char of Object.keys(character_colors)) {
+  for (let char of Object.keys(character_colors)){
     let line_coords = char_line_coords[char];
+    if (line_coords.length <= 3) continue;
     // make a path from the line_coords
-    let line = d3
-      .line()
-      .x((d) => d.x)
-      .y((d) => d.y)
+    let line = d3.line()
+      .x(d => d.x)
+      .y(d => d.y)
       .curve(d3.curveCatmullRom.alpha(0.8));
 
-    svg
-      .append("path")
+    svg.append("path")
       .datum(line_coords)
       .attr("fill", "none")
       .attr("stroke", character_colors[char])
       .attr("stroke-width", 5)
-      .attr("d", line);
+      .attr("d", line)
+      .attr("opacity", () => {
+        if (["RM", "DS", "DN"].includes(char)) return 0.3;
+        else return 1;
+      });
   }
 
   // DRAW THE NODES
@@ -146,15 +160,13 @@ async function render() {
       svg
         .append("circle")
         .attr("r", 5)
-        .attr(
-          "cx",
-          i * space_between_timesteps + 2 * visualization_options.padding.left
-        )
+        .attr("cx", nodes_at_this_timestep[j].x)
         .attr("cy", nodes_at_this_timestep[j].y)
         .attr("fill", character_colors[nodes_at_this_timestep[j].name])
-        .on("mouseover", () =>
+        .on("mouseover", () => {
           console.log(character_colors[nodes_at_this_timestep[j].name])
-        );
+          console.log(nodes_at_this_timestep[j].name)
+        });
     }
   }
 
@@ -175,14 +187,8 @@ async function render() {
     .on("click", savePNG);
 }
 
-function assign_node_coordinates(
-  timesteps,
-  max_timesteps,
-  solution_lines,
-  graph,
-  visualization_options,
-  space_between_timesteps
-) {
+
+function assign_node_coordinates(timesteps, max_timesteps, solution_lines, graph, visualization_options, space_between_timesteps) {
   for (let i = 0; i < max_timesteps; i++) {
     let timestep_line = timesteps.split("\n")[i];
     if (!timestep_line) {
@@ -224,8 +230,7 @@ function assign_node_coordinates(
     let baseY = visualization_options.padding.top;
     for (let j = 0; j < nodes_at_this_timestep.length; j++) {
       let curr_node = nodes_at_this_timestep[j];
-      curr_node.x =
-        i * space_between_timesteps + 2 * visualization_options.padding.left;
+      curr_node.x = i * space_between_timesteps + visualization_options.padding.left;
 
       if (j == 0) {
         curr_node.y = baseY;
@@ -235,31 +240,99 @@ function assign_node_coordinates(
         let prev_group = findInteractionGroup(prev_node.name);
 
         if (curr_group == prev_group) {
-          curr_node.y =
-            prev_node.y + visualization_options.base_node_vertical_distance;
+          curr_node.y = prev_node.y + visualization_options.base_node_vertical_distance;
         } else {
-          curr_node.y =
-            prev_node.y + visualization_options.base_node_vertical_distance * 2;
+          curr_node.y = prev_node.y + visualization_options.base_node_vertical_distance * 2;
         }
       }
     }
   }
-  console.log(count_total_bendiness(graph));
-  iterate_for_better_bendiness(graph, timesteps);
+  
+  iterate_for_better_bendiness(graph, timesteps, max_timesteps, visualization_options);
 }
 
-function iterate_for_better_bendiness(graph, timesteps) {
-  let max_iterations = 1;
+function iterate_for_better_bendiness(graph, timesteps, max_timesteps, visualization_options){
+  let max_iterations = 2;
+  let starting_bendiness = count_total_bendiness(graph);
 
-  for (let i = 0; i < max_iterations; i++) {}
+  console.log("starting bendiness", starting_bendiness);
+  
+  for (let i = 0; i < max_iterations; i++){
+    // console.log(timesteps)
+    for (let j = 0; j < max_timesteps; j++){
+      let nodes_at_this_timestep = graph.nodes.filter(n => n.timestep == j);
+
+      // sort nodes by y
+      nodes_at_this_timestep = nodes_at_this_timestep.sort((a, b) => a.y - b.y);
+
+      // save all the old coordinates
+      for (let node of nodes_at_this_timestep){
+        node.old_y = node.y;
+      }
+
+      let interactions_at_this_timestep = timesteps.split("\n")[j].split(":")[1];
+      let interaction_groups = interactions_at_this_timestep
+      .split(";")
+      .map((group) => group.split(",").map((char) => char.trim()));
+
+      // sort interaction groups by y
+      interaction_groups = interaction_groups.sort((a, b) => {
+        let a_y = nodes_at_this_timestep.find(n => a.includes(n.name)).y;
+        let b_y = nodes_at_this_timestep.find(n => b.includes(n.name)).y;
+        return a_y - b_y;
+      });
+
+      // console.log(interaction_groups)
+
+      for (let g = 0; g < interaction_groups.length; g ++){
+        // move all the nodes in the group down, provided that there is space
+        let group = interaction_groups[interaction_groups.length - g - 1];
+        let nodes_in_group = nodes_at_this_timestep.filter(n => group.includes(n.name));
+        let max_y = Math.max(...nodes_in_group.map(n => n.y));
+        let space_below = 0;
+
+        if (g < interaction_groups.length - 1){
+          let next_group = interaction_groups[interaction_groups.length - g - 1];
+          let nodes_in_next_group = nodes_at_this_timestep.filter(n => next_group.includes(n.name));
+          let min_y_next = Math.min(...nodes_in_next_group.map(n => n.y));
+          space_below = min_y_next - max_y;
+        } else {
+          space_below = visualization_options.height - max_y;
+        }
+
+        console.log("space below", space_below);
+
+        if (space_below < visualization_options.base_node_vertical_distance) continue;
+        else {
+          for (let node of nodes_in_group){
+            // node.y += visualization_options.base_node_vertical_distance;
+          }
+        }
+        // check if bendiness has improved
+        let new_bendiness = count_total_bendiness(graph);
+        if (new_bendiness >= starting_bendiness){
+          // move all the nodes in the group back up
+          for (let node of nodes_in_group){
+            node.y = node.old_y;
+          }
+        } else {
+          starting_bendiness = new_bendiness;
+        }
+      }
+
+    }
+
+    console.log("bendiness at end of iteration", i, count_total_bendiness(graph));
+  }
 }
 
-function count_total_bendiness(graph) {
+function count_total_bendiness(graph){
   let result = 0;
-  for (let node of graph.nodes) {
-    let edge = graph.edges.find((e) => e.source.id == node.id);
+  for (let node of graph.nodes){
+    let edge = graph.edges.find(e => e.source.id == node.id);
     if (edge == undefined) continue;
     let target = edge.target;
+    if (node.y == undefined || target.y == undefined) continue;
     result += Math.abs(node.y - target.y);
   }
   return result;
