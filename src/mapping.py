@@ -61,7 +61,7 @@ print(id_to_char)
 # print(id_to_char)
 
 standard_open = f'./results/{subject}.sol'
-fair_open = f'./results/{subject}_skew.sol'
+fair_open = f'./results/{subject}_all.sol'
 with open(fair_open, 'r') as sol_f:
     sol_file = sol_f.readlines()
 
@@ -81,7 +81,7 @@ replacements = {}
 for old_var in test_variables:
     var = old_var.split('_')
 
-    if var[0] != 'S':
+    if var[0] == 'x' or var[0] == 'y':
         new_var = var[:2]
 
         id_char1 = var[2]
@@ -92,6 +92,18 @@ for old_var in test_variables:
 
         new_var.append(name_char1)
         new_var.append(name_char2)
+
+        new_var_str = '_'.join(new_var)
+        replacements[old_var] = new_var_str
+
+    if var[0] == 'w':
+        new_var = var[:2]
+
+        id_char = var[2]
+
+        name_char = id_to_char.get(int(id_char))
+
+        new_var.append(name_char)
 
         new_var_str = '_'.join(new_var)
         replacements[old_var] = new_var_str
@@ -110,7 +122,7 @@ for old_var in test_variables:
 # print(replacements)
 
 
-with open(f'./results/{subject}_skew.sol', 'r') as sol_f:
+with open(f'./results/{subject}_all.sol', 'r') as sol_f:
     content = sol_f.read()
 
 new_content = content
@@ -119,6 +131,6 @@ for old_var, new_var in replacements.items():
 
 
 # output_file = f'./results/{subject}_replaced.sol'
-fair_output_file = f'./results/{subject}_skew_replaced.sol'
+fair_output_file = f'./results/{subject}_all_replaced.sol'
 with open(fair_output_file, 'w') as file:
     file.write(new_content)
