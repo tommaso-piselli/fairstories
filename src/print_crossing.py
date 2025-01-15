@@ -25,7 +25,7 @@ blue_red_crossings = 0
 
 # Read the solution file
 subject = 'JurassicPark'
-fp = f'./results/{subject}_all_replaced.sol'
+fp = f'./results/{subject}_crosswiggles_replaced.sol'
 
 with open(fp, 'r') as file:
     content = file.readlines()
@@ -64,5 +64,6 @@ print(
     f"Total crossings: {blue_blue_crossings + red_red_crossings + blue_red_crossings}")
 
 print(f'\n-----')
-print(f'BlueFair: {((blue_blue_crossings + blue_red_crossings) / len(blues)):.02}')
+print(
+    f'BlueFair: {((blue_blue_crossings + blue_red_crossings) / len(blues)):.02}')
 print(f'RedFair: {((red_red_crossings + blue_red_crossings) / len(reds)):.02}')

@@ -363,6 +363,6 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
 
 # Usage
-output_file = f'{subject}_all.lp'
+output_file = f'{subject}_crosswiggles.lp'
 write_ilp_model(output_file, t_activechars, t_interactions,
-                num_chars, lambda1=0, lambda2=0, lambda3=1000, lambda4=1, lambda5=1)
+                num_chars, lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=1)
