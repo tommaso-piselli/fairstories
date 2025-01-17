@@ -1,13 +1,11 @@
 async function render() {
-  let subject = "JurassicPark";
+  let subject = "anna6-7";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
   // let solution = await d3.text(`../results/${subject}_fair_replaced.sol`);
   //let solution = await d3.text(`../results/${subject}_replaced.sol`);
-  let solution = await d3.text(
-    `../results/${subject}_crosswiggles_replaced.sol`
-  );
+  let solution = await d3.text(`../results/${subject}_cross_replaced.sol`);
 
   let graph = {
     nodes: [],
@@ -201,6 +199,7 @@ async function render() {
         .attr("cy", nodes_at_this_timestep[j].y)
         .attr("fill", character_colors[nodes_at_this_timestep[j].name])
         .on("mouseover", () => {
+          console.log(i);
           console.log(character_colors[nodes_at_this_timestep[j].name]);
           console.log(nodes_at_this_timestep[j].name);
         });

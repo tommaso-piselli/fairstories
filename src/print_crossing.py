@@ -1,6 +1,11 @@
 # First read the groups file to create a mapping of characters to their groups
+
+# Read the solution file
+subject = 'anna6-7'
+fp = f'./results/{subject}_cross_replaced.sol'
+
 groups = {}
-with open('./data/groups/JurassicPark_groups.txt', 'r') as file:
+with open(f'./data/groups/{subject}_groups.txt', 'r') as file:
     for line in file:
         if line.strip():
             parts = line.strip().split(':')
@@ -8,7 +13,7 @@ with open('./data/groups/JurassicPark_groups.txt', 'r') as file:
             group = parts[2].strip()
             groups[char] = group
 
-print(groups)
+# print(groups)
 reds = []
 blues = []
 for _ in groups.items():
@@ -22,10 +27,6 @@ for _ in groups.items():
 blue_blue_crossings = 0
 red_red_crossings = 0
 blue_red_crossings = 0
-
-# Read the solution file
-subject = 'JurassicPark'
-fp = f'./results/{subject}_crosswiggles_replaced.sol'
 
 with open(fp, 'r') as file:
     content = file.readlines()
@@ -56,14 +57,17 @@ for line in content:
             blue_red_crossings += 1
             # print(f"Blue-Red crossing: {char1}-{char2}")
 
-print("\nSummary:")
+print(f"Summary for {subject}:")
 print(f"Blue-Blue crossings: {blue_blue_crossings}")
 print(f"Red-Red crossings: {red_red_crossings}")
 print(f"Blue-Red crossings: {blue_red_crossings}")
 print(
     f"Total crossings: {blue_blue_crossings + red_red_crossings + blue_red_crossings}")
 
-print(f'\n-----')
+print(f'-----')
 print(
-    f'BlueFair: {((blue_blue_crossings + blue_red_crossings) / len(blues)):.02}')
-print(f'RedFair: {((red_red_crossings + blue_red_crossings) / len(reds)):.02}')
+    f'BlueFair: {((blue_blue_crossings*2 + blue_red_crossings) / len(blues)):.02}')
+print(
+    f'RedFair: {((red_red_crossings*2 + blue_red_crossings) / len(reds)):.02}')
+
+print(f'Unfairness {abs(((blue_blue_crossings*2 + blue_red_crossings) / len(blues)) - ((red_red_crossings*2 + blue_red_crossings) / len(reds))):.02}')
