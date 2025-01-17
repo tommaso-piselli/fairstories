@@ -143,6 +143,11 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             chars_t1 = set(t_activechars[t+1])
             common_chars = sorted(list(chars_t & chars_t1))
 
+            if t == 26:
+                print(chars_t)
+                print(chars_t1)
+                print(common_chars)
+
             # Crossing terms
             for i in range(len(common_chars)):
                 for j in range(i + 1, len(common_chars)):
@@ -363,6 +368,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
 
 # Usage
-output_file = f'./results/{subject}_cross.lp'
+# output_file = f'./results/{subject}_cross.lp'
+output_file = f'test.lp'
 write_ilp_model(output_file, t_activechars, t_interactions,
                 num_chars, lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=0)

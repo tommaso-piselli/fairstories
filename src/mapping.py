@@ -84,16 +84,30 @@ for old_var in test_variables:
 
     # print(new_var_str)
 
-print(replacements)
+# print(replacements)
 
 
 with open(f'./results/{subject}_cross.sol', 'r') as sol_f:
     content = sol_f.read()
 
 new_content = content
-for old_var, new_var in replacements.items():
-    new_content = re.sub(rf'\b{old_var}\b', new_var, new_content)
+# for old_var, new_var in replacements.items():
+#    new_content = re.sub(rf'\b{old_var}\b', new_var, new_content)
 
+
+# Create a single regex pattern to match any of the old_var values
+pattern = re.compile(r'\b(' + '|'.join(re.escape(old_var)
+                     for old_var in replacements.keys()) + r')\b')
+
+# Function to look up the replacement value
+
+
+def replace_match(match):
+    return replacements[match.group(0)]
+
+
+# Perform the substitution in one pass
+new_content = pattern.sub(replace_match, new_content)
 
 # output_file = f'./results/{subject}_replaced.sol'
 fair_output_file = f'./results/{subject}_cross_replaced.sol'
