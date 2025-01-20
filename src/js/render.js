@@ -1,5 +1,5 @@
 async function render() {
-  let subject = "anna6-7";
+  let subject = "JurassicPark";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
@@ -13,10 +13,12 @@ async function render() {
   };
 
   let visualization_options = {
-    width: 10000,
+    width: 4000,
     height: 1000,
     padding: { left: 20, right: 20, top: 20, bottom: 20 },
     base_node_vertical_distance: 30,
+    reduce_wiggles: false,
+    max_reduce_wiggles_iterations: 20,
   };
 
   // Read and parse the groups file
@@ -202,6 +204,7 @@ async function render() {
           console.log(i);
           console.log(character_colors[nodes_at_this_timestep[j].name]);
           console.log(nodes_at_this_timestep[j].name);
+          console.log(nodes_at_this_timestep[j].y)
         });
     }
   }
@@ -293,12 +296,13 @@ function assign_node_coordinates(
     }
   }
 
-  iterate_for_better_bendiness(
-    graph,
-    timesteps,
-    max_timesteps,
-    visualization_options
-  );
+  if (visualization_options.reduce_wiggles)
+    iterate_for_better_bendiness(
+      graph,
+      timesteps,
+      max_timesteps,
+      visualization_options
+    );
 }
 
 // this funcition is to be finished still - do not trust
@@ -308,13 +312,13 @@ function iterate_for_better_bendiness(
   max_timesteps,
   visualization_options
 ) {
-  let max_iterations = 1;
+  let max_iterations = visualization_options.max_reduce_wiggles_iterations;
   let starting_bendiness = count_total_bendiness(graph);
 
   console.log("starting bendiness", starting_bendiness);
 
   for (let i = 0; i < max_iterations; i++) {
-    // console.log(timesteps)
+
     for (let j = 0; j < max_timesteps; j++) {
       let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == j);
 
@@ -340,48 +344,47 @@ function iterate_for_better_bendiness(
         return a_y - b_y;
       });
 
-      if (j == 33) console.log(interaction_groups);
+      // console.log(j, interaction_groups)
 
       let found = false;
 
       for (let g = 0; g < interaction_groups.length; g++) {
-        if (found) break;
+        // if (found) break;
         // move all the nodes in the group down, provided that there is space
         let group = interaction_groups[interaction_groups.length - g - 1];
-        if (j == 33) console.log("group", g, interaction_groups.length - g - 1);
         let nodes_in_group = nodes_at_this_timestep.filter((n) =>
           group.includes(n.name)
         );
+        // console.log(j, nodes_in_group.map((n) => n.name));
         let max_y = Math.max(...nodes_in_group.map((n) => n.y));
+        // console.log(j, max_y)
         let space_below = 0;
-        if (j == 33)
-          console.log(interaction_groups.length, interaction_groups.length - g);
 
         if (g == 0) {
           space_below = visualization_options.height - max_y;
         } else {
           let next_group = interaction_groups[interaction_groups.length - g];
-          if (j == 33) console.log("next group", interaction_groups.length - g);
+          // console.log(next_group)
           let nodes_in_next_group = nodes_at_this_timestep.filter((n) =>
             next_group.includes(n.name)
           );
-          if (j == 33) console.log(nodes_in_group, nodes_in_next_group);
           let min_y_next = Math.min(...nodes_in_next_group.map((n) => n.y));
           space_below = min_y_next - max_y;
         }
 
-        if (j == 33) console.log("space below", space_below);
+        // console.log("space below", space_below)
 
-        if (space_below < visualization_options.base_node_vertical_distance)
+        if (space_below <= visualization_options.base_node_vertical_distance){
           continue;
-        else {
+        } else {
           for (let node of nodes_in_group) {
             node.y += visualization_options.base_node_vertical_distance;
           }
         }
+
         // check if bendiness has improved
         let new_bendiness = count_total_bendiness(graph);
-        if (new_bendiness >= starting_bendiness) {
+        if (new_bendiness > starting_bendiness) {
           // move all the nodes in the group back up
           for (let node of nodes_in_group) {
             node.y = node.old_y;
