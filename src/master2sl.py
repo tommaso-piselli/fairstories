@@ -1,7 +1,7 @@
 import sys
 
 # Set your paths here
-subject = 'anna6-7'
+subject = 'anna6-7-rip'
 input_master = f"./data/txt/{subject}.master"
 output_sl = f"./{subject}.sl"
 

@@ -26,7 +26,7 @@ id_to_char = id_to_char_mapping(characters)
 print(id_to_char)
 
 
-fair_open = f'./results/{subject}_cross.sol'
+fair_open = f'./results/{subject}_skewcross.sol'
 with open(fair_open, 'r') as sol_f:
     sol_file = sol_f.readlines()
 
@@ -87,7 +87,7 @@ for old_var in test_variables:
 # print(replacements)
 
 
-with open(f'./results/{subject}_cross.sol', 'r') as sol_f:
+with open(f'./results/{subject}_skewcross.sol', 'r') as sol_f:
     content = sol_f.read()
 
 new_content = content
@@ -110,6 +110,6 @@ def replace_match(match):
 new_content = pattern.sub(replace_match, new_content)
 
 # output_file = f'./results/{subject}_replaced.sol'
-fair_output_file = f'./results/{subject}_cross_replaced.sol'
+fair_output_file = f'./results/{subject}_skewcross_replaced.sol'
 with open(fair_output_file, 'w') as file:
     file.write(new_content)

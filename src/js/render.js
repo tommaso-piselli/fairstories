@@ -13,7 +13,7 @@ async function render() {
   };
 
   let visualization_options = {
-    width: 4000,
+    width: 10000,
     height: 1000,
     padding: { left: 20, right: 20, top: 20, bottom: 20 },
     base_node_vertical_distance: 30,

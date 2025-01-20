@@ -95,8 +95,8 @@ async function render() {
 
   let padding = { left: 20, right: 20, top: 20, bottom: 20 };
 
-  let space_between_timesteps =
-    (width - padding.left - padding.right) / max_timesteps;
+  // let space_between_timesteps =
+  //   (10 * (width - padding.left - padding.right)) / max_timesteps;
 
   // NODES
   for (let i = 0; i < max_timesteps; i++) {
