@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Define variables
-filename="JurassicPark_crosswiggles"  
-time=3800           
+subject="JurassicPark"  
+experiment="faircross"
+time=1200           
 
 # Run the gurobi_cl command
-gurobi_cl Timelimit=${time} ResultFile=./results/${filename}.sol LogFile=./results/${filename}.log ./results/${filename}.lp
+gurobi_cl Timelimit=${time} ResultFile=./results/${subject}_${experiment}.sol LogFile=./results/${subject}_${experiment}_.log ./results/${subject}_${experiment}.lp

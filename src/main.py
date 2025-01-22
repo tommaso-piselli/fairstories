@@ -96,13 +96,14 @@ for character in character_in_groups:
         blues.append(character['id'])
 
 
-def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0):
+def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0):
     '''
     lambda1: fairSkewness
     lambda2: Skewness
     lambda3: fairCrossings
     lambda4: Crossings
-    lambda5: Wiggles
+    lambda5: fairWiggle
+    lambda6: Wiggles
     '''
 
     # Keep track of all variables
@@ -143,7 +144,6 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             chars_t1 = set(t_activechars[t+1])
             common_chars = sorted(list(chars_t & chars_t1))
 
-            # Crossing terms
             for i in range(len(common_chars)):
                 for j in range(i + 1, len(common_chars)):
                     char1 = common_chars[i]
@@ -154,18 +154,23 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
                     var_name = f"y_{t}_{char1}_{char2}"
 
+                    # Crossing terms
                     if lambda4 != 0:
                         obj_terms.append(f"{lambda4} {var_name}")
                     crossing_vars.add(var_name)
                     ordering_vars.add(f"x_{t}_{char1}_{char2}")
                     ordering_vars.add(f"x_{t+1}_{char1}_{char2}")
 
-            # Wiggle terms - for three consecutive timesteps
-            if lambda5 != 0:
+            # Wiggle terms
+            if lambda6 != 0:
                 for char_i in common_chars:
                     wiggle_var = f"w_{t}_{char_i}"
-                    obj_terms.append(f"{lambda5} {wiggle_var}")
+                    obj_terms.append(f"{lambda6} {wiggle_var}")
                     wiggle_vars.add(wiggle_var)
+
+        # FairWiggle terms
+        if lambda5 != 0:
+            obj_terms.append(f"{lambda5} FairWiggle")
 
         objective = " + ".join(obj_terms) if obj_terms else "0"
         file.write(objective + "\n")
@@ -175,6 +180,10 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
         # Track crossing variables for fairness constraints
         red_crossings = []
         blue_crossings = []
+
+        # Track wiggle variables for fairness constraints
+        red_wiggles = []
+        blue_wiggles = []
 
         # --- 1. SKEWNESS AND FAIR SKEWNESS CONSTRAINTS (lambda1, lambda2) ---
         if lambda1 != 0 or lambda2 != 0:
@@ -282,8 +291,8 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     file.write(f"{y_var} - {x_t} + {x_t1} >= 0\n")
                     file.write(f"{y_var} + {x_t} - {x_t1} >= 0\n")
 
-        # --- 4. WIGGLE DETECTION CONSTRAINTS (lambda5) ---
-        if lambda5 != 0:
+        # --- 4. WIGGLE DETECTION CONSTRAINTS (lambda6) ---
+        if lambda6 != 0:
             for t in range(len(t_activechars) - 1):
                 chars_t = set(t_activechars[t])
                 chars_t1 = set(t_activechars[t+1])
@@ -292,6 +301,12 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                 # Only process characters that appear in both timestamps
                 for char_i in common_chars:
                     wiggle_var = f"w_{t}_{char_i}"
+
+                    # Track wiggles for fairness constraints
+                    if str(char_i + 1) in reds:
+                        red_wiggles.append(wiggle_var)
+                    else:
+                        blue_wiggles.append(wiggle_var)
 
                     # First constraint: w_{t,i} - Σ(x_{t,i,j} - x_{t+1,i,j}) ≥ 0
                     constraint1_terms = [wiggle_var]
@@ -313,7 +328,31 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                                 f"+ x_{t}_{char_i}_{char_j}")
                     file.write(f"{' '.join(constraint2_terms)} >= 0\n")
 
-        # --- 5. AUXILIARY CONSTRAINTS ---
+        # --- 5. FAIR WIGGLES CONSTRAINTS (lambda5) ---
+        if lambda5 != 0:
+            # First constraint: |VB||VR|FairWiggles = |VB|∑w_i^R - |VR|∑w_i^B >= 0
+            constraint1_terms = []
+            if blue_wiggles:  # If there are any blue wiggles
+                for blue_var in blue_wiggles:
+                    constraint1_terms.append(f"- {len(reds)} {blue_var}")
+            if red_wiggles:  # If there are any red wiggles
+                for red_var in red_wiggles:
+                    constraint1_terms.append(f"+ {len(blues)} {red_var}")
+            constraint1_terms.append(f"- {len(blues) * len(reds)} FairWiggle")
+            file.write(f"{' '.join(constraint1_terms)} <= 0\n")
+
+            # Second constraint: |VB||VR|FairWiggles = |VR|∑w_i^B - |VB|∑w_i^R >= 0
+            constraint2_terms = []
+            if blue_wiggles:  # If there are any blue wiggles
+                for blue_var in blue_wiggles:
+                    constraint2_terms.append(f"+ {len(reds)} {blue_var}")
+            if red_wiggles:  # If there are any red wiggles
+                for red_var in red_wiggles:
+                    constraint2_terms.append(f"- {len(blues)} {red_var}")
+            constraint2_terms.append(f"- {len(blues) * len(reds)} FairWiggle")
+            file.write(f"{' '.join(constraint2_terms)} <= 0\n")
+
+        # --- 6. AUXILIARY CONSTRAINTS ---
         # Ordering constraints
         for t in range(len(t_activechars)):
             active_chars = t_activechars[t]
@@ -357,10 +396,6 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                             ordering_vars.add(x_2out)
 
         # Write binary variable declarations
-        # file.write("\nContinuous\n")
-        # for var in wiggle_vars:
-        #     file.write(f"{var}\n")
-
         file.write("\nBinaries\n")
         for var in skewness_vars:
             file.write(f"{var}\n")
@@ -371,13 +406,15 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
 
 # Usage
-output_file = f'./results/{subject}_crosswiggles.lp'
+experiment = 'faircross'
+output_file = f'./results/{subject}_{experiment}.lp'
 '''
     lambda1: fairSkewness
     lambda2: Skewness
     lambda3: fairCrossings
     lambda4: Crossings
-    lambda5: Wiggles
+    lambda5: fairWiggles
+    lambda6: Wiggles
     '''
 write_ilp_model(output_file, t_activechars, t_interactions,
-                num_chars, lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=1)
+                num_chars, lambda1=0, lambda2=0, lambda3=100, lambda4=1, lambda5=0, lambda6=0)
