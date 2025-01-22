@@ -61,7 +61,7 @@ def read_sl_file(filepath):
 
 
 # Usage example:
-subject = 'anna6-7'
+subject = 'JurassicPark'
 filepath = f"./data/sl/{subject}.sl"
 groups_file = f'./data/groups/{subject}_groups.txt'
 interactions, t_activechars, t_interactions, num_chars = read_sl_file(filepath)
@@ -143,11 +143,6 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             chars_t1 = set(t_activechars[t+1])
             common_chars = sorted(list(chars_t & chars_t1))
 
-            # if t == 26:
-            #     print(chars_t)
-            #     print(chars_t1)
-            #     print(common_chars)
-
             # Crossing terms
             for i in range(len(common_chars)):
                 for j in range(i + 1, len(common_chars)):
@@ -167,16 +162,10 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
             # Wiggle terms - for three consecutive timesteps
             if lambda5 != 0:
-                if t < len(t_activechars) - 2:
-                    chars_t2 = set(t_activechars[t+2])
-                    common_three = sorted(list(chars_t & chars_t1 & chars_t2))
-
-                    for char in common_three:
-                        # Create wiggle variable for this character at this timestep
-                        wiggle_var = f"w_{t}_{char}"
-                        wiggle_vars.add(wiggle_var)
-                        if lambda5 != 0:
-                            obj_terms.append(f"{lambda5} {wiggle_var}")
+                for char_i in common_chars:
+                    wiggle_var = f"w_{t}_{char_i}"
+                    obj_terms.append(f"{lambda5} {wiggle_var}")
+                    wiggle_vars.add(wiggle_var)
 
         objective = " + ".join(obj_terms) if obj_terms else "0"
         file.write(objective + "\n")
@@ -295,26 +284,34 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
         # --- 4. WIGGLE DETECTION CONSTRAINTS (lambda5) ---
         if lambda5 != 0:
-            for t in range(len(t_activechars) - 2):
+            for t in range(len(t_activechars) - 1):
                 chars_t = set(t_activechars[t])
                 chars_t1 = set(t_activechars[t+1])
-                chars_t2 = set(t_activechars[t+2])
-                common_three = sorted(list(chars_t & chars_t1 & chars_t2))
+                common_chars = sorted(list(chars_t & chars_t1))
 
-                for char in common_three:
-                    wiggle_var = f"w_{t}_{char}"
-                    for other_char in common_three:
-                        if other_char != char:
-                            x_t = f"x_{t}_{char}_{other_char}"
-                            x_t1 = f"x_{t+1}_{char}_{other_char}"
-                            x_t2 = f"x_{t+2}_{char}_{other_char}"
+                # Only process characters that appear in both timestamps
+                for char_i in common_chars:
+                    wiggle_var = f"w_{t}_{char_i}"
 
-                            file.write(f"{wiggle_var} - {x_t} + {x_t1} >= 0\n")
-                            file.write(f"{wiggle_var} + {x_t} - {x_t1} >= 0\n")
-                            file.write(
-                                f"{wiggle_var} - {x_t1} + {x_t2} >= 0\n")
-                            file.write(
-                                f"{wiggle_var} + {x_t1} - {x_t2} >= 0\n")
+                    # First constraint: w_{t,i} - Σ(x_{t,i,j} - x_{t+1,i,j}) ≥ 0
+                    constraint1_terms = [wiggle_var]
+                    for char_j in common_chars:  # j must also be in both timestamps
+                        if char_i != char_j:
+                            constraint1_terms.append(
+                                f"- x_{t}_{char_i}_{char_j}")
+                            constraint1_terms.append(
+                                f"+ x_{t+1}_{char_i}_{char_j}")
+                    file.write(f"{' '.join(constraint1_terms)} >= 0\n")
+
+                    # Second constraint: w_{t,i} - Σ(x_{t+1,i,j} - x_{t,i,j}) ≥ 0
+                    constraint2_terms = [wiggle_var]
+                    for char_j in common_chars:  # j must also be in both timestamps
+                        if char_i != char_j:
+                            constraint2_terms.append(
+                                f"- x_{t+1}_{char_i}_{char_j}")
+                            constraint2_terms.append(
+                                f"+ x_{t}_{char_i}_{char_j}")
+                    file.write(f"{' '.join(constraint2_terms)} >= 0\n")
 
         # --- 5. AUXILIARY CONSTRAINTS ---
         # Ordering constraints
@@ -360,6 +357,10 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                             ordering_vars.add(x_2out)
 
         # Write binary variable declarations
+        # file.write("\nContinuous\n")
+        # for var in wiggle_vars:
+        #     file.write(f"{var}\n")
+
         file.write("\nBinaries\n")
         for var in skewness_vars:
             file.write(f"{var}\n")
@@ -367,12 +368,10 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             file.write(f"{var}\n")
         for var in crossing_vars:
             file.write(f"{var}\n")
-        for var in wiggle_vars:
-            file.write(f"{var}\n")
 
 
 # Usage
-output_file = f'./results/{subject}_skewcross.lp'
+output_file = f'./results/{subject}_crosswiggles.lp'
 '''
     lambda1: fairSkewness
     lambda2: Skewness
@@ -381,4 +380,4 @@ output_file = f'./results/{subject}_skewcross.lp'
     lambda5: Wiggles
     '''
 write_ilp_model(output_file, t_activechars, t_interactions,
-                num_chars, lambda1=0, lambda2=1, lambda3=0, lambda4=1, lambda5=0)
+                num_chars, lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=1)

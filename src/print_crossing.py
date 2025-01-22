@@ -1,8 +1,9 @@
 # First read the groups file to create a mapping of characters to their groups
 
 # Read the solution file
-subject = 'anna6-7'
-fp = f'./results/{subject}_cross_replaced.sol'
+subject = 'JurassicPark'
+experiment = 'crosswiggles'
+fp = f'./results/{subject}_{experiment}_replaced.sol'
 
 groups = {}
 with open(f'./data/groups/{subject}_groups.txt', 'r') as file:
@@ -27,11 +28,18 @@ for _ in groups.items():
 blue_blue_crossings = 0
 red_red_crossings = 0
 blue_red_crossings = 0
+wiggles = {}
+
 
 with open(fp, 'r') as file:
     content = file.readlines()
 
 for line in content:
+    if line.startswith('w'):
+        new_line_w = line.strip().split(' ')
+        if int(new_line_w[1]) != 0:
+            wiggles.update({new_line_w[0]: new_line_w[1]})
+
     if line.startswith('#') or line.startswith('x') or line.startswith('w') or line.startswith('S'):
         continue
 
@@ -57,17 +65,31 @@ for line in content:
             blue_red_crossings += 1
             # print(f"Blue-Red crossing: {char1}-{char2}")
 
-print(f"Summary for {subject}:")
+print(f"Summary for {subject}_{experiment}:")
+
+
+# 3. FairCrossings
+print(f'---\n> FairCrossings')
+print(
+    f'BlueFair: {((blue_blue_crossings*2 + blue_red_crossings) / len(blues)):.02}')
+print(
+    f'RedFair: {((red_red_crossings*2 + blue_red_crossings) / len(reds)):.02}')
+print(f'Unfairness {abs(((blue_blue_crossings*2 + blue_red_crossings) / len(blues)) - ((red_red_crossings*2 + blue_red_crossings) / len(reds))):.02}')
+
+
+# 4. Crossings
+print(f'---\n> Crossings')
 print(f"Blue-Blue crossings: {blue_blue_crossings}")
 print(f"Red-Red crossings: {red_red_crossings}")
 print(f"Blue-Red crossings: {blue_red_crossings}")
 print(
     f"Total crossings: {blue_blue_crossings + red_red_crossings + blue_red_crossings}")
 
-print(f'-----')
-print(
-    f'BlueFair: {((blue_blue_crossings*2 + blue_red_crossings) / len(blues)):.02}')
-print(
-    f'RedFair: {((red_red_crossings*2 + blue_red_crossings) / len(reds)):.02}')
+# 5. Wiggles
+print(f'---\n> Wiggles')
+# print wiggles without going in a new line
+# format: w_1: 2 | w_2: 3 | w_3: 4
+for k, v in wiggles.items():
+    print(f'{k}: {v}', end=' | ')
 
-print(f'Unfairness {abs(((blue_blue_crossings*2 + blue_red_crossings) / len(blues)) - ((red_red_crossings*2 + blue_red_crossings) / len(reds))):.02}')
+print(f"\nTotal wiggles: {sum([int(v) for v in wiggles.values()])}")

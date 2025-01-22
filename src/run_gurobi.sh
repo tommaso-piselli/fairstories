@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define variables
-filename="anna6-7_skewcross"  
+filename="JurassicPark_crosswiggles"  
 time=3800           
 
 # Run the gurobi_cl command
