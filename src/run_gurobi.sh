@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define variables
-subject="JurassicPark"  
-experiment="faircross"
+subject="anna6-7"  
+experiment="cross"
 time=1200           
 
 # Run the gurobi_cl command

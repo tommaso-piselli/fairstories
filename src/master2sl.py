@@ -1,7 +1,7 @@
 import sys
 
 # Set your paths here
-subject = 'BackToTheFuture'
+subject = 'ubiq1'
 input_master = f"./data/txt/{subject}.master"
 output_sl = f"./{subject}.sl"
 

@@ -61,7 +61,7 @@ def read_sl_file(filepath):
 
 
 # Usage example:
-subject = 'JurassicPark'
+subject = 'anna6-7'
 filepath = f"./data/sl/{subject}.sl"
 groups_file = f'./data/groups/{subject}_groups.txt'
 interactions, t_activechars, t_interactions, num_chars = read_sl_file(filepath)
@@ -96,7 +96,7 @@ for character in character_in_groups:
         blues.append(character['id'])
 
 
-def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0):
+def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossing_count=None):
     '''
     lambda1: fairSkewness
     lambda2: Skewness
@@ -305,7 +305,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     # Track wiggles for fairness constraints
                     if str(char_i + 1) in reds:
                         red_wiggles.append(wiggle_var)
-                    else:
+                    elif str(char_i + 1) in blues:
                         blue_wiggles.append(wiggle_var)
 
                     # First constraint: w_{t,i} - Σ(x_{t,i,j} - x_{t+1,i,j}) ≥ 0
@@ -330,26 +330,26 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
         # --- 5. FAIR WIGGLES CONSTRAINTS (lambda5) ---
         if lambda5 != 0:
-            # First constraint: |VB||VR|FairWiggles = |VB|∑w_i^R - |VR|∑w_i^B >= 0
+            # First constraint: |VB||VR|FairWiggles >= |VR|∑w_i^B - |VB|∑w_i^R
             constraint1_terms = []
             if blue_wiggles:  # If there are any blue wiggles
                 for blue_var in blue_wiggles:
-                    constraint1_terms.append(f"- {len(reds)} {blue_var}")
-            if red_wiggles:  # If there are any red wiggles
+                    constraint1_terms.append(f"+ {num_reds} {blue_var}")
+            if red_wiggles:
                 for red_var in red_wiggles:
-                    constraint1_terms.append(f"+ {len(blues)} {red_var}")
-            constraint1_terms.append(f"- {len(blues) * len(reds)} FairWiggle")
+                    constraint1_terms.append(f"- {num_blues} {red_var}")
+            constraint1_terms.append(f"- {num_blues * num_reds} FairWiggle")
             file.write(f"{' '.join(constraint1_terms)} <= 0\n")
 
-            # Second constraint: |VB||VR|FairWiggles = |VR|∑w_i^B - |VB|∑w_i^R >= 0
+            # Second constraint: |VB||VR|FairWiggles >= |VB|∑w_i^R - |VR|∑w_i^B
             constraint2_terms = []
-            if blue_wiggles:  # If there are any blue wiggles
+            if blue_wiggles:
                 for blue_var in blue_wiggles:
-                    constraint2_terms.append(f"+ {len(reds)} {blue_var}")
-            if red_wiggles:  # If there are any red wiggles
+                    constraint2_terms.append(f"- {num_reds} {blue_var}")
+            if red_wiggles:
                 for red_var in red_wiggles:
-                    constraint2_terms.append(f"- {len(blues)} {red_var}")
-            constraint2_terms.append(f"- {len(blues) * len(reds)} FairWiggle")
+                    constraint2_terms.append(f"+ {num_blues} {red_var}")
+            constraint2_terms.append(f"- {num_reds * num_blues} FairWiggle")
             file.write(f"{' '.join(constraint2_terms)} <= 0\n")
 
         # --- 6. AUXILIARY CONSTRAINTS ---
@@ -395,6 +395,27 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                             ordering_vars.add(x_1out)
                             ordering_vars.add(x_2out)
 
+        # crossing count constraint
+        crossing_count = None
+        if crossing_count is not None:
+            # Sum of all crossing variables should equal crossing_count
+            crossing_sum_terms = []
+            for t in range(len(t_activechars) - 1):
+                chars_t = set(t_activechars[t])
+                chars_t1 = set(t_activechars[t+1])
+                common_chars = sorted(list(chars_t & chars_t1))
+
+                for i in range(len(common_chars)):
+                    for j in range(i + 1, len(common_chars)):
+                        char1 = common_chars[i]
+                        char2 = common_chars[j]
+                        y_var = f"y_{t}_{char1}_{char2}"
+                        crossing_sum_terms.append(y_var)
+
+            # Build the sum of all y variables
+            sum_string = " + ".join(crossing_sum_terms)
+            file.write(f"{sum_string} = {crossing_count}\n")
+
         # Write binary variable declarations
         file.write("\nBinaries\n")
         for var in skewness_vars:
@@ -406,7 +427,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
 
 # Usage
-experiment = 'faircross'
+experiment = 'cross'
 output_file = f'./results/{subject}_{experiment}.lp'
 '''
     lambda1: fairSkewness
@@ -417,4 +438,4 @@ output_file = f'./results/{subject}_{experiment}.lp'
     lambda6: Wiggles
     '''
 write_ilp_model(output_file, t_activechars, t_interactions,
-                num_chars, lambda1=0, lambda2=0, lambda3=100, lambda4=1, lambda5=0, lambda6=0)
+                num_chars, lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=0, lambda6=0)

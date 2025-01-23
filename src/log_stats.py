@@ -1,8 +1,8 @@
 # First read the groups file to create a mapping of characters to their groups
 
 # Read the solution file
-subject = 'JurassicPark'
-experiment = 'faircross'
+subject = 'anna6-7'
+experiment = 'cross'
 fp = f'./results/{subject}_{experiment}_replaced.sol'
 
 groups = {}
@@ -96,6 +96,10 @@ for line in content:
 
 
 print(f"Summary for {subject}_{experiment}:")
+print("=====================================")
+print(f"Total characters: {len(groups)}")
+print(f"Blue characters: {len(blues)}")
+print(f"Red characters: {len(reds)}")
 
 # Crossings
 print(f'---\n> Crossings')
