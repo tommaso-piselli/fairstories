@@ -1,8 +1,8 @@
 # First read the groups file to create a mapping of characters to their groups
 
 # Read the solution file
-subject = 'anna6-7'
-experiment = 'cross'
+subject = 'JurassicPark'
+experiment = 'crosscountXW_2'
 fp = f'./results/{subject}_{experiment}_replaced.sol'
 
 groups = {}

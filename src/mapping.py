@@ -6,8 +6,8 @@ fp_map = root + f'/map/'
 fp_sl = root + f'/sl/'
 fp_txt = root + f'/txt/'
 
-subject = 'anna6-7'
-experiment = 'cross'
+subject = 'JurassicPark'
+experiment = 'crosscount_2'
 
 # Load the characters from the .map file
 characters = []

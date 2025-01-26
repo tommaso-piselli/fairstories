@@ -61,7 +61,7 @@ def read_sl_file(filepath):
 
 
 # Usage example:
-subject = 'anna6-7'
+subject = 'JurassicPark'
 filepath = f"./data/sl/{subject}.sl"
 groups_file = f'./data/groups/{subject}_groups.txt'
 interactions, t_activechars, t_interactions, num_chars = read_sl_file(filepath)
@@ -396,7 +396,6 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                             ordering_vars.add(x_2out)
 
         # crossing count constraint
-        crossing_count = None
         if crossing_count is not None:
             # Sum of all crossing variables should equal crossing_count
             crossing_sum_terms = []
@@ -414,6 +413,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
             # Build the sum of all y variables
             sum_string = " + ".join(crossing_sum_terms)
+            #  file.write(f"{sum_string} <= {crossing_count}\n")
             file.write(f"{sum_string} = {crossing_count}\n")
 
         # Write binary variable declarations
@@ -427,7 +427,8 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
 
 # Usage
-experiment = 'cross'
+experiment = 'crosscount_2'
+crossing_count = 20
 output_file = f'./results/{subject}_{experiment}.lp'
 '''
     lambda1: fairSkewness
@@ -438,4 +439,4 @@ output_file = f'./results/{subject}_{experiment}.lp'
     lambda6: Wiggles
     '''
 write_ilp_model(output_file, t_activechars, t_interactions,
-                num_chars, lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=0, lambda6=0)
+                num_chars, lambda1=0, lambda2=0, lambda3=1, lambda4=0, lambda5=0, lambda6=0, crossing_count=crossing_count)
