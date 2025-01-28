@@ -1,5 +1,5 @@
 async function render() {
-  let subject = "ubiq1";
+  let subject = "dblp";
   let experiment = "cross";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
@@ -20,7 +20,7 @@ async function render() {
     height: 1000,
     padding: { left: 20, right: 20, top: 20, bottom: 20 },
     base_node_vertical_distance: 30,
-    reduce_wiggles: true,
+    reduce_wiggles: false,
     max_reduce_wiggles_iterations: 20,
   };
 

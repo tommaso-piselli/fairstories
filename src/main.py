@@ -1,3 +1,6 @@
+import sys
+
+
 def read_sl_file(filepath):
     """
     Parse a .sl file into the required data structures
@@ -60,40 +63,40 @@ def read_sl_file(filepath):
     return interactions, t_activechars, t_interactions, num_chars
 
 
-# Usage example:
-subject = 'JurassicPark'
-filepath = f"./data/sl/{subject}.sl"
-groups_file = f'./data/groups/{subject}_groups.txt'
-interactions, t_activechars, t_interactions, num_chars = read_sl_file(filepath)
+# # Usage example:
+# subject = 'dblp'
+# filepath = f"./data/sl/{subject}.sl"
+# groups_file = f'./data/groups/{subject}_groups.txt'
+# interactions, t_activechars, t_interactions, num_chars = read_sl_file(filepath)
 
-with open(groups_file, 'r') as file:
-    content = file.readlines()
+# with open(groups_file, 'r') as file:
+#     content = file.readlines()
 
-character_in_groups = []
-# print(content)
-for line in content:
-    line = line.strip().split('\n')
-    for elem in line:
-        elem = elem.strip().split(':')
-        id_char = elem[0].strip()
-        abbr_char = elem[1].strip()
-        group_char = elem[2].strip()
+# character_in_groups = []
+# # print(content)
+# for line in content:
+#     line = line.strip().split('\n')
+#     for elem in line:
+#         elem = elem.strip().split(':')
+#         id_char = elem[0].strip()
+#         abbr_char = elem[1].strip()
+#         group_char = elem[2].strip()
 
-        character = {
-            'id': id_char,
-            'char': abbr_char,
-            'group': group_char
-        }
+#         character = {
+#             'id': id_char,
+#             'char': abbr_char,
+#             'group': group_char
+#         }
 
-        character_in_groups.append(character)
+#         character_in_groups.append(character)
 
-reds = []
-blues = []
-for character in character_in_groups:
-    if character['group'] == 'red':
-        reds.append(character['id'])
-    else:
-        blues.append(character['id'])
+# reds = []
+# blues = []
+# for character in character_in_groups:
+#     if character['group'] == 'red':
+#         reds.append(character['id'])
+#     else:
+#         blues.append(character['id'])
 
 
 def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossing_count=None):
@@ -426,17 +429,64 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             file.write(f"{var}\n")
 
 
-# Usage
-experiment = 'crosscount_2'
-crossing_count = 20
-output_file = f'./results/{subject}_{experiment}.lp'
-'''
-    lambda1: fairSkewness
-    lambda2: Skewness
-    lambda3: fairCrossings
-    lambda4: Crossings
-    lambda5: fairWiggles
-    lambda6: Wiggles
-    '''
-write_ilp_model(output_file, t_activechars, t_interactions,
-                num_chars, lambda1=0, lambda2=0, lambda3=1, lambda4=0, lambda5=0, lambda6=0, crossing_count=crossing_count)
+# # Usage
+# experiment = 'cross'
+# crossing_count = None
+# output_file = f'./results/{subject}_{experiment}.lp'
+# '''
+#     lambda1: fairSkewness
+#     lambda2: Skewness
+#     lambda3: fairCrossings
+#     lambda4: Crossings
+#     lambda5: fairWiggles
+#     lambda6: Wiggles
+#     '''
+# write_ilp_model(output_file, t_activechars, t_interactions,
+#                 num_chars, lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=0, lambda6=0, crossing_count=crossing_count)
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python3 main.py <subject> <experiment>")
+        sys.exit(1)
+
+    subject = sys.argv[1]
+    experiment = sys.argv[2]
+
+    # Usage example:
+    filepath = f"./data/sl/{subject}.sl"
+    groups_file = f'./data/groups/{subject}_groups.txt'
+    interactions, t_activechars, t_interactions, num_chars = read_sl_file(
+        filepath)
+
+    with open(groups_file, 'r') as file:
+        content = file.readlines()
+
+    character_in_groups = []
+    for line in content:
+        line = line.strip().split('\n')
+        for elem in line:
+            elem = elem.strip().split(':')
+            id_char = elem[0].strip()
+            abbr_char = elem[1].strip()
+            group_char = elem[2].strip()
+
+            character = {
+                'id': id_char,
+                'char': abbr_char,
+                'group': group_char
+            }
+
+            character_in_groups.append(character)
+
+    reds = []
+    blues = []
+    for character in character_in_groups:
+        if character['group'] == 'red':
+            reds.append(character['id'])
+        else:
+            blues.append(character['id'])
+
+    # Write ILP model
+    output_file = f'./results/{subject}_{experiment}.lp'
+    write_ilp_model(output_file, t_activechars, t_interactions, num_chars,
+                    lambda1=0, lambda2=0, lambda3=1000, lambda4=1, lambda5=0, lambda6=0)
