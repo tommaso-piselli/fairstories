@@ -1,11 +1,14 @@
 async function render() {
-  let subject = "JurassicPark";
+  let subject = "dblp";
+  let experiment = "cross";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
   // let solution = await d3.text(`../results/${subject}_fair_replaced.sol`);
   //let solution = await d3.text(`../results/${subject}_replaced.sol`);
-  let solution = await d3.text(`../results/${subject}_cross_replaced.sol`);
+  let solution = await d3.text(
+    `../results/${subject}_${experiment}_replaced.sol`
+  );
 
   let graph = {
     nodes: [],
@@ -17,7 +20,7 @@ async function render() {
     height: 1000,
     padding: { left: 20, right: 20, top: 20, bottom: 20 },
     base_node_vertical_distance: 30,
-    between_group_vertical_distance: 60,
+    between_group_vertical_distance: 30,
     reduce_wiggles: true,
     max_reduce_wiggles_iterations: 20,
   };
@@ -205,7 +208,7 @@ async function render() {
           console.log(i);
           console.log(character_colors[nodes_at_this_timestep[j].name]);
           console.log(nodes_at_this_timestep[j].name);
-          console.log(nodes_at_this_timestep[j].y)
+          console.log(nodes_at_this_timestep[j].y);
         });
     }
   }
@@ -319,7 +322,6 @@ function iterate_for_better_bendiness(
   console.log("starting bendiness", starting_bendiness);
 
   for (let i = 0; i < max_iterations; i++) {
-
     for (let j = 0; j < max_timesteps; j++) {
       let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == j);
 
@@ -375,7 +377,9 @@ function iterate_for_better_bendiness(
 
         // console.log("space below", space_below)
 
-        if (space_below <= visualization_options.between_group_vertical_distance){
+        if (
+          space_below <= visualization_options.between_group_vertical_distance
+        ) {
           continue;
         } else {
           for (let node of nodes_in_group) {

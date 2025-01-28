@@ -63,42 +63,6 @@ def read_sl_file(filepath):
     return interactions, t_activechars, t_interactions, num_chars
 
 
-# # Usage example:
-# subject = 'dblp'
-# filepath = f"./data/sl/{subject}.sl"
-# groups_file = f'./data/groups/{subject}_groups.txt'
-# interactions, t_activechars, t_interactions, num_chars = read_sl_file(filepath)
-
-# with open(groups_file, 'r') as file:
-#     content = file.readlines()
-
-# character_in_groups = []
-# # print(content)
-# for line in content:
-#     line = line.strip().split('\n')
-#     for elem in line:
-#         elem = elem.strip().split(':')
-#         id_char = elem[0].strip()
-#         abbr_char = elem[1].strip()
-#         group_char = elem[2].strip()
-
-#         character = {
-#             'id': id_char,
-#             'char': abbr_char,
-#             'group': group_char
-#         }
-
-#         character_in_groups.append(character)
-
-# reds = []
-# blues = []
-# for character in character_in_groups:
-#     if character['group'] == 'red':
-#         reds.append(character['id'])
-#     else:
-#         blues.append(character['id'])
-
-
 def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossing_count=None):
     '''
     lambda1: fairSkewness
@@ -417,7 +381,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             # Build the sum of all y variables
             sum_string = " + ".join(crossing_sum_terms)
             #  file.write(f"{sum_string} <= {crossing_count}\n")
-            file.write(f"{sum_string} = {crossing_count}\n")
+            file.write(f"{sum_string} <= {crossing_count}\n")
 
         # Write binary variable declarations
         file.write("\nBinaries\n")
@@ -429,21 +393,6 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             file.write(f"{var}\n")
 
 
-# # Usage
-# experiment = 'cross'
-# crossing_count = None
-# output_file = f'./results/{subject}_{experiment}.lp'
-# '''
-#     lambda1: fairSkewness
-#     lambda2: Skewness
-#     lambda3: fairCrossings
-#     lambda4: Crossings
-#     lambda5: fairWiggles
-#     lambda6: Wiggles
-#     '''
-# write_ilp_model(output_file, t_activechars, t_interactions,
-#                 num_chars, lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=0, lambda6=0, crossing_count=crossing_count)
-
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage: python3 main.py <subject> <experiment>")
@@ -451,6 +400,10 @@ if __name__ == "__main__":
 
     subject = sys.argv[1]
     experiment = sys.argv[2]
+
+    if experiment.split('_')[0] == 'crosscount':
+        crossing_count = int(experiment.split('_')[1])
+        print(f"Crossing count: {crossing_count}")
 
     # Usage example:
     filepath = f"./data/sl/{subject}.sl"
@@ -489,4 +442,4 @@ if __name__ == "__main__":
     # Write ILP model
     output_file = f'./results/{subject}_{experiment}.lp'
     write_ilp_model(output_file, t_activechars, t_interactions, num_chars,
-                    lambda1=0, lambda2=0, lambda3=1000, lambda4=1, lambda5=0, lambda6=0)
+                    lambda1=0, lambda2=0, lambda3=1, lambda4=0, lambda5=0, lambda6=0, crossing_count=crossing_count)

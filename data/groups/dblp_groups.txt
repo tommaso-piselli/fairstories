@@ -1,6 +1,6 @@
 0 : FM : red
 1 : MN : blue
-2 : AAP : red
+2 : AP : red
 3 : GL : red
 4 : WD : red
 5 : CB : red
@@ -9,7 +9,7 @@
 8 : FDL : red
 9 : RG : blue
 10 : SB : blue
-11 : AAV : blue
+11 : AW : blue
 12 : SM : blue
 13 : LK : blue
 14 : AV : blue

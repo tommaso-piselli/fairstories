@@ -1,0 +1,103 @@
+Experiment: dblp - fairskew
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 7200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/dblp_fairskew_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/dblp_fairskew.lp
+Reading time = 0.10 seconds
+: 39162 rows, 9556 columns, 112215 nonzeros
+
+CPU model: AMD EPYC 7402 24-Core Processor, instruction set [SSE2|AVX|AVX2]
+Thread count: 48 physical cores, 96 logical processors, using up to 32 threads
+
+Optimize a model with 39162 rows, 9556 columns and 112215 nonzeros
+Model fingerprint: 0x1d387e5f
+Variable types: 1 continuous, 9555 integer (9555 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 8e+01]
+  Objective range  [1e+00, 1e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 290.0000954
+Presolve removed 17527 rows and 4237 columns
+Presolve time: 0.19s
+Presolved: 21635 rows, 5319 columns, 64935 nonzeros
+Variable types: 0 continuous, 5319 integer (5318 binary)
+Found heuristic solution: objective 265.0000954
+
+Root relaxation: objective 0.000000e+00, 7159 iterations, 1.08 seconds (0.73 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 2135  265.00010    0.00000   100%     -    2s
+H    0     0                      41.0000000    0.00000   100%     -    2s
+     0     0    0.68690    0 3543   41.00000    0.68690  98.3%     -    3s
+H    0     0                      36.0000000    0.73220  98.0%     -    4s
+H    0     0                       9.0000000    0.73220  91.9%     -    4s
+     0     0    0.73220    0 3540    9.00000    0.73220  91.9%     -    4s
+     0     0    0.82593    0 3372    9.00000    0.82593  90.8%     -    5s
+     0     0    0.85039    0 3339    9.00000    0.85039  90.6%     -    5s
+     0     0    2.25000    0 3222    9.00000    2.25000  75.0%     -   11s
+     0     0    2.25000    0 3180    9.00000    2.25000  75.0%     -   12s
+     0     0     cutoff    0         9.00000    9.00000  0.00%     -   13s
+
+Cutting planes:
+  MIR: 4
+  Zero half: 106
+  RLT: 4
+
+Explored 1 nodes (37134 simplex iterations) in 13.23 seconds (12.97 work units)
+Thread count was 32 (of 96 available processors)
+
+Solution count 5: 9 36 41 ... 290
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.000000000000e+00, best bound 9.000000000000e+00, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/dblp_fairskew.sol'
+
+> Running mapping.py...
+{0: 'FM', 1: 'MN', 2: 'AAP', 3: 'GL', 4: 'WD', 5: 'CB', 6: 'EDG', 7: 'LG', 8: 'FDL', 9: 'RG', 10: 'SB', 11: 'AAV', 12: 'SM', 13: 'LK', 14: 'AV', 15: 'AT', 16: 'MW', 17: 'TP'}
+> Running log_stats.py...
+Summary for dblp_fairskew:
+=====================================
+Total characters: 18
+Blue characters: 8
+Red characters: 10
+---
+> Crossings
+Blue-Blue crossings: 61
+Red-Red crossings: 119
+Blue-Red crossings: 169
+Total crossings: 349
+---
+> FairCrossings
+BlueFair: 3.6e+01
+RedFair: 4.1e+01
+Unfairness 4.3
+---
+> Skewness
+BlueSkew: 3
+RedSkew: 6
+Total skewness: 9
+---
+> FairSkewness
+Unfairness 0.22
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.
