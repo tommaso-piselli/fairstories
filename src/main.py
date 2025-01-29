@@ -173,11 +173,11 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                 # Fair skewness constraints
                 constraint1_terms = []
                 for char_id in blues:
-                    char_idx = int(char_id) - 1
+                    char_idx = int(char_id)
                     if 0 <= char_idx < num_chars:
                         constraint1_terms.append(f"+ {num_reds} S_{char_idx}")
                 for char_id in reds:
-                    char_idx = int(char_id) - 1
+                    char_idx = int(char_id)
                     if 0 <= char_idx < num_chars:
                         constraint1_terms.append(f"- {num_blues} S_{char_idx}")
                 constraint1_terms.append(f"- {num_reds * num_blues} FairSkew")
@@ -186,11 +186,11 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                 # Second constraint
                 constraint2_terms = []
                 for char_id in blues:
-                    char_idx = int(char_id) - 1
+                    char_idx = int(char_id)
                     if 0 <= char_idx < num_chars:
                         constraint2_terms.append(f"- {num_reds} S_{char_idx}")
                 for char_id in reds:
-                    char_idx = int(char_id) - 1
+                    char_idx = int(char_id)
                     if 0 <= char_idx < num_chars:
                         constraint2_terms.append(f"+ {num_blues} S_{char_idx}")
                 constraint2_terms.append(f"- {num_reds * num_blues} FairSkew")
