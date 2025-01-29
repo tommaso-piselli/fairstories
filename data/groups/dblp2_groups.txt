@@ -1,0 +1,16 @@
+0 : FM : red
+1 : MN : blue
+2 : FDL : red
+3 : WD : red
+4 : RG : blue
+5 : SB : blue
+6 : AA : blue
+7 : GL : red
+8 : SM : blue
+9 : CB : red
+10 : EDG : red
+11 : LK : blue
+12 : AV : blue
+13 : AT : red
+14 : MW : blue 
+15 : TP : red

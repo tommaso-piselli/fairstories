@@ -1,7 +1,7 @@
 import sys
 
 # Set your paths here
-subject = 'dblp'
+subject = 'dblp2'
 input_master = f"./data/txt/{subject}.master"
 output_sl = f"./{subject}.sl"
 
