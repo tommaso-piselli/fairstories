@@ -170,29 +170,31 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                         file.write(f"S_{char1} + S_{char2} - {y_var} >= 0\n")
 
             if lambda1 != 0:
-                # Fair skewness first constraint
-                constraint1_terms = [f"{num_blues * num_reds} FairSkew"]
+                # Fair skewness constraints
+                constraint1_terms = []
                 for char_id in blues:
                     char_idx = int(char_id) - 1
                     if 0 <= char_idx < num_chars:
-                        constraint1_terms.append(f"- {num_reds} S_{char_idx}")
+                        constraint1_terms.append(f"+ {num_reds} S_{char_idx}")
                 for char_id in reds:
                     char_idx = int(char_id) - 1
                     if 0 <= char_idx < num_chars:
-                        constraint1_terms.append(f"+ {num_blues} S_{char_idx}")
-                file.write(f"{' '.join(constraint1_terms)} >= 0\n")
+                        constraint1_terms.append(f"- {num_blues} S_{char_idx}")
+                constraint1_terms.append(f"- {num_reds * num_blues} FairSkew")
+                file.write(f"{' '.join(constraint1_terms)} <= 0\n")
 
-                # Fair skewness second constraint
-                constraint2_terms = [f"{num_blues * num_reds} FairSkew"]
-                for char_id in reds:
-                    char_idx = int(char_id) - 1
-                    if 0 <= char_idx < num_chars:
-                        constraint2_terms.append(f"- {num_blues} S_{char_idx}")
+                # Second constraint
+                constraint2_terms = []
                 for char_id in blues:
                     char_idx = int(char_id) - 1
                     if 0 <= char_idx < num_chars:
-                        constraint2_terms.append(f"+ {num_reds} S_{char_idx}")
-                file.write(f"{' '.join(constraint2_terms)} >= 0\n")
+                        constraint2_terms.append(f"- {num_reds} S_{char_idx}")
+                for char_id in reds:
+                    char_idx = int(char_id) - 1
+                    if 0 <= char_idx < num_chars:
+                        constraint2_terms.append(f"+ {num_blues} S_{char_idx}")
+                constraint2_terms.append(f"- {num_reds * num_blues} FairSkew")
+                file.write(f"{' '.join(constraint2_terms)} <= 0\n")
 
         # --- 2. FAIR CROSSING CONSTRAINTS (lambda3) ---
         # First collect all crossings
@@ -296,28 +298,30 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     file.write(f"{' '.join(constraint2_terms)} >= 0\n")
 
         # --- 5. FAIR WIGGLES CONSTRAINTS (lambda5) ---
-        if lambda5 != 0:
-            # First constraint: |VB||VR|FairWiggles >= |VR|∑w_i^B - |VB|∑w_i^R
-            constraint1_terms = []
-            if blue_wiggles:  # If there are any blue wiggles
-                for blue_var in blue_wiggles:
-                    constraint1_terms.append(f"+ {num_reds} {blue_var}")
-            if red_wiggles:
-                for red_var in red_wiggles:
-                    constraint1_terms.append(f"- {num_blues} {red_var}")
-            constraint1_terms.append(f"- {num_blues * num_reds} FairWiggle")
-            file.write(f"{' '.join(constraint1_terms)} <= 0\n")
+            if lambda5 != 0:
+                # First constraint: Similar structure to FairCross
+                constraint1_terms = []
+                if blue_wiggles:
+                    for blue_var in blue_wiggles:
+                        constraint1_terms.append(f"+ {num_reds} {blue_var}")
+                if red_wiggles:
+                    for red_var in red_wiggles:
+                        constraint1_terms.append(f"- {num_blues} {red_var}")
+                constraint1_terms.append(
+                    f"- {num_reds * num_blues} FairWiggle")
+                file.write(f"{' '.join(constraint1_terms)} <= 0\n")
 
-            # Second constraint: |VB||VR|FairWiggles >= |VB|∑w_i^R - |VR|∑w_i^B
-            constraint2_terms = []
-            if blue_wiggles:
-                for blue_var in blue_wiggles:
-                    constraint2_terms.append(f"- {num_reds} {blue_var}")
-            if red_wiggles:
-                for red_var in red_wiggles:
-                    constraint2_terms.append(f"+ {num_blues} {red_var}")
-            constraint2_terms.append(f"- {num_reds * num_blues} FairWiggle")
-            file.write(f"{' '.join(constraint2_terms)} <= 0\n")
+                # Second constraint
+                constraint2_terms = []
+                if blue_wiggles:
+                    for blue_var in blue_wiggles:
+                        constraint2_terms.append(f"- {num_reds} {blue_var}")
+                if red_wiggles:
+                    for red_var in red_wiggles:
+                        constraint2_terms.append(f"+ {num_blues} {red_var}")
+                constraint2_terms.append(
+                    f"- {num_reds * num_blues} FairWiggle")
+                file.write(f"{' '.join(constraint2_terms)} <= 0\n")
 
         # --- 6. AUXILIARY CONSTRAINTS ---
         # Ordering constraints
