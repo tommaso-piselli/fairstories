@@ -261,7 +261,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     file.write(f"{y_var} + {x_t} - {x_t1} >= 0\n")
 
         # --- 4. WIGGLE DETECTION CONSTRAINTS (lambda6) ---
-        if lambda6 != 0:
+        if lambda5 != 0 or lambda6 != 0:
             for t in range(len(t_activechars) - 1):
                 chars_t = set(t_activechars[t])
                 chars_t1 = set(t_activechars[t+1])
@@ -272,9 +272,9 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     wiggle_var = f"w_{t}_{char_i}"
 
                     # Track wiggles for fairness constraints
-                    if str(char_i + 1) in reds:
+                    if str(char_i) in reds:
                         red_wiggles.append(wiggle_var)
-                    elif str(char_i + 1) in blues:
+                    elif str(char_i) in blues:
                         blue_wiggles.append(wiggle_var)
 
                     # First constraint: w_{t,i} - Σ(x_{t,i,j} - x_{t+1,i,j}) ≥ 0
