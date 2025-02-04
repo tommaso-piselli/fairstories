@@ -131,8 +131,8 @@ env.bak/
 venv.bak/
 
 # Folders
-suppement_material
-suppement_material/*
+supplement_material
+supplement_material/*
 
 # Spyder project settings
 .spyderproject
