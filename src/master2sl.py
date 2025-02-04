@@ -1,7 +1,7 @@
 import sys
 
 # Set your paths here
-subject = 'dblp'
+subject = 'beppe100'
 input_master = f"./data/txt/{subject}.master"
 output_sl = f"./{subject}.sl"
 
@@ -94,6 +94,7 @@ def process_master_file(input_path, output_sl_path, output_transsl_path):
                     short = short.strip()
                     char = characters[short]
                     if char['existsInLayer']:
+                        print(char)
                         print("Error: Double character in layer")
                         sys.exit(1)
                     if not char.get('index'):
