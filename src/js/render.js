@@ -1,6 +1,6 @@
 async function render() {
   let subject = "dblp";
-  let experiment = "skewcrosswiggles";
+  let experiment = "cross";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
@@ -246,7 +246,10 @@ function assign_node_coordinates(
     }
 
     let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == i);
-    let interactions_at_this_timestep = timesteps.split("\n")[i].split(":")[1];
+    let interactions_at_this_timestep = timesteps
+      .split("\n")
+      [i].split(":")[1]
+      .trim();
 
     // console.log(nodes_at_this_timestep.map((n) => n.name));
     nodes_at_this_timestep = nodes_at_this_timestep.sort((a, b) => {
@@ -254,7 +257,7 @@ function assign_node_coordinates(
         (l) =>
           l.includes(a.name) && l.includes("_" + i + "_") && l.includes(b.name)
       );
-
+      console.log(relevant_lines);
       if (
         relevant_lines[0] == "x_" + i + "_" + a.name + "_" + b.name + " 0" ||
         relevant_lines[0] == "x_" + i + "_" + b.name + "_" + a.name + " 1"

@@ -448,4 +448,4 @@ if __name__ == "__main__":
     # Write ILP model
     output_file = f'./results/{subject}_{experiment}.lp'
     write_ilp_model(output_file, t_activechars, t_interactions, num_chars,
-                    lambda1=0, lambda2=0, lambda3=1000, lambda4=1, lambda5=0, lambda6=0, crossing_count=crossing_count)
+                    lambda1=0, lambda2=0, lambda3=0, lambda4=1, lambda5=0, lambda6=0, crossing_count=crossing_count)

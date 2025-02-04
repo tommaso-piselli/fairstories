@@ -1,0 +1,72 @@
+PREFIX dblp: <https://dblp.org/rdf/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?publ ?title ?year (GROUP_CONCAT(DISTINCT ?author_name; SEPARATOR=", ") AS ?authors) WHERE {
+  # Publication details
+  ?publ dblp:hasSignature ?authSig1, ?authSig2 ;
+        dblp:yearOfPublication ?year ;
+        dblp:title ?title .
+
+  # Author signatures and creators
+  ?authSig1 dblp:signatureCreator ?author1 .
+  ?authSig2 dblp:signatureCreator ?author2 .
+
+  # Author affiliations and names
+  ?author1 dblp:primaryAffiliation ?affiliation1 ;
+           dblp:primaryCreatorName ?author_name1 .
+  ?author2 dblp:primaryAffiliation ?affiliation2 ;
+           dblp:primaryCreatorName ?author_name2 .
+
+  # Filter to ensure different authors and specific collaborations
+  FILTER (
+    ?author1 != ?author2 &&
+    (
+      # Perugia & Vienna
+      (CONTAINS(?affiliation1, "University of Perugia") &&
+       (CONTAINS(?affiliation2, "TU Wien") || CONTAINS(?affiliation2, "Technische Universität Wien, Austria"))) ||
+       
+      ((CONTAINS(?affiliation1, "TU Wien") || CONTAINS(?affiliation1, "Technische Universität Wien, Austria")) &&
+       CONTAINS(?affiliation2, "University of Perugia")) ||
+
+      # Perugia & Würzburg
+      (CONTAINS(?affiliation1, "University of Perugia") &&
+       CONTAINS(?affiliation2, "University of Würzburg, Germany")) ||
+       
+      (CONTAINS(?affiliation1, "University of Würzburg, Germany") &&
+       CONTAINS(?affiliation2, "University of Perugia")) ||
+
+      # Vienna & Würzburg
+      ((CONTAINS(?affiliation1, "TU Wien") || CONTAINS(?affiliation1, "Technische Universität Wien, Austria")) &&
+       CONTAINS(?affiliation2, "University of Würzburg, Germany")) ||
+       
+      (CONTAINS(?affiliation1, "University of Würzburg, Germany") &&
+       (CONTAINS(?affiliation2, "TU Wien") || CONTAINS(?affiliation2, "Technische Universität Wien, Austria")))
+
+    )
+  )
+
+  # Retrieve all authors for the publication
+  ?publ dblp:hasSignature ?authSig .
+  ?authSig dblp:signatureCreator ?author .
+  ?author dblp:primaryCreatorName ?author_name .
+
+  # Check for three-way collaborations (optional)
+  OPTIONAL {
+    ?publ dblp:hasSignature ?authSig3 .
+    ?authSig3 dblp:signatureCreator ?author3 .
+    ?author3 dblp:primaryAffiliation ?affiliation3 .
+
+    FILTER (
+      (CONTAINS(?affiliation1, "University of Perugia") ||
+       CONTAINS(?affiliation2, "University of Perugia") ||
+       CONTAINS(?affiliation3, "University of Perugia")) &&
+      ((CONTAINS(?affiliation1, "TU Wien") || CONTAINS(?affiliation1, "Technische Universität Wien, Austria") ||
+        CONTAINS(?affiliation2, "TU Wien") || CONTAINS(?affiliation2, "Technische Universität Wien, Austria") ||
+        CONTAINS(?affiliation3, "TU Wien") || CONTAINS(?affiliation3, "Technische Universität Wien, Austria"))) &&
+      (CONTAINS(?affiliation1, "University of Würzburg, Germany") ||
+       CONTAINS(?affiliation2, "University of Würzburg, Germany") ||
+       CONTAINS(?affiliation3, "University of Würzburg, Germany"))
+    )
+  }
+}
+GROUP BY ?publ ?title ?year
