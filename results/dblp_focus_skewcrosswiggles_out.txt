@@ -1,0 +1,155 @@
+Experiment: dblp - focus_skewcrosswiggles
+===================
+
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter Username
+Set parameter LicenseID to value 2585508
+Set parameter TimeLimit to value 3600
+Set parameter LogFile to value "./results/dblp_focus_skewcrosswiggles_.log"
+Using license file /Users/tommaso.piselli/gurobi.lic
+Academic license - for non-commercial use only - expires 2025-11-15
+
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (mac64[arm] - Darwin 24.2.0 24C101)
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file ./results/dblp_focus_skewcrosswiggles.lp
+Reading time = 0.02 seconds
+: 14067 rows, 4677 columns, 49055 nonzeros
+
+Using Gurobi shared library /Library/gurobi1200/macos_universal2/lib/libgurobi120.dylib
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  3600
+
+Optimize a model with 14067 rows, 4677 columns and 49055 nonzeros
+Model fingerprint: 0x499a3daf
+Variable types: 370 continuous, 4307 integer (4307 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 4671.0000000
+Presolve removed 6872 rows and 2015 columns
+Presolve time: 0.10s
+Presolved: 7195 rows, 2662 columns, 29049 nonzeros
+Variable types: 0 continuous, 2662 integer (2296 binary)
+
+Root relaxation: objective 0.000000e+00, 2121 iterations, 0.26 seconds (0.19 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  837 4671.00000    0.00000   100%     -    0s
+H    0     0                    3112.0000000    0.00000   100%     -    0s
+H    0     0                    2931.0000000    0.00000   100%     -    0s
+H    0     0                    2929.0000000    0.00000   100%     -    0s
+H    0     0                    2915.0000000    0.00000   100%     -    0s
+     0     0   68.50000    0  883 2915.00000   68.50000  97.7%     -    1s
+H    0     0                    2345.0000000   68.66667  97.1%     -    1s
+H    0     0                    2305.0000000   68.66667  97.0%     -    1s
+H    0     0                    1463.0000000   68.66667  95.3%     -    1s
+     0     0   68.66667    0  888 1463.00000   68.66667  95.3%     -    1s
+     0     0  103.86131    0  930 1463.00000  103.86131  92.9%     -    2s
+     0     0  105.66667    0  870 1463.00000  105.66667  92.8%     -    2s
+     0     0  107.20833    0  886 1463.00000  107.20833  92.7%     -    2s
+     0     0  107.33333    0  880 1463.00000  107.33333  92.7%     -    2s
+     0     0  107.33333    0  881 1463.00000  107.33333  92.7%     -    2s
+     0     0  123.59615    0  947 1463.00000  123.59615  91.6%     -    3s
+H    0     0                    1211.0000000  123.59615  89.8%     -    3s
+     0     0  124.91000    0  943 1211.00000  124.91000  89.7%     -    3s
+     0     0  125.65455    0  937 1211.00000  125.65455  89.6%     -    3s
+     0     0  125.92593    0  945 1211.00000  125.92593  89.6%     -    4s
+     0     0  125.93443    0  948 1211.00000  125.93443  89.6%     -    4s
+     0     0  144.71096    0  980 1211.00000  144.71096  88.1%     -    5s
+     0     0  146.67154    0  990 1211.00000  146.67154  87.9%     -    5s
+     0     0  147.63664    0  979 1211.00000  147.63664  87.8%     -    5s
+     0     0  147.83039    0  975 1211.00000  147.83039  87.8%     -    6s
+     0     0  147.93073    0  999 1211.00000  147.93073  87.8%     -    6s
+     0     0  147.93970    0  992 1211.00000  147.93970  87.8%     -    6s
+     0     0  195.39346    0  966 1211.00000  195.39346  83.9%     -    7s
+     0     0  196.12934    0  969 1211.00000  196.12934  83.8%     -    8s
+     0     0  197.31910    0  977 1211.00000  197.31910  83.7%     -    8s
+     0     0  197.38958    0  978 1211.00000  197.38958  83.7%     -    8s
+     0     0  197.75162    0  973 1211.00000  197.75162  83.7%     -    9s
+H    0     0                    1109.0000000  197.93310  82.2%     -    9s
+H    0     0                     810.0000000  197.93310  75.6%     -    9s
+H    0     0                     594.0000000  197.93310  66.7%     -    9s
+H    0     0                     531.0000000  197.93310  62.7%     -    9s
+H    0     0                     529.0000000  197.93310  62.6%     -    9s
+     0     0  198.82374    0  932  529.00000  198.82374  62.4%     -    9s
+     0     0  198.92053    0  988  529.00000  198.92053  62.4%     -    9s
+     0     0  198.97635    0  998  529.00000  198.97635  62.4%     -   10s
+     0     0  199.93486    0  975  529.00000  199.93486  62.2%     -   10s
+     0     0  200.80939    0 1002  529.00000  200.80939  62.0%     -   11s
+     0     0  200.89616    0  988  529.00000  200.89616  62.0%     -   11s
+     0     0  200.94390    0 1008  529.00000  200.94390  62.0%     -   11s
+     0     0  201.33604    0 1017  529.00000  201.33604  61.9%     -   12s
+H    0     0                     456.0000000  201.39742  55.8%     -   12s
+H    0     0                     317.0000000  201.39742  36.5%     -   12s
+     0     0  202.29535    0 1025  317.00000  202.29535  36.2%     -   12s
+     0     0  202.35970    0 1037  317.00000  202.35970  36.2%     -   12s
+     0     0  298.39421    0 1025  317.00000  298.39421  5.87%     -   13s
+     0     0  298.39421    0 1047  317.00000  298.39421  5.87%     -   14s
+     0     0  298.39421    0 1022  317.00000  298.39421  5.87%     -   14s
+     0     0  298.39421    0 1045  317.00000  298.39421  5.87%     -   14s
+     0     0  298.47727    0 1034  317.00000  298.47727  5.84%     -   15s
+     0     0  313.90000    0 1015  317.00000  313.90000  0.98%     -   15s
+     0     0  317.00000    0 1031  317.00000  317.00000  0.00%     -   15s
+
+Cutting planes:
+  Gomory: 1
+  MIR: 1
+  Zero half: 85
+
+Explored 1 nodes (32744 simplex iterations) in 15.73 seconds (8.06 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 10: 317 456 529 ... 2305
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.170000000000e+02, best bound 3.170000000000e+02, gap 0.0000%
+
+Wrote result file './results/dblp_focus_skewcrosswiggles.sol'
+
+> Running mapping.py...
+{0: 'FM', 1: 'MN', 2: 'AP', 3: 'GL', 4: 'WD', 5: 'CB', 6: 'EDG', 7: 'LG', 8: 'FDL', 9: 'RG', 10: 'SB', 11: 'AW', 12: 'SM', 13: 'LK', 14: 'AV', 15: 'AT', 16: 'MW', 17: 'TP'}
+> Running log_stats.py...
+Summary for dblp_focus_skewcrosswiggles:
+=====================================
+Total characters: 18
+Blue characters: 14
+Red characters: 4
+---
+> Crossings
+Blue-Blue crossings: 12
+Red-Red crossings: 1
+Blue-Red crossings: 8
+Total crossings: 21
+---
+> FairCrossings
+BlueFair: 2.3
+RedFair: 2.5
+Unfairness 0.21
+---
+> Skewness
+BlueSkew: 3
+RedSkew: 1
+Total skewness: 4
+---
+> FairSkewness
+Unfairness 0.036
+---
+> Wiggles
+Total wiggles: 40
+---
+> FairWiggles
+BlueWiggles: 32.0
+RedWiggles: 8.0
+Unfairness 0.29
+> All scripts executed successfully.

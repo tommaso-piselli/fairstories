@@ -1,11 +1,11 @@
 async function render() {
-  let subject = "got";
-  let experiment = "cross";
+  let subject = "dblp";
+  let experiment = "crosswiggles";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
   // let solution = await d3.text(`../results/${subject}_fair_replaced.sol`);
-  //let solution = await d3.text(`../results/${subject}_replaced.sol`);
+  // let solution = await d3.text(`../results/${subject}_replaced.sol`);
   let solution = await d3.text(
     `../results/${subject}_${experiment}_replaced.sol`
   );
@@ -17,7 +17,7 @@ async function render() {
 
   document.querySelector(
     ".page-title"
-  ).textContent = `Storyline visualization of ${subject}`;
+  ).textContent = `Storyline visualization of: ${subject}`;
 
   let visualization_options = {
     width: 4000,
@@ -41,10 +41,10 @@ async function render() {
   });
 
   let max_timesteps = timesteps.split("\n").length - 1;
-  // let max_timesteps = 5;
   console.log("max_timesteps:", max_timesteps);
   console.log("actual timesteps:", timesteps.split("\n").length);
 
+  // Build nodes for every timestep
   for (let i = 0; i < timesteps.split("\n").length - 1; i++) {
     let elems = timesteps
       .split("\n")
@@ -63,6 +63,7 @@ async function render() {
     }
   }
 
+  // Build edges connecting nodes from one timestep to the next
   for (let i = 0; i < timesteps.split("\n").length; i++) {
     let j = i + 1;
     let nodes_at_t1 = graph.nodes.filter((n) => n.timestep == i);
@@ -150,7 +151,7 @@ async function render() {
     }
   }
 
-  // EDGES
+  // EDGES (curved lines for character storylines)
   let char_line_coords = {};
 
   for (let char of Object.keys(character_colors)) {
@@ -177,7 +178,7 @@ async function render() {
   for (let char of Object.keys(character_colors)) {
     let line_coords = char_line_coords[char];
     if (line_coords.length <= 3) continue;
-    // make a path from the line_coords
+    // create a path from the line_coords
     let line = d3
       .line()
       .x((d) => d.x)
@@ -196,26 +197,33 @@ async function render() {
         else return 1;
       });
 
-      // append a circle every 3 steps
-      for (let i = 1; i < line_coords.length - 12; i += 12) {
-        if (line_coords[i].y != line_coords[i+3].y) continue;
-        svg
-          .append("circle")
-          .attr("r", 12)
-          .attr("cx", line_coords[i].x + space_between_timesteps*0.5)
-          .attr("cy", line_coords[i].y + (line_coords[i+3].y - line_coords[i].y)*0.5)
-          .attr("fill", "white");
+    // append a circle and label every few steps
+    for (let i = 1; i < line_coords.length - 12; i += 12) {
+      if (line_coords[i].y != line_coords[i + 3].y) continue;
+      svg
+        .append("circle")
+        .attr("r", 12)
+        .attr("cx", line_coords[i].x + space_between_timesteps * 0.5)
+        .attr(
+          "cy",
+          line_coords[i].y + (line_coords[i + 3].y - line_coords[i].y) * 0.5
+        )
+        .attr("fill", "white");
 
-        svg.append("text")
-          .attr("x", line_coords[i].x + space_between_timesteps*0.5 - 7)
-          .attr("y", line_coords[i].y + (line_coords[i+3].y - line_coords[i].y)*0.5 + 3)
-          .text(char)
-          .style("font-family", "Arial")
-          .attr("font-size", 10)
-          .style("font-anchor", "middle")
-          .style("font-weight", "bold")
-          .attr("fill", character_colors[char]);
-      }
+      svg
+        .append("text")
+        .attr("x", line_coords[i].x + space_between_timesteps * 0.5 - 7)
+        .attr(
+          "y",
+          line_coords[i].y + (line_coords[i + 3].y - line_coords[i].y) * 0.5 + 3
+        )
+        .text(char)
+        .style("font-family", "Arial")
+        .attr("font-size", 10)
+        .style("font-anchor", "middle")
+        .style("font-weight", "bold")
+        .attr("fill", character_colors[char]);
+    }
   }
 
   // DRAW THE NODES
@@ -253,6 +261,62 @@ async function render() {
     .text("Save as PNG")
     .style("margin-left", "10px")
     .on("click", savePNG);
+
+  // -------------------------------
+  // !Save FUNCTIONS
+  // -------------------------------
+
+  function saveSVG() {
+    // Get the SVG element as a string
+    const serializer = new XMLSerializer();
+    const source = serializer.serializeToString(svg.node());
+
+    // Create a Blob from the SVG source
+    const svgBlob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(svgBlob);
+
+    // Create a temporary link element and trigger download
+    const downloadLink = document.createElement("a");
+    downloadLink.href = url;
+    downloadLink.download = `${subject}_${experiment}.svg`;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+    URL.revokeObjectURL(url);
+  }
+
+  async function savePNG() {
+    const canvas = document.createElement("canvas");
+    canvas.width = visualization_options.width;
+    canvas.height = visualization_options.height;
+    const context = canvas.getContext("2d");
+
+    // Serialize the SVG
+    const serializer = new XMLSerializer();
+    const source = serializer.serializeToString(svg.node());
+    const svgBlob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(svgBlob);
+
+    // Create an image to load the SVG
+    const img = new Image();
+    img.onload = () => {
+      context.drawImage(img, 0, 0);
+      URL.revokeObjectURL(url);
+
+      // Create a link to trigger download of the PNG
+      canvas.toBlob((blob) => {
+        const pngUrl = URL.createObjectURL(blob);
+        const downloadLink = document.createElement("a");
+        downloadLink.href = pngUrl;
+        downloadLink.download = `${subject}_${experiment}.png`;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        URL.revokeObjectURL(pngUrl);
+      });
+    };
+    img.src = url;
+  }
 }
 
 function assign_node_coordinates(
@@ -276,21 +340,19 @@ function assign_node_coordinates(
       [i].split(":")[1]
       .trim();
 
-    // console.log(nodes_at_this_timestep.map((n) => n.name));
     nodes_at_this_timestep = nodes_at_this_timestep.sort((a, b) => {
       let relevant_lines = solution_lines.filter(
         (l) =>
           l.includes(a.name) && l.includes("_" + i + "_") && l.includes(b.name)
       );
-      // console.log(relevant_lines);
       if (
-        relevant_lines[0] == "x_" + i + "_" + a.name + "_" + b.name + " 0" ||
-        relevant_lines[0] == "x_" + i + "_" + b.name + "_" + a.name + " 1"
+        relevant_lines[0] === "x_" + i + "_" + a.name + "_" + b.name + " 0" ||
+        relevant_lines[0] === "x_" + i + "_" + b.name + "_" + a.name + " 1"
       ) {
         return 1;
       } else if (
-        relevant_lines[0] == "x_" + i + "_" + a.name + "_" + b.name + " 1" ||
-        relevant_lines[0] == "x_" + i + "_" + b.name + "_" + a.name + " 0"
+        relevant_lines[0] === "x_" + i + "_" + a.name + "_" + b.name + " 1" ||
+        relevant_lines[0] === "x_" + i + "_" + b.name + "_" + a.name + " 0"
       ) {
         return -1;
       } else return 0;
@@ -310,14 +372,14 @@ function assign_node_coordinates(
       curr_node.x =
         i * space_between_timesteps + visualization_options.padding.left;
 
-      if (j == 0) {
+      if (j === 0) {
         curr_node.y = baseY;
       } else {
         let prev_node = nodes_at_this_timestep[j - 1];
         let curr_group = findInteractionGroup(curr_node.name);
         let prev_group = findInteractionGroup(prev_node.name);
 
-        if (curr_group == prev_group) {
+        if (curr_group === prev_group) {
           curr_node.y =
             prev_node.y + visualization_options.base_node_vertical_distance;
         } else {
@@ -337,7 +399,7 @@ function assign_node_coordinates(
     );
 }
 
-// this funcition is to be finished still - do not trust
+// this function is to be finished still - do not trust
 function iterate_for_better_bendiness(
   graph,
   timesteps,
@@ -375,35 +437,26 @@ function iterate_for_better_bendiness(
         return a_y - b_y;
       });
 
-      // console.log(j, interaction_groups)
-
       let found = false;
 
       for (let g = 0; g < interaction_groups.length; g++) {
-        // if (found) break;
-        // move all the nodes in the group down, provided that there is space
         let group = interaction_groups[interaction_groups.length - g - 1];
         let nodes_in_group = nodes_at_this_timestep.filter((n) =>
           group.includes(n.name)
         );
-        // console.log(j, nodes_in_group.map((n) => n.name));
         let max_y = Math.max(...nodes_in_group.map((n) => n.y));
-        // console.log(j, max_y)
         let space_below = 0;
 
-        if (g == 0) {
+        if (g === 0) {
           space_below = visualization_options.height - max_y;
         } else {
           let next_group = interaction_groups[interaction_groups.length - g];
-          // console.log(next_group)
           let nodes_in_next_group = nodes_at_this_timestep.filter((n) =>
             next_group.includes(n.name)
           );
           let min_y_next = Math.min(...nodes_in_next_group.map((n) => n.y));
           space_below = min_y_next - max_y;
         }
-
-        // console.log("space below", space_below)
 
         if (
           space_below <= visualization_options.between_group_vertical_distance
@@ -415,10 +468,8 @@ function iterate_for_better_bendiness(
           }
         }
 
-        // check if bendiness has improved
         let new_bendiness = count_total_bendiness(graph);
         if (new_bendiness > starting_bendiness) {
-          // move all the nodes in the group back up
           for (let node of nodes_in_group) {
             node.y = node.old_y;
           }
@@ -428,12 +479,6 @@ function iterate_for_better_bendiness(
         }
       }
     }
-
-    // console.log(
-    //   "bendiness at end of iteration",
-    //   i,
-    //   count_total_bendiness(graph)
-    // );
   }
 }
 

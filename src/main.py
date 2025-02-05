@@ -1,5 +1,42 @@
 import sys
 
+REGULAR_CONFIGS = {
+    'fairskew': (1000, 0, 0, 0, 0, 0),
+    'skew': (0, 1, 0, 0, 0, 0),
+    'cross': (0, 0, 0, 1, 0, 0),
+    'faircross': (0, 0, 1000, 1, 0, 0),
+    'wiggles': (0, 0, 0, 0, 0, 1),
+    'fairwiggles': (0, 0, 0, 0, 1000, 0),
+    'crosswiggles': (0, 0, 0, 1, 0, 1),
+    'skewcrosswiggles': (0, 1, 0, 1, 0, 1),
+    'fairskewcrosswiggles': (1, 0, 1, 0, 1, 0),
+    'skewcross': (0, 1, 0, 1, 0, 0),
+}
+
+
+FOCUS_CONFIGS = {
+    'focus_cross': (0, 0, 0, 1, 0, 0, True, 10),
+    'focus_skewcross': (0, 1, 0, 1, 0, 0, True, 10),
+    'focus_crosswiggles': (0, 0, 0, 1, 0, 1, True, 10),
+    'focus_skewcrosswiggles': (0, 1, 0, 1, 0, 1, True, 10),
+}
+
+
+def get_experiment_config(experiment):
+    """
+    Get experiment configuration parameters based on the experiment name.
+    Returns tuple of (lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, focusMode, alpha)
+    """
+
+    if experiment in FOCUS_CONFIGS:
+        return FOCUS_CONFIGS[experiment]
+
+    if experiment in REGULAR_CONFIGS:
+        # Add focusMode=False and alpha=0 for regular configs
+        return REGULAR_CONFIGS[experiment] + (False, 0.0)
+
+    return (0, 0, 0, 0, 0, 0, False, 0.0)
+
 
 def read_sl_file(filepath):
     """
@@ -63,7 +100,7 @@ def read_sl_file(filepath):
     return interactions, t_activechars, t_interactions, num_chars
 
 
-def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossing_count=None):
+def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossing_count=None, focusMode=False, alpha=2.0):
     '''
     lambda1: fairSkewness
     lambda2: Skewness
@@ -71,6 +108,8 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
     lambda4: Crossings
     lambda5: fairWiggle
     lambda6: Wiggles
+    focusMode: if True, excludes fairness terms and applies weighted focus
+    alpha: weight multiplier for focus mode
     '''
 
     # Keep track of all variables
@@ -93,16 +132,23 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
         obj_terms = []
 
         # FairnessSkewness
-        if lambda1 != 0:
+        if lambda1 != 0 and not focusMode:
             obj_terms.append(f"{lambda1} FairSkew")
 
         # Skewness terms
         if lambda2 != 0:
             for i in range(num_chars):
-                obj_terms.append(f"{lambda2} S_{i}")
+                if focusMode:
+                    if str(i) in reds:
+                        skew_weight = lambda2 * alpha
+                    else:
+                        skew_weight = lambda2
+                else:
+                    skew_weight = lambda2
+                obj_terms.append(f"{skew_weight} S_{i}")
 
         # FairnessCrossings
-        if lambda3 != 0:
+        if lambda3 != 0 and not focusMode:
             obj_terms.append(f"{lambda3} FairCross")
 
         # Process each timestep for crossings and wiggles
@@ -121,9 +167,21 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
                     var_name = f"y_{t}_{char1}_{char2}"
 
-                    # Crossing terms
+                    # Crossing terms with focus mode weights
                     if lambda4 != 0:
-                        obj_terms.append(f"{lambda4} {var_name}")
+                        if focusMode:
+                            red_count = sum(
+                                1 for c in [str(char1), str(char2)] if c in reds)
+                            if red_count == 0:
+                                cross_weight = lambda4
+                            elif red_count == 1:
+                                cross_weight = lambda4 * alpha
+                            else:
+                                cross_weight = lambda4 * (alpha ** 2)
+                        else:
+                            cross_weight = lambda4
+                        obj_terms.append(f"{cross_weight} {var_name}")
+
                     crossing_vars.add(var_name)
                     ordering_vars.add(f"x_{t}_{char1}_{char2}")
                     ordering_vars.add(f"x_{t+1}_{char1}_{char2}")
@@ -132,11 +190,19 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             if lambda6 != 0:
                 for char_i in common_chars:
                     wiggle_var = f"w_{t}_{char_i}"
-                    obj_terms.append(f"{lambda6} {wiggle_var}")
+                    if focusMode:
+                        # Apply different weights based on group
+                        if str(char_i) in reds:
+                            wiggle_weight = lambda6 * alpha
+                        else:
+                            wiggle_weight = lambda6
+                    else:
+                        wiggle_weight = lambda6
+                    obj_terms.append(f"{wiggle_weight} {wiggle_var}")
                     wiggle_vars.add(wiggle_var)
 
         # FairWiggle terms
-        if lambda5 != 0:
+        if lambda5 != 0 and not focusMode:
             obj_terms.append(f"{lambda5} FairWiggle")
 
         objective = " + ".join(obj_terms) if obj_terms else "0"
@@ -446,6 +512,10 @@ if __name__ == "__main__":
             blues.append(character['id'])
 
     # Write ILP model
+    lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, focusMode, alpha = get_experiment_config(
+        experiment)
+
     output_file = f'./results/{subject}_{experiment}.lp'
     write_ilp_model(output_file, t_activechars, t_interactions, num_chars,
-                    lambda1=0, lambda2=0, lambda3=1000, lambda4=1, lambda5=0, lambda6=0, crossing_count=crossing_count)
+                    lambda1, lambda2, lambda3, lambda4, lambda5, lambda6,
+                    focusMode=focusMode, alpha=alpha)
