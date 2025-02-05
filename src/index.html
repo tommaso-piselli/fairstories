@@ -7,8 +7,16 @@
     <title>Storyline Visualization</title>
     <style>
       .page-title {
-        text-align: center;
-        font-family: Helvetica, sans-serif;
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Courier New", Courier, monospace;
+        z-index: 1000;
+      }
+
+      svg {
+        margin-top: 150px; /* Adjust according to the height of your title plus some extra space */
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -16,6 +24,6 @@
     <script src="js/util.js"></script>
   </head>
   <body>
-    <h1 class="page-title">Storyline Visualization</h1>
+    <h1 class="page-title">> Loading Page...</h1>
   </body>
 </html>

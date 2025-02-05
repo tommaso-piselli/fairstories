@@ -15,6 +15,10 @@ async function render() {
     edges: [],
   };
 
+  document.querySelector(
+    ".page-title"
+  ).textContent = `Storyline visualization of ${subject}`;
+
   let visualization_options = {
     width: 4000,
     height: 1000,
