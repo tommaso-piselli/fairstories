@@ -195,6 +195,27 @@ async function render() {
         if (["RM", "DS", "DN"].includes(char)) return 1;
         else return 1;
       });
+
+      // append a circle every 3 steps
+      for (let i = 1; i < line_coords.length - 12; i += 12) {
+        if (line_coords[i].y != line_coords[i+3].y) continue;
+        svg
+          .append("circle")
+          .attr("r", 12)
+          .attr("cx", line_coords[i].x + space_between_timesteps*0.5)
+          .attr("cy", line_coords[i].y + (line_coords[i+3].y - line_coords[i].y)*0.5)
+          .attr("fill", "white");
+
+        svg.append("text")
+          .attr("x", line_coords[i].x + space_between_timesteps*0.5 - 7)
+          .attr("y", line_coords[i].y + (line_coords[i+3].y - line_coords[i].y)*0.5 + 3)
+          .text(char)
+          .style("font-family", "Arial")
+          .attr("font-size", 10)
+          .style("font-anchor", "middle")
+          .style("font-weight", "bold")
+          .attr("fill", character_colors[char]);
+      }
   }
 
   // DRAW THE NODES
@@ -261,7 +282,7 @@ function assign_node_coordinates(
         (l) =>
           l.includes(a.name) && l.includes("_" + i + "_") && l.includes(b.name)
       );
-      console.log(relevant_lines);
+      // console.log(relevant_lines);
       if (
         relevant_lines[0] == "x_" + i + "_" + a.name + "_" + b.name + " 0" ||
         relevant_lines[0] == "x_" + i + "_" + b.name + "_" + a.name + " 1"
@@ -408,11 +429,11 @@ function iterate_for_better_bendiness(
       }
     }
 
-    console.log(
-      "bendiness at end of iteration",
-      i,
-      count_total_bendiness(graph)
-    );
+    // console.log(
+    //   "bendiness at end of iteration",
+    //   i,
+    //   count_total_bendiness(graph)
+    // );
   }
 }
 
