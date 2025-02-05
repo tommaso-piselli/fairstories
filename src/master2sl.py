@@ -1,9 +1,9 @@
 import sys
 
 # Set your paths here
-subject = 'beppe100'
+subject = 'got'
 input_master = f"./data/txt/{subject}.master"
-output_sl = f"./{subject}.sl"
+output_sl = f"./data/sl/{subject}.sl"
 
 
 def process_master_file(input_path, output_sl_path, output_transsl_path):
@@ -126,8 +126,8 @@ def process_master_file(input_path, output_sl_path, output_transsl_path):
     # Write output files
     with open(output_sl_path, 'w') as f:
         f.write(output)
-    with open(output_transsl_path, 'w') as f:
-        f.write(output_trans_char_mapping + "\n" + output_trans_line_mapping)
+    # with open(output_transsl_path, 'w') as f:
+    #     f.write(output_trans_char_mapping + "\n" + output_trans_line_mapping)
 
 
 # Main execution

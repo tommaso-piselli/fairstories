@@ -1,0 +1,179 @@
+Experiment: beppe100 - cross
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/beppe100_cross_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/beppe100_cross.lp
+Reading time = 1.71 seconds
+: 1265608 rows, 146484 columns, 3715186 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 1265608 rows, 146484 columns and 3715186 nonzeros
+Model fingerprint: 0xb22e508c
+Variable types: 0 continuous, 146484 integer (146484 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 6293.0000000
+Presolve removed 428960 rows and 59980 columns (presolve time = 5s) ...
+Presolve removed 428976 rows and 59990 columns
+Presolve time: 5.89s
+Presolved: 836632 rows, 86494 columns, 2509896 nonzeros
+Variable types: 0 continuous, 86494 integer (86494 binary)
+Found heuristic solution: objective 5756.0000000
+
+Deterministic concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Root barrier log...
+
+Elapsed ordering time = 6s
+Ordering time: 34.15s
+Elapsed ordering time = 35s
+Elapsed ordering time = 36s
+Elapsed ordering time = 40s
+Elapsed ordering time = 45s
+Elapsed ordering time = 50s
+Elapsed ordering time = 55s
+Elapsed ordering time = 65s
+Elapsed ordering time = 66s
+Elapsed ordering time = 70s
+Elapsed ordering time = 75s
+Elapsed ordering time = 80s
+Elapsed ordering time = 88s
+Elapsed ordering time = 90s
+Elapsed ordering time = 95s
+Elapsed ordering time = 100s
+Elapsed ordering time = 105s
+Elapsed ordering time = 112s
+Elapsed ordering time = 115s
+Elapsed ordering time = 120s
+Elapsed ordering time = 125s
+Elapsed ordering time = 130s
+Elapsed ordering time = 138s
+Elapsed ordering time = 140s
+Elapsed ordering time = 145s
+Elapsed ordering time = 150s
+Elapsed ordering time = 155s
+Ordering time: 161.35s
+
+Barrier statistics:
+ Dense cols : 439
+ AA' NZ     : 2.207e+07
+ Factor NZ  : 1.554e+09 (roughly 13.0 GB of memory)
+ Factor Ops : 6.786e+12 (roughly 27 seconds per iteration)
+ Threads    : 18
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   3.42744373e+04 -3.31267585e+05  9.47e-01 1.11e-16  7.24e-01   196s
+   1   1.36959320e+04 -7.88790915e+04  3.26e-07 1.29e-05  9.17e-02   211s
+   2   2.05875527e+02 -7.59038514e+02  1.72e-08 1.88e-08  9.56e-04   224s
+   3   2.02758397e-01 -7.62143908e-01  9.04e-10 1.38e-11  9.56e-07   239s
+   4   2.02770099e-04 -7.62147016e-04  3.77e-15 4.44e-16  9.56e-10   265s
+   5   1.54206442e-06 -2.38362348e-08  9.03e-10 5.55e-16  1.55e-12   293s
+   6   1.54206198e-09 -2.38220811e-11  1.49e-10 7.47e-16  1.55e-15   319s
+
+Barrier solved model in 6 iterations and 318.76 seconds (180.34 work units)
+Optimal objective 1.54206198e-09
+
+
+Root crossover log...
+
+   55755 DPushes remaining with DInf 0.0000000e+00               320s
+    7862 DPushes remaining with DInf 0.0000000e+00               325s
+    1965 DPushes remaining with DInf 0.0000000e+00               330s
+       0 DPushes remaining with DInf 0.0000000e+00               331s
+
+     175 PPushes remaining with PInf 0.0000000e+00               331s
+       0 PPushes remaining with PInf 0.0000000e+00               332s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 0.0000000e+00    332s
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   29085    0.0000000e+00   0.000000e+00   0.000000e+00    332s
+   29085    0.0000000e+00   0.000000e+00   0.000000e+00    332s
+Waiting for other threads to finish...         398s
+Concurrent spin time: 130.71s (can be avoided by choosing Method=3)
+
+Solved with barrier
+
+Root relaxation: objective 0.000000e+00, 29085 iterations, 455.56 seconds (187.59 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 38264 5756.00000    0.00000   100%     - 2177s
+H    0     0                    4213.0000000    0.00000   100%     - 2177s
+H    0     0                    3793.0000000    0.00000   100%     - 2178s
+H    0     0                    3791.0000000    0.00000   100%     - 2178s
+     0     0  228.94805    0 38794 3791.00000  228.94805  94.0%     - 19424s
+H    0     0                    3789.0000000  228.94805  94.0%     - 19425s
+H    0     0                    3499.0000000  228.94805  93.5%     - 19427s
+     0     0          -    0      3499.00000  228.94805  93.5%     - 25200s
+
+Cutting planes:
+  Gomory: 1
+  Zero half: 63
+
+Explored 1 nodes (690500 simplex iterations) in 25200.12 seconds (13388.54 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 7: 3499 3789 3791 ... 6293
+
+Time limit reached
+Best objective 3.499000000000e+03, best bound 2.290000000000e+02, gap 93.4553%
+
+Wrote result file '/home1/tpiselli/fairstories/results/beppe100_cross.sol'
+
+> Running mapping.py...
+{0: 'TI', 1: 'GL', 2: 'SCha', 3: 'KLM', 4: 'IR', 5: 'AT', 6: 'SKW', 7: 'CB', 8: 'HM', 9: 'EDG', 10: 'VSA', 11: 'SHH', 12: 'AA', 13: 'FM', 14: 'SM', 15: 'WD', 16: 'GO', 17: 'MP', 18: 'MAB', 19: 'PA', 20: 'GDL', 21: 'MH', 22: 'GDB', 23: 'CDT', 24: 'FJB', 25: 'MK', 26: 'VB', 27: 'JF', 28: 'DP', 29: 'LGri', 30: 'LM', 31: 'KK', 32: 'PE', 33: 'AN', 34: 'SGK', 35: 'LG', 36: 'MCan', 37: 'LA', 38: 'JH', 39: 'JL', 40: 'TB', 41: 'FDL', 42: 'WJL', 43: 'TWR', 44: 'AS', 45: 'MN', 46: 'LC', 47: 'MZ', 48: 'PK', 49: 'SG', 50: 'AW', 51: 'KS', 52: 'LK', 53: 'BMPJ', 54: 'CH', 55: 'PV', 56: 'JK', 57: 'PM', 58: 'AB', 59: 'VD', 60: 'CCL', 61: 'BMTL', 62: 'TP', 63: 'OF', 64: 'JZ', 65: 'RIN', 66: 'DM', 67: 'BDM', 68: 'AE', 69: 'DG', 70: 'FS', 71: 'HF', 72: 'TD', 73: 'FK', 74: 'AP', 75: 'KM', 76: 'ÉD', 77: 'MG', 78: 'FF', 79: 'IGT', 80: 'DA', 81: 'MW', 82: 'SP', 83: 'MC', 84: 'SC', 85: 'GB', 86: 'AF', 87: 'SDB'}
+> Running log_stats.py...
+Summary for beppe100_cross:
+=====================================
+Total characters: 88
+Blue characters: 83
+Red characters: 5
+---
+> Crossings
+Blue-Blue crossings: 2742
+Red-Red crossings: 23
+Blue-Red crossings: 734
+Total crossings: 3499
+---
+> FairCrossings
+BlueFair: 7.5e+01
+RedFair: 1.6e+02
+Unfairness 8.1e+01
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.
