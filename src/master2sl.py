@@ -1,7 +1,7 @@
 import sys
 
 # Set your paths here
-subject = 'star_wars'
+subject = 'the_matrix'
 input_master = f"./data/txt/{subject}.master"
 output_sl = f"./data/sl/{subject}.sl"
 

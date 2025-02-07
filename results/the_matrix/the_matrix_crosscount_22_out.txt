@@ -1,0 +1,101 @@
+Experiment: the_matrix - crosscount_22
+===================
+
+> Running main.py...
+Crossing count: 22
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/the_matrix_crosscount_22_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Warning: row 0 (name "") contains 3369 repeated variable(s) in constraints, grouped them, 0 cancellation
+Warning: row 1 (name "") contains 3369 repeated variable(s) in constraints, grouped them, 0 cancellation
+Warning: lp file contains 6738 repeated variable(s) in constraints, grouped them, 0 cancellation
+Read LP format model from file /home1/tpiselli/fairstories/results/the_matrix_crosscount_22.lp
+Reading time = 0.06 seconds
+: 34535 rows, 10278 columns, 104845 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 34535 rows, 10278 columns and 104845 nonzeros
+Model fingerprint: 0xf5e8b5c3
+Variable types: 1 continuous, 10277 integer (10277 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+01]
+Presolve removed 23262 rows and 5208 columns
+Presolve time: 0.11s
+Presolved: 11273 rows, 5070 columns, 43916 nonzeros
+Variable types: 0 continuous, 5070 integer (5068 binary)
+
+Root relaxation: objective 0.000000e+00, 4520 iterations, 0.52 seconds (0.69 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  797          -    0.00000      -     -    1s
+H    0     0                       0.6666667    0.00000   100%     -    1s
+     0     0    0.00000    0  778    0.66667    0.00000   100%     -    1s
+     0     0    0.00000    0  799    0.66667    0.00000   100%     -    2s
+     0     0    0.00000    0 1114    0.66667    0.00000   100%     -    2s
+     0     0    0.00000    0 1132    0.66667    0.00000   100%     -    2s
+     0     0    0.00000    0 1128    0.66667    0.00000   100%     -    3s
+     0     0    0.00000    0 1119    0.66667    0.00000   100%     -    3s
+     0     0    0.66667    0 1125    0.66667    0.66667  0.00%     -    4s
+
+Cutting planes:
+  Zero half: 1
+
+Explored 1 nodes (17944 simplex iterations) in 4.11 seconds (4.53 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 1: 0.666667 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.666666666667e-01, best bound 6.666666666667e-01, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/the_matrix_crosscount_22.sol'
+
+> Running mapping.py...
+{0: 'TR', 1: 'AB', 2: 'AS', 3: 'AJ', 4: 'NE', 5: 'SW', 6: 'AP', 7: 'MO', 8: 'CY', 9: 'DO', 10: 'TA', 11: 'MS', 12: 'OR', 13: 'RB'}
+> Running log_stats.py...
+Summary for the_matrix_crosscount_22:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 14
+Red-Red crossings: 3
+Blue-Red crossings: 5
+Total crossings: 22
+---
+> FairCrossings
+BlueFair: 3.0
+RedFair: 3.7
+Unfairness 0.67
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.

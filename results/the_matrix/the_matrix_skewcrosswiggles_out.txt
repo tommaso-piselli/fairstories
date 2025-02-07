@@ -1,0 +1,162 @@
+Experiment: the_matrix - skewcrosswiggles
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/the_matrix_skewcrosswiggles_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/the_matrix_skewcrosswiggles.lp
+Reading time = 0.06 seconds
+: 39547 rows, 11114 columns, 133441 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 39547 rows, 11114 columns and 133441 nonzeros
+Model fingerprint: 0x5d958b51
+Variable types: 823 continuous, 10291 integer (10291 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 1268.0000000
+Presolve removed 23256 rows and 5204 columns
+Presolve time: 0.13s
+Presolved: 16291 rows, 5910 columns, 62763 nonzeros
+Variable types: 0 continuous, 5910 integer (5091 binary)
+Found heuristic solution: objective 1113.0000000
+
+Root relaxation: objective 0.000000e+00, 4115 iterations, 0.64 seconds (0.77 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1580 1113.00000    0.00000   100%     -    3s
+H    0     0                     640.0000000    0.00000   100%     -    3s
+H    0     0                     635.0000000    0.00000   100%     -    3s
+H    0     0                     478.0000000    0.00000   100%     -    3s
+H    0     0                     410.0000000    7.57292  98.2%     -    4s
+H    0     0                     155.0000000    7.57292  95.1%     -    4s
+     0     0    7.60611    0 1661  155.00000    7.60611  95.1%     -    4s
+H    0     0                     115.0000000    7.60611  93.4%     -    4s
+     0     0    7.67584    0 1666  115.00000    7.67584  93.3%     -    4s
+     0     0    7.69192    0 1666  115.00000    7.69192  93.3%     -    5s
+     0     0    7.69192    0 1666  115.00000    7.69192  93.3%     -    5s
+     0     0   10.75214    0 1709  115.00000   10.75214  90.7%     -    8s
+     0     0   10.93235    0 1772  115.00000   10.93235  90.5%     -    8s
+     0     0   10.98770    0 1773  115.00000   10.98770  90.4%     -    9s
+     0     0   10.99377    0 1767  115.00000   10.99377  90.4%     -    9s
+     0     0   10.99377    0 1767  115.00000   10.99377  90.4%     -    9s
+     0     0   11.94630    0 1751  115.00000   11.94630  89.6%     -   10s
+     0     0   12.06786    0 1826  115.00000   12.06786  89.5%     -   10s
+     0     0   12.07849    0 1805  115.00000   12.07849  89.5%     -   11s
+     0     0   12.07916    0 1786  115.00000   12.07916  89.5%     -   11s
+     0     0   12.71729    0 1824  115.00000   12.71729  88.9%     -   12s
+     0     0   12.90260    0 1756  115.00000   12.90260  88.8%     -   13s
+     0     0   12.92204    0 1755  115.00000   12.92204  88.8%     -   13s
+     0     0   12.92499    0 1765  115.00000   12.92499  88.8%     -   13s
+     0     0   12.92791    0 1758  115.00000   12.92791  88.8%     -   13s
+     0     0   12.92814    0 1761  115.00000   12.92814  88.8%     -   14s
+     0     0   13.05432    0 1777  115.00000   13.05432  88.6%     -   14s
+H    0     0                     108.0000000   13.05441  87.9%     -   14s
+     0     0   13.12067    0 1787  108.00000   13.12067  87.9%     -   14s
+     0     0   13.12920    0 1784  108.00000   13.12920  87.8%     -   15s
+     0     0   13.13190    0 1798  108.00000   13.13190  87.8%     -   15s
+     0     0   13.13482    0 1809  108.00000   13.13482  87.8%     -   15s
+     0     0   13.13545    0 1799  108.00000   13.13545  87.8%     -   15s
+     0     0   13.37622    0 1827  108.00000   13.37622  87.6%     -   16s
+     0     0   13.39121    0 1796  108.00000   13.39121  87.6%     -   16s
+     0     0   13.40829    0 1803  108.00000   13.40829  87.6%     -   16s
+     0     0   13.41197    0 1794  108.00000   13.41197  87.6%     -   16s
+     0     0   13.41197    0 1794  108.00000   13.41197  87.6%     -   16s
+     0     0   13.48783    0 1877  108.00000   13.48783  87.5%     -   17s
+     0     0   13.52466    0 1888  108.00000   13.52466  87.5%     -   17s
+     0     0   13.53565    0 1871  108.00000   13.53565  87.5%     -   18s
+     0     0   13.53693    0 1866  108.00000   13.53693  87.5%     -   18s
+     0     0   13.59113    0 1900  108.00000   13.59113  87.4%     -   18s
+H    0     0                     106.0000000   13.60558  87.2%     -   18s
+     0     0   13.60558    0 1898  106.00000   13.60558  87.2%     -   18s
+     0     0   13.60558    0 1904  106.00000   13.60558  87.2%     -   18s
+     0     0   13.60558    0 1903  106.00000   13.60558  87.2%     -   18s
+     0     0   13.97122    0 1900  106.00000   13.97122  86.8%     -   20s
+H    0     0                      94.0000000   13.97242  85.1%     -   20s
+H    0     0                      42.0000000   13.97242  66.7%     -   20s
+     0     0   14.02745    0 1887   42.00000   14.02745  66.6%     -   20s
+     0     0   14.03534    0 1884   42.00000   14.03534  66.6%     -   20s
+     0     0   14.03712    0 1881   42.00000   14.03712  66.6%     -   20s
+     0     0   14.12416    0 1922   42.00000   14.12416  66.4%     -   21s
+     0     0   14.14771    0 1911   42.00000   14.14771  66.3%     -   22s
+     0     0   14.15559    0 1919   42.00000   14.15559  66.3%     -   22s
+     0     0   14.15752    0 1919   42.00000   14.15752  66.3%     -   22s
+     0     0   33.97500    0 1928   42.00000   33.97500  19.1%     -   23s
+H    0     0                      39.0000000   33.97500  12.9%     -   23s
+     0     0   33.97500    0 1937   39.00000   33.97500  12.9%     -   23s
+     0     0   33.97500    0 1941   39.00000   33.97500  12.9%     -   24s
+     0     0   33.97500    0 1943   39.00000   33.97500  12.9%     -   24s
+     0     0   33.98721    0 1925   39.00000   33.98721  12.9%     -   25s
+     0     0   33.98721    0 1925   39.00000   33.98721  12.9%     -   25s
+     0     2   33.98721    0 1922   39.00000   33.98721  12.9%     -   28s
+     1     4   33.98721    1 1759   39.00000   33.98721  12.9% 23906   39s
+     3     4   35.04167    2  851   39.00000   33.98721  12.9% 17639   56s
+    11     8   36.20139    4  412   39.00000   35.16667  9.83% 16500   75s
+   283   163     cutoff   13        39.00000   36.65098  6.02%   863   80s
+
+Cutting planes:
+  MIR: 7
+  Inf proof: 1
+  Zero half: 47
+  RLT: 7
+
+Explored 923 nodes (350906 simplex iterations) in 82.83 seconds (112.16 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 10: 39 42 94 ... 635
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.900000000000e+01, best bound 3.900000000000e+01, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/the_matrix_skewcrosswiggles.sol'
+
+> Running mapping.py...
+{0: 'TR', 1: 'AB', 2: 'AS', 3: 'AJ', 4: 'NE', 5: 'SW', 6: 'AP', 7: 'MO', 8: 'CY', 9: 'DO', 10: 'TA', 11: 'MS', 12: 'OR', 13: 'RB'}
+> Running log_stats.py...
+Summary for the_matrix_skewcrosswiggles:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 4
+Red-Red crossings: 3
+Blue-Red crossings: 5
+Total crossings: 12
+---
+> FairCrossings
+BlueFair: 1.2
+RedFair: 3.7
+Unfairness 2.5
+---
+> Skewness
+BlueSkew: 2
+RedSkew: 1
+Total skewness: 3
+---
+> FairSkewness
+Unfairness 0.15
+---
+> Wiggles
+Total wiggles: 24
+---
+> FairWiggles
+BlueWiggles: 13.0
+RedWiggles: 11.0
+Unfairness 2.5
+> All scripts executed successfully.

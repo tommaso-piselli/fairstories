@@ -1,0 +1,147 @@
+Experiment: the_matrix - faircross
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/the_matrix_faircross_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Warning: row 0 (name "") contains 3369 repeated variable(s) in constraints, grouped them, 0 cancellation
+Warning: row 1 (name "") contains 3369 repeated variable(s) in constraints, grouped them, 0 cancellation
+Warning: lp file contains 6738 repeated variable(s) in constraints, grouped them, 0 cancellation
+Read LP format model from file /home1/tpiselli/fairstories/results/the_matrix_faircross.lp
+Reading time = 0.06 seconds
+: 34534 rows, 10278 columns, 101476 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 34534 rows, 10278 columns and 101476 nonzeros
+Model fingerprint: 0xee40e644
+Variable types: 1 continuous, 10277 integer (10277 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+01]
+  Objective range  [1e+00, 1e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 73030.060505
+Presolve removed 23262 rows and 5208 columns
+Presolve time: 0.10s
+Presolved: 11272 rows, 5070 columns, 40548 nonzeros
+Variable types: 0 continuous, 5070 integer (5068 binary)
+Found heuristic solution: objective 36093.575656
+
+Root relaxation: objective 0.000000e+00, 2056 iterations, 0.07 seconds (0.08 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1577 36093.5757    0.00000   100%     -    0s
+H    0     0                     387.6060606    0.00000   100%     -    0s
+H    0     0                      70.0000000    0.00000   100%     -    0s
+H    0     0                      49.0000000    0.00000   100%     -    0s
+     0     0    8.88462    0 1636   49.00000    8.88462  81.9%     -    0s
+     0     0    9.15385    0 1647   49.00000    9.15385  81.3%     -    0s
+     0     0   11.87181    0 1677   49.00000   11.87181  75.8%     -    0s
+     0     0   13.84270    0 1637   49.00000   13.84270  71.7%     -    0s
+     0     0   13.84270    0 1639   49.00000   13.84270  71.7%     -    0s
+H    0     0                      28.0000000   13.84270  50.6%     -    0s
+     0     0   13.84270    0 1648   28.00000   13.84270  50.6%     -    0s
+     0     0   13.84270    0 1624   28.00000   13.84270  50.6%     -    0s
+     0     0   13.84270    0 1654   28.00000   13.84270  50.6%     -    0s
+     0     0   13.84270    0 1647   28.00000   13.84270  50.6%     -    0s
+     0     0   13.84270    0 1651   28.00000   13.84270  50.6%     -    0s
+     0     0   14.00000    0 1619   28.00000   14.00000  50.0%     -    1s
+     0     0   14.06087    0 1628   28.00000   14.06087  49.8%     -    1s
+     0     0   14.09130    0 1631   28.00000   14.09130  49.7%     -    1s
+     0     0   14.09130    0 1631   28.00000   14.09130  49.7%     -    1s
+     0     0   14.59322    0 1666   28.00000   14.59322  47.9%     -    1s
+     0     0   14.70916    0 1673   28.00000   14.70916  47.5%     -    1s
+     0     0   14.81159    0 1694   28.00000   14.81159  47.1%     -    1s
+     0     0   14.82471    0 1703   28.00000   14.82471  47.1%     -    1s
+     0     0   14.83295    0 1701   28.00000   14.83295  47.0%     -    1s
+     0     0   14.83519    0 1699   28.00000   14.83519  47.0%     -    1s
+     0     0   15.17036    0 1685   28.00000   15.17036  45.8%     -    1s
+     0     0   15.27778    0 1644   28.00000   15.27778  45.4%     -    1s
+     0     0   15.34469    0 1716   28.00000   15.34469  45.2%     -    1s
+     0     0   15.36347    0 1696   28.00000   15.36347  45.1%     -    1s
+     0     0   15.38944    0 1691   28.00000   15.38944  45.0%     -    1s
+     0     0   15.38983    0 1672   28.00000   15.38983  45.0%     -    1s
+     0     0   15.87364    0 1670   28.00000   15.87364  43.3%     -    2s
+     0     0   16.00754    0 1687   28.00000   16.00754  42.8%     -    2s
+     0     0   16.04830    0 1683   28.00000   16.04830  42.7%     -    2s
+     0     0   16.10805    0 1682   28.00000   16.10805  42.5%     -    2s
+     0     0   16.12470    0 1684   28.00000   16.12470  42.4%     -    2s
+     0     0   16.13241    0 1666   28.00000   16.13241  42.4%     -    2s
+     0     0   16.13241    0 1667   28.00000   16.13241  42.4%     -    2s
+     0     0   16.76744    0 1685   28.00000   16.76744  40.1%     -    2s
+     0     0   16.76744    0 1675   28.00000   16.76744  40.1%     -    2s
+     0     0   16.76744    0 1679   28.00000   16.76744  40.1%     -    2s
+     0     0   16.76744    0 1617   28.00000   16.76744  40.1%     -    2s
+     0     2   16.78673    0 1610   28.00000   16.78673  40.0%     -    2s
+  1310  2275   25.66667   36   14   28.00000   25.66667  8.33%  29.0    5s
+  8834  8338   25.66667   55 3314   28.00000   25.66667  8.33%   8.0   12s
+  8835  8339   25.66667   42 3182   28.00000   25.66667  8.33%   8.0   15s
+  8844  8345   25.66667  208 3329   28.00000   25.66667  8.33%   8.0   20s
+  8854  8351   26.25000  118 3358   28.00000   25.66667  8.33%   8.0   25s
+  8863  8357   26.09091   48 3235   28.00000   25.66667  8.33%   8.0   30s
+  9188  8928   25.66667   31    1   28.00000   25.66667  8.33%  11.7   35s
+ 18210 15138   26.09091  138    1   28.00000   25.66667  8.33%  11.2   40s
+ 34262 23957   25.66667  368    1   28.00000   25.66667  8.33%   8.6   45s
+ 48338 34432   26.09091  285 1617   28.00000   25.66667  8.33%   7.7   62s
+ 48342 34435   25.66667   35    1   28.00000   25.66667  8.33%   7.7   65s
+
+Cutting planes:
+  Gomory: 1
+
+Explored 48364 nodes (411071 simplex iterations) in 68.00 seconds (54.34 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 9: 28 28 49 ... 73030.1
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.800000000000e+01, best bound 2.800000000000e+01, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/the_matrix_faircross.sol'
+
+> Running mapping.py...
+{0: 'TR', 1: 'AB', 2: 'AS', 3: 'AJ', 4: 'NE', 5: 'SW', 6: 'AP', 7: 'MO', 8: 'CY', 9: 'DO', 10: 'TA', 11: 'MS', 12: 'OR', 13: 'RB'}
+> Running log_stats.py...
+Summary for the_matrix_faircross:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 19
+Red-Red crossings: 3
+Blue-Red crossings: 6
+Total crossings: 28
+---
+> FairCrossings
+BlueFair: 4.0
+RedFair: 4.0
+Unfairness 0.0
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.

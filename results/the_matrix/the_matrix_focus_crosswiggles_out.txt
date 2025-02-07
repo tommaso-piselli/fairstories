@@ -1,0 +1,128 @@
+Experiment: the_matrix - focus_crosswiggles
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/the_matrix_focus_crosswiggles_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/the_matrix_focus_crosswiggles.lp
+Reading time = 0.06 seconds
+: 36178 rows, 11100 columns, 123334 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 36178 rows, 11100 columns and 123334 nonzeros
+Model fingerprint: 0xf2b6f763
+Variable types: 823 continuous, 10277 integer (10277 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 11633.000000
+Presolve removed 26070 rows and 6611 columns
+Presolve time: 0.14s
+Presolved: 10108 rows, 4489 columns, 44214 nonzeros
+Variable types: 0 continuous, 4489 integer (3670 binary)
+Found heuristic solution: objective 10158.000000
+
+Root relaxation: objective 0.000000e+00, 3665 iterations, 0.43 seconds (0.46 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1580 10158.0000    0.00000   100%     -    2s
+H    0     0                    5179.0000000    0.00000   100%     -    2s
+H    0     0                     981.0000000    0.00000   100%     -    2s
+H    0     0                     771.0000000    0.00000   100%     -    2s
+H    0     0                     552.0000000    0.00000   100%     -    2s
+     0     0   41.50000    0 1682  552.00000   41.50000  92.5%     -    4s
+     0     0   41.50000    0 1587  552.00000   41.50000  92.5%     -    4s
+     0     0   48.88889    0 1650  552.00000   48.88889  91.1%     -    4s
+     0     0   48.88889    0 1650  552.00000   48.88889  91.1%     -    4s
+     0     0   50.00000    0 1622  552.00000   50.00000  90.9%     -    5s
+     0     0   50.50000    0 1657  552.00000   50.50000  90.9%     -    5s
+     0     0   50.50000    0 1657  552.00000   50.50000  90.9%     -    5s
+     0     0   63.00000    0 1663  552.00000   63.00000  88.6%     -    6s
+     0     0   63.02240    0 1661  552.00000   63.02240  88.6%     -    6s
+     0     0   72.50000    0 1598  552.00000   72.50000  86.9%     -    9s
+     0     0   73.00000    0 1662  552.00000   73.00000  86.8%     -   10s
+     0     0  171.50000    0 1671  552.00000  171.50000  68.9%     -   10s
+     0     0  171.50000    0 1673  552.00000  171.50000  68.9%     -   10s
+     0     0  171.50000    0 1679  552.00000  171.50000  68.9%     -   11s
+     0     0  171.50000    0 1684  552.00000  171.50000  68.9%     -   12s
+     0     0  171.61949    0 1640  552.00000  171.61949  68.9%     -   13s
+     0     0  171.61949    0 1697  552.00000  171.61949  68.9%     -   14s
+     0     0  171.61949    0 1644  552.00000  171.61949  68.9%     -   14s
+     0     0  171.61949    0 1698  552.00000  171.61949  68.9%     -   14s
+     0     0  171.61949    0 1722  552.00000  171.61949  68.9%     -   16s
+     0     0  171.70191    0 1693  552.00000  171.70191  68.9%     -   16s
+     0     0  171.70191    0 1728  552.00000  171.70191  68.9%     -   17s
+     0     0  171.70191    0 1729  552.00000  171.70191  68.9%     -   17s
+     0     0  172.20329    0 1751  552.00000  172.20329  68.8%     -   17s
+     0     0  172.20329    0 1717  552.00000  172.20329  68.8%     -   19s
+     0     2  172.20329    0 1715  552.00000  172.20329  68.8%     -   25s
+     1     4  227.50000    1 1538  552.00000  172.20329  68.8% 53446   40s
+H    3     8                     463.0000000  227.80058  50.8% 23813   49s
+H    6     8                     390.0000000  228.19942  41.5% 24577   49s
+     7     4     cutoff    3       390.00000  269.55844  30.9% 21461   57s
+    13     6     cutoff    4       390.00000  290.00000  25.6% 18193   64s
+*   17     0               5     387.0000000  364.08590  5.92% 15169   65s
+
+Cutting planes:
+  MIR: 5
+  Zero half: 18
+
+Explored 23 nodes (345029 simplex iterations) in 65.72 seconds (90.48 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 9: 387 390 463 ... 11633
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.870000000000e+02, best bound 3.870000000000e+02, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/the_matrix_focus_crosswiggles.sol'
+
+> Running mapping.py...
+{0: 'TR', 1: 'AB', 2: 'AS', 3: 'AJ', 4: 'NE', 5: 'SW', 6: 'AP', 7: 'MO', 8: 'CY', 9: 'DO', 10: 'TA', 11: 'MS', 12: 'OR', 13: 'RB'}
+> Running log_stats.py...
+Summary for the_matrix_focus_crosswiggles:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 24
+Red-Red crossings: 0
+Blue-Red crossings: 15
+Total crossings: 39
+---
+> FairCrossings
+BlueFair: 5.7
+RedFair: 5.0
+Unfairness 0.73
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 78
+---
+> FairWiggles
+BlueWiggles: 63.0
+RedWiggles: 15.0
+Unfairness 0.73
+> All scripts executed successfully.

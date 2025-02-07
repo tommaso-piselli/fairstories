@@ -1,0 +1,122 @@
+Experiment: the_matrix - skewcross
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/the_matrix_skewcross_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/the_matrix_skewcross.lp
+Reading time = 0.05 seconds
+: 37901 rows, 10291 columns, 104843 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 37901 rows, 10291 columns and 104843 nonzeros
+Model fingerprint: 0x68abb93d
+Variable types: 0 continuous, 10291 integer (10291 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 23265 rows and 5210 columns
+Presolve time: 0.10s
+Presolved: 14636 rows, 5081 columns, 43908 nonzeros
+Variable types: 0 continuous, 5081 integer (5081 binary)
+Found heuristic solution: objective 524.0000000
+Found heuristic solution: objective 343.0000000
+Found heuristic solution: objective 85.0000000
+
+Root relaxation: objective 0.000000e+00, 2066 iterations, 0.08 seconds (0.10 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1577   85.00000    0.00000   100%     -    0s
+H    0     0                      52.0000000    0.00000   100%     -    0s
+     0     0    7.43548    0 1674   52.00000    7.43548  85.7%     -    0s
+H    0     0                      51.0000000    7.43548  85.4%     -    0s
+     0     0    7.68723    0 1674   51.00000    7.68723  84.9%     -    0s
+     0     0    7.68856    0 1672   51.00000    7.68856  84.9%     -    0s
+     0     0   10.64252    0 1801   51.00000   10.64252  79.1%     -    1s
+H    0     0                      35.0000000   10.64252  69.6%     -    1s
+H    0     0                      15.0000000   10.64252  29.0%     -    1s
+     0     0   10.87082    0 1784   15.00000   10.87082  27.5%     -    1s
+     0     0   10.90042    0 1796   15.00000   10.90042  27.3%     -    1s
+     0     0   10.92076    0 1821   15.00000   10.92076  27.2%     -    1s
+     0     0   10.93324    0 1813   15.00000   10.93324  27.1%     -    1s
+     0     0   10.93324    0 1814   15.00000   10.93324  27.1%     -    1s
+     0     0   13.25000    0 1780   15.00000   13.25000  11.7%     -    1s
+     0     0   13.33333    0 1709   15.00000   13.33333  11.1%     -    1s
+     0     0   13.36111    0 1732   15.00000   13.36111  10.9%     -    1s
+     0     0   13.44444    0 1774   15.00000   13.44444  10.4%     -    1s
+     0     0   13.44444    0 1804   15.00000   13.44444  10.4%     -    1s
+     0     0   13.50000    0 1800   15.00000   13.50000  10.0%     -    1s
+     0     0   14.00000    0 1704   15.00000   14.00000  6.67%     -    2s
+     0     0   14.00000    0 1680   15.00000   14.00000  6.67%     -    2s
+     0     0   14.00000    0 1686   15.00000   14.00000  6.67%     -    2s
+     0     0   14.00000    0 1714   15.00000   14.00000  6.67%     -    2s
+     0     0   14.00000    0 1717   15.00000   14.00000  6.67%     -    2s
+     0     0   14.00000    0 1715   15.00000   14.00000  6.67%     -    2s
+     0     0   14.00000    0 1783   15.00000   14.00000  6.67%     -    2s
+     0     0   14.00000    0  309   15.00000   14.00000  6.67%     -    2s
+     0     0 infeasible    0        15.00000   15.00000  0.00%     -    2s
+
+Cutting planes:
+  MIR: 2
+  Zero half: 5
+  RLT: 2
+
+Explored 1 nodes (12194 simplex iterations) in 2.69 seconds (2.59 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 7: 15 35 51 ... 524
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.500000000000e+01, best bound 1.500000000000e+01, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/the_matrix_skewcross.sol'
+
+> Running mapping.py...
+{0: 'TR', 1: 'AB', 2: 'AS', 3: 'AJ', 4: 'NE', 5: 'SW', 6: 'AP', 7: 'MO', 8: 'CY', 9: 'DO', 10: 'TA', 11: 'MS', 12: 'OR', 13: 'RB'}
+> Running log_stats.py...
+Summary for the_matrix_skewcross:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 4
+Red-Red crossings: 3
+Blue-Red crossings: 5
+Total crossings: 12
+---
+> FairCrossings
+BlueFair: 1.2
+RedFair: 3.7
+Unfairness 2.5
+---
+> Skewness
+BlueSkew: 2
+RedSkew: 1
+Total skewness: 3
+---
+> FairSkewness
+Unfairness 0.15
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.

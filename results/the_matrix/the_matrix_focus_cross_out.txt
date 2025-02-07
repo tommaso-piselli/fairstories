@@ -1,0 +1,105 @@
+Experiment: the_matrix - focus_cross
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/the_matrix_focus_cross_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/the_matrix_focus_cross.lp
+Reading time = 0.05 seconds
+: 34532 rows, 10277 columns, 94736 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 34532 rows, 10277 columns and 94736 nonzeros
+Model fingerprint: 0x8cbccb36
+Variable types: 0 continuous, 10277 integer (10277 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 4720.0000000
+Presolve removed 26094 rows and 6633 columns
+Presolve time: 0.09s
+Presolved: 8438 rows, 3644 columns, 25314 nonzeros
+Found heuristic solution: objective 4034.0000000
+Variable types: 0 continuous, 3644 integer (3644 binary)
+Found heuristic solution: objective 4030.0000000
+
+Root relaxation: objective 0.000000e+00, 2314 iterations, 0.09 seconds (0.11 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 1570 4030.00000    0.00000   100%     -    0s
+H    0     0                    3107.0000000    0.00000   100%     -    0s
+H    0     0                    2333.0000000    0.00000   100%     -    0s
+H    0     0                     559.0000000    0.00000   100%     -    0s
+H    0     0                     400.0000000    0.00000   100%     -    0s
+     0     0   45.33333    0 1655  400.00000   45.33333  88.7%     -    0s
+     0     0   45.33333    0 1652  400.00000   45.33333  88.7%     -    0s
+H    0     0                     221.0000000   45.33333  79.5%     -    0s
+     0     0  100.50000    0 1564  221.00000  100.50000  54.5%     -    0s
+     0     0  101.00000    0 1572  221.00000  101.00000  54.3%     -    0s
+     0     0  101.00000    0 1572  221.00000  101.00000  54.3%     -    0s
+H    0     0                     174.0000000  102.00000  41.4%     -    0s
+     0     0  173.00000    0 1591  174.00000  173.00000  0.57%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 15
+
+Explored 1 nodes (5596 simplex iterations) in 0.73 seconds (0.64 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 9: 174 221 400 ... 4720
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.740000000000e+02, best bound 1.740000000000e+02, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/the_matrix_focus_cross.sol'
+
+> Running mapping.py...
+{0: 'TR', 1: 'AB', 2: 'AS', 3: 'AJ', 4: 'NE', 5: 'SW', 6: 'AP', 7: 'MO', 8: 'CY', 9: 'DO', 10: 'TA', 11: 'MS', 12: 'OR', 13: 'RB'}
+> Running log_stats.py...
+Summary for the_matrix_focus_cross:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 24
+Red-Red crossings: 0
+Blue-Red crossings: 15
+Total crossings: 39
+---
+> FairCrossings
+BlueFair: 5.7
+RedFair: 5.0
+Unfairness 0.73
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.
