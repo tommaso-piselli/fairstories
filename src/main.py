@@ -515,7 +515,7 @@ if __name__ == "__main__":
             blues.append(character['id'])
 
     # Write ILP model
-    lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, focusMode, alpha = get_experiment_config(
+    lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, crossCount, focusMode, alpha = get_experiment_config(
         experiment)
 
     output_file = f'./results/{subject}_{experiment}.lp'

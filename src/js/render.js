@@ -1,6 +1,6 @@
 async function render() {
-  let subject = "dblp";
-  let experiment = "crosswiggles";
+  let subject = "got";
+  let experiment = "cross";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
@@ -343,7 +343,9 @@ function assign_node_coordinates(
     nodes_at_this_timestep = nodes_at_this_timestep.sort((a, b) => {
       let relevant_lines = solution_lines.filter(
         (l) =>
-          l.includes(a.name) && l.includes("_" + i + "_") && l.includes(b.name)
+          // l.includes(a.name) && l.includes("_" + i + "_") && l.includes(b.name)
+          l.includes("_" + i + "_" + a.name + "_" + b.name) ||
+          l.includes("_" + i + "_" + b.name + "_" + a.name)
       );
       if (
         relevant_lines[0] === "x_" + i + "_" + a.name + "_" + b.name + " 0" ||

@@ -3,8 +3,7 @@ import subprocess
 
 # Define the subject and experiment variables
 subject = "dblp"  # Change this to your desired subject
-experiment = "crosswiggles"  # Change this to your desired experiment
-
+experiment = "crosscount_27"  # Change this to your desired experiment
 
 def run_python_script(script_name, subject, experiment):
     subprocess.run(["python3", script_name, subject, experiment])

@@ -133,6 +133,8 @@ venv.bak/
 # Folders
 supplement_material
 supplement_material/*
+node_modules
+node_modules/*
 
 # Spyder project settings
 .spyderproject
