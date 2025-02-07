@@ -1,0 +1,137 @@
+Experiment: star_wars - focus_skewcross
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/star_wars_focus_skewcross_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/star_wars_focus_skewcross.lp
+Reading time = 0.12 seconds
+: 85076 rows, 24270 columns, 236298 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 85076 rows, 24270 columns and 236298 nonzeros
+Model fingerprint: 0x1ad0a2ed
+Variable types: 0 continuous, 24270 integer (24270 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 52401 rows and 12284 columns
+Presolve time: 0.21s
+Presolved: 32675 rows, 11986 columns, 98025 nonzeros
+Variable types: 0 continuous, 11986 integer (11986 binary)
+Found heuristic solution: objective 16655.000000
+Found heuristic solution: objective 6592.0000000
+Found heuristic solution: objective 2611.0000000
+
+Root relaxation: objective 0.000000e+00, 5244 iterations, 0.29 seconds (0.34 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 3952 2611.00000    0.00000   100%     -    0s
+H    0     0                    1852.0000000    0.00000   100%     -    1s
+     0     0   62.33333    0 3998 1852.00000   62.33333  96.6%     -    1s
+     0     0   77.80952    0 3990 1852.00000   77.80952  95.8%     -    2s
+     0     0   80.22619    0 4005 1852.00000   80.22619  95.7%     -    2s
+     0     0   80.22619    0 4006 1852.00000   80.22619  95.7%     -    2s
+     0     0   94.86686    0 4082 1852.00000   94.86686  94.9%     -    2s
+     0     0   95.34259    0 4052 1852.00000   95.34259  94.9%     -    3s
+     0     0  282.35937    0 4061 1852.00000  282.35937  84.8%     -    3s
+     0     0  282.35937    0 4066 1852.00000  282.35937  84.8%     -    3s
+     0     0  282.35937    0 4010 1852.00000  282.35937  84.8%     -    3s
+     0     0  282.35937    0 4010 1852.00000  282.35937  84.8%     -    3s
+     0     0  282.35937    0 4018 1852.00000  282.35937  84.8%     -    3s
+H    0     0                     526.0000000  282.35937  46.3%     -    4s
+     0     0  282.35937    0 4056  526.00000  282.35937  46.3%     -    4s
+H    0     0                     500.0000000  282.35937  43.5%     -    4s
+     0     0  282.35937    0 4045  500.00000  282.35937  43.5%     -    4s
+     0     0  282.35937    0 4041  500.00000  282.35937  43.5%     -    4s
+     0     0  282.35937    0 4041  500.00000  282.35937  43.5%     -    4s
+     0     0  282.43750    0 4067  500.00000  282.43750  43.5%     -    5s
+     0     0  282.43750    0 4019  500.00000  282.43750  43.5%     -    5s
+     0     2  282.43750    0 4014  500.00000  282.43750  43.5%     -    6s
+H   36    52                     479.0000000  282.43750  41.0%  1483    9s
+H   42    52                     458.0000000  282.43750  38.3%  1818    9s
+    51    70  365.75758    6 3850  458.00000  282.43750  38.3%  2339   11s
+H   91   106                     411.0000000  282.43750  31.3%  2522   13s
+H   92   106                     400.0000000  282.43750  29.4%  2505   13s
+H   92   106                     398.0000000  282.43750  29.0%  2505   13s
+   145    88     cutoff    9       398.00000  282.43750  29.0%  1832   15s
+   203    96 infeasible   11       398.00000  282.43750  29.0%  1689   20s
+   379   186  282.43750   15 4044  398.00000  282.43750  29.0%  1217   25s
+   498   198  323.07533   17 3869  398.00000  282.43750  29.0%  1240   32s
+   592   192     cutoff   18       398.00000  282.43750  29.0%  1318   36s
+   722   196     cutoff   18       398.00000  282.43750  29.0%  1281   40s
+  1087   301  353.90714   23 2966  398.00000  282.43750  29.0%   963   45s
+  1698   558     cutoff    8       398.00000  282.43750  29.0%   676   51s
+  2015   568     cutoff    8       398.00000  282.43750  29.0%   578   56s
+  3466  1241 infeasible   15       398.00000  356.24138  10.5%   344   60s
+  6795  2320  396.45833   23  156  398.00000  395.62500  0.60%   181   65s
+  9830  3001  395.79167   19 4019  398.00000  395.70833  0.58%   128   71s
+  9839  3007  396.45833   17 8017  398.00000  395.70833  0.58%   128   75s
+  9842  3012  395.70833   15 7437  398.00000  395.70833  0.58%   132   80s
+
+Cutting planes:
+  Gomory: 1
+  MIR: 5
+  Inf proof: 3
+  Zero half: 42
+  RLT: 1
+
+Explored 10982 nodes (1347228 simplex iterations) in 84.66 seconds (82.07 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 10: 398 398 400 ... 526
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.980000000000e+02, best bound 3.980000000000e+02, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/star_wars_focus_skewcross.sol'
+
+> Running mapping.py...
+{0: 'DV', 1: 'PL', 2: 'R2', 3: 'C3', 4: 'OW', 5: 'LS', 6: 'HS', 7: 'CH', 8: 'JH', 9: 'GR', 10: 'LC', 11: 'MY', 12: 'BF', 13: 'EP'}
+> Running log_stats.py...
+Summary for star_wars_focus_skewcross:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 23
+Red-Red crossings: 2
+Blue-Red crossings: 16
+Total crossings: 41
+---
+> FairCrossings
+BlueFair: 5.6
+RedFair: 6.7
+Unfairness 1.0
+---
+> Skewness
+BlueSkew: 5
+RedSkew: 1
+Total skewness: 6
+---
+> FairSkewness
+Unfairness 0.12
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.

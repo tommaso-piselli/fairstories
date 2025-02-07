@@ -1,20 +1,20 @@
-0: RM : blue
-1: WP : blue 
-2: DG : red
-3: JR : blue
-4: WM : red
-5: DS : red
-6: DR : red
-7: V1 : blue
-8: VB : blue
-9: JH : red
-10: LD : red
-11: DN : red
-12: DM : red
-13: MD : red
-14: HW : red
-15: RA : red
-16: LM : blue
-17: TM : blue
-18: JV : blue
-19: GH : red
+0 : RM : red
+1 : WP : blue
+2 : DG : blue
+3 : JR : blue
+4 : WM : blue
+5 : DS : red
+6 : DR : blue
+7 : V1 : blue
+8 : VB : blue
+9 : JH : blue
+10 : LD : blue
+11 : DN : red
+12 : DM : blue
+13 : MD : blue
+14 : HW : blue
+15 : RA : blue
+16 : LM : blue
+17 : TM : blue
+18 : JV : blue
+19 : GH : blue

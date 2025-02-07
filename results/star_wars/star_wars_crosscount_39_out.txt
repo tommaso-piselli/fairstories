@@ -1,0 +1,107 @@
+Experiment: star_wars - crosscount_39
+===================
+
+> Running main.py...
+Crossing count: 39
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/star_wars_crosscount_39_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Warning: row 0 (name "") contains 8032 repeated variable(s) in constraints, grouped them, 0 cancellation
+Warning: row 1 (name "") contains 8032 repeated variable(s) in constraints, grouped them, 0 cancellation
+Warning: lp file contains 16064 repeated variable(s) in constraints, grouped them, 0 cancellation
+Read LP format model from file /home1/tpiselli/fairstories/results/star_wars_crosscount_39.lp
+Reading time = 0.12 seconds
+: 77047 rows, 24257 columns, 236300 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 77047 rows, 24257 columns and 236300 nonzeros
+Model fingerprint: 0x398e281d
+Variable types: 1 continuous, 24256 integer (24256 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+01]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+01]
+Presolve removed 52382 rows and 12282 columns
+Presolve time: 0.25s
+Presolved: 24665 rows, 11975 columns, 98033 nonzeros
+Variable types: 0 continuous, 11975 integer (11972 binary)
+
+Root relaxation: objective 0.000000e+00, 9088 iterations, 1.59 seconds (2.17 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 2040          -    0.00000      -     -    3s
+     0     0    0.00000    0 2220          -    0.00000      -     -    5s
+     0     0    0.00000    0 2211          -    0.00000      -     -    5s
+     0     0    0.00000    0 2504          -    0.00000      -     -   10s
+     0     0    0.00000    0 2509          -    0.00000      -     -   10s
+H    0     0                       5.2121212    0.00000   100%     -   15s
+     0     0    0.00000    0 2452    5.21212    0.00000   100%     -   17s
+H    0     0                       3.9393939    0.00000   100%     -   17s
+     0     0    0.00000    0 2465    3.93939    0.00000   100%     -   17s
+     0     0    0.00000    0 2454    3.93939    0.00000   100%     -   20s
+     0     0    0.00000    0 2454    3.93939    0.00000   100%     -   23s
+     0     2    0.00000    0 2454    3.93939    0.00000   100%     -   29s
+     1     4    0.00000    1 3082    3.93939    0.00000   100% 12798   31s
+
+Cutting planes:
+  Gomory: 1
+  MIR: 1
+  Zero half: 24
+
+Explored 44 nodes (127232 simplex iterations) in 34.78 seconds (42.38 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 2: 3.93939 5.21212 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.939393939394e+00, best bound 3.939393939394e+00, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/star_wars_crosscount_39.sol'
+
+> Running mapping.py...
+{0: 'DV', 1: 'PL', 2: 'R2', 3: 'C3', 4: 'OW', 5: 'LS', 6: 'HS', 7: 'CH', 8: 'JH', 9: 'GR', 10: 'LC', 11: 'MY', 12: 'BF', 13: 'EP'}
+> Running log_stats.py...
+Summary for star_wars_crosscount_39:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 16
+Red-Red crossings: 3
+Blue-Red crossings: 20
+Total crossings: 39
+---
+> FairCrossings
+BlueFair: 4.7
+RedFair: 8.7
+Unfairness 3.9
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.

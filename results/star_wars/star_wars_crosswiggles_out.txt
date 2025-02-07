@@ -1,0 +1,148 @@
+Experiment: star_wars - crosswiggles
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/star_wars_crosswiggles_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/star_wars_crosswiggles.lp
+Reading time = 0.13 seconds
+: 80790 rows, 26129 columns, 280204 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 80790 rows, 26129 columns and 280204 nonzeros
+Model fingerprint: 0xf29193d3
+Variable types: 1873 continuous, 24256 integer (24256 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 2753.0000000
+Presolve removed 60186 rows and 16167 columns
+Presolve time: 0.32s
+Presolved: 20604 rows, 9962 columns, 98096 nonzeros
+Variable types: 0 continuous, 9962 integer (8089 binary)
+Found heuristic solution: objective 2040.0000000
+
+Root relaxation: objective 0.000000e+00, 11435 iterations, 3.42 seconds (3.72 work units)
+Total elapsed time = 12.52s (DegenMoves)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0 3971 2040.00000    0.00000   100%     -   14s
+H    0     0                     910.0000000    0.00000   100%     -   14s
+H    0     0                     347.0000000    0.00000   100%     -   14s
+H    0     0                     314.0000000    0.00000   100%     -   14s
+     0     0   20.86364    0 4003  314.00000   20.86364  93.4%     -   35s
+     0     0   21.11364    0 3999  314.00000   21.11364  93.3%     -   48s
+     0     0   21.11364    0 4000  314.00000   21.11364  93.3%     -   48s
+     0     0   47.67768    0 4011  314.00000   47.67768  84.8%     -   73s
+     0     0   47.67768    0 4030  314.00000   47.67768  84.8%     -   75s
+     0     0   47.69141    0 4032  314.00000   47.69141  84.8%     -   83s
+     0     0   47.69286    0 4043  314.00000   47.69286  84.8%     -   85s
+     0     0   47.69286    0 4026  314.00000   47.69286  84.8%     -   85s
+     0     0   47.69286    0 4029  314.00000   47.69286  84.8%     -   86s
+     0     0   57.78822    0 3999  314.00000   57.78822  81.6%     -   95s
+     0     0   57.78822    0 4015  314.00000   57.78822  81.6%     -   96s
+H    0     0                     285.0000000   57.78822  79.7%     -  108s
+H    0     0                     161.0000000   57.78822  64.1%     -  108s
+     0     0   58.32148    0 4033  161.00000   58.32148  63.8%     -  108s
+     0     0   58.32148    0 4025  161.00000   58.32148  63.8%     -  108s
+H    0     0                     113.0000000   58.32148  48.4%     -  132s
+     0     0   73.47280    0 4046  113.00000   73.47280  35.0%     -  132s
+     0     0   73.47280    0 4046  113.00000   73.47280  35.0%     -  160s
+H    0     0                     109.0000000   73.47280  32.6%     -  163s
+     0     2   73.47280    0 4046  109.00000   73.47280  32.6%     -  272s
+     1     4   73.47280    1 3634  109.00000   73.47280  32.6% 198928  369s
+     3     8   99.98845    2 3818  109.00000   73.47280  32.6% 127632  438s
+     7    12     cutoff    3       109.00000   73.47280  32.6% 70075  455s
+    15    16   90.51252    4 3532  109.00000   73.47280  32.6% 39177  474s
+    27    30  100.98489    5 3333  109.00000   73.47280  32.6% 29106  489s
+    43    42     cutoff    6       109.00000   76.67572  29.7% 25343  524s
+    63    60   92.08774    7 1286  109.00000   76.71027  29.6% 22924  532s
+    83    68  104.40060    8  790  109.00000   86.13252  21.0% 18869  545s
+   103    69  104.40060    9  757  109.00000   86.14705  21.0% 18634  559s
+   128    76  104.42241   10  787  109.00000   89.64080  17.8% 17672  574s
+   155    85     cutoff   12       109.00000   89.64695  17.8% 16750  587s
+   182    83  106.83810   12  579  109.00000   89.64695  17.8% 15823  603s
+   212    98  107.60000   13  503  109.00000   89.64695  17.8% 14743  613s
+   253   118   95.87775   12  567  109.00000   89.64695  17.8% 13216  637s
+   289   138  100.86028   13  442  109.00000   89.64695  17.8% 12378  646s
+   340   143     cutoff   14       109.00000   89.64695  17.8% 11180  678s
+   368   174  105.22222   15  350  109.00000   89.64695  17.8% 10653  682s
+   442   193  106.33333   16  356  109.00000   89.64695  17.8%  9288  699s
+   507   199  106.92683   19  376  109.00000   90.56990  16.9%  8363  708s
+   583   223     cutoff    9       109.00000   90.58197  16.9%  7660  715s
+   637   236  101.29341    9 1273  109.00000   90.58197  16.9%  7361  720s
+   717   225  103.18564   10 1083  109.00000   90.58197  16.9%  6913  733s
+   792   227  105.76384   11  941  109.00000   91.47512  16.1%  6543  738s
+   890   218  107.34528   12 1850  109.00000   91.47512  16.1%  6102  746s
+  1003   222     cutoff   13       109.00000   91.54935  16.0%  5689  753s
+  1106   231     cutoff   14       109.00000   92.60789  15.0%  5407  764s
+  1232   210     cutoff    8       109.00000   92.60789  15.0%  5087  779s
+  1327   199  106.60983    7 2266  109.00000   96.58289  11.4%  4954  791s
+  1460   156     cutoff    8       109.00000   98.80745  9.35%  4707  807s
+  1583   128     cutoff   14       109.00000  102.25895  6.18%  4529  816s
+  1737    56  108.00000   22    8  109.00000  104.19773  4.41%  4304  821s
+
+Cutting planes:
+  MIR: 3
+  Inf proof: 1
+  Zero half: 86
+
+Explored 2178 nodes (7886413 simplex iterations) in 823.58 seconds (1052.14 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 9: 109 113 161 ... 2753
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.090000000000e+02, best bound 1.090000000000e+02, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/star_wars_crosswiggles.sol'
+
+> Running mapping.py...
+{0: 'DV', 1: 'PL', 2: 'R2', 3: 'C3', 4: 'OW', 5: 'LS', 6: 'HS', 7: 'CH', 8: 'JH', 9: 'GR', 10: 'LC', 11: 'MY', 12: 'BF', 13: 'EP'}
+> Running log_stats.py...
+Summary for star_wars_crosswiggles:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 13
+Red-Red crossings: 3
+Blue-Red crossings: 23
+Total crossings: 39
+---
+> FairCrossings
+BlueFair: 4.5
+RedFair: 9.7
+Unfairness 5.2
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 70
+---
+> FairWiggles
+BlueWiggles: 41.0
+RedWiggles: 29.0
+Unfairness 5.9
+> All scripts executed successfully.

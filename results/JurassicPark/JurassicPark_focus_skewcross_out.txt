@@ -1,0 +1,98 @@
+Experiment: JurassicPark - focus_skewcross
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/JurassicPark_focus_skewcross_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/JurassicPark_focus_skewcross.lp
+Reading time = 0.02 seconds
+: 10377 rows, 3397 columns, 29117 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 10377 rows, 3397 columns and 29117 nonzeros
+Model fingerprint: 0x101b1b61
+Variable types: 0 continuous, 3397 integer (3397 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 2328.0000000
+Presolve removed 4547 rows and 1509 columns
+Presolve time: 0.03s
+Presolved: 5830 rows, 1888 columns, 17490 nonzeros
+Found heuristic solution: objective 1675.0000000
+Variable types: 0 continuous, 1888 integer (1888 binary)
+
+Root relaxation: objective 0.000000e+00, 829 iterations, 0.02 seconds (0.02 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  657 1675.00000    0.00000   100%     -    0s
+H    0     0                    1122.0000000    0.00000   100%     -    0s
+H    0     0                    1094.0000000    0.00000   100%     -    0s
+H    0     0                    1086.0000000    0.00000   100%     -    0s
+H    0     0                     785.0000000    0.00000   100%     -    0s
+H    0     0                     249.0000000  163.00000  34.5%     -    0s
+     0     0  163.00000    0  683  249.00000  163.00000  34.5%     -    0s
+
+Cutting planes:
+  Gomory: 4
+  Zero half: 31
+
+Explored 1 nodes (2018 simplex iterations) in 0.25 seconds (0.20 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 7: 249 785 1086 ... 2328
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.490000000000e+02, best bound 2.490000000000e+02, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/JurassicPark_focus_skewcross.sol'
+
+> Running mapping.py...
+{0: 'RM', 1: 'WP', 2: 'DG', 3: 'JR', 4: 'WM', 5: 'DS', 6: 'DR', 7: 'V1', 8: 'VB', 9: 'JH', 10: 'LD', 11: 'DN', 12: 'DM', 13: 'MD', 14: 'HW', 15: 'RA', 16: 'LM', 17: 'TM', 18: 'JV', 19: 'GH'}
+> Running log_stats.py...
+Summary for JurassicPark_focus_skewcross:
+=====================================
+Total characters: 20
+Blue characters: 17
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 13
+Red-Red crossings: 1
+Blue-Red crossings: 12
+Total crossings: 26
+---
+> FairCrossings
+BlueFair: 2.2
+RedFair: 4.7
+Unfairness 2.4
+---
+> Skewness
+BlueSkew: 6
+RedSkew: 1
+Total skewness: 7
+---
+> FairSkewness
+Unfairness 0.02
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.

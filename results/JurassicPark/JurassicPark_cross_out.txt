@@ -1,0 +1,103 @@
+Experiment: JurassicPark - cross
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/JurassicPark_cross_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/JurassicPark_cross.lp
+Reading time = 0.02 seconds
+: 9320 rows, 3377 columns, 25946 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 9320 rows, 3377 columns and 25946 nonzeros
+Model fingerprint: 0x2c7bdf6f
+Variable types: 0 continuous, 3377 integer (3377 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 296.0000000
+Presolve removed 4720 rows and 1589 columns
+Presolve time: 0.04s
+Presolved: 4600 rows, 1788 columns, 13800 nonzeros
+Found heuristic solution: objective 166.0000000
+Variable types: 0 continuous, 1788 integer (1788 binary)
+Found heuristic solution: objective 162.0000000
+
+Root relaxation: objective 0.000000e+00, 773 iterations, 0.03 seconds (0.03 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  655  162.00000    0.00000   100%     -    0s
+H    0     0                      66.0000000    0.00000   100%     -    0s
+H    0     0                      49.0000000    0.00000   100%     -    0s
+H    0     0                      43.0000000    0.00000   100%     -    0s
+     0     0   12.00000    0  658   43.00000   12.00000  72.1%     -    0s
+H    0     0                      41.0000000   12.00000  70.7%     -    0s
+H    0     0                      37.0000000   12.00000  67.6%     -    0s
+     0     0   15.00000    0  655   37.00000   15.00000  59.5%     -    0s
+     0     0   16.33333    0  661   37.00000   16.33333  55.9%     -    0s
+H    0     0                      27.0000000   17.33333  35.8%     -    0s
+H    0     0                      18.0000000   17.33333  3.70%     -    0s
+     0     0   17.33333    0  661   18.00000   17.33333  3.70%     -    0s
+
+Cutting planes:
+  Zero half: 6
+
+Explored 1 nodes (2407 simplex iterations) in 0.35 seconds (0.26 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 10: 18 27 37 ... 296
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.800000000000e+01, best bound 1.800000000000e+01, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/JurassicPark_cross.sol'
+
+> Running mapping.py...
+{0: 'RM', 1: 'WP', 2: 'DG', 3: 'JR', 4: 'WM', 5: 'DS', 6: 'DR', 7: 'V1', 8: 'VB', 9: 'JH', 10: 'LD', 11: 'DN', 12: 'DM', 13: 'MD', 14: 'HW', 15: 'RA', 16: 'LM', 17: 'TM', 18: 'JV', 19: 'GH'}
+> Running log_stats.py...
+Summary for JurassicPark_cross:
+=====================================
+Total characters: 20
+Blue characters: 17
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 1
+Red-Red crossings: 2
+Blue-Red crossings: 15
+Total crossings: 18
+---
+> FairCrossings
+BlueFair: 1.0
+RedFair: 6.3
+Unfairness 5.3
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.
