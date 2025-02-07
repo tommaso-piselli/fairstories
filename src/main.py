@@ -13,27 +13,30 @@ REGULAR_CONFIGS = {
     'skewcross': (0, 1, 0, 1, 0, 0),
 }
 
-
 FOCUS_CONFIGS = {
-    'focus_cross': (0, 0, 0, 1, 0, 0, True, 10),
-    'focus_skewcross': (0, 1, 0, 1, 0, 0, True, 10),
-    'focus_crosswiggles': (0, 0, 0, 1, 0, 1, True, 10),
-    'focus_skewcrosswiggles': (0, 1, 0, 1, 0, 1, True, 10),
+    'focus_cross': (0, 0, 0, 1, 0, 0, None, True, 10),
+    'focus_skewcross': (0, 1, 0, 1, 0, 0, None, True, 10),
+    'focus_crosswiggles': (0, 0, 0, 1, 0, 1, None, True, 10),
+    'focus_skewcrosswiggles': (0, 1, 0, 1, 0, 1, None, True, 10),
 }
 
 
 def get_experiment_config(experiment):
     """
     Get experiment configuration parameters based on the experiment name.
-    Returns tuple of (lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, focusMode, alpha)
+    Returns tuple of (lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, crossCount, focusMode, alpha)
     """
+
+    if experiment.startswith('crosscount_'):
+        crosscount = int(experiment.split('_')[1])
+        return (0, 0, 1, 0, 0, 0, crossCount, False, 0)
 
     if experiment in FOCUS_CONFIGS:
         return FOCUS_CONFIGS[experiment]
 
     if experiment in REGULAR_CONFIGS:
         # Add focusMode=False and alpha=0 for regular configs
-        return REGULAR_CONFIGS[experiment] + (False, 0.0)
+        return REGULAR_CONFIGS[experiment] + (None, False, 0.0)
 
     return (0, 0, 0, 0, 0, 0, False, 0.0)
 
@@ -100,7 +103,7 @@ def read_sl_file(filepath):
     return interactions, t_activechars, t_interactions, num_chars
 
 
-def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossing_count=None, focusMode=False, alpha=2.0):
+def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossCount=None, focusMode=False, alpha=2.0):
     '''
     lambda1: fairSkewness
     lambda2: Skewness
@@ -433,8 +436,8 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                             ordering_vars.add(x_2out)
 
         # crossing count constraint
-        if crossing_count is not None:
-            # Sum of all crossing variables should equal crossing_count
+        if crossCount is not None:
+            # Sum of all crossing variables should equal crossCount
             crossing_sum_terms = []
             for t in range(len(t_activechars) - 1):
                 chars_t = set(t_activechars[t])
@@ -450,8 +453,8 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
             # Build the sum of all y variables
             sum_string = " + ".join(crossing_sum_terms)
-            #  file.write(f"{sum_string} <= {crossing_count}\n")
-            file.write(f"{sum_string} <= {crossing_count}\n")
+            #  file.write(f"{sum_string} <= {crossCount}\n")
+            file.write(f"{sum_string} <= {crossCount}\n")
 
         # Write binary variable declarations
         file.write("\nBinaries\n")
@@ -472,10 +475,10 @@ if __name__ == "__main__":
     experiment = sys.argv[2]
 
     if experiment.split('_')[0] == 'crosscount':
-        crossing_count = int(experiment.split('_')[1])
-        print(f"Crossing count: {crossing_count}")
+        crossCount = int(experiment.split('_')[1])
+        print(f"Crossing count: {crossCount}")
     else:
-        crossing_count = None
+        crossCount = None
 
     # Usage example:
     filepath = f"./data/sl/{subject}.sl"
@@ -516,6 +519,7 @@ if __name__ == "__main__":
         experiment)
 
     output_file = f'./results/{subject}_{experiment}.lp'
+
     write_ilp_model(output_file, t_activechars, t_interactions, num_chars,
-                    lambda1, lambda2, lambda3, lambda4, lambda5, lambda6,
+                    lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, crossCount=crossCount,
                     focusMode=focusMode, alpha=alpha)
