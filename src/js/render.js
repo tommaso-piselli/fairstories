@@ -1,6 +1,6 @@
 async function render() {
-  let subject = "star_wars";
-  let experiment = "focus_skewcrosswiggles";
+  let subject = "JurassicPark";
+  let experiment = "fair_skewcrosswiggles";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
@@ -20,7 +20,7 @@ async function render() {
   ).textContent = `Storyline visualization of: ${subject}`;
 
   let visualization_options = {
-    width: 4000,
+    width: 4000, // default:4000
     height: 1000,
     padding: { left: 20, right: 20, top: 20, bottom: 20 },
     base_node_vertical_distance: 30,
