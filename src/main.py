@@ -4,13 +4,15 @@ REGULAR_CONFIGS = {
     'fairskew': (1000, 0, 0, 0, 0, 0),
     'skew': (0, 1, 0, 0, 0, 0),
     'cross': (0, 0, 0, 1, 0, 0),
-    'faircross': (0, 0, 1000, 1, 0, 0),
     'wiggles': (0, 0, 0, 0, 0, 1),
     'fairwiggles': (0, 0, 0, 0, 1000, 0),
+    'skewcross': (0, 1, 0, 1, 0, 0),
     'crosswiggles': (0, 0, 0, 1, 0, 1),
     'skewcrosswiggles': (0, 1, 0, 1, 0, 1),
-    'fairskewcrosswiggles': (1, 0, 1, 0, 1, 0),
-    'skewcross': (0, 1, 0, 1, 0, 0),
+    'fair_cross': (0, 0, 1000, 1, 0, 0),
+    'fair_skewcross': (1000, 1, 0, 1, 0, 0),
+    'fair_crossiwiggles': (0, 0, 0, 1, 1000, 1),
+    'fair_skewcrosswiggles': (1000, 1, 1000, 1, 1000, 1),
 }
 
 FOCUS_CONFIGS = {
@@ -103,7 +105,7 @@ def read_sl_file(filepath):
     return interactions, t_activechars, t_interactions, num_chars
 
 
-def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossCount=None, focusMode=False, alpha=2.0):
+def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=1.0, lambda2=1.0, lambda3=1.0, lambda4=1.0, lambda5=1.0, lambda6=1.0, crossCount=None, focusMode=False, alpha=1.0):
     '''
     lambda1: fairSkewness
     lambda2: Skewness

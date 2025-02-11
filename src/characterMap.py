@@ -38,7 +38,7 @@ def save_indexed_characters(character_list, output_folder, subject):
 
 def main():
 
-    subject = "the_matrix"
+    subject = "dblp"
     master_file_path = f"./data/txt/{subject}.master"
 
     output_folder = "./data/map"

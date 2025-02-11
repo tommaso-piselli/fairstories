@@ -1,0 +1,131 @@
+Experiment: JurassicPark - fair_skewcross
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/JurassicPark_fair_skewcross_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/JurassicPark_fair_skewcross.lp
+Reading time = 0.02 seconds
+: 10379 rows, 3398 columns, 29159 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 10379 rows, 3398 columns and 29159 nonzeros
+Model fingerprint: 0x952e32de
+Variable types: 1 continuous, 3397 integer (3397 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 5e+01]
+  Objective range  [1e+00, 1e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 972.7058964
+Presolve removed 4547 rows and 1508 columns
+Presolve time: 0.03s
+Presolved: 5832 rows, 1890 columns, 17518 nonzeros
+Found heuristic solution: objective 900.0980532
+Variable types: 0 continuous, 1890 integer (1888 binary)
+Found heuristic solution: objective 842.2745238
+
+Root relaxation: objective 0.000000e+00, 857 iterations, 0.03 seconds (0.03 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  657  842.27452    0.00000   100%     -    0s
+H    0     0                      99.6078431    0.00000   100%     -    0s
+H    0     0                      82.0000000    0.00000   100%     -    0s
+H    0     0                      56.0000000    0.00000   100%     -    0s
+     0     0   18.00000    0  677   56.00000   18.00000  67.9%     -    0s
+     0     0   19.11111    0  673   56.00000   19.11111  65.9%     -    0s
+     0     0   21.16667    0  673   56.00000   21.16667  62.2%     -    0s
+     0     0   21.74985    0  702   56.00000   21.74985  61.2%     -    0s
+H    0     0                      53.6078431   21.77311  59.4%     -    0s
+H    0     0                      41.0000000   21.77311  46.9%     -    0s
+     0     0   23.15158    0  769   41.00000   23.15158  43.5%     -    0s
+     0     0   23.61777    0  732   41.00000   23.61777  42.4%     -    0s
+     0     0   23.61777    0  727   41.00000   23.61777  42.4%     -    0s
+     0     0   26.68667    0  747   41.00000   26.68667  34.9%     -    0s
+     0     0   27.03282    0  731   41.00000   27.03282  34.1%     -    0s
+     0     0   27.09463    0  744   41.00000   27.09463  33.9%     -    0s
+     0     0   27.12500    0  737   41.00000   27.12500  33.8%     -    0s
+     0     0   27.75423    0  752   41.00000   27.75423  32.3%     -    0s
+     0     0   28.18411    0  734   41.00000   28.18411  31.3%     -    0s
+     0     0   28.32171    0  737   41.00000   28.32171  30.9%     -    0s
+     0     0   28.33497    0  754   41.00000   28.33497  30.9%     -    0s
+     0     0   28.33987    0  760   41.00000   28.33987  30.9%     -    0s
+     0     0   29.26797    0  712   41.00000   29.26797  28.6%     -    0s
+     0     0   29.36667    0  763   41.00000   29.36667  28.4%     -    0s
+     0     0   29.52362    0  758   41.00000   29.52362  28.0%     -    0s
+     0     0   29.55526    0  756   41.00000   29.55526  27.9%     -    0s
+     0     0   29.55845    0  762   41.00000   29.55845  27.9%     -    0s
+     0     0   30.30000    0  736   41.00000   30.30000  26.1%     -    0s
+     0     0   30.39216    0  732   41.00000   30.39216  25.9%     -    0s
+     0     0   30.39216    0  732   41.00000   30.39216  25.9%     -    0s
+     0     0   31.25000    0  731   41.00000   31.25000  23.8%     -    0s
+     0     0   31.25000    0  728   41.00000   31.25000  23.8%     -    0s
+     0     0   31.25000    0  734   41.00000   31.25000  23.8%     -    1s
+     0     0   31.25000    0  586   41.00000   31.25000  23.8%     -    1s
+     0     2   31.25000    0  586   41.00000   31.25000  23.8%     -    1s
+*   11     6               3      38.0000000   36.51389  3.91%   593    1s
+
+Cutting planes:
+  Gomory: 1
+  Cover: 2
+  MIR: 2
+  StrongCG: 4
+  Zero half: 18
+
+Explored 20 nodes (17138 simplex iterations) in 1.67 seconds (1.70 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 9: 38 41 53.6078 ... 972.706
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.800000000000e+01, best bound 3.800000000000e+01, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/JurassicPark_fair_skewcross.sol'
+
+> Running mapping.py...
+{0: 'RM', 1: 'WP', 2: 'DG', 3: 'JR', 4: 'WM', 5: 'DS', 6: 'DR', 7: 'V1', 8: 'VB', 9: 'JH', 10: 'LD', 11: 'DN', 12: 'DM', 13: 'MD', 14: 'HW', 15: 'RA', 16: 'LM', 17: 'TM', 18: 'JV', 19: 'GH'}
+> Running log_stats.py...
+Summary for JurassicPark_fair_skewcross:
+=====================================
+Total characters: 20
+Blue characters: 17
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 2
+Red-Red crossings: 3
+Blue-Red crossings: 13
+Total crossings: 18
+---
+> FairCrossings
+BlueFair: 1.0
+RedFair: 6.3
+Unfairness 5.3
+---
+> Skewness
+BlueSkew: 17
+RedSkew: 3
+Total skewness: 20
+---
+> FairSkewness
+Unfairness 0.0
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.0
+> All scripts executed successfully.
