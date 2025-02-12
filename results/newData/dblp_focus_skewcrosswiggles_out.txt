@@ -1,0 +1,142 @@
+Experiment: dblp - focus_skewcrosswiggles
+===================
+
+> Running main.py...
+> Running run_gurobi.sh...
+Set parameter TokenServer to value "clustermaster.ac.tuwien.ac.at"
+Set parameter TimeLimit to value 25200
+Set parameter LogFile to value "/home1/tpiselli/fairstories/results/dblp_focus_skewcrosswiggles_.log"
+Using license file /home1/share/gurobi/gurobi.lic
+
+Gurobi Optimizer version 11.0.1 build v11.0.1rc0 (linux64 - "Ubuntu 18.04.6 LTS")
+Copyright (c) 2024, Gurobi Optimization, LLC
+
+Read LP format model from file /home1/tpiselli/fairstories/results/dblp_focus_skewcrosswiggles.lp
+Reading time = 0.03 seconds
+: 14067 rows, 4677 columns, 49055 nonzeros
+
+CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 20 physical cores, 20 logical processors, using up to 20 threads
+
+Optimize a model with 14067 rows, 4677 columns and 49055 nonzeros
+Model fingerprint: 0x499a3daf
+Variable types: 370 continuous, 4307 integer (4307 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective 4671.0000000
+Presolve removed 6858 rows and 2007 columns
+Presolve time: 0.06s
+Presolved: 7209 rows, 2670 columns, 29091 nonzeros
+Variable types: 0 continuous, 2670 integer (2304 binary)
+Found heuristic solution: objective 3845.0000000
+
+Root relaxation: objective 0.000000e+00, 1783 iterations, 0.13 seconds (0.13 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0  839 3845.00000    0.00000   100%     -    0s
+H    0     0                    2377.0000000    0.00000   100%     -    0s
+H    0     0                    2321.0000000    0.00000   100%     -    0s
+     0     0   71.66667    0  859 2321.00000   71.66667  96.9%     -    0s
+H    0     0                    2279.0000000   71.77778  96.9%     -    0s
+     0     0   90.51190    0  911 2279.00000   90.51190  96.0%     -    1s
+     0     0   91.35000    0  909 2279.00000   91.35000  96.0%     -    1s
+     0     0   91.37500    0  909 2279.00000   91.37500  96.0%     -    1s
+     0     0   91.37500    0  909 2279.00000   91.37500  96.0%     -    1s
+     0     0  112.72583    0  925 2279.00000  112.72583  95.1%     -    2s
+H    0     0                    1025.0000000  112.86553  89.0%     -    2s
+H    0     0                     474.0000000  112.86553  76.2%     -    2s
+     0     0  117.00000    0  875  474.00000  117.00000  75.3%     -    2s
+     0     0  117.33333    0  909  474.00000  117.33333  75.2%     -    2s
+     0     0  117.65646    0  933  474.00000  117.65646  75.2%     -    2s
+     0     0  117.67969    0  918  474.00000  117.67969  75.2%     -    2s
+     0     0  134.75391    0  957  474.00000  134.75391  71.6%     -    2s
+     0     0  136.38889    0  952  474.00000  136.38889  71.2%     -    3s
+     0     0  136.56448    0  973  474.00000  136.56448  71.2%     -    3s
+     0     0  136.70000    0  962  474.00000  136.70000  71.2%     -    3s
+     0     0  136.72063    0  975  474.00000  136.72063  71.2%     -    3s
+     0     0  145.00000    0  927  474.00000  145.00000  69.4%     -    3s
+     0     0  152.11111    0  929  474.00000  152.11111  67.9%     -    3s
+     0     0  153.12500    0  894  474.00000  153.12500  67.7%     -    3s
+     0     0  153.19635    0  948  474.00000  153.19635  67.7%     -    3s
+     0     0  153.24777    0  946  474.00000  153.24777  67.7%     -    3s
+     0     0  153.26667    0  953  474.00000  153.26667  67.7%     -    3s
+     0     0  194.25685    0  945  474.00000  194.25685  59.0%     -    4s
+     0     0  195.05338    0  976  474.00000  195.05338  58.8%     -    4s
+     0     0  195.09611    0  978  474.00000  195.09611  58.8%     -    4s
+     0     0  196.48941    0  977  474.00000  196.48941  58.5%     -    4s
+H    0     0                     472.0000000  196.56747  58.4%     -    4s
+     0     0  197.38045    0  998  472.00000  197.38045  58.2%     -    4s
+     0     0  197.72817    0 1030  472.00000  197.72817  58.1%     -    5s
+     0     0  197.81009    0 1018  472.00000  197.81009  58.1%     -    5s
+     0     0  197.81456    0 1033  472.00000  197.81456  58.1%     -    5s
+     0     0  199.54735    0  945  472.00000  199.54735  57.7%     -    5s
+     0     0  199.84943    0  962  472.00000  199.84943  57.7%     -    5s
+     0     0  199.88694    0  980  472.00000  199.88694  57.7%     -    5s
+     0     0  200.86755    0  949  472.00000  200.86755  57.4%     -    6s
+     0     0  200.94937    0  930  472.00000  200.94937  57.4%     -    6s
+     0     2  200.98218    0  929  472.00000  200.98218  57.4%     -    6s
+     7    16  201.32759    3  952  472.00000  201.32759  57.3%  2470   11s
+    15    32  251.02343    4 1115  472.00000  201.33237  57.3%  4965   17s
+H   17    32                     346.0000000  201.33237  41.8%  5524   17s
+    31    25  276.37054    5 1064  346.00000  250.72305  27.5%  9607   23s
+H   51    25                     332.0000000  250.72305  24.5%  6792   23s
+    56    25     cutoff    6       332.00000  250.72305  24.5%  6454   26s
+H   99    27                     318.0000000  308.89997  2.86%  4365   27s
+H   99    27                     317.0000000  308.89997  2.56%  4365   27s
+
+Cutting planes:
+  MIR: 3
+  StrongCG: 1
+  Zero half: 147
+
+Explored 141 nodes (462511 simplex iterations) in 27.91 seconds (37.15 work units)
+Thread count was 20 (of 20 available processors)
+
+Solution count 10: 317 318 332 ... 2377
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.170000000000e+02, best bound 3.170000000000e+02, gap 0.0000%
+
+Wrote result file '/home1/tpiselli/fairstories/results/dblp_focus_skewcrosswiggles.sol'
+
+> Running mapping.py...
+{0: 'FM', 1: 'MN', 2: 'AP', 3: 'GL', 4: 'WD', 5: 'CB', 6: 'EDG', 7: 'LG', 8: 'FDL', 9: 'RG', 10: 'SB', 11: 'AW', 12: 'SM', 13: 'LK', 14: 'AV', 15: 'AT', 16: 'MW', 17: 'TP'}
+> Running log_stats.py...
+Summary for dblp_focus_skewcrosswiggles:
+=====================================
+Total characters: 18
+Blue characters: 14
+Red characters: 4
+---
+> Crossings
+Blue-Blue crossings: 12
+Red-Red crossings: 1
+Blue-Red crossings: 8
+Total crossings: 21
+---
+> FairCrossings
+BlueFair: 2.3
+RedFair: 2.5
+Unfairness 0.21
+---
+> Skewness
+BlueSkew: 3
+RedSkew: 1
+Total skewness: 4
+---
+> FairSkewness
+Unfairness 0.036
+---
+> Wiggles
+Total wiggles: 40
+---
+> FairWiggles
+BlueWiggles: 32.0
+RedWiggles: 8.0
+Unfairness 0.29
+> All scripts executed successfully.

@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
             if group1 == 'blue' and group2 == 'blue':
                 blue_blue_crossings += 1
-                print(char1, char2, 'blue')
+                print(line.strip())
             elif group1 == 'red' and group2 == 'red':
                 red_red_crossings += 1
             elif (group1 == 'blue' and group2 == 'red') or (group1 == 'red' and group2 == 'blue'):

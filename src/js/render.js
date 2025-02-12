@@ -1,6 +1,6 @@
 async function render() {
-  let subject = "the_matrix";
-  let experiment = "faircross";
+  let subject = "JurassicPark";
+  let experiment = "fair_cross";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
