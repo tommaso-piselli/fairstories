@@ -225,7 +225,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
         red_wiggles = []
         blue_wiggles = []
 
-        # --- 1. SKEWNESS AND FAIR SKEWNESS CONSTRAINTS (lambda1, lambda2) ---
+        # ! SKEWNESS AND FAIR SKEWNESS CONSTRAINTS (lambda1, lambda2)
         if lambda1 != 0 or lambda2 != 0:
             # Individual skewness constraints
             for t in range(len(t_activechars) - 1):
@@ -243,7 +243,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                         file.write(f"S_{char1} + S_{char2} - {y_var} >= 0\n")
 
             if lambda1 != 0:
-                # Fair skewness constraints
+                # TODO: Fair skewness constraints
                 constraint1_terms = []
                 for char_id in blues:
                     char_idx = int(char_id)
@@ -269,7 +269,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                 constraint2_terms.append(f"- {num_reds * num_blues} FairSkew")
                 file.write(f"{' '.join(constraint2_terms)} <= 0\n")
 
-        # --- 2. FAIR CROSSING CONSTRAINTS (lambda3) ---
+        # ! FAIR CROSSING CONSTRAINTS (lambda3)
         # First collect all crossings
         for t in range(len(t_activechars) - 1):
             chars_t = set(t_activechars[t])
@@ -294,7 +294,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
         # Modified fair crossing constraints
         if lambda3 != 0:
 
-            mixed_weight = 0.5
+            mixed_weight = 0.5  # mixed crossings count half of the monocolored crossings
 
             constraint1_terms = []
 
@@ -343,7 +343,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             constraint2_terms.append(f"- {num_reds * num_blues} FairCross")
             file.write(f"{' '.join(constraint2_terms)} <= 0\n")
 
-        # --- 3. CROSSING DETECTION CONSTRAINTS (lambda4) ---
+        # ! CROSSING DETECTION CONSTRAINTS (lambda4)
         for t in range(len(t_activechars) - 1):
             chars_t = set(t_activechars[t])
             chars_t1 = set(t_activechars[t+1])
@@ -357,24 +357,37 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     x_t = f"x_{t}_{char1}_{char2}"
                     x_t1 = f"x_{t+1}_{char1}_{char2}"
 
-                    beta_var = f'beta_{t}_{char1}_{char2}'
-                    beta_vars.add(beta_var)
+                    file.write(f"{y_var} - {x_t} + {x_t1} >= 0\n")
+                    file.write(f"{y_var} + {x_t} - {x_t1} >= 0\n")
 
-                    if only_beta:
-                        file.write(
-                            f"{y_var} + {x_t} + {x_t1} + 2 {beta_var} = 2\n")
-                    else:
-                        file.write(f"{y_var} - {x_t} + {x_t1} >= 0\n")
-                        file.write(f"{y_var} + {x_t} - {x_t1} >= 0\n")
+                    if lambda3 != 0:
+                        beta_var = f'beta_{t}_{char1}_{char2}'
+                        beta_vars.add(beta_var)
                         file.write(
                             f"{y_var} + {x_t} + {x_t1} + 2 {beta_var} = 2\n")
 
-        # --- 4. WIGGLE DETECTION CONSTRAINTS (lambda6) ---
+        # ! WIGGLE DETECTION CONSTRAINTS (lambda6)
+        # TODO: MODIFY THIS PART!
         if lambda5 != 0 or lambda6 != 0:
+            baseline_vars = set()  # Track baseline variables
             for t in range(len(t_activechars) - 1):
                 chars_t = set(t_activechars[t])
                 chars_t1 = set(t_activechars[t+1])
                 common_chars = sorted(list(chars_t & chars_t1))
+
+                # Add baseline variables for current and next timestep
+                baseline_t = f"b_{t}"
+                baseline_t1 = f"b_{t+1}"
+                baseline_vars.add(baseline_t)
+                baseline_vars.add(baseline_t1)
+
+                # Add baseline bounds constraints
+                file.write(f"{baseline_t} >= 0\n")
+                file.write(f"{baseline_t} <= {num_chars}\n")
+
+                if t == len(t_activechars)-2:
+                    file.write(f"{baseline_t1} >= 0\n")
+                    file.write(f"{baseline_t1} <= {num_chars}\n")
 
                 # Only process characters that appear in both timestamps
                 for char_i in common_chars:
@@ -386,24 +399,34 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     elif str(char_i) in blues:
                         blue_wiggles.append(wiggle_var)
 
-                    # First constraint: w_{t,i} - Σ(x_{t,i,j} - x_{t+1,i,j}) ≥ 0
                     constraint1_terms = [wiggle_var]
-                    for char_j in common_chars:  # j must also be in both timestamps
+                    for char_j in chars_t:  # j must also be in both timestamps
                         if char_i != char_j:
                             constraint1_terms.append(
                                 f"- x_{t}_{char_i}_{char_j}")
+                    constraint1_terms.append(f"- {baseline_t}")
+
+                    for char_j in chars_t1:
+                        if char_i != char_j:
                             constraint1_terms.append(
                                 f"+ x_{t+1}_{char_i}_{char_j}")
+                    constraint1_terms.append(f"+ {baseline_t1}")
+
+                    # Add baseline terms
                     file.write(f"{' '.join(constraint1_terms)} >= 0\n")
 
-                    # Second constraint: w_{t,i} - Σ(x_{t+1,i,j} - x_{t,i,j}) ≥ 0
                     constraint2_terms = [wiggle_var]
-                    for char_j in common_chars:  # j must also be in both timestamps
+                    for char_j in chars_t1:
                         if char_i != char_j:
                             constraint2_terms.append(
                                 f"- x_{t+1}_{char_i}_{char_j}")
+                    constraint2_terms.append(f"- {baseline_t1}")
+
+                    for char_j in chars_t:
+                        if char_i != char_j:
                             constraint2_terms.append(
                                 f"+ x_{t}_{char_i}_{char_j}")
+                    constraint2_terms.append(f"+ {baseline_t}")
                     file.write(f"{' '.join(constraint2_terms)} >= 0\n")
 
         # --- 5. FAIR WIGGLES CONSTRAINTS (lambda5) ---
@@ -506,6 +529,10 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             file.write(f"{var}\n")
         for var in beta_vars:
             file.write(f'{var}\n')
+
+        file.write("Integer\n")
+        for var in baseline_vars:
+            file.write(f"{var}\n")
 
 
 if __name__ == "__main__":
