@@ -47,7 +47,7 @@ if __name__ == "__main__":
     for old_var in test_variables:
         var = old_var.split('_')
 
-        if var[0] == 'x' or var[0] == 'y':
+        if var[0] == 'x' or var[0] == 'y' or var[0].startswith('beta'):
             new_var = var[:2]
 
             id_char1 = var[2]

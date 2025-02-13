@@ -1,25 +1,23 @@
 import sys
 
 REGULAR_CONFIGS = {
-    'fairskew': (1000, 0, 0, 0, 0, 0),
     'skew': (0, 1, 0, 0, 0, 0),
     'cross': (0, 0, 0, 1, 0, 0),
     'wiggles': (0, 0, 0, 0, 0, 1),
-    'fairwiggles': (0, 0, 0, 0, 1000, 0),
-    'skewcross': (0, 1, 0, 1, 0, 0),
-    'crosswiggles': (0, 0, 0, 1, 0, 1),
-    'skewcrosswiggles': (0, 1, 0, 1, 0, 1),
-    'fair_cross': (0, 0, 1000, 1, 0, 0),
-    'fair_skewcross': (1000, 1, 0, 1, 0, 0),
-    'fair_crossiwiggles': (0, 0, 0, 1, 1000, 1),
-    'fair_skewcrosswiggles': (1000, 1, 1000, 1, 1000, 1),
+    'skewCross': (0, 1, 0, 1, 0, 0),
+    'crossWiggles': (0, 0, 0, 1, 0, 1),
+    'skewCrossWiggles': (0, 1, 0, 1, 0, 1),
+    'fairCross': (0, 0, 1000, 1, 0, 0),
+    'fairSkewCross': (1000, 1, 0, 1, 0, 0),
+    'fairCrossiWiggles': (0, 0, 0, 1, 1000, 1),
+    'fairSkewCrossWiggles': (1000, 1, 1000, 1, 1000, 1),
 }
 
 FOCUS_CONFIGS = {
-    'focus_cross': (0, 0, 0, 1, 0, 0, None, True, 10),
-    'focus_skewcross': (0, 1, 0, 1, 0, 0, None, True, 10),
-    'focus_crosswiggles': (0, 0, 0, 1, 0, 1, None, True, 10),
-    'focus_skewcrosswiggles': (0, 1, 0, 1, 0, 1, None, True, 10),
+    'focusCross': (0, 0, 0, 1, 0, 0, None, True, 10),
+    'focusSkewCross': (0, 1, 0, 1, 0, 0, None, True, 10),
+    'focusCrossWiggles': (0, 0, 0, 1, 0, 1, None, True, 10),
+    'focusSkewCrossWiggles': (0, 1, 0, 1, 0, 1, None, True, 10),
 }
 
 
@@ -117,9 +115,12 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
     alpha: weight multiplier for focus mode
     '''
 
+    only_beta = False
+
     # Keep track of all variables
     ordering_vars = set()
     crossing_vars = set()
+    beta_vars = set()
     wiggle_vars = set()
     skewness_vars = set()
 
@@ -216,8 +217,9 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
         file.write("\nSubject To\n")
 
         # Track crossing variables for fairness constraints
-        red_crossings = []
-        blue_crossings = []
+        red_only_crossings = []
+        blue_only_crossings = []
+        mixed_crossings = []
 
         # Track wiggle variables for fairness constraints
         red_wiggles = []
@@ -278,39 +280,66 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                 for j in range(i + 1, len(common_chars)):
                     char1 = common_chars[i]
                     char2 = common_chars[j]
-                    if lambda3 != 0:
-                        y_var = f"y_{t}_{char1}_{char2}"
-                        if str(char1) in reds:
-                            red_crossings.append(y_var)
-                        if str(char2) in reds:
-                            red_crossings.append(y_var)
-                        if str(char1) in blues:
-                            blue_crossings.append(y_var)
-                        if str(char2) in blues:
-                            blue_crossings.append(y_var)
+                    y_var = f"y_{t}_{char1}_{char2}"
 
+                    # Categorize crossing based on the groups of both characters
+                    if str(char1) in reds and str(char2) in reds:
+                        red_only_crossings.append(y_var)
+                    elif str(char1) in blues and str(char2) in blues:
+                        blue_only_crossings.append(y_var)
+                    elif (str(char1) in reds and str(char2) in blues) or \
+                            (str(char1) in blues and str(char2) in reds):
+                        mixed_crossings.append(y_var)
+
+        # Modified fair crossing constraints
         if lambda3 != 0:
-            # Fair crossing first constraint
+
+            mixed_weight = 0.5
+
             constraint1_terms = []
-            if blue_crossings:
-                first_var = blue_crossings[0]
-                constraint1_terms.append(f"{num_reds} {first_var}")
-                for blue_var in blue_crossings[1:]:
+
+            # Blue group crossings (including partial contribution from mixed)
+            if blue_only_crossings:
+                for blue_var in blue_only_crossings:
                     constraint1_terms.append(f"+ {num_reds} {blue_var}")
-            for red_var in red_crossings:
-                constraint1_terms.append(f"- {num_blues} {red_var}")
+            if mixed_crossings:
+                for mixed_var in mixed_crossings:
+                    constraint1_terms.append(
+                        f"+ {num_reds * mixed_weight} {mixed_var}")
+
+            # Red group crossings (including partial contribution from mixed)
+            if red_only_crossings:
+                for red_var in red_only_crossings:
+                    constraint1_terms.append(f"- {num_blues} {red_var}")
+            if mixed_crossings:
+                for mixed_var in mixed_crossings:
+                    constraint1_terms.append(
+                        f"- {num_blues * mixed_weight} {mixed_var}")
+
             constraint1_terms.append(f"- {num_reds * num_blues} FairCross")
             file.write(f"{' '.join(constraint1_terms)} <= 0\n")
 
-            # Fair crossing second constraint
+            # Second constraint: Mirror of the first constraint
             constraint2_terms = []
-            if blue_crossings:
-                first_var = blue_crossings[0]
-                constraint2_terms.append(f"- {num_reds} {first_var}")
-                for blue_var in blue_crossings[1:]:
+
+            # Blue group crossings (including partial contribution from mixed)
+            if blue_only_crossings:
+                for blue_var in blue_only_crossings:
                     constraint2_terms.append(f"- {num_reds} {blue_var}")
-            for red_var in red_crossings:
-                constraint2_terms.append(f"+ {num_blues} {red_var}")
+            if mixed_crossings:
+                for mixed_var in mixed_crossings:
+                    constraint2_terms.append(
+                        f"- {num_reds * mixed_weight} {mixed_var}")
+
+            # Red group crossings (including partial contribution from mixed)
+            if red_only_crossings:
+                for red_var in red_only_crossings:
+                    constraint2_terms.append(f"+ {num_blues} {red_var}")
+            if mixed_crossings:
+                for mixed_var in mixed_crossings:
+                    constraint2_terms.append(
+                        f"+ {num_blues * mixed_weight} {mixed_var}")
+
             constraint2_terms.append(f"- {num_reds * num_blues} FairCross")
             file.write(f"{' '.join(constraint2_terms)} <= 0\n")
 
@@ -328,8 +357,17 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     x_t = f"x_{t}_{char1}_{char2}"
                     x_t1 = f"x_{t+1}_{char1}_{char2}"
 
-                    file.write(f"{y_var} - {x_t} + {x_t1} >= 0\n")
-                    file.write(f"{y_var} + {x_t} - {x_t1} >= 0\n")
+                    beta_var = f'beta_{t}_{char1}_{char2}'
+                    beta_vars.add(beta_var)
+
+                    if only_beta:
+                        file.write(
+                            f"{y_var} + {x_t} + {x_t1} + 2 {beta_var} = 2\n")
+                    else:
+                        file.write(f"{y_var} - {x_t} + {x_t1} >= 0\n")
+                        file.write(f"{y_var} + {x_t} - {x_t1} >= 0\n")
+                        file.write(
+                            f"{y_var} + {x_t} + {x_t1} + 2 {beta_var} = 2\n")
 
         # --- 4. WIGGLE DETECTION CONSTRAINTS (lambda6) ---
         if lambda5 != 0 or lambda6 != 0:
@@ -466,6 +504,8 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             file.write(f"{var}\n")
         for var in crossing_vars:
             file.write(f"{var}\n")
+        for var in beta_vars:
+            file.write(f'{var}\n')
 
 
 if __name__ == "__main__":
