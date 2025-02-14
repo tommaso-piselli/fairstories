@@ -9,7 +9,7 @@ REGULAR_CONFIGS = {
     'skewCrossWiggles': (0, 1, 0, 1, 0, 1),
     'fairCross': (0, 0, 1000, 1, 0, 0),
     'fairSkewCross': (1000, 1, 0, 1, 0, 0),
-    'fairCrossiWiggles': (0, 0, 0, 1, 1000, 1),
+    'fairCrossWiggles': (0, 0, 0, 1, 1000, 1),
     'fairSkewCrossWiggles': (1000, 1, 1000, 1, 1000, 1),
 }
 
@@ -121,6 +121,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
     ordering_vars = set()
     crossing_vars = set()
     beta_vars = set()
+    delta_vars = set()
     wiggle_vars = set()
     skewness_vars = set()
 
@@ -130,6 +131,12 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
     num_reds = len(reds)
     num_blues = len(blues)
+
+    M = 2 * num_chars
+
+    if lambda1 != 1:
+        optimal_skewness = 4
+        threshold_skewness = 1.5
 
     with open(filepath, 'w') as file:
         file.write("Minimize\n")
@@ -141,7 +148,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
         if lambda1 != 0 and not focusMode:
             obj_terms.append(f"{lambda1} FairSkew")
 
-        # Skewness terms
+        # ! Skewness terms
         if lambda2 != 0:
             for i in range(num_chars):
                 if focusMode:
@@ -153,7 +160,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     skew_weight = lambda2
                 obj_terms.append(f"{skew_weight} S_{i}")
 
-        # FairnessCrossings
+        # ! FairnessCrossings
         if lambda3 != 0 and not focusMode:
             obj_terms.append(f"{lambda3} FairCross")
 
@@ -173,7 +180,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
 
                     var_name = f"y_{t}_{char1}_{char2}"
 
-                    # Crossing terms with focus mode weights
+                    # ! Crossing terms with focus mode weights
                     if lambda4 != 0:
                         if focusMode:
                             red_count = sum(
@@ -192,7 +199,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     ordering_vars.add(f"x_{t}_{char1}_{char2}")
                     ordering_vars.add(f"x_{t+1}_{char1}_{char2}")
 
-            # Wiggle terms
+            # ! Wiggles terms
             if lambda6 != 0:
                 for char_i in common_chars:
                     wiggle_var = f"w_{t}_{char_i}"
@@ -207,13 +214,14 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     obj_terms.append(f"{wiggle_weight} {wiggle_var}")
                     wiggle_vars.add(wiggle_var)
 
-        # FairWiggle terms
+        # ! FairWiggle terms
         if lambda5 != 0 and not focusMode:
             obj_terms.append(f"{lambda5} FairWiggle")
 
         objective = " + ".join(obj_terms) if obj_terms else "0"
         file.write(objective + "\n")
 
+        # ! Start of Constraints
         file.write("\nSubject To\n")
 
         # Track crossing variables for fairness constraints
@@ -242,8 +250,8 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                         y_var = f"y_{t}_{char1}_{char2}"
                         file.write(f"S_{char1} + S_{char2} - {y_var} >= 0\n")
 
+            # ! FairSkewness
             if lambda1 != 0:
-                # TODO: Fair skewness constraints
                 constraint1_terms = []
                 for char_id in blues:
                     char_idx = int(char_id)
@@ -269,8 +277,15 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                 constraint2_terms.append(f"- {num_reds * num_blues} FairSkew")
                 file.write(f"{' '.join(constraint2_terms)} <= 0\n")
 
+                threshold = int(optimal_skewness * threshold_skewness)
+                sum_terms = []
+                sum_terms.append(f'S_0')
+                for char in range(1, num_chars):
+                    sum_terms.append(f'+ S_{char}')
+                sum_terms.append(f'- {threshold} <= 0')
+                file.write(f"{' '.join(sum_terms)}\n")
+
         # ! FAIR CROSSING CONSTRAINTS (lambda3)
-        # First collect all crossings
         for t in range(len(t_activechars) - 1):
             chars_t = set(t_activechars[t])
             chars_t1 = set(t_activechars[t+1])
@@ -367,7 +382,6 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                             f"{y_var} + {x_t} + {x_t1} + 2 {beta_var} = 2\n")
 
         # ! WIGGLE DETECTION CONSTRAINTS (lambda6)
-        # TODO: MODIFY THIS PART!
         if lambda5 != 0 or lambda6 != 0:
             baseline_vars = set()  # Track baseline variables
             for t in range(len(t_activechars) - 1):
@@ -393,6 +407,9 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                 for char_i in common_chars:
                     wiggle_var = f"w_{t}_{char_i}"
 
+                    if lambda5 != 0:
+                        delta_var = f'delta_{t}_{char_i}'
+
                     # Track wiggles for fairness constraints
                     if str(char_i) in reds:
                         red_wiggles.append(wiggle_var)
@@ -415,6 +432,10 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     # Add baseline terms
                     file.write(f"{' '.join(constraint1_terms)} >= 0\n")
 
+                    if lambda5 != 0:
+                        constraint1_terms.append(f'- {M} {delta_var}')
+                        file.write(f"{' '.join(constraint1_terms)} <= 0\n")
+
                     constraint2_terms = [wiggle_var]
                     for char_j in chars_t1:
                         if char_i != char_j:
@@ -428,6 +449,10 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                                 f"+ x_{t}_{char_i}_{char_j}")
                     constraint2_terms.append(f"+ {baseline_t}")
                     file.write(f"{' '.join(constraint2_terms)} >= 0\n")
+
+                    if lambda5 != 0:
+                        constraint1_terms.append(f'- {M} + {M} {delta_var}')
+                        file.write(f"{' '.join(constraint1_terms)} <= 0\n")
 
         # --- 5. FAIR WIGGLES CONSTRAINTS (lambda5) ---
             if lambda5 != 0:
@@ -529,8 +554,12 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
             file.write(f"{var}\n")
         for var in beta_vars:
             file.write(f'{var}\n')
+        for var in delta_vars:
+            file.write(f'{var}\n')
 
         file.write("Integer\n")
+        for var in wiggle_vars:
+            file.write(f'{var}\n')
         for var in baseline_vars:
             file.write(f"{var}\n")
 

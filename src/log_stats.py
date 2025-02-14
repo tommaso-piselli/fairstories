@@ -73,7 +73,7 @@ if __name__ == "__main__":
             else:
                 red_skew += skew_number
 
-        if line.startswith('#') or line.startswith('x') or line.startswith('w') or line.startswith('S') or line.startswith('beta') or line.startswith('b'):
+        if line.startswith('#') or line.startswith('x') or line.startswith('w') or line.startswith('S') or line.startswith('beta') or line.startswith('b') or line.startswith('delta'):
             continue
 
         new_line = line.strip().split(' ')
