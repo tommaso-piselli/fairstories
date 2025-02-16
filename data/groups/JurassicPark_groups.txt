@@ -9,8 +9,8 @@
 8 : VB : blue
 9 : JH : red
 10 : LD : blue
-11 : DN : red
-12 : DM : red
+11 : DN : blue
+12 : DM : blue
 13 : MD : blue
 14 : HW : blue
 15 : RA : blue
