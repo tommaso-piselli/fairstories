@@ -10,11 +10,14 @@ experiment=$2
 time=3600
 
 # Create a directory for intermediate solutions if it doesn't exist
-mkdir -p ./results/${subject}/intermediate_sols/${experiment}
+mkdir -p ./results/${subject}/sol/${experiment}
+mkdir -p ./results/${subject}/sol/${experiment}/intermediate_sols
+mkdir -p ./results/${subject}/log
+
 
 # Run the gurobi_cl command with SolFiles parameter
 gurobi_cl Timelimit=${time} \
-    ResultFile=./results/${subject}_${experiment}.sol \
-    LogFile=./results/${subject}_${experiment}_.log \
-    SolFiles=./results/${subject}/intermediate_sols/${experiment}/${subject}_${experiment}_intermediate \
-    ./results/${subject}_${experiment}.lp
+    ResultFile=./results/${subject}/sol/${experiment}/${subject}_${experiment}.sol \
+    LogFile=./results/${subject}/log/${subject}_${experiment}_.log \
+    SolFiles=./results/${subject}/sol/${experiment}/intermediate_sols/${subject}_${experiment}_intermediate \
+    ./results/${subject}/${subject}_${experiment}.lp

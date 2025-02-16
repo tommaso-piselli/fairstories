@@ -7,6 +7,7 @@ REGULAR_CONFIGS = {
     'skewCross': (0, 1, 0, 1, 0, 0),
     'crossWiggles': (0, 0, 0, 1, 0, 1),
     'skewCrossWiggles': (0, 1, 0, 1, 0, 1),
+    
     'fairCross': (0, 0, 1000, 1, 0, 0),
     'fairSkewCross': (1000, 1, 0, 1, 0, 0),
     'fairCrossWiggles': (0, 0, 0, 1, 1000, 1),
@@ -616,7 +617,7 @@ if __name__ == "__main__":
     lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, crossCount, focusMode, alpha = get_experiment_config(
         experiment)
 
-    output_file = f'./results/{subject}_{experiment}.lp'
+    output_file = f'./results/{subject}/{subject}_{experiment}.lp'
 
     write_ilp_model(output_file, t_activechars, t_interactions, num_chars,
                     lambda1, lambda2, lambda3, lambda4, lambda5, lambda6, crossCount=crossCount,

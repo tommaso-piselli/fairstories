@@ -2,8 +2,8 @@ import os
 import subprocess
 
 # Define the subject and experiment variables
-subject = "dblp"  # Change this to your desired subject
-experiment = "fairSkewCross"  # Change this to your desired experiment
+subject = "JurassicPark"  # Change this to your desired subject
+experiment = "fairSkewCrossWiggles"  # Change this to your desired experiment
 
 
 def run_python_script(script_name, subject, experiment):

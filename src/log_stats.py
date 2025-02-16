@@ -10,7 +10,8 @@ if __name__ == "__main__":
     experiment = sys.argv[2]
 
     # Read the solution file
-    fp = f'./results/{subject}_{experiment}_replaced.sol'
+    fp = f'./results/{subject}/sol/{experiment}/{subject}_{experiment}_replaced.sol'
+    output_file = f'./results/{subject}/log/{subject}_{experiment}_out.txt'
 
     groups = {}
     with open(f'./data/groups/{subject}_groups.txt', 'r') as file:
@@ -87,46 +88,48 @@ if __name__ == "__main__":
 
             if group1 == 'blue' and group2 == 'blue':
                 blue_blue_crossings += 1
-                print(line.strip())
             elif group1 == 'red' and group2 == 'red':
                 red_red_crossings += 1
             elif (group1 == 'blue' and group2 == 'red') or (group1 == 'red' and group2 == 'blue'):
                 blue_red_crossings += 1
 
-    print(f"Summary for {subject}_{experiment}:")
-    print("=====================================")
-    print(f"Total characters: {len(groups)}")
-    print(f"Blue characters: {len(blues)}")
-    print(f"Red characters: {len(reds)}")
+    # Write results to output file
+    with open(output_file, 'w') as f:
+        f.write(f"Summary for {subject}_{experiment}:\n")
+        f.write("=====================================\n")
+        f.write(f"Total characters: {len(groups)}\n")
+        f.write(f"Blue characters: {len(blues)}\n")
+        f.write(f"Red characters: {len(reds)}\n")
 
-    print(f'---\n> Crossings')
-    print(f"Blue-Blue crossings: {blue_blue_crossings}")
-    print(f"Red-Red crossings: {red_red_crossings}")
-    print(f"Blue-Red crossings: {blue_red_crossings}")
-    print(
-        f"Total crossings: {blue_blue_crossings + red_red_crossings + blue_red_crossings}")
+        f.write(f'---\n> Crossings\n')
+        f.write(f"Blue-Blue crossings: {blue_blue_crossings}\n")
+        f.write(f"Red-Red crossings: {red_red_crossings}\n")
+        f.write(f"Blue-Red crossings: {blue_red_crossings}\n")
+        f.write(
+            f"Total crossings: {blue_blue_crossings + red_red_crossings + blue_red_crossings}\n")
 
-    print(f'---\n> FairCrossings')
-    print(
-        f'BlueFair: {((blue_blue_crossings*2 + blue_red_crossings) / len(blues)):.02}')
-    print(
-        f'RedFair: {((red_red_crossings*2 + blue_red_crossings) / len(reds)):.02}')
-    print(f'Unfairness {abs(((blue_blue_crossings*2 + blue_red_crossings) / len(blues)) - ((red_red_crossings*2 + blue_red_crossings) / len(reds))):.02}')
+        f.write(f'---\n> FairCrossings\n')
+        f.write(
+            f'BlueFair: {((blue_blue_crossings*2 + blue_red_crossings) / len(blues)):.02f}\n')
+        f.write(
+            f'RedFair: {((red_red_crossings*2 + blue_red_crossings) / len(reds)):.02f}\n')
+        f.write(
+            f'Unfairness {abs(((blue_blue_crossings*2 + blue_red_crossings) / len(blues)) - ((red_red_crossings*2 + blue_red_crossings) / len(reds))):.02f}\n')
 
-    print(f'---\n> Skewness')
-    print(f"BlueSkew: {blue_skew}")
-    print(f"RedSkew: {red_skew}")
-    print(f"Total skewness: {blue_skew + red_skew}")
+        f.write(f'---\n> Skewness\n')
+        f.write(f"BlueSkew: {blue_skew}\n")
+        f.write(f"RedSkew: {red_skew}\n")
+        f.write(f"Total skewness: {blue_skew + red_skew}\n")
 
-    print(f'---\n> FairSkewness')
-    print(
-        f"Unfairness {abs((blue_skew / len(blues)) - (red_skew / len(reds))):.02}")
+        f.write(f'---\n> FairSkewness\n')
+        f.write(
+            f"Unfairness {abs((blue_skew / len(blues)) - (red_skew / len(reds))):.02f}\n")
 
-    print(f'---\n> Wiggles')
-    print(f"Total wiggles: {sum([int(v) for v in wiggles.values()])}")
+        f.write(f'---\n> Wiggles\n')
+        f.write(f"Total wiggles: {sum([int(v) for v in wiggles.values()])}\n")
 
-    print(f'---\n> FairWiggles')
-    print(f'BlueWiggles: {blue_wiggles}')
-    print(f'RedWiggles: {red_wiggles}')
-    print(
-        f'Unfairness {abs((blue_wiggles / len(blues)) - (red_wiggles / len(reds))):.02}')
+        f.write(f'---\n> FairWiggles\n')
+        f.write(f'BlueWiggles: {blue_wiggles}\n')
+        f.write(f'RedWiggles: {red_wiggles}\n')
+        f.write(
+            f'Unfairness {abs((blue_wiggles / len(blues)) - (red_wiggles / len(reds))):.02f}\n')

@@ -31,7 +31,7 @@ if __name__ == "__main__":
     id_to_char = id_to_char_mapping(characters)
     print(id_to_char)
 
-    fair_open = f'./results/{subject}_{experiment}.sol'
+    fair_open = f'./results/{subject}/sol/{experiment}/{subject}_{experiment}.sol'
     with open(fair_open, 'r') as sol_f:
         sol_file = sol_f.readlines()
 
@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
             replacements[old_var] = new_var_str
 
-    with open(f'./results/{subject}_{experiment}.sol', 'r') as sol_f:
+    with open(f'./results/{subject}/sol/{experiment}/{subject}_{experiment}.sol', 'r') as sol_f:
         content = sol_f.read()
 
     new_content = content
@@ -96,6 +96,6 @@ if __name__ == "__main__":
 
     new_content = pattern.sub(replace_match, new_content)
 
-    fair_output_file = f'./results/{subject}_{experiment}_replaced.sol'
+    fair_output_file = f'./results/{subject}/sol/{experiment}/{subject}_{experiment}_replaced.sol'
     with open(fair_output_file, 'w') as file:
         file.write(new_content)
