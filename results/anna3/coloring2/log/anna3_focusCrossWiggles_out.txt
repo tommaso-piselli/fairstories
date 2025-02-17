@@ -1,0 +1,32 @@
+Summary for anna3_focusCrossWiggles:
+=====================================
+Total characters: 46
+Blue characters: 39
+Red characters: 7
+---
+> Crossings
+Blue-Blue crossings: 3
+Red-Red crossings: 0
+Blue-Red crossings: 1
+Total crossings: 4
+---
+> FairCrossings
+BlueFair: 0.18
+RedFair: 0.14
+Unfairness 0.04
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 48
+---
+> FairWiggles
+BlueWiggles: 37.0
+RedWiggles: 11.0
+Unfairness 0.62
