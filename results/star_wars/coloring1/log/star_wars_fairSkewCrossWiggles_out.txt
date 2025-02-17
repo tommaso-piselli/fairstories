@@ -1,0 +1,32 @@
+Summary for star_wars_fairSkewCrossWiggles:
+=====================================
+Total characters: 14
+Blue characters: 12
+Red characters: 2
+---
+> Crossings
+Blue-Blue crossings: 32
+Red-Red crossings: 2
+Blue-Red crossings: 8
+Total crossings: 42
+---
+> FairCrossings
+BlueFair: 6.00
+RedFair: 6.00
+Unfairness 0.00
+---
+> Skewness
+BlueSkew: 6
+RedSkew: 1
+Total skewness: 7
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 84
+---
+> FairWiggles
+BlueWiggles: 72.0
+RedWiggles: 12.0
+Unfairness 0.00

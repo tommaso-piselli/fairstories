@@ -1,0 +1,32 @@
+Summary for dblp_fairCrossWiggles:
+=====================================
+Total characters: 18
+Blue characters: 8
+Red characters: 10
+---
+> Crossings
+Blue-Blue crossings: 3
+Red-Red crossings: 5
+Blue-Red crossings: 8
+Total crossings: 16
+---
+> FairCrossings
+BlueFair: 1.75
+RedFair: 1.80
+Unfairness 0.05
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 54
+---
+> FairWiggles
+BlueWiggles: 24.0
+RedWiggles: 30.0
+Unfairness 0.00

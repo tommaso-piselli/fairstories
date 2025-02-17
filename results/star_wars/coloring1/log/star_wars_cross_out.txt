@@ -1,0 +1,32 @@
+Summary for star_wars_cross:
+=====================================
+Total characters: 14
+Blue characters: 12
+Red characters: 2
+---
+> Crossings
+Blue-Blue crossings: 20
+Red-Red crossings: 1
+Blue-Red crossings: 18
+Total crossings: 39
+---
+> FairCrossings
+BlueFair: 4.83
+RedFair: 10.00
+Unfairness 5.17
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.00
