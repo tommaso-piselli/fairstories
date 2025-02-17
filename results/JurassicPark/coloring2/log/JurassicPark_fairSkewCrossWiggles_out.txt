@@ -5,28 +5,28 @@ Blue characters: 17
 Red characters: 3
 ---
 > Crossings
-Blue-Blue crossings: 40
-Red-Red crossings: 5
-Blue-Red crossings: 5
-Total crossings: 50
+Blue-Blue crossings: 35
+Red-Red crossings: 2
+Blue-Red crossings: 11
+Total crossings: 48
 ---
 > FairCrossings
-BlueFair: 5.00
+BlueFair: 4.76
 RedFair: 5.00
-Unfairness 0.00
+Unfairness 0.24
 ---
 > Skewness
-BlueSkew: 17
-RedSkew: 3
-Total skewness: 20
+BlueSkew: 6
+RedSkew: 1
+Total skewness: 7
 ---
 > FairSkewness
-Unfairness 0.00
+Unfairness 0.02
 ---
 > Wiggles
-Total wiggles: 80
+Total wiggles: 100
 ---
 > FairWiggles
-BlueWiggles: 68.0
-RedWiggles: 12.0
+BlueWiggles: 85.0
+RedWiggles: 15.0
 Unfairness 0.00

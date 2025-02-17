@@ -452,8 +452,8 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                     file.write(f"{' '.join(constraint2_terms)} >= 0\n")
 
                     if lambda5 != 0:
-                        constraint1_terms.append(f'- {M} + {M} {delta_var}')
-                        file.write(f"{' '.join(constraint1_terms)} <= 0\n")
+                        constraint2_terms.append(f'+ {M} {delta_var}')
+                        file.write(f"{' '.join(constraint2_terms)} <= {M}\n")
 
         # --- 5. FAIR WIGGLES CONSTRAINTS (lambda5) ---
             if lambda5 != 0:
