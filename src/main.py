@@ -7,7 +7,7 @@ REGULAR_CONFIGS = {
     'skewCross': (0, 1, 0, 1, 0, 0),
     'crossWiggles': (0, 0, 0, 1, 0, 1),
     'skewCrossWiggles': (0, 1, 0, 1, 0, 1),
-    
+
     'fairCross': (0, 0, 1000, 1, 0, 0),
     'fairSkewCross': (1000, 1, 0, 1, 0, 0),
     'fairCrossWiggles': (0, 0, 0, 1, 1000, 1),
@@ -283,7 +283,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                 sum_terms.append(f'S_0')
                 for char in range(1, num_chars):
                     sum_terms.append(f'+ S_{char}')
-                sum_terms.append(f'- {threshold} <= 0')
+                sum_terms.append(f'<= {threshold}')
                 file.write(f"{' '.join(sum_terms)}\n")
 
         # ! FAIR CROSSING CONSTRAINTS (lambda3)
