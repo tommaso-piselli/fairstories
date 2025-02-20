@@ -1,0 +1,17 @@
+0 : MJ
+1 : MO
+2 : OM
+3 : BO
+4 : CL
+5 : BE
+6 : SB
+7 : NA
+8 : SQ
+9 : DO
+10 : HE
+11 : SP
+12 : MU
+13 : FR
+14 : BR
+15 : YP
+16 : PI

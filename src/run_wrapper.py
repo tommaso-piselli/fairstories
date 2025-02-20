@@ -2,7 +2,7 @@ import os
 import subprocess
 
 # Define the subject and experiment variables
-subject = "lotr"  # Change this to your desired subject
+subject = "huck"  # Change this to your desired subject
 experiment = "cross"  # Change this to your desired experiment
 
 

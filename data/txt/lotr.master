@@ -1,82 +1,80 @@
 *lotr Dataset*
-A Aragorn
-B Boromir
-D Denethor
-E Elrond
-Eom Eomer
-Eow Eowyn
-F Faramir
-FB Frodo Baggins
-G Galadriel
-Gan Gandalf
-Gim Gimli
-Gol Gollum
-L Legolas
-M Merry
-P Pippin
-S Sauron
-SG Samwise Gamgee
-Sar Saruman
-T Theoden
-W Witch-king
+AR Aragorn
+BO Boromir
+DE Denethor
+EL Elrond
+EM Eomer
+EW Eowyn
+FA Faramir
+FR Frodo Baggins
+GA Galadriel
+GI Gimli
+GN Gandalf
+GO Gollum
+LE Legolas
+ME Merry
+PI Pippin
+SA Saruman
+SM Samwise Gamgee
+SR Sauron
+TH Theoden
+WK Witch-king
 
-000 : FB,SG,M,P : FB,SG,M,P
-001 : FB,SG,M,P,Gan : FB,SG,M,P,Gan
-002 : FB,SG,M,P,Gan : FB,SG,M,P,Gan
-003 : FB,SG,M,P;Gan : FB,SG,M,P
-004 : FB,SG,M,P,A;Gan : FB,SG,M,P,A
-005 : FB,SG,M,P,A,Gan : FB,SG,M,P,A,Gan
-006 : FB,SG,M,P,A,Gan,L,Gim,B : FB,SG,M,P,A,Gan,L,Gim,B
-007 : FB,SG,M,P,A,Gan,L,Gim,B,E : FB,SG,M,P,A,Gan,L,Gim,B,E
-008 : FB,SG,M,P,A,Gan,L,Gim,B : FB,SG,M,P,A,Gan,L,Gim,B
-009 : FB,SG,M,P,A,Gan,L,Gim,B,G : FB,SG,M,P,A,Gan,L,Gim,B,G
-010 : FB,SG,M,P,A,Gan,L,Gim,B : FB,SG,M,P,A,Gan,L,Gim,B
-011 : FB,SG,A,Gan,L,Gim,B;M;P : FB,SG,A,Gan,L,Gim,B
-012 : FB,SG,A,Gan,L,Gim,B,Gol;M;P : FB,SG,A,Gan,L,Gim,B,Gol
-013 : FB,SG,Gol;M;P;Gan;A;L;Gim;B : FB,SG,Gol
-014 : M,P,A,Gan,L,Gim,B;FB;SG;Gol : M,P,A,Gan,L,Gim,B
-015 : M,P;FB;SG;Gan;A;L;Gim;B;Gol : M,P
-016 : M,P,Sar;FB;SG;Gan;A;L;Gim;B;Gol : M,P,Sar
-017 : A,Gan,L,Gim,B;FB;SG;M;P;Gol : A,Gan,L,Gim,B
-018 : A,L,Gim,B;FB;SG;M;P;Gan;Gol : A,L,Gim,B
-019 : A,L,Gim,B,M,P;FB;SG;Gan;Gol : A,L,Gim,B,M,P
-020 : A,L,Gim,B,M,P,T,Eom;FB;SG;Gan;Gol : A,L,Gim,B,M,P,T,Eom
-021 : A,L,Gim,B,M,P,T,Eom,Eow;FB;SG;Gan;Gol : A,L,Gim,B,M,P,T,Eom,Eow
-022 : Gan;FB;SG;M;P;A;L;Gim;Gol;T;Eom;Eow : Gan
-023 : Gan,A,L,Gim,M,P,T,Eom,Eow;FB;SG;Gol : Gan,A,L,Gim,M,P,T,Eom,Eow
-024 : FB,SG,Gol;M;P;Gan;A;L;Gim;T;Eom;Eow : FB,SG,Gol
-025 : FB,SG,Gol;M;P;Gan;A;L;Gim;T;Eom;Eow : FB,SG,Gol
-026 : Gan,A,L,Gim,M,P;FB;SG;Gol;T;Eom;Eow : Gan,A,L,Gim,M,P
-027 : Gan,A,L,Gim;FB;SG;M;P;Gol;T;Eom;Eow : Gan,A,L,Gim
-028 : M,P;FB;SG;Gan;A;L;Gim;Gol;T;Eom;Eow : M,P
-029 : Gan,A,L,Gim;FB;SG;M;P;Gol;T;Eom;Eow : Gan,A,L,Gim
-030 : T,Eom,Eow;FB;SG;M;P;Gan;A;L;Gim;Gol : T,Eom,Eow
-031 : T,Eom,Eow,Gan,A,L,Gim;FB;SG;M;P;Gol : T,Eom,Eow,Gan,A,L,Gim
-032 : T,Eom,Eow,Gan,A,L,Gim,M,P;FB;SG;Gol : T,Eom,Eow,Gan,A,L,Gim,M,P
-033 : FB,SG,Gol;M;P;Gan;A;L;Gim;T;Eom;Eow : FB,SG,Gol
-034 : FB,SG,Gol,Gan;M;P;A;L;Gim;T;Eom;Eow : FB,SG,Gol,Gan
-035 : FB,SG,Gol;M;P;Gan;A;L;Gim;T;Eom;Eow : FB,SG,Gol
-036 : D;FB;SG;M;P;Gan;A;L;Gim;Gol;T;Eom;Eow : D
-037 : T,Eom,Eow,A,L,Gim,M,P;FB;SG;Gan;Gol;D : T,Eom,Eow,A,L,Gim,M,P
-038 : FB,SG,Gol,F;M;P;Gan;A;L;Gim;T;Eom;Eow;D : FB,SG,Gol,F
-039 : D,F;FB;SG;M;P;Gan;A;L;Gim;Gol;T;Eom;Eow : D,F
-040 : Gan,A,L,Gim,M,P;FB;SG;Gol;T;Eom;Eow;D;F : Gan,A,L,Gim,M,P
-041 : Gan,A,L,Gim,M,P,T,Eom,Eow;FB;SG;Gol;D;F : Gan,A,L,Gim,M,P,T,Eom,Eow
-042 : A,L,Gim,M,P,T,Eom,Eow;FB;SG;Gan;Gol;D;F : A,L,Gim,M,P,T,Eom,Eow
-043 : A,L,Gim,M,P,T,Eom,Eow,W;FB;SG;Gan;Gol;D;F : A,L,Gim,M,P,T,Eom,Eow,W
-044 : A,L,Gim,M,P,Eom,Eow;FB;SG;Gan;Gol;D;F;W : A,L,Gim,M,P,Eom,Eow
-045 : FB,SG,Gol;M;P;Gan;A;L;Gim;Eom;Eow;D;F;W : FB,SG,Gol
-046 : FB,SG;M;P;Gan;A;L;Gim;Gol;Eom;Eow;D;F;W : FB,SG
-047 : FB,SG;M;P;Gan;A;L;Gim;Gol;Eom;Eow;D;F;W : FB,SG
-048 : Gan,A,L,Gim,M,P,Eom,Eow;FB;SG;Gol;D;F;W : Gan,A,L,Gim,M,P,Eom,Eow
-049 : FB,SG;M;P;Gan;A;L;Gim;Gol;Eom;Eow;D;F;W : FB,SG
-050 : FB,SG,Gan;M;P;A;L;Gim;Gol;Eom;Eow;D;F;W : FB,SG,Gan
-051 : FB,SG,Gan,A,L,Gim,M,P,Eom,Eow;Gol;D;F;W : FB,SG,Gan,A,L,Gim,M,P,Eom,Eow
-052 : FB,SG,Gan,A,L,Gim,M,P,Eom,Eow,Gol;D;F;W : FB,SG,Gan,A,L,Gim,M,P,Eom,Eow,Gol
-053 : FB,SG,Gan,A,L,Gim,M,P,Eom,Eow;Gol;D;F;W : FB,SG,Gan,A,L,Gim,M,P,Eom,Eow
-054 : S,W;FB;SG;M;P;Gan;A;L;Gim;Gol;Eom;Eow;D;F : S,W
-055 : A,L,Gim,M,P,Eom,Eow;FB;SG;Gan;Gol;D;F : A,L,Gim,M,P,Eom,Eow
-056 : A,L,Gim,M,P,Eom,Eow,D,F;FB;SG;Gan;Gol : A,L,Gim,M,P,Eom,Eow,D,F
-057 : FB,SG,Gan;Gol : FB,SG,Gan
-058 : FB,SG,Gan,Gol : FB,SG,Gan,Gol
-059 : SG : SG
+000: FR,SM,ME,PI: FR,SM,ME,PI
+001: FR,SM,ME,PI,GN: FR,SM,ME,PI,GN
+002: FR,SM,ME,PI,GN: FR,SM,ME,PI,GN
+003: FR,SM,ME,PI;GN: FR,SM,ME,PI
+004: FR,SM,ME,PI,AR;GN: FR,SM,ME,PI,AR
+005: FR,SM,ME,PI,AR,GN: FR,SM,ME,PI,AR,GN
+006: FR,SM,ME,PI,AR,GN,LE,GI,BO: FR,SM,ME,PI,AR,GN,LE,GI,BO
+007: FR,SM,ME,PI,AR,GN,LE,GI,BO,EL: FR,SM,ME,PI,AR,GN,LE,GI,BO,EL
+008: FR,SM,ME,PI,AR,GN,LE,GI,BO: FR,SM,ME,PI,AR,GN,LE,GI,BO
+009: FR,SM,ME,PI,AR,GN,LE,GI,BO,GA: FR,SM,ME,PI,AR,GN,LE,GI,BO,GA
+010: FR,SM,ME,PI,AR,GN,LE,GI,BO: FR,SM,ME,PI,AR,GN,LE,GI,BO
+011: FR,SM,AR,GN,LE,GI,BO;ME;PI: FR,SM,AR,GN,LE,GI,BO
+012: FR,SM,AR,GN,LE,GI,BO,GO;ME;PI: FR,SM,AR,GN,LE,GI,BO,GO
+013: FR,SM,GO;ME;PI;GN;AR;LE;GI;BO: FR,SM,GO
+014: ME,PI,AR,GN,LE,GI,BO;FR;SM;GO: ME,PI,AR,GN,LE,GI,BO
+015: ME,PI;FR;SM;GN;AR;LE;GI;BO;GO: ME,PI
+016: ME,PI,SA;FR;SM;GN;AR;LE;GI;BO;GO: ME,PI,SA
+017: AR,GN,LE,GI,BO;FR;SM;ME;PI;GO: AR,GN,LE,GI,BO
+018: AR,LE,GI,BO;FR;SM;ME;PI;GN;GO: AR,LE,GI,BO
+019: AR,LE,GI,BO,ME,PI;FR;SM;GN;GO: AR,LE,GI,BO,ME,PI
+020: AR,LE,GI,BO,ME,PI,TH,EM;FR;SM;GN;GO: AR,LE,GI,BO,ME,PI,TH,EM
+021: AR,LE,GI,BO,ME,PI,TH,EM,EW;FR;SM;GN;GO: AR,LE,GI,BO,ME,PI,TH,EM,EW
+022: GN,AR,LE,GI,ME,PI,TH,EM,EW;FR;SM;GO: GN,AR,LE,GI,ME,PI,TH,EM,EW
+023: FR,SM,GO;ME;PI;GN;AR;LE;GI;TH;EM;EW: FR,SM,GO
+024: FR,SM,GO;ME;PI;GN;AR;LE;GI;TH;EM;EW: FR,SM,GO
+025: GN,AR,LE,GI,ME,PI;FR;SM;GO;TH;EM;EW: GN,AR,LE,GI,ME,PI
+026: GN,AR,LE,GI;FR;SM;ME;PI;GO;TH;EM;EW: GN,AR,LE,GI
+027: ME,PI;FR;SM;GN;AR;LE;GI;GO;TH;EM;EW: ME,PI
+028: GN,AR,LE,GI;FR;SM;ME;PI;GO;TH;EM;EW: GN,AR,LE,GI
+029: TH,EM,EW;FR;SM;ME;PI;GN;AR;LE;GI;GO: TH,EM,EW
+030: TH,EM,EW,GN,AR,LE,GI;FR;SM;ME;PI;GO: TH,EM,EW,GN,AR,LE,GI
+031: TH,EM,EW,GN,AR,LE,GI,ME,PI;FR;SM;GO: TH,EM,EW,GN,AR,LE,GI,ME,PI
+032: FR,SM,GO;ME;PI;GN;AR;LE;GI;TH;EM;EW: FR,SM,GO
+033: FR,SM,GO,GN;ME;PI;AR;LE;GI;TH;EM;EW: FR,SM,GO,GN
+034: FR,SM,GO;ME;PI;GN;AR;LE;GI;TH;EM;EW: FR,SM,GO
+035: TH,EM,EW,AR,LE,GI,ME,PI;FR;SM;GN;GO: TH,EM,EW,AR,LE,GI,ME,PI
+036: FR,SM,GO,FA;ME;PI;GN;AR;LE;GI;TH;EM;EW: FR,SM,GO,FA
+037: DE,FA;FR;SM;ME;PI;GN;AR;LE;GI;GO;TH;EM;EW: DE,FA
+038: GN,AR,LE,GI,ME,PI;FR;SM;GO;TH;EM;EW;FA;DE: GN,AR,LE,GI,ME,PI
+039: GN,AR,LE,GI,ME,PI,TH,EM,EW;FR;SM;GO;FA;DE: GN,AR,LE,GI,ME,PI,TH,EM,EW
+040: AR,LE,GI,ME,PI,TH,EM,EW;FR;SM;GN;GO;FA;DE: AR,LE,GI,ME,PI,TH,EM,EW
+041: AR,LE,GI,ME,PI,TH,EM,EW,WK;FR;SM;GN;GO;FA;DE: AR,LE,GI,ME,PI,TH,EM,EW,WK
+042: AR,LE,GI,ME,PI,EM,EW;FR;SM;GN;GO;FA;DE;WK: AR,LE,GI,ME,PI,EM,EW
+043: FR,SM,GO;ME;PI;GN;AR;LE;GI;EM;EW;FA;DE;WK: FR,SM,GO
+044: FR,SM;ME;PI;GN;AR;LE;GI;GO;EM;EW;FA;DE;WK: FR,SM
+045: FR,SM;ME;PI;GN;AR;LE;GI;GO;EM;EW;FA;DE;WK: FR,SM
+046: GN,AR,LE,GI,ME,PI,EM,EW;FR;SM;GO;FA;DE;WK: GN,AR,LE,GI,ME,PI,EM,EW
+047: FR,SM;ME;PI;GN;AR;LE;GI;GO;EM;EW;FA;DE;WK: FR,SM
+048: FR,SM,GN;ME;PI;AR;LE;GI;GO;EM;EW;FA;DE;WK: FR,SM,GN
+049: FR,SM,GN,AR,LE,GI,ME,PI,EM,EW;GO;FA;DE;WK: FR,SM,GN,AR,LE,GI,ME,PI,EM,EW
+050: FR,SM,GN,AR,LE,GI,ME,PI,EM,EW,GO;FA;DE;WK: FR,SM,GN,AR,LE,GI,ME,PI,EM,EW,GO
+051: FR,SM,GN,AR,LE,GI,ME,PI,EM,EW;GO;FA;DE;WK: FR,SM,GN,AR,LE,GI,ME,PI,EM,EW
+052: SR,WK;FR;SM;ME;PI;GN;AR;LE;GI;GO;EM;EW;FA;DE: SR,WK
+053: AR,LE,GI,ME,PI,EM,EW;FR;SM;GN;GO;FA;DE: AR,LE,GI,ME,PI,EM,EW
+054: AR,LE,GI,ME,PI,EM,EW,DE,FA;FR;SM;GN;GO: AR,LE,GI,ME,PI,EM,EW,DE,FA
+055: FR,SM,GN;ME;PI;GO: FR,SM,GN
+056: FR,SM,GN,GO;ME;PI: FR,SM,GN,GO
+057: SM,ME,PI: SM,ME,PI

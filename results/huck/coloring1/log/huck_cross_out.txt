@@ -1,0 +1,32 @@
+Summary for huck_cross:
+=====================================
+Total characters: 74
+Blue characters: 72
+Red characters: 2
+---
+> Crossings
+Blue-Blue crossings: 18
+Red-Red crossings: 1
+Blue-Red crossings: 23
+Total crossings: 42
+---
+> FairCrossings
+BlueFair: 0.82
+RedFair: 12.50
+Unfairness 11.68
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.00

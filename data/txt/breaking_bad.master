@@ -1,108 +1,105 @@
 *breaking_bad Dataset*
-A Andrea
-B Brock
-C Combo
-G Gomez
-Gal Gale
-Gus Gus
-H Hector
-Han Hank
-J Jesse
-Jac Jack
-Jan Jane
+AN Andrea
+BR Brock
+CA Camper
+CO Combo
+GA Gale
+GO Gomez
+GU Gus
+HA Hank
+HE Hector
+JE Jesse
+JK Jack
+JN Jane
 K8 Krazy 8
-L Lydia
-M Mike
-Mar Marie
-S Saul
-Sky Skyler
-T Todd
+LY Lydia
+MI Mike
+MA Marie
+SA Saul
+SK Skyler
+TO Todd
 TC The Cousins
-Ted Ted
-Tuc Tuco
-V Victor
-VRM Vacuum Repair Man
-W Walter
+TE Ted
+TU Tuco
+VI Victor
+VR Vacuum Repair Man
+WA Walter
 WJ Walt Jr.
 
-000 : W : W
-001 : W,Han : W,Han
-002 : W,J,Han : W,J,Han
-003 : W,J;Han : W,J
-004 : W,J;Han : W,J
-005 : W,J,K8;Han : W,J,K8
-006 : W,K8;Han;J : W,K8
-007 : W,Sky,WJ,Han,Mar;J : W,Sky,WJ,Han,Mar
-008 : J,Tuc;W;Han;Sky;WJ : J,Tuc
-009 : W,Tuc;Han;J;Sky;WJ : W,Tuc
-010 : W,J,Tuc;Han;Sky;WJ : W,J,Tuc
-011 : W,J,Tuc,Han;Sky;WJ : W,J,Tuc,Han
-012 : W,Sky;Han;J;WJ : W,Sky
-013 : J,Jan;W;Han;Sky;WJ : J,Jan
-014 : Sky,Ted;W;Han;J;WJ;Jan : Sky,Ted
-015 : W,J,S;Han;Sky;WJ;Jan;Ted : W,J,S
-016 : W,Sky,WJ;Han;J;Jan;Ted;S : W,Sky,WJ
-017 : W,J,S;Han;Sky;WJ;Jan;Ted : W,J,S
-018 : W,J,Sky;Han;WJ;Jan;Ted;S : W,J,Sky
-019 : C;W;Han;J;Sky;WJ;Jan;Ted;S : C
-020 : J,Jan;W;Han;Sky;WJ;Ted;S : J,Jan
-021 : W,S,Gus;Han;J;Sky;WJ;Jan;Ted : W,S,Gus
-022 : W,Gus;Han;J;Sky;WJ;Jan;Ted;S : W,Gus
-023 : W,J,Jan;Han;Sky;WJ;Ted;S;Gus : W,J,Jan
-024 : W,J;Han;Sky;WJ;Ted;S;Gus : W,J
-025 : W,Sky;Han;J;WJ;Ted;S;Gus : W,Sky
-026 : Sky,Ted;W;Han;J;WJ;S;Gus : Sky,Ted
-027 : W,Sky;Han;J;WJ;Ted;S;Gus : W,Sky
-028 : W,Gal;Han;J;Sky;WJ;Ted;S;Gus : W,Gal
-029 : Han,TC;W;J;Sky;WJ;Ted;S;Gus;Gal : Han,TC
-030 : W,J,Gus;Han;Sky;WJ;Ted;S;Gal : W,J,Gus
-031 : J;W;Han;Sky;WJ;Ted;S;Gus;Gal : J
-032 : W,J;Han;Sky;WJ;Ted;S;Gus;Gal : W,J
-033 : W,Gal,Gus;Han;J;Sky;WJ;Ted;S : W,Gal,Gus
-034 : J,Gal;W;Han;Sky;WJ;Ted;S;Gus : J,Gal
-035 : W,J,Gus,M,V;Han;Sky;WJ;Ted;S : W,J,Gus,M,V
-036 : W,J,M;Han;Sky;WJ;Ted;S;Gus : W,J,M
-037 : W,Sky;Han;J;WJ;Ted;S;Gus;M : W,Sky
-038 : W,Gus;Han;J;Sky;WJ;Ted;S;M : W,Gus
-039 : Sky,Ted;W;Han;J;WJ;S;Gus;M : Sky,Ted
-040 : W,J,B;Han;Sky;WJ;S;Gus;M : W,J,B
-041 : J,W,Gus;Han;Sky;WJ;S;M : J,W,Gus
-042 : Gus,H;W;Han;J;Sky;WJ;S;M : Gus,H
-043 : W,H,Gus;Han;J;Sky;WJ;S;M : W,H,Gus
-044 : W,J;Han;Sky;WJ;S;M : W,J
-045 : M,J,W;Han;Sky;WJ;S : M,J,W
-046 : W,J,M;Han;Sky;WJ;S : W,J,M
-047 : W,J,T;Han;Sky;WJ;S;M : W,J,T
-048 : W,J,T;Han;Sky;WJ;S;M : W,J,T
-049 : M,W;Han;J;Sky;WJ;S;T : M,W
-050 : W,L;Han;J;Sky;WJ;S;M;T : W,L
-051 : W;Han;J;Sky;WJ;S;M;T;L : W
-052 : W,M;Han;J;Sky;WJ;S;T;L : W,M
-053 : W,T,Jac;Han;J;Sky;WJ;S;L : W,T,Jac
-054 : Han,W;J;Sky;WJ;S;T;L;Jac : Han,W
-055 : Han,W;J;Sky;WJ;S;T;L;Jac : Han,W
-056 : W;Han;J;Sky;WJ;S;T;L;Jac : W
-057 : W,Sky;Han;J;WJ;S;T;L;Jac : W,Sky
-058 : W,J;Han;Sky;WJ;S;T;L;Jac : W,J
-059 : J;W;Han;Sky;WJ;S;T;L;Jac : J
-060 : J,Han,G;W;Sky;WJ;S;T;L;Jac : J,Han,G
-061 : W,Jac,T;Han;J;Sky;WJ;S;L;G : W,Jac,T
-062 : J,Han,G;W;Sky;WJ;S;T;L;Jac : J,Han,G
-063 : W,J,Han,G;Sky;WJ;S;T;L;Jac : W,J,Han,G
-064 : W,J,Han,G,Jac,T;Sky;WJ;S;L : W,J,Han,G,Jac,T
-065 : Han,G,Jac,T,W;J;Sky;WJ;S;L : Han,G,Jac,T,W
-066 : J,Jac,T;W;Sky;WJ;S;L : J,Jac,T
-067 : W,S,VRM;J;Sky;WJ;T;L;Jac : W,S,VRM
-068 : J,T;W;Sky;WJ;L;Jac;VRM : J,T
-069 : Sky,T;W;J;WJ;L;Jac;VRM : Sky,T
-070 : W,VRM;J;Sky;WJ;T;L;Jac : W,VRM
-071 : J,T,A;W;Sky;WJ;L;Jac : J,T,A
-072 : W,WJ;J;Sky;T;L;Jac : W,WJ
-073 : W,Sky;J;T;L;Jac : W,Sky
-074 : W;J;Sky;T;L;Jac : W
-075 : W,Sky;J;T;L;Jac : W,Sky
-076 : W;J;T;L;Jac : W
-077 : W,L,T;J;Jac : W,L,T
-078 : W,Jac,T,J : W,Jac,T,J
-079 : W,J,Jac,T : W,J,Jac,T
-080 : W,J : W,J
+000 : WA,CA : WA,CA
+001 : WA,HA : WA,HA
+002 : WA,JE,HA : WA,JE,HA
+003 : WA,JE;HA : WA,JE
+004 : WA,JE;HA : WA,JE
+005 : WA,JE,K8;HA : WA,JE,K8
+006 : WA,K8;HA;JE : WA,K8
+007 : WA,SK,WJ,HA,MA;JE : WA,SK,WJ,HA,MA
+008 : JE,TU;WA;HA;SK;WJ : JE,TU
+009 : WA,TU;HA;JE;SK;WJ : WA,TU
+010 : WA,JE,TU;HA;SK;WJ : WA,JE,TU
+011 : WA,JE,TU,HA;SK;WJ : WA,JE,TU,HA
+012 : WA,SK;HA;JE;WJ : WA,SK
+013 : JE,JN;WA;HA;SK;WJ : JE,JN
+014 : SK,TE;WA;HA;JE;WJ;JN : SK,TE
+015 : WA,JE,SA;HA;SK;WJ;JN;TE : WA,JE,SA
+016 : WA,SK,WJ;HA;JE;JN;TE;SA : WA,SK,WJ
+017 : WA,JE,SA;HA;SK;WJ;JN;TE : WA,JE,SA
+018 : WA,JE,SK;HA;WJ;JN;TE;SA : WA,JE,SK
+019 : CO,WA;HA;JE;SK;WJ;JN;TE;SA : CO,WA
+020 : JE,JN;WA;HA;SK;WJ;TE;SA : JE,JN
+021 : WA,SA,GU;HA;JE;SK;WJ;JN;TE : WA,SA,GU
+022 : WA,GU;HA;JE;SK;WJ;JN;TE;SA : WA,GU
+023 : WA,JE,JN;HA;SK;WJ;TE;SA;GU : WA,JE,JN
+024 : WA,JE;HA;SK;WJ;TE;SA;GU : WA,JE
+025 : WA,SK;HA;JE;WJ;TE;SA;GU : WA,SK
+026 : SK,TE;WA;HA;JE;WJ;SA;GU : SK,TE
+027 : WA,SK;HA;JE;WJ;TE;SA;GU : WA,SK
+028 : WA,GA;HA;JE;SK;WJ;TE;SA;GU : WA,GA
+029 : HA,TC;WA;JE;SK;WJ;TE;SA;GU;GA : HA,TC
+030 : WA,JE,GU;HA;SK;WJ;TE;SA;GA : WA,JE,GU
+032 : WA,JE;HA;SK;WJ;TE;SA;GU;GA : WA,JE
+033 : WA,GA,GU;HA;JE;SK;WJ;TE;SA : WA,GA,GU
+034 : JE,GA;WA;HA;SK;WJ;TE;SA;GU : JE,GA
+035 : WA,JE,GU,MI,VI;HA;SK;WJ;TE;SA : WA,JE,GU,MI,VI
+036 : WA,JE,MI;HA;SK;WJ;TE;SA;GU : WA,JE,MI
+037 : WA,SK;HA;JE;WJ;TE;SA;GU;MI : WA,SK
+038 : WA,GU;HA;JE;SK;WJ;TE;SA;MI : WA,GU
+039 : SK,TE;WA;HA;JE;WJ;SA;GU;MI : SK,TE
+040 : WA,JE,BR;HA;SK;WJ;SA;GU;MI : WA,JE,BR
+041 : JE,WA,GU;HA;SK;WJ;SA;MI : JE,WA,GU
+042 : GU,HE;WA;HA;JE;SK;WJ;SA;MI : GU,HE
+043 : WA,HE,GU;HA;JE;SK;WJ;SA;MI : WA,HE,GU
+044 : WA,JE;HA;SK;WJ;SA;MI : WA,JE
+045 : MI,JE,WA;HA;SK;WJ;SA : MI,JE,WA
+046 : WA,JE,MI;HA;SK;WJ;SA : WA,JE,MI
+047 : WA,JE,TO;HA;SK;WJ;SA;MI : WA,JE,TO
+048 : WA,JE,TO;HA;SK;WJ;SA;MI : WA,JE,TO
+049 : MI,WA;HA;JE;SK;WJ;SA;TO : MI,WA
+050 : WA,LY;HA;JE;SK;WJ;SA;MI;TO : WA,LY
+052 : WA,MI;HA;JE;SK;WJ;SA;TO;LY : WA,MI
+053 : WA,TO,JK;HA;JE;SK;WJ;SA;LY : WA,TO,JK
+054 : HA,WA;JE;SK;WJ;SA;TO;LY;JK : HA,WA
+055 : HA,WA;JE;SK;WJ;SA;TO;LY;JK : HA,WA
+056 : WA,HA;JE;SK;WJ;SA;TO;LY;JK : WA,HA
+057 : WA,SK;HA;JE;WJ;SA;TO;LY;JK : WA,SK
+058 : WA,JE;HA;SK;WJ;SA;TO;LY;JK : WA,JE
+059 : JE,WA;HA;SK;WJ;SA;TO;LY;JK : JE,WA
+060 : JE,HA,GO;WA;SK;WJ;SA;TO;LY;JK : JE,HA,GO
+061 : WA,JK,TO;HA;JE;SK;WJ;SA;LY;GO : WA,JK,TO
+062 : JE,HA,GO;WA;SK;WJ;SA;TO;LY;JK : JE,HA,GO
+063 : WA,JE,HA,GO;SK;WJ;SA;TO;LY;JK : WA,JE,HA,GO
+064 : WA,JE,HA,GO,JK,TO;SK;WJ;SA;LY : WA,JE,HA,GO,JK,TO
+065 : HA,GO,JK,TO,WA;JE;SK;WJ;SA;LY : HA,GO,JK,TO,WA
+066 : JE,JK,TO;WA;SK;WJ;SA;LY : JE,JK,TO
+067 : WA,SA,VR;JE;SK;WJ;TO;LY;JK : WA,SA,VR
+068 : JE,TO;WA;SK;WJ;LY;JK;VR : JE,TO
+069 : SK,TO;WA;JE;WJ;LY;JK;VR : SK,TO
+070 : WA,VR;JE;SK;WJ;TO;LY;JK : WA,VR
+071 : JE,TO,AN;WA;SK;WJ;LY;JK : JE,TO,AN
+072 : WA,WJ;JE;SK;TO;LY;JK : WA,WJ
+073 : WA,SK;JE;TO;LY;JK : WA,SK
+075 : WA,SK;JE;TO;LY;JK : WA,SK
+077 : WA,LY,TO;JE;JK : WA,LY,TO
+078: WA,JE,TO,JK: WA,JE,TO,JK
+079: WA,JE,JK,TO: WA,JE,JK,TO
+080: WA,JE: WA,JE

@@ -1,58 +1,58 @@
 *animal_farm Dataset*
-B Boxer
+BO Boxer
 BR Boxer's Replacement
-Ben Benjamin
-C Clover
-D Dogs
-F Frederick
-H Hens
-M Moses
+BE Benjamin
+CL Clover
+DO Dogs
+FR Frederick
+HE Hens
+MO Moses
 MJ Mr. Jones
-Mur Muriel
-N Napoleon
+MU Muriel
+NA Napoleon
 OM Old Major
-P Pilkington
-S Squealer
-She Sheep
-Sno Snowball
+PI Pilkington
+SQ Squealer
+SP Sheep
+SB Snowball
 YP Young Pigs
 
-000 : MJ,M : MJ,M
-001 : OM,B,C,Ben,Sno,N,S;MJ : OM,B,C,Ben,Sno,N,S
-002 : Sno,N,S;MJ;B;C;Ben : Sno,N,S
-003 : B,C,Sno,N,MJ;Ben;S : B,C,Sno,N,MJ
-004 : Sno,N,B,C,Ben;MJ;S : Sno,N,B,C,Ben
-005 : Sno,N,S;MJ;B;C;Ben : Sno,N,S
-006 : B,C,Ben,Sno,N;MJ;S : B,C,Ben,Sno,N
-007 : S,B,C;MJ;Ben;Sno;N : S,B,C
-008 : Sno,B,MJ;C;Ben;N;S : Sno,B,MJ
-009 : Sno,N,S;B;C;Ben : Sno,N,S
-010 : N,Sno,D;B;C;Ben;S : N,Sno,D
-011 : N,D,Sno;B;C;Ben;S : N,D,Sno
-012 : N,S,B;C;Ben;D : N,S,B
-013 : N,S;B;C;Ben;D : N,S
-014 : B,C,Ben,N;S;D : B,C,Ben,N
-015 : N,S,B;C;Ben;D : N,S,B
-016 : S,N,B;C;Ben;D : S,N,B
-017 : N,S,H;B;C;Ben;D : N,S,H
-018 : N,H,D;B;C;Ben;S : N,H,D
-019 : N,D,H,She;B;C;Ben;S : N,D,H,She
-020 : S,C,Mur,Ben;B;N;D;She : S,C,Mur,Ben
-021 : B,N,Ben;C;S;D;She : B,N,Ben
-022 : B,N,F,D;C;Ben;S;She : B,N,F,D
-023 : B,N,F;C;Ben;S;She : B,N,F
-024 : N,S,B;C;Ben;She;F : N,S,B
-025 : B,Ben,C;N;S;She;F : B,Ben,C
-026 : N,S,Ben;B;C;She;F : N,S,Ben
-027 : B,C,Ben,N,S;She;F : B,C,Ben,N,S
-028 : B,Ben,C,N;S;She;F : B,Ben,C,N
-029 : N,S,Ben;C;She;F : N,S,Ben
-030 : N,S,BR;C;Ben;She;F : N,S,BR
-031 : She,S,N;C;Ben;F : She,S,N
-032 : N,S,Ben,C;F : N,S,Ben,C
-033 : C,Ben,N;S;F : C,Ben,N
-034 : N,S,YP;Ben;F : N,S,YP
-035 : N,S,Ben;F : N,S,Ben
-036 : N,S,P,Ben;F : N,S,P,Ben
-037 : N,P,F,S;Ben : N,P,F,S
-038 : N,S,Ben,P : N,S,Ben,P
+000 : MJ,MO : MJ,MO
+001 : OM,BO,CL,BE,SB,NA,SQ;MJ : OM,BO,CL,BE,SB,NA,SQ
+002 : SB,NA,SQ;MJ;BO;CL;BE : SB,NA,SQ
+003 : BO,CL,SB,NA,MJ;BE;SQ : BO,CL,SB,NA,MJ
+004 : SB,NA,BO,CL,BE;MJ;SQ : SB,NA,BO,CL,BE
+005 : SB,NA,SQ;MJ;BO;CL;BE : SB,NA,SQ
+006 : BO,CL,BE,SB,NA;MJ;SQ : BO,CL,BE,SB,NA
+007 : SQ,BO,CL;MJ;BE;SB;NA : SQ,BO,CL
+008 : SB,BO,MJ;CL;BE;NA;SQ : SB,BO,MJ
+009 : SB,NA,SQ;BO;CL;BE : SB,NA,SQ
+010 : NA,SB,DO;BO;CL;BE;SQ : NA,SB,DO
+011 : NA,DO,SB;BO;CL;BE;SQ : NA,DO,SB
+012 : NA,SQ,BO;CL;BE;DO : NA,SQ,BO
+013 : NA,SQ;BO;CL;BE;DO : NA,SQ
+014 : BO,CL,BE,NA;SQ;DO : BO,CL,BE,NA
+015 : NA,SQ,BO;CL;BE;DO : NA,SQ,BO
+016 : SQ,NA,BO;CL;BE;DO : SQ,NA,BO
+017 : NA,SQ,HE;BO;CL;BE;DO : NA,SQ,HE
+018 : NA,HE,DO;BO;CL;BE;SQ : NA,HE,DO
+019 : NA,DO,HE,SP;BO;CL;BE;SQ : NA,DO,HE,SP
+020 : SQ,CL,MU,BE;BO;NA;DO;SP : SQ,CL,MU,BE
+021 : BO,NA,BE;CL;SQ;DO;SP : BO,NA,BE
+022 : BO,NA,FR,DO;CL;BE;SQ;SP : BO,NA,FR,DO
+023 : BO,NA,FR;CL;BE;SQ;SP : BO,NA,FR
+024 : NA,SQ,BO;CL;BE;SP;FR : NA,SQ,BO
+025 : BO,BE,CL;NA;SQ;SP;FR : BO,BE,CL
+026 : NA,SQ,BE;BO;CL;SP;FR : NA,SQ,BE
+027 : BO,CL,BE,NA,SQ;SP;FR : BO,CL,BE,NA,SQ
+028 : BO,BE,CL,NA;SQ;SP;FR : BO,BE,CL,NA
+029 : NA,SQ,BE;CL;SP;FR : NA,SQ,BE
+030 : NA,SQ,BR;CL;BE;SP;FR : NA,SQ,BR
+031 : SP,SQ,NA;CL;BE;FR : SP,SQ,NA
+032 : NA,SQ,BE,CL;FR : NA,SQ,BE,CL
+033 : CL,BE,NA;SQ;FR : CL,BE,NA
+034 : NA,SQ,YP;BE;FR : NA,SQ,YP
+035 : NA,SQ,BE;FR : NA,SQ,BE
+036 : NA,SQ,PI,BE;FR : NA,SQ,PI,BE
+037 : NA,PI,FR,SQ;BE : NA,PI,FR,SQ
+038 : NA,SQ,BE,PI : NA,SQ,BE,PI

@@ -1,0 +1,14 @@
+0 : MU
+1 : SB
+2 : RA
+3 : SI
+4 : ZA
+5 : SC
+6 : NA
+7 : SF
+8 : SH
+9 : BA
+10 : ED
+11 : HY
+12 : TI
+13 : PU
