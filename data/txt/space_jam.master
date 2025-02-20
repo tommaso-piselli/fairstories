@@ -1,0 +1,152 @@
+*space_jam Dataset*
+B Blanko
+BB Bugs Bunny
+BM Bill Murray
+Ban Bang
+Bup Bupkus
+CB Charles Barkley
+DD Daffy Duck
+EF Elmer Fudd
+FL Foghorn Leghorn
+JJ Juanita Jordan
+JJor Jasmine Jordan
+JJor Jeffrey Jordan
+LB Lola Bunny
+LBir Larry Bird
+LJ Larry Johnson
+MB Muggsy Bogues
+MF Michael's Father
+MJ Micheal Jordan
+MJor Marcus Jordan
+MJor Michael Jordan
+N Nawt
+NC NBA Commissioner
+P Pound
+PE Patrick Ewing
+PP Porky Pig
+S Sylvester
+SB Shawn Bradley
+SP Stan Podolak
+Swa Swackhammer
+T Taz
+Twe Tweety
+
+000 : MJ,MF : MJ,MF
+001 : MJ : MJ
+002 : Swa : Swa
+003 : Swa : Swa
+004 : Swa,Ban,P,B,Bup,N : Swa,Ban,P,B,Bup,N
+005 : BB;Swa;Ban;P;B;Bup;N : BB
+006 : BB,DD;Swa;Ban;P;B;Bup;N : BB,DD
+007 : MJor;Swa;Ban;P;B;Bup;N;BB;DD : MJor
+008 : MJor;Swa;Ban;P;B;Bup;N;BB;DD : MJor
+009 : MJor;Swa;Ban;P;B;Bup;N;BB;DD : MJor
+010 : MJor;Swa;Ban;P;B;Bup;N;BB;DD : MJor
+011 : Ban,P,B,Bup,N;Swa;BB;DD;MJor : Ban,P,B,Bup,N
+012 : Ban,P,B,Bup,N,BB,DD;Swa;MJor : Ban,P,B,Bup,N,BB,DD
+013 : BB,DD,PP,EF,S,FL,Twe;Swa;Ban;P;B;Bup;N;MJor : BB,DD,PP,EF,S,FL,Twe
+014 : BB,DD,PP,Ban,P,B,Bup,N;Swa;MJor;EF;S;FL;Twe : BB,DD,PP,Ban,P,B,Bup,N
+015 : BB,Ban,P,B,Bup,N;Swa;DD;MJor;PP;EF;S;FL;Twe : BB,Ban,P,B,Bup,N
+016 : MJor,JJ,JJor,MJor,JJor;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe : MJor,JJ,JJor,MJor,JJor
+017 : MJor,LBir;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor : MJor,LBir
+018 : MJor,LBir,BM;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor : MJor,LBir,BM
+019 : MJor,SP;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor;BM : MJor,SP
+020 : Ban,P,B,Bup,N;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP : Ban,P,B,Bup,N
+021 : Ban,P,B,Bup,N;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP : Ban,P,B,Bup,N
+022 : CB;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP : CB
+023 : PE;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB : PE
+024 : MB;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE : MB
+025 : LJ;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB : LJ
+026 : SB;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ : SB
+027 : Ban,P,B,Bup,N,CB;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;PE;MB;LJ;SB : Ban,P,B,Bup,N,CB
+028 : Ban,P,B,Bup,N,PE;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;MB;LJ;SB : Ban,P,B,Bup,N,PE
+029 : Ban,P,B,Bup,N,MB;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;LJ;SB : Ban,P,B,Bup,N,MB
+030 : Ban,P,B,Bup,N,LJ;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;SB : Ban,P,B,Bup,N,LJ
+031 : Ban,P,B,Bup,N,SB;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ : Ban,P,B,Bup,N,SB
+032 : CB;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;PE;MB;LJ;SB : CB
+033 : PE;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;MB;LJ;SB : PE
+034 : MB;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;LJ;SB : MB
+035 : LJ;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;SB : LJ
+036 : SB;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ : SB
+037 : CB,PE,MB,LJ,SB;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP : CB,PE,MB,LJ,SB
+038 : NC;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB : NC
+039 : MJor;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB : MJor
+040 : MJor,SP;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;CB;PE;MB;LJ;SB : MJor,SP
+041 : BB,DD,PP,EF,S,FL,Twe,T;Swa;Ban;P;B;Bup;N;MJor;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB : BB,DD,PP,EF,S,FL,Twe,T
+042 : BB,DD;Swa;Ban;P;B;Bup;N;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : BB,DD
+043 : MJor;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor
+044 : MJor,BB,DD;Swa;Ban;P;B;Bup;N;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor,BB,DD
+045 : MJor;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor
+046 : MJor,BB,DD;Swa;Ban;P;B;Bup;N;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor,BB,DD
+047 : MJor,BB;Swa;Ban;P;B;Bup;N;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor,BB
+048 : MJor,BB,DD,PP,EF,T;Swa;Ban;P;B;Bup;N;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB : MJor,BB,DD,PP,EF,T
+049 : MJor,BB;Swa;Ban;P;B;Bup;N;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor,BB
+050 : Ban,P,B,Bup,N,Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : Ban,P,B,Bup,N,Swa
+051 : Ban,P,B,Bup,N;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : Ban,P,B,Bup,N
+052 : P,Ban,Bup,B,N;Swa;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : P,Ban,Bup,B,N
+053 : P,Ban,Bup,B,N,BB;Swa;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : P,Ban,Bup,B,N,BB
+054 : MJor,BB;Swa;Ban;P;B;Bup;N;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor,BB
+055 : LB,BB;Swa;Ban;P;B;Bup;N;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : LB,BB
+056 : BB,LB;Swa;Ban;P;B;Bup;N;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : BB,LB
+057 : LB,BB,MJor;Swa;Ban;P;B;Bup;N;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : LB,BB,MJor
+058 : SP;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : SP
+059 : SP,MJor;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : SP,MJor
+060 : MJor,SP;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : MJor,SP
+061 : JJ,JJor,MJor,JJor;Swa;Ban;P;B;Bup;N;BB;DD;PP;EF;S;FL;Twe;BM;SP;CB;PE;MB;LJ;SB;T;LB : JJ,JJor,MJor,JJor
+062 : SP;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : SP
+063 : SP,JJ;Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;EF;S;FL;Twe;JJor;BM;CB;PE;MB;LJ;SB;T;LB : SP,JJ
+064 : MJor,BB,DD,LB,PP,EF,S,T;Swa;Ban;P;B;Bup;N;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB : MJor,BB,DD,LB,PP,EF,S,T
+065 : MJor,BB,DD;Swa;Ban;P;B;Bup;N;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : MJor,BB,DD
+066 : MJor,SP,BB;Swa;Ban;P;B;Bup;N;DD;PP;S;FL;Twe;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : MJor,SP,BB
+067 : SP,MJor;Swa;Ban;P;B;Bup;N;BB;DD;PP;S;FL;Twe;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : SP,MJor
+068 : MJor,BB,DD,T;Swa;Ban;P;B;Bup;N;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;LB : MJor,BB,DD,T
+069 : P,Ban,Bup,B,N,MJor;Swa;BB;DD;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : P,Ban,Bup,B,N,MJor
+070 : Swa,P,Ban,Bup,B,N;BB;DD;MJor;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : Swa,P,Ban,Bup,B,N
+071 : BB,LB,DD;Swa;Ban;P;B;Bup;N;MJor;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : BB,LB,DD
+072 : MJor,P,Ban,Bup,B,N;Swa;BB;DD;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : MJor,P,Ban,Bup,B,N
+073 : MJor,BB,DD,LB;Swa;Ban;P;B;Bup;N;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor,BB,DD,LB
+074 : P,Ban,Bup,B,N;Swa;BB;DD;MJor;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : P,Ban,Bup,B,N
+075 : Swa;Ban;P;B;Bup;N;BB;DD;MJor;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : Swa
+076 : MJor,BB;Swa;Ban;P;B;Bup;N;DD;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : MJor,BB
+077 : MJor,BB,LB,P,Ban,Bup,B,N,Swa;DD;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor,BB,LB,P,Ban,Bup,B,N,Swa
+078 : MJor,P;Swa;Ban;B;Bup;N;BB;DD;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : MJor,P
+079 : P,Ban,Bup,B,N,T,MJor;Swa;BB;DD;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;LB : P,Ban,Bup,B,N,T,MJor
+080 : P,Ban,Bup,B,N,MJor,BB;Swa;DD;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : P,Ban,Bup,B,N,MJor,BB
+081 : DD,P;Swa;Ban;B;Bup;N;BB;MJor;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : DD,P
+082 : MJor;Swa;Ban;P;B;Bup;N;BB;DD;PP;S;FL;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : MJor
+083 : P,Ban,Bup,B,N,S,Twe,FL;Swa;BB;DD;MJor;PP;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : P,Ban,Bup,B,N,S,Twe,FL
+084 : MJor,BB,P,Ban,Bup,B,N,Swa;DD;PP;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : MJor,BB,P,Ban,Bup,B,N,Swa
+085 : MJor,SP,BB,DD,LB,PP,T;Swa;Ban;P;B;Bup;N;S;Twe;JJ;JJor;BM;CB;PE;MB;LJ;SB : MJor,SP,BB,DD,LB,PP,T
+086 : BB,DD,LB,PP,T;Swa;Ban;P;B;Bup;N;MJor;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB : BB,DD,LB,PP,T
+087 : MJor,BB;Swa;Ban;P;B;Bup;N;DD;PP;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : MJor,BB
+088 : BB,MJor;Swa;Ban;P;B;Bup;N;DD;PP;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : BB,MJor
+089 : BB,DD,LB,PP,T;Swa;Ban;P;B;Bup;N;MJor;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB : BB,DD,LB,PP,T
+090 : BB,DD,LB,PP,T,MJor;Swa;Ban;P;B;Bup;N;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB : BB,DD,LB,PP,T,MJor
+091 : MJor,BB,P,Ban,Bup,B,N;Swa;DD;PP;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : MJor,BB,P,Ban,Bup,B,N
+092 : MJor,BB,LB,P,Ban,Bup,B,N;Swa;DD;PP;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T : MJor,BB,LB,P,Ban,Bup,B,N
+093 : Swa,P,Ban,Bup,B,N;BB;DD;MJor;PP;S;Twe;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : Swa,P,Ban,Bup,B,N
+094 : P,Ban,Bup,B,N,Twe,S;Swa;BB;DD;MJor;PP;JJ;JJor;BM;SP;CB;PE;MB;LJ;SB;T;LB : P,Ban,Bup,B,N,Twe,S
+095 : SP,P;Swa;Ban;B;Bup;N;BB;DD;MJor;PP;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : SP,P
+096 : MJor,BB,DD,LB;Swa;Ban;P;B;Bup;N;PP;JJ;JJor;BM;CB;PE;MB;LJ;SB;T : MJor,BB,DD,LB
+097 : BB,DD,LB;Swa;Ban;P;B;Bup;N;MJor;PP;JJ;JJor;BM;CB;PE;MB;LJ;SB;T : BB,DD,LB
+098 : MJor,BB,LB,DD;Swa;Ban;P;B;Bup;N;PP;JJ;JJor;BM;CB;PE;MB;LJ;SB;T : MJor,BB,LB,DD
+099 : BM,MJor,BB;Swa;Ban;P;B;Bup;N;DD;PP;JJ;JJor;CB;PE;MB;LJ;SB;T;LB : BM,MJor,BB
+100 : MJor,BB,LB,BM,P,Ban,Bup,B,N;Swa;DD;PP;JJ;JJor;CB;PE;MB;LJ;SB;T : MJor,BB,LB,BM,P,Ban,Bup,B,N
+101 : Swa,MJor,BB;Ban;P;B;Bup;N;DD;PP;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : Swa,MJor,BB
+102 : MJor,BB,P,Ban,Bup,B,N;Swa;DD;PP;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : MJor,BB,P,Ban,Bup,B,N
+103 : MJor,BB,P,Ban,Bup,B,N,Swa;DD;PP;JJ;JJor;BM;CB;PE;MB;LJ;SB;T;LB : MJor,BB,P,Ban,Bup,B,N,Swa
+104 : MJor,BB,LB,DD,T,PP,BM;Swa;Ban;P;B;Bup;N;JJ;JJor;CB;PE;MB;LJ;SB : MJor,BB,LB,DD,T,PP,BM
+105 : Swa,P,Ban,Bup,B,N;BB;DD;MJor;PP;JJ;JJor;CB;PE;MB;LJ;SB;T;LB : Swa,P,Ban,Bup,B,N
+106 : P,Ban,Bup,B,N,Swa;BB;DD;MJor;PP;JJ;JJor;CB;PE;MB;LJ;SB;T;LB : P,Ban,Bup,B,N,Swa
+107 : MJor,P,Ban,Bup,B,N;BB;DD;PP;JJ;JJor;CB;PE;MB;LJ;SB;T;LB : MJor,P,Ban,Bup,B,N
+108 : CB,PE,MB,LJ,SB;Ban;P;B;Bup;N;BB;DD;MJor;PP;JJ;JJor;T;LB : CB,PE,MB,LJ,SB
+109 : Ban,P,B,Bup,N,BB;DD;MJor;PP;JJ;JJor;CB;PE;MB;LJ;SB;T;LB : Ban,P,B,Bup,N,BB
+110 : MJor,BB;DD;PP;JJ;JJor;CB;PE;MB;LJ;SB;T;LB : MJor,BB
+111 : MJor,BB,LB,DD,PP,T;JJ;JJor;CB;PE;MB;LJ;SB : MJor,BB,LB,DD,PP,T
+112 : MJor;BB;DD;PP;JJ;JJor;CB;PE;MB;LJ;SB;T;LB : MJor
+113 : MJor,JJ,JJor,MJor,JJor;BB;DD;PP;CB;PE;MB;LJ;SB;T;LB : MJor,JJ,JJor,MJor,JJor
+114 : MJor,CB,PE,MB,LJ,SB;BB;DD;PP;T;LB : MJor,CB,PE,MB,LJ,SB
+115 : MJor;BB;DD;PP;T;LB : MJor
+116 : MJor;BB;DD;PP;T;LB : MJor
+117 : BB,DD,PP,T,LB;MJor : BB,DD,PP,T,LB
+118 : MJor : MJor

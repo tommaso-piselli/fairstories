@@ -1,13 +1,13 @@
 async function render() {
-  let subject = "JurassicPark";
-  let experiment = "fairSkewCrossWiggles";
+  let subject = "lotr";
+  let experiment = "cross";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
   // let solution = await d3.text(`../results/${subject}_fair_replaced.sol`);
   // let solution = await d3.text(`../results/${subject}_replaced.sol`);
   let solution = await d3.text(
-    `../results/${subject}/coloring2/sol/${experiment}/${subject}_${experiment}_replaced.sol`
+    `../results/${subject}/coloring1/sol/${experiment}/${subject}_${experiment}_replaced.sol`
   );
 
   let graph = {

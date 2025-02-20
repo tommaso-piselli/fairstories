@@ -1,0 +1,52 @@
+*lord_of_the_flies Dataset*
+B Bill
+E Eric
+J Jack
+M Maurice
+NO Naval Officer
+P Percival
+Pig Piggy
+R Roger
+Ral Ralph
+Rob Robert
+S Simon
+Sam Sam
+
+000 : Ral,Pig : Ral,Pig
+001 : Ral,Pig : Ral,Pig
+002 : Ral,Pig,J,S : Ral,Pig,J,S
+003 : Ral,J,Pig,S : Ral,J,Pig,S
+004 : Ral,J,S;Pig : Ral,J,S
+005 : Ral,J,Pig,M,Rob;S : Ral,J,Pig,M,Rob
+006 : Ral,J,Pig;S;M;Rob : Ral,J,Pig
+007 : J,R,M;Ral;Pig;S;Rob : J,R,M
+008 : Ral,Pig,S,J,Sam,E;M;Rob;R : Ral,Pig,S,J,Sam,E
+009 : S;Ral;Pig;J;M;Rob;R;Sam;E : S
+010 : J,Ral;Pig;S;M;Rob;R;Sam;E : J,Ral
+011 : J,R,M;Ral;Pig;S;Rob;Sam;E : J,R,M
+012 : Ral,Pig,J;S;M;Rob;R;Sam;E : Ral,Pig,J
+013 : Ral,J,Pig;S;M;Rob;R;Sam;E : Ral,J,Pig
+014 : P,Ral,J,Pig,S;M;Rob;R;Sam;E : P,Ral,J,Pig,S
+015 : Sam,E;Ral;Pig;J;S;M;Rob;R : Sam,E
+016 : J,Ral,Pig;S;M;Rob;R;Sam;E : J,Ral,Pig
+017 : Ral,J,R;Pig;S;M;Rob;Sam;E : Ral,J,R
+018 : Ral,J,R;Pig;S;M;Rob;Sam;E : Ral,J,R
+019 : J,Ral,Pig,S;M;Rob;R;Sam;E : J,Ral,Pig,S
+020 : J,R,M,B;Ral;Pig;S;Rob;Sam;E : J,R,M,B
+021 : J,R,M,Rob;Ral;Pig;S;Sam;E : J,R,M,Rob
+022 : S;Ral;Pig;J;M;R;Sam;E : S
+023 : S;Ral;Pig;J;M;R;Sam;E : S
+024 : S,Ral,Pig;J;M;R;Sam;E : S,Ral,Pig
+025 : J,R,Ral,Pig,S;M;Sam;E : J,R,Ral,Pig,S
+026 : Pig,Ral;J;M;R;Sam;E : Pig,Ral
+027 : J,R,M,Ral,Pig,Sam,E : J,R,M,Ral,Pig,Sam,E
+028 : J,R,Ral,Pig;Sam;E : J,R,Ral,Pig
+029 : Ral,Pig,Sam,E;J;R : Ral,Pig,Sam,E
+030 : Ral,Pig,Sam,E,J,R : Ral,Pig,Sam,E,J,R
+031 : R,Pig,Ral,J;Sam;E : R,Pig,Ral,J
+032 : Sam,E,R,J;Ral : Sam,E,R,J
+033 : Ral,Sam,E;J;R : Ral,Sam,E
+034 : Ral,J,R,Sam,E : Ral,J,R,Sam,E
+035 : Ral,J,R : Ral,J,R
+036 : Ral,J,R : Ral,J,R
+037 : NO,Ral,J,R : NO,Ral,J,R

@@ -1,0 +1,108 @@
+*breaking_bad Dataset*
+A Andrea
+B Brock
+C Combo
+G Gomez
+Gal Gale
+Gus Gus
+H Hector
+Han Hank
+J Jesse
+Jac Jack
+Jan Jane
+K8 Krazy 8
+L Lydia
+M Mike
+Mar Marie
+S Saul
+Sky Skyler
+T Todd
+TC The Cousins
+Ted Ted
+Tuc Tuco
+V Victor
+VRM Vacuum Repair Man
+W Walter
+WJ Walt Jr.
+
+000 : W : W
+001 : W,Han : W,Han
+002 : W,J,Han : W,J,Han
+003 : W,J;Han : W,J
+004 : W,J;Han : W,J
+005 : W,J,K8;Han : W,J,K8
+006 : W,K8;Han;J : W,K8
+007 : W,Sky,WJ,Han,Mar;J : W,Sky,WJ,Han,Mar
+008 : J,Tuc;W;Han;Sky;WJ : J,Tuc
+009 : W,Tuc;Han;J;Sky;WJ : W,Tuc
+010 : W,J,Tuc;Han;Sky;WJ : W,J,Tuc
+011 : W,J,Tuc,Han;Sky;WJ : W,J,Tuc,Han
+012 : W,Sky;Han;J;WJ : W,Sky
+013 : J,Jan;W;Han;Sky;WJ : J,Jan
+014 : Sky,Ted;W;Han;J;WJ;Jan : Sky,Ted
+015 : W,J,S;Han;Sky;WJ;Jan;Ted : W,J,S
+016 : W,Sky,WJ;Han;J;Jan;Ted;S : W,Sky,WJ
+017 : W,J,S;Han;Sky;WJ;Jan;Ted : W,J,S
+018 : W,J,Sky;Han;WJ;Jan;Ted;S : W,J,Sky
+019 : C;W;Han;J;Sky;WJ;Jan;Ted;S : C
+020 : J,Jan;W;Han;Sky;WJ;Ted;S : J,Jan
+021 : W,S,Gus;Han;J;Sky;WJ;Jan;Ted : W,S,Gus
+022 : W,Gus;Han;J;Sky;WJ;Jan;Ted;S : W,Gus
+023 : W,J,Jan;Han;Sky;WJ;Ted;S;Gus : W,J,Jan
+024 : W,J;Han;Sky;WJ;Ted;S;Gus : W,J
+025 : W,Sky;Han;J;WJ;Ted;S;Gus : W,Sky
+026 : Sky,Ted;W;Han;J;WJ;S;Gus : Sky,Ted
+027 : W,Sky;Han;J;WJ;Ted;S;Gus : W,Sky
+028 : W,Gal;Han;J;Sky;WJ;Ted;S;Gus : W,Gal
+029 : Han,TC;W;J;Sky;WJ;Ted;S;Gus;Gal : Han,TC
+030 : W,J,Gus;Han;Sky;WJ;Ted;S;Gal : W,J,Gus
+031 : J;W;Han;Sky;WJ;Ted;S;Gus;Gal : J
+032 : W,J;Han;Sky;WJ;Ted;S;Gus;Gal : W,J
+033 : W,Gal,Gus;Han;J;Sky;WJ;Ted;S : W,Gal,Gus
+034 : J,Gal;W;Han;Sky;WJ;Ted;S;Gus : J,Gal
+035 : W,J,Gus,M,V;Han;Sky;WJ;Ted;S : W,J,Gus,M,V
+036 : W,J,M;Han;Sky;WJ;Ted;S;Gus : W,J,M
+037 : W,Sky;Han;J;WJ;Ted;S;Gus;M : W,Sky
+038 : W,Gus;Han;J;Sky;WJ;Ted;S;M : W,Gus
+039 : Sky,Ted;W;Han;J;WJ;S;Gus;M : Sky,Ted
+040 : W,J,B;Han;Sky;WJ;S;Gus;M : W,J,B
+041 : J,W,Gus;Han;Sky;WJ;S;M : J,W,Gus
+042 : Gus,H;W;Han;J;Sky;WJ;S;M : Gus,H
+043 : W,H,Gus;Han;J;Sky;WJ;S;M : W,H,Gus
+044 : W,J;Han;Sky;WJ;S;M : W,J
+045 : M,J,W;Han;Sky;WJ;S : M,J,W
+046 : W,J,M;Han;Sky;WJ;S : W,J,M
+047 : W,J,T;Han;Sky;WJ;S;M : W,J,T
+048 : W,J,T;Han;Sky;WJ;S;M : W,J,T
+049 : M,W;Han;J;Sky;WJ;S;T : M,W
+050 : W,L;Han;J;Sky;WJ;S;M;T : W,L
+051 : W;Han;J;Sky;WJ;S;M;T;L : W
+052 : W,M;Han;J;Sky;WJ;S;T;L : W,M
+053 : W,T,Jac;Han;J;Sky;WJ;S;L : W,T,Jac
+054 : Han,W;J;Sky;WJ;S;T;L;Jac : Han,W
+055 : Han,W;J;Sky;WJ;S;T;L;Jac : Han,W
+056 : W;Han;J;Sky;WJ;S;T;L;Jac : W
+057 : W,Sky;Han;J;WJ;S;T;L;Jac : W,Sky
+058 : W,J;Han;Sky;WJ;S;T;L;Jac : W,J
+059 : J;W;Han;Sky;WJ;S;T;L;Jac : J
+060 : J,Han,G;W;Sky;WJ;S;T;L;Jac : J,Han,G
+061 : W,Jac,T;Han;J;Sky;WJ;S;L;G : W,Jac,T
+062 : J,Han,G;W;Sky;WJ;S;T;L;Jac : J,Han,G
+063 : W,J,Han,G;Sky;WJ;S;T;L;Jac : W,J,Han,G
+064 : W,J,Han,G,Jac,T;Sky;WJ;S;L : W,J,Han,G,Jac,T
+065 : Han,G,Jac,T,W;J;Sky;WJ;S;L : Han,G,Jac,T,W
+066 : J,Jac,T;W;Sky;WJ;S;L : J,Jac,T
+067 : W,S,VRM;J;Sky;WJ;T;L;Jac : W,S,VRM
+068 : J,T;W;Sky;WJ;L;Jac;VRM : J,T
+069 : Sky,T;W;J;WJ;L;Jac;VRM : Sky,T
+070 : W,VRM;J;Sky;WJ;T;L;Jac : W,VRM
+071 : J,T,A;W;Sky;WJ;L;Jac : J,T,A
+072 : W,WJ;J;Sky;T;L;Jac : W,WJ
+073 : W,Sky;J;T;L;Jac : W,Sky
+074 : W;J;Sky;T;L;Jac : W
+075 : W,Sky;J;T;L;Jac : W,Sky
+076 : W;J;T;L;Jac : W
+077 : W,L,T;J;Jac : W,L,T
+078 : W,Jac,T,J : W,Jac,T,J
+079 : W,J,Jac,T : W,J,Jac,T
+080 : W,J : W,J
