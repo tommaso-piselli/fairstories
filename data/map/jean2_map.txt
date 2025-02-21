@@ -1,0 +1,14 @@
+0 : NP
+1 : TH
+2 : GP
+3 : JV
+4 : BZ
+5 : CO
+6 : TM
+7 : EP
+8 : AZ
+9 : LL
+10 : JA
+11 : FF
+12 : MI
+13 : GR

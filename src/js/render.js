@@ -1,13 +1,14 @@
 async function render() {
-  let subject = "huck";
+  let subject = "ffvii";
   let experiment = "cross";
+  let coloring = "coloring1";
   let text = await d3.text(`../data/txt/${subject}.master`);
   let character_list = text.split("\n\n")[0];
   let timesteps = text.split("\n\n")[1];
   // let solution = await d3.text(`../results/${subject}_fair_replaced.sol`);
   // let solution = await d3.text(`../results/${subject}_replaced.sol`);
   let solution = await d3.text(
-    `../results/${subject}/coloring1/sol/${experiment}/${subject}_${experiment}_replaced.sol`
+    `../results/${subject}/${coloring}/sol/${experiment}/${subject}_${experiment}_replaced.sol`
   );
 
   let graph = {
@@ -30,7 +31,9 @@ async function render() {
   };
 
   // Read and parse the groups file
-  let groupsText = await d3.text(`../data/groups/${subject}_groups.txt`);
+  let groupsText = await d3.text(
+    `../results/${subject}/${coloring}/_${coloring}.txt`
+  );
   let character_colors = {};
 
   // Parse the groups file and create color mapping

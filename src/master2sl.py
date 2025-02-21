@@ -1,7 +1,7 @@
 import sys
 
 # Set your paths here
-subject = 'huck'
+subject = 'jean5'
 input_master = f"./data/txt/{subject}.master"
 output_sl = f"./data/sl/{subject}.sl"
 

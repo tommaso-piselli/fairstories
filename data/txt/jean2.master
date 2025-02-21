@@ -1,0 +1,78 @@
+* File "jean.dat" from the Stanford GraphBase (C) 1993 Stanford University
+* Les Mis\'erables, by Victor Hugo
+* This file may be freely copied but please do not change it in any way!
+* (Checksum parameters 437,862053837)
+AZ Anzelma, daughter of TH and TM
+BZ Boulatruelle, former convict and road mender in Montfermeil
+CO Cosette, daughter of FN and FT
+EP Eponine, daughter of TH and TM
+FF Fauchelevent, aged notary of M-- sur M--
+GP George Pontmercy, father of MA and son-in-law of GI
+GR Gribier, new gravedigger at cemetery
+JA Javert, police officer of M-- sur M--
+JV Jean Valjean, thief of bread
+LL Old woman 2, landlady of JV in Paris at Gorbeau House
+MI Mother Innocent, prioress of Convent of Petite Rue Picpus
+NP Napoleon, Emperor of France
+TH Thénardier, sergeant of Waterloo and keeper of a chophouse
+TM Madame Thénardier, wife of TH
+
+2.1.4 : NP : NP
+2.1.7 : NP : NP
+2.1.8 : NP : NP
+2.1.9 : NP : NP
+2.1.10 : NP : NP
+2.1.19 : TH,GP : TH,GP
+2.2.1 : JV;TH : JV
+2.2.2 : TH,BZ;JV : TH,BZ
+2.3.1 : CO;TH;JV : CO
+2.3.2 : TH,TM;JV;CO : TH,TM
+2.3.3 : TM,CO;TH;JV : TM,CO
+2.3.4 : TM,CO;TH;JV : TM,CO
+2.3.5 : CO;TH;JV;TM : CO
+2.3.6 : JV,CO;TH;TM : JV,CO
+2.3.7 : CO,JV;TH;TM : CO,JV
+2.3.8 : TM,JV;TH;CO : TM,JV
+2.3.8 : CO,TM;TH;JV : CO,TM
+2.3.8 : JV,TM;TH;CO : JV,TM
+2.3.8 : JV,TH,TM;CO : JV,TH,TM
+2.3.8 : TH,TM;JV;CO : TH,TM
+2.3.8 : EP,AZ;TH;JV;CO;TM : EP,AZ
+2.3.8 : EP,TM;TH;JV;CO : EP,TM
+2.3.8 : TM,CO;TH;JV : TM,CO
+2.3.8 : TH,JV;CO;TM : TH,JV
+2.3.9 : TM,JV;TH;CO : TM,JV
+2.3.9 : TH,JV;CO : TH,JV
+2.3.10 : TH,JV;CO : TH,JV
+2.4.1 : CO,JV;TH : CO,JV
+2.4.2 : CO,JV;TH : CO,JV
+2.4.3 : CO,JV;TH : CO,JV
+2.4.3 : JV,LL;TH;CO : JV,LL
+2.4.4 : LL,JV,CO;TH : LL,JV,CO
+2.4.5 : JA,JV;TH;CO;LL : JA,JV
+2.4.5 : JV,CO;TH;LL;JA : JV,CO
+2.4.5 : JV,LL;TH;CO;JA : JV,LL
+2.5.1 : CO,JV;TH;LL;JA : CO,JV
+2.5.2 : CO,JV;TH;LL;JA : CO,JV
+2.5.3 : CO,JV;TH;LL;JA : CO,JV
+2.5.4 : CO,JV;TH;LL;JA : CO,JV
+2.5.5 : CO,JV;TH;LL;JA : CO,JV
+2.5.6 : CO,JV;TH;LL;JA : CO,JV
+2.5.7 : CO,JV;TH;LL;JA : CO,JV
+2.5.8 : JV,FF;TH;CO;LL;JA : JV,FF
+2.5.9 : JV,FF;TH;CO;LL;JA : JV,FF
+2.5.10 : JA,TH;JV;CO;LL;FF : JA,TH
+2.5.10 : JA,LL;JV;CO;FF : JA,LL
+2.5.10 : JA,JV;CO;FF : JA,JV
+2.6.7 : MI;JV;CO;FF : MI
+2.8.1 : JV,FF;CO;MI : JV,FF
+2.8.2 : FF,MI;JV;CO : FF,MI
+2.8.3 : FF,MI;JV;CO : FF,MI
+2.8.4 : FF,JV;CO;MI : FF,JV
+2.8.4 : JV,CO;FF;MI : JV,CO
+2.8.5 : GR,FF;JV;MI : GR,FF
+2.8.6 : JV;FF;MI;GR : JV
+2.8.7 : FF,GR;JV;MI : FF,GR
+2.8.7 : FF,JV;MI : FF,JV
+2.8.8 : FF,MI,JV : FF,MI,JV
+2.8.9 : FF,JV : FF,JV
