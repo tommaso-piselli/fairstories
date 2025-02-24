@@ -1,5 +1,5 @@
 async function render() {
-  let subject = "ffvii";
+  let subject = "star_wars_cut";
   let experiment = "cross";
   let coloring = "coloring1";
   let text = await d3.text(`../data/txt/${subject}.master`);
