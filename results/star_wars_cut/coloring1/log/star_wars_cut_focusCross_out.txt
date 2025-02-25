@@ -1,0 +1,32 @@
+Summary for star_wars_cut_focusCross:
+=====================================
+Total characters: 14
+Blue characters: 13
+Red characters: 1
+---
+> Crossings
+Blue-Blue crossings: 46
+Red-Red crossings: 0
+Blue-Red crossings: 1
+Total crossings: 47
+---
+> FairCrossings
+BlueFair: 7.15
+RedFair: 1.00
+Unfairness 6.15
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.00
