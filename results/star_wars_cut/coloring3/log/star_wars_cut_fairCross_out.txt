@@ -1,0 +1,32 @@
+Summary for star_wars_cut_fairCross:
+=====================================
+Total characters: 14
+Blue characters: 9
+Red characters: 5
+---
+> Crossings
+Blue-Blue crossings: 29
+Red-Red crossings: 11
+Blue-Red crossings: 23
+Total crossings: 63
+---
+> FairCrossings
+BlueFair: 9.00
+RedFair: 9.00
+Unfairness 0.00
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.00

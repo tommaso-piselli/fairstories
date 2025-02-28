@@ -1,0 +1,32 @@
+Summary for ffvii_crossWiggles:
+=====================================
+Total characters: 17
+Blue characters: 16
+Red characters: 1
+---
+> Crossings
+Blue-Blue crossings: 25
+Red-Red crossings: 0
+Blue-Red crossings: 4
+Total crossings: 29
+---
+> FairCrossings
+BlueFair: 3.38
+RedFair: 4.00
+Unfairness 0.62
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 67
+---
+> FairWiggles
+BlueWiggles: 64.0
+RedWiggles: 3.0
+Unfairness 1.00

@@ -1,0 +1,32 @@
+Summary for animal_farm_fairCrossWiggles:
+=====================================
+Total characters: 17
+Blue characters: 10
+Red characters: 7
+---
+> Crossings
+Blue-Blue crossings: 4
+Red-Red crossings: 9
+Blue-Red crossings: 5
+Total crossings: 18
+---
+> FairCrossings
+BlueFair: 1.30
+RedFair: 3.29
+Unfairness 1.99
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 68
+---
+> FairWiggles
+BlueWiggles: 40.0
+RedWiggles: 28.0
+Unfairness 0.00

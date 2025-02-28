@@ -1,0 +1,32 @@
+Summary for lotr_focusSkewCrossWiggles:
+=====================================
+Total characters: 20
+Blue characters: 11
+Red characters: 9
+---
+> Crossings
+Blue-Blue crossings: 4
+Red-Red crossings: 2
+Blue-Red crossings: 20
+Total crossings: 26
+---
+> FairCrossings
+BlueFair: 2.55
+RedFair: 2.67
+Unfairness 0.12
+---
+> Skewness
+BlueSkew: 4
+RedSkew: 1
+Total skewness: 5
+---
+> FairSkewness
+Unfairness 0.25
+---
+> Wiggles
+Total wiggles: 69
+---
+> FairWiggles
+BlueWiggles: 38.0
+RedWiggles: 31.0
+Unfairness 0.01

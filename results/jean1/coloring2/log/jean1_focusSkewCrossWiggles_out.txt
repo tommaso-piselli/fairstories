@@ -1,0 +1,32 @@
+Summary for jean1_focusSkewCrossWiggles:
+=====================================
+Total characters: 40
+Blue characters: 33
+Red characters: 7
+---
+> Crossings
+Blue-Blue crossings: 5
+Red-Red crossings: 1
+Blue-Red crossings: 8
+Total crossings: 14
+---
+> FairCrossings
+BlueFair: 0.55
+RedFair: 1.43
+Unfairness 0.88
+---
+> Skewness
+BlueSkew: 4
+RedSkew: 1
+Total skewness: 5
+---
+> FairSkewness
+Unfairness 0.02
+---
+> Wiggles
+Total wiggles: 81
+---
+> FairWiggles
+BlueWiggles: 64.0
+RedWiggles: 17.0
+Unfairness 0.49
