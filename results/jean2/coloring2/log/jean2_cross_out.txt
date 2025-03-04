@@ -1,0 +1,32 @@
+Summary for jean2_cross:
+=====================================
+Total characters: 14
+Blue characters: 11
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 2
+Red-Red crossings: 0
+Blue-Red crossings: 4
+Total crossings: 6
+---
+> FairCrossings
+BlueFair: 0.73
+RedFair: 1.33
+Unfairness 0.61
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.00

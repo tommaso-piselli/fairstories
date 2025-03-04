@@ -1,0 +1,32 @@
+Summary for jean5_crossWiggles:
+=====================================
+Total characters: 20
+Blue characters: 16
+Red characters: 4
+---
+> Crossings
+Blue-Blue crossings: 6
+Red-Red crossings: 6
+Blue-Red crossings: 7
+Total crossings: 19
+---
+> FairCrossings
+BlueFair: 1.19
+RedFair: 4.75
+Unfairness 3.56
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 42
+---
+> FairWiggles
+BlueWiggles: 21.0
+RedWiggles: 21.0
+Unfairness 3.94
