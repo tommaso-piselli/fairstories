@@ -124,7 +124,8 @@ function draw(text, solution, groupsText, experiment) {
     solution_lines,
     graph,
     visualization_options,
-    space_between_timesteps
+    space_between_timesteps,
+    experiment
   );
 
   // DRAW GROUPS
@@ -211,7 +212,8 @@ function draw(text, solution, groupsText, experiment) {
       .attr("class", "char-line char-line-" + char)
       .attr("id", experiment + "-char-line-" + char)
       .attr("stroke", character_colors[char])
-      .attr("stroke-width", 5)
+      .attr("stroke-width", visualization_options.line_stroke_size)
+      .style("stroke-linecap", "round")
       .attr("d", line)
       .attr("opacity", () => {
         if (["RM", "DS", "DN"].includes(char)) return 1;
@@ -219,20 +221,20 @@ function draw(text, solution, groupsText, experiment) {
       })
       .on("mouseover", () => {
         if (characters_selected.includes(char)) return;
-        else d3.selectAll(".char-line").attr("stroke-width", 5);
-        d3.selectAll(".char-line-" + char).attr("stroke-width", 10);
+        else d3.selectAll(".char-line").attr("stroke-width", visualization_options.line_stroke_size);
+        d3.selectAll(".char-line-" + char).attr("stroke-width", visualization_options.line_stroke_size * 1.5);
       })
       .on("mouseout", () => {
         if (characters_selected.includes(char)) return;
-        else d3.selectAll(".char-line").attr("stroke-width", 5);
+        else d3.selectAll(".char-line").attr("stroke-width", visualization_options.line_stroke_size);
       })
       .on("click", () => {
         if (characters_selected.includes(char)) {
           characters_selected = characters_selected.filter((c) => c !== char);
-          d3.selectAll(".char-line-" + char).attr("stroke-width", 5);
+          d3.selectAll(".char-line-" + char).attr("stroke-width", visualization_options.line_stroke_size);
         } else {
           characters_selected.push(char);
-          d3.selectAll(".char-line-" + char).attr("stroke-width", 10);
+          d3.selectAll(".char-line-" + char).attr("stroke-width", visualization_options.line_stroke_size * 1.5);
       }})
 
     // append a circle and label every few steps
@@ -240,7 +242,7 @@ function draw(text, solution, groupsText, experiment) {
       if (line_coords[i].y != line_coords[i + 3].y) continue;
       svg
         .append("circle")
-        .attr("r", 12)
+        .attr("r", visualization_options.line_label_circle_size)
         .attr("cx", line_coords[i].x + space_between_timesteps * 0.5)
         .attr("id", "t" + i + "-" + experiment + "-charname-" + char)
         .attr(
@@ -252,15 +254,15 @@ function draw(text, solution, groupsText, experiment) {
       svg
         .append("text")
         .attr("id", "t" + i + "-" + experiment + "-charnamebackground-" + char)
-        .attr("x", line_coords[i].x + space_between_timesteps * 0.5 - 7)
+        .attr("x", line_coords[i].x + space_between_timesteps * 0.5)
         .attr(
           "y",
           line_coords[i].y + (line_coords[i + 3].y - line_coords[i].y) * 0.5 + 3
         )
         .text(char)
         .style("font-family", "Arial")
-        .attr("font-size", 10)
-        .style("font-anchor", "middle")
+        .attr("font-size", visualization_options.line_label_font_size)
+        .style("text-anchor", "middle")
         .style("font-weight", "bold")
         .attr("fill", character_colors[char]);
     }
@@ -273,7 +275,7 @@ function draw(text, solution, groupsText, experiment) {
     for (let j in nodes_at_this_timestep) {
       svg
         .append("circle")
-        .attr("r", 5)
+        .attr("r", visualization_options.node_radius)
         .attr("id", "t" + i + "-" + experiment + "-node-" + nodes_at_this_timestep[j].name)
         .attr("cx", nodes_at_this_timestep[j].x)
         .attr("cy", nodes_at_this_timestep[j].y)
@@ -370,7 +372,8 @@ function assign_node_coordinates(
   solution_lines,
   graph,
   visualization_options,
-  space_between_timesteps
+  space_between_timesteps,
+  experiment
 ) {
 
   // count the maximum number of nodes at every timestep
@@ -389,12 +392,13 @@ function assign_node_coordinates(
 
     let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == i);
 
-    let timestep_b = max_nodes_at_timestep;
+    let timestep_b = max_nodes_at_timestep + 1;
     if (visualization_options.read_b){
       let b_line = solution_lines.find((l) => l.includes("b_" + i + " "));
       if (b_line) timestep_b -= parseInt(b_line.split(" ")[1]);
       timestep_b -= nodes_at_this_timestep.length;
     }
+    if (!experiment.includes("Wiggles")) timestep_b = 0;
 
     let interactions_at_this_timestep = timesteps
       .split("\n")
@@ -538,7 +542,8 @@ function morph(text, solution, groupsText, experiment, svg){
     solution_lines,
     graph,
     visualization_options,
-    space_between_timesteps
+    space_between_timesteps,
+    experiment
   );
 
   // MOVE GROUPS
