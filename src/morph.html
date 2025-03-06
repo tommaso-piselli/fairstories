@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Description of your page" />
+    <title>Storyline Visualization</title>
+    <style>
+      .page-title {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Courier New", Courier, monospace;
+        z-index: 1000;
+      }
+
+      body {
+        margin: 0;
+        padding: 2%;
+        font-family: Arial, sans-serif;
+      }
+
+      svg {
+      }
+    </style>
+    <script>
+        let visualization_options = {
+            width: 4000, // default:4000
+            height: 500,
+            padding: { left: 20, right: 20, top: 20, bottom: 20 },
+            base_node_vertical_distance: 30,
+            between_group_vertical_distance: 30,
+            reduce_wiggles: false,
+            max_reduce_wiggles_iterations: 20,
+            // experiments: ["crosswiggles"],
+            experiments: ["fairCross", "fairCrossWiggles", 
+              "fairSkewCross", "fairSkewCrossWiggles", 
+              "focusCross", "focusCrossWiggles", "focusSkewCross", "focusSkewCrossWiggles", "skewCross", "skewCrossWiggles",
+              "crosscount_18", "crosscount_19", "crosscount_20", "crosscount_21"],
+            subject: ["JurassicPark"],
+            speed: 5000,
+            display_stats: false,
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/util.js"></script>
+  </head>
+  <body>
+  </body>
+  <script>
+    async function morphstart(){
+        let coloring = "coloring1";
+        let subject = "JurassicPark";
+        let text = await d3.text(`../data/txt/${subject}.master`);
+        
+        let title = document.createElement("h1")
+        title.innerHTML = `<h1>${subject}</h1>`;
+        document.body.appendChild(title);
+
+        // append a container for the dropdown menus and arrow
+        let container = document.createElement("div");
+        container.style.display = "flex";
+        container.style.alignItems = "center";
+        document.body.appendChild(container);
+
+        // append the first dropdown menu to the container
+        let dropdown = document.createElement("select");
+        dropdown.id = "dropdown";
+        container.appendChild(dropdown);
+
+        // append options to the first dropdown menu
+        for (let experiment of visualization_options.experiments){
+            let option = document.createElement("option");
+            option.value = experiment;
+            option.innerHTML = experiment;
+            dropdown.appendChild(option);
+        }
+
+        // append an arrow to the container
+        let arrow = document.createElement("div");
+        arrow.innerHTML = `→`;
+        arrow.style.margin = "0 10px";
+        container.appendChild(arrow);
+
+        // append the second dropdown menu to the container
+        let dropdown2 = document.createElement("select");
+        dropdown2.id = "dropdown2";
+        container.appendChild(dropdown2);
+
+        // append options to the second dropdown menu
+        for (let experiment of visualization_options.experiments){
+            let option = document.createElement("option");
+            option.value = experiment;
+            option.innerHTML = experiment;
+            dropdown2.appendChild(option);
+        }
+
+        // the default option to the second dropdown menu is the second experiment
+        dropdown2.selectedIndex = 2;
+
+        // read all the solutions first using await and store them in a dictionary
+        let solutions = {};
+        for (let experiment of visualization_options.experiments){
+            let solution = await d3.text(
+            `../results/${subject}/${coloring}/sol/${experiment}/${subject}_${experiment}_replaced.sol`
+            );
+            solutions[experiment] = solution;
+        }
+
+        let groupsText = await d3.text(`../data/groups/${subject}_groups.txt`);
+        let svg = draw(text, solutions[visualization_options.experiments[0]], groupsText, visualization_options.experiments[0]);
+        morph(text, solutions[visualization_options.experiments[2]], groupsText, visualization_options.experiments[0], svg);
+
+        // append a button that says "animate" and calls a function onclick
+        let button = document.createElement("button");
+        button.innerHTML = "animate";
+        button.onclick = function(){
+            // remove previous svg if it exists
+            let previousSvg = document.querySelector("svg");
+            if (previousSvg) {
+                previousSvg.remove();
+            }
+            let experiment1 = document.getElementById("dropdown").value;
+            let experiment2 = document.getElementById("dropdown2").value;
+            let solution1 = solutions[experiment1];
+            let solution2 = solutions[experiment2];
+
+            console.log("animating", experiment1, "to", experiment2);
+            
+            svg = draw(text, solution1, groupsText, experiment1);
+            setTimeout(() => {
+                morph(text, solution2, groupsText, experiment1, svg);
+            }, 1000);
+        }
+        container.appendChild(button);
+    }
+
+    morphstart();
+</script>
+</html>

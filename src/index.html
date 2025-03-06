@@ -24,6 +24,21 @@
     <script src="js/util.js"></script>
   </head>
   <body>
-    <h1 class="page-title">> Loading Page...</h1>
   </body>
+  <script>
+    let visualization_options = {
+      width: 4000, // default:4000
+      height: 500,
+      padding: { left: 20, right: 20, top: 20, bottom: 20 },
+      base_node_vertical_distance: 30,
+      between_group_vertical_distance: 30,
+      reduce_wiggles: false,
+      max_reduce_wiggles_iterations: 20,
+      experiments: ["crosswiggles"],
+      subject: ["JurassicPark"],
+      speed: 10000,
+      display_stats: false,
+  };
+  render();
+</script>
 </html>

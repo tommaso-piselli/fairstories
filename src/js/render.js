@@ -1,39 +1,56 @@
-async function render() {
-  let subject = "star_wars_cut";
-  let experiment = "cross";
-  let coloring = "coloring1";
-  let text = await d3.text(`../data/txt/${subject}.master`);
-  let character_list = text.split("\n\n")[0];
-  let timesteps = text.split("\n\n")[1];
-  // let solution = await d3.text(`../results/${subject}_fair_replaced.sol`);
-  // let solution = await d3.text(`../results/${subject}_replaced.sol`);
-  let solution = await d3.text(
-    `../results/${subject}/${coloring}/sol/${experiment}/${subject}_${experiment}_replaced.sol`
-  );
+let characters_selected = [];
 
+async function render() {
+  // let subject = "JurassicPark";
+  let subject = visualization_options.subject;
+  let coloring = visualization_options.coloring;
+  let text = await d3.text(`../data/txt/${subject}.master`);
+  
+  let title = document.createElement("h1")
+  title.innerHTML = `<h1>${subject}</h1> <h3>${coloring}</h3>`;
+  document.body.appendChild(title);
+
+  for (let experiment of visualization_options.experiments){
+    let title = document.createElement("div");
+    title.innerHTML = `<h2>${experiment}</h2>`;
+    document.body.appendChild(title);
+
+    let solution = await d3.text(
+      `../results/${subject}/${coloring}/sol/${experiment}/${subject}_${experiment}_replaced.sol`
+    );
+  
+    // Read and parse the groups file
+    let groupsText = await d3.text(
+      `../results/${subject}/${coloring}/_${coloring}.txt`
+    );
+
+    let statspath = `../results/${subject}/${coloring}/log/${subject}_${experiment}_out.txt`;
+    
+    try {
+      let stats = await d3.text(statspath)
+      stats = stats.split("=====================================")[1]
+      let statsDiv = document.createElement("div");
+      let statsElement = document.createElement("pre");
+      statsElement.style.whiteSpace = "pre-wrap";
+      statsElement.style.columnCount = 4;
+      statsElement.style.columnGap = "20px";
+      statsElement.textContent = stats;
+      statsDiv.appendChild(statsElement);
+      document.body.appendChild(statsDiv);
+
+    } catch (error) { console.log(error) }
+
+    let svg = draw(text, solution, groupsText, experiment);
+  }
+}
+
+function draw(text, solution, groupsText, experiment) {
   let graph = {
     nodes: [],
     edges: [],
   };
 
-  document.querySelector(
-    ".page-title"
-  ).textContent = `Storyline visualization of: ${subject}`;
-
-  let visualization_options = {
-    width: 4000, // default:4000
-    height: 1000,
-    padding: { left: 20, right: 20, top: 20, bottom: 20 },
-    base_node_vertical_distance: 30,
-    between_group_vertical_distance: 30,
-    reduce_wiggles: true,
-    max_reduce_wiggles_iterations: 20,
-  };
-
-  // Read and parse the groups file
-  let groupsText = await d3.text(
-    `../results/${subject}/${coloring}/_${coloring}.txt`
-  );
+  let timesteps = text.split("\n\n")[1];
   let character_colors = {};
 
   // Parse the groups file and create color mapping
@@ -44,8 +61,6 @@ async function render() {
   });
 
   let max_timesteps = timesteps.split("\n").length - 1;
-  console.log("max_timesteps:", max_timesteps);
-  console.log("actual timesteps:", timesteps.split("\n").length);
 
   // Build nodes for every timestep
   for (let i = 0; i < timesteps.split("\n").length - 1; i++) {
@@ -87,7 +102,7 @@ async function render() {
     }
   }
 
-  let solution_lines = solution.split("\n").filter((l) => l[0] == "x");
+  let solution_lines = solution.split("\n").filter((l) => l[0] == "x" || l[0] == "b");
 
   // DRAWING
   let svg = d3
@@ -130,6 +145,7 @@ async function render() {
 
       svg
         .append("rect")
+        .attr("id", "t" + t + "-" + experiment + "-group-" + group.join("-"))
         .attr(
           "x",
           t * space_between_timesteps +
@@ -192,13 +208,32 @@ async function render() {
       .append("path")
       .datum(line_coords)
       .attr("fill", "none")
+      .attr("class", "char-line char-line-" + char)
+      .attr("id", experiment + "-char-line-" + char)
       .attr("stroke", character_colors[char])
       .attr("stroke-width", 5)
       .attr("d", line)
       .attr("opacity", () => {
         if (["RM", "DS", "DN"].includes(char)) return 1;
         else return 1;
-      });
+      })
+      .on("mouseover", () => {
+        if (characters_selected.includes(char)) return;
+        else d3.selectAll(".char-line").attr("stroke-width", 5);
+        d3.selectAll(".char-line-" + char).attr("stroke-width", 10);
+      })
+      .on("mouseout", () => {
+        if (characters_selected.includes(char)) return;
+        else d3.selectAll(".char-line").attr("stroke-width", 5);
+      })
+      .on("click", () => {
+        if (characters_selected.includes(char)) {
+          characters_selected = characters_selected.filter((c) => c !== char);
+          d3.selectAll(".char-line-" + char).attr("stroke-width", 5);
+        } else {
+          characters_selected.push(char);
+          d3.selectAll(".char-line-" + char).attr("stroke-width", 10);
+      }})
 
     // append a circle and label every few steps
     for (let i = 1; i < line_coords.length - 12; i += 12) {
@@ -207,6 +242,7 @@ async function render() {
         .append("circle")
         .attr("r", 12)
         .attr("cx", line_coords[i].x + space_between_timesteps * 0.5)
+        .attr("id", "t" + i + "-" + experiment + "-charname-" + char)
         .attr(
           "cy",
           line_coords[i].y + (line_coords[i + 3].y - line_coords[i].y) * 0.5
@@ -215,6 +251,7 @@ async function render() {
 
       svg
         .append("text")
+        .attr("id", "t" + i + "-" + experiment + "-charnamebackground-" + char)
         .attr("x", line_coords[i].x + space_between_timesteps * 0.5 - 7)
         .attr(
           "y",
@@ -237,6 +274,7 @@ async function render() {
       svg
         .append("circle")
         .attr("r", 5)
+        .attr("id", "t" + i + "-" + experiment + "-node-" + nodes_at_this_timestep[j].name)
         .attr("cx", nodes_at_this_timestep[j].x)
         .attr("cy", nodes_at_this_timestep[j].y)
         .attr("fill", character_colors[nodes_at_this_timestep[j].name])
@@ -320,6 +358,10 @@ async function render() {
     };
     img.src = url;
   }
+
+  console.log("finished drawing")
+
+  return svg;
 }
 
 function assign_node_coordinates(
@@ -330,6 +372,14 @@ function assign_node_coordinates(
   visualization_options,
   space_between_timesteps
 ) {
+
+  // count the maximum number of nodes at every timestep
+  let max_nodes_at_timestep = 0;
+  for (let i=0; i<max_timesteps; i++){
+    let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == i);
+    if (nodes_at_this_timestep.length > max_nodes_at_timestep) max_nodes_at_timestep = nodes_at_this_timestep.length;
+  }
+
   for (let i = 0; i < max_timesteps; i++) {
     let timestep_line = timesteps.split("\n")[i];
     if (!timestep_line) {
@@ -338,6 +388,14 @@ function assign_node_coordinates(
     }
 
     let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == i);
+
+    let timestep_b = max_nodes_at_timestep;
+    if (visualization_options.read_b){
+      let b_line = solution_lines.find((l) => l.includes("b_" + i + " "));
+      if (b_line) timestep_b -= parseInt(b_line.split(" ")[1]);
+      timestep_b -= nodes_at_this_timestep.length;
+    }
+
     let interactions_at_this_timestep = timesteps
       .split("\n")
       [i].split(":")[1]
@@ -370,8 +428,9 @@ function assign_node_coordinates(
     function findInteractionGroup(nodeName) {
       return interaction_groups.find((group) => group.includes(nodeName));
     }
+    
 
-    let baseY = visualization_options.padding.top;
+    let baseY = visualization_options.padding.top + timestep_b * visualization_options.base_node_vertical_distance;
     for (let j = 0; j < nodes_at_this_timestep.length; j++) {
       let curr_node = nodes_at_this_timestep[j];
       curr_node.x =
@@ -404,6 +463,208 @@ function assign_node_coordinates(
     );
 }
 
+function morph(text, solution, groupsText, experiment, svg){
+  console.log("morphing")
+
+  let graph = {
+    nodes: [],
+    edges: [],
+  };
+
+  let timesteps = text.split("\n\n")[1];
+  let character_colors = {};
+
+  // Parse the groups file and create color mapping
+  groupsText.split("\n").forEach((line) => {
+    if (line.trim() === "") return;
+    let [_, char, color] = line.split(":").map((s) => s.trim());
+    character_colors[char] = color === "blue" ? "#4e79a7" : "#e15759"; // blue for blue group, red for red group
+  });
+
+  let max_timesteps = timesteps.split("\n").length - 1;
+
+
+  for (let i = 0; i < timesteps.split("\n").length - 1; i++) {
+    let elems = timesteps
+      .split("\n")
+      [i].split(":")[1]
+      .split(";")
+      .map((e) => e.split(","))
+      .flat();
+
+    for (let el of elems) {
+      el = el.trim();
+      graph.nodes.push({ name: el, timestep: i, id: graph.nodes.length });
+
+      if (character_colors[el] === undefined) {
+        character_colors[el] = "#bab0ab";
+      }
+    }
+  }
+
+  // Build edges connecting nodes from one timestep to the next
+  for (let i = 0; i < timesteps.split("\n").length; i++) {
+    let j = i + 1;
+    let nodes_at_t1 = graph.nodes.filter((n) => n.timestep == i);
+    let nodes_at_t2 = graph.nodes.filter((n) => n.timestep == j);
+
+    let all_character_names = [
+      ...new Set(nodes_at_t1.concat(nodes_at_t2).map((n) => n.name)),
+    ];
+    for (let char of all_character_names) {
+      let char_in_t1 = nodes_at_t1.find((n) => n.name == char);
+      let char_in_t2 = nodes_at_t2.find((n) => n.name == char);
+      if (char_in_t1 == undefined || char_in_t2 == undefined) continue;
+      graph.edges.push({
+        id: graph.edges.length,
+        source: char_in_t1,
+        target: char_in_t2,
+      });
+    }
+  }
+
+  let solution_lines = solution.split("\n").filter((l) => l[0] == "x" || l[0] == "b");
+
+  let space_between_timesteps =
+    (visualization_options.width -
+      visualization_options.padding.left -
+      visualization_options.padding.right) /
+    max_timesteps;
+
+  // GET COORDINATES FOR NODES
+  assign_node_coordinates(
+    timesteps,
+    max_timesteps,
+    solution_lines,
+    graph,
+    visualization_options,
+    space_between_timesteps
+  );
+
+  // MOVE GROUPS
+  for (let t = 0; t < max_timesteps; t++) {
+    let interactions_at_this_timestep = timesteps.split("\n")[t].split(":")[1];
+    let interaction_groups = interactions_at_this_timestep
+      .split(";")
+      .map((group) => group.split(",").map((char) => char.trim()));
+
+    for (let group of interaction_groups) {
+      let nodes_in_group = graph.nodes.filter(
+        (n) => n.timestep == t && group.includes(n.name)
+      );
+      if (nodes_in_group.length == 1) continue;
+      let y_values = nodes_in_group.map((n) => n.y);
+      let min_y = Math.min(...y_values);
+      let max_y = Math.max(...y_values);
+
+      svg.select("#" + "t" + t + "-" + experiment + "-group-" + group.join("-"))
+        .transition()
+        .duration(10000)
+        .attr(
+          "x",
+          t * space_between_timesteps +
+            visualization_options.padding.left -
+            space_between_timesteps * 0.125
+        )
+        .attr(
+          "y",
+          min_y - visualization_options.base_node_vertical_distance * 0.4
+        )
+        .attr("width", space_between_timesteps * 0.25)
+        .attr(
+          "height",
+          max_y -
+            min_y +
+            visualization_options.base_node_vertical_distance * 0.8
+        )
+        .attr("fill", "orange")
+        .attr("fill-opacity", 0.3)
+        .attr("rx", 10)
+        .attr("ry", 10);
+    }
+  }
+
+  // EDGES (curved lines for character storylines)
+  let char_line_coords = {};
+
+  for (let char of Object.keys(character_colors)) {
+    char_line_coords[char] = [];
+    for (let i = 0; i < max_timesteps; i++) {
+      let char_in_t1 = graph.nodes.find(
+        (n) => n.name == char && n.timestep == i
+      );
+      if (char_in_t1 == undefined) continue;
+      else {
+        char_line_coords[char].push({
+          x: char_in_t1.x - space_between_timesteps * 0.1,
+          y: char_in_t1.y,
+        });
+        char_line_coords[char].push({ x: char_in_t1.x, y: char_in_t1.y });
+        char_line_coords[char].push({
+          x: char_in_t1.x + space_between_timesteps * 0.1,
+          y: char_in_t1.y,
+        });
+      }
+    }
+  }
+
+  // move the paths
+  for (let char of Object.keys(character_colors)) {
+    let line_coords = char_line_coords[char];
+    if (line_coords.length <= 3) continue;
+    // create a path from the line_coords
+    let line = d3
+      .line()
+      .x((d) => d.x)
+      .y((d) => {
+        return d.y
+      })
+      .curve(d3.curveCatmullRom.alpha(0.8));
+
+    let selectline = "#" + experiment + "-char-line-" + char
+
+    d3.select("#" + experiment + "-char-line-" + char)
+      .transition()
+      .duration(visualization_options.speed)
+      .attr("d", line(line_coords))
+
+    for (let i = 1; i < line_coords.length - 12; i += 12) {
+      svg.select("#t" + i + "-" + experiment + "-charname-" + char)
+        .transition()
+        .duration(visualization_options.speed)
+        .attr("cx", line_coords[i].x + space_between_timesteps * 0.5)
+        .attr(
+          "cy",
+          line_coords[i].y + (line_coords[i + 3].y - line_coords[i].y) * 0.5
+        )
+
+      svg.select("#t" + i + "-" + experiment + "-charnamebackground-" + char)
+        .transition()
+        .duration(visualization_options.speed)
+        .attr("x", line_coords[i].x + space_between_timesteps * 0.5 - 7)
+        .attr(
+          "y",
+          line_coords[i].y + (line_coords[i + 3].y - line_coords[i].y) * 0.5 + 3
+        )
+    }
+  }
+
+    // MOVE THE NODES
+    for (let i = 0; i < max_timesteps; i++) {
+      let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == i);
+  
+      for (let j in nodes_at_this_timestep) {
+        console.log("#" + "t" + i + "-" + experiment + "-node-" + nodes_at_this_timestep[j].name)
+        console.log(svg.select("#" + "t" + i + "-" + experiment + "-node-" + nodes_at_this_timestep[j].name))
+        d3.select("#" + "t" + i + "-" + experiment + "-node-" + nodes_at_this_timestep[j].name)
+          .transition()
+          .duration(visualization_options.speed)
+          .attr("cx", nodes_at_this_timestep[j].x)
+          .attr("cy", nodes_at_this_timestep[j].y)
+      }
+    }
+}
+
 // this function is to be finished still - do not trust
 function iterate_for_better_bendiness(
   graph,
@@ -413,8 +674,6 @@ function iterate_for_better_bendiness(
 ) {
   let max_iterations = visualization_options.max_reduce_wiggles_iterations;
   let starting_bendiness = count_total_bendiness(graph);
-
-  console.log("starting bendiness", starting_bendiness);
 
   for (let i = 0; i < max_iterations; i++) {
     for (let j = 0; j < max_timesteps; j++) {
@@ -498,5 +757,3 @@ function count_total_bendiness(graph) {
   }
   return result;
 }
-
-render();
