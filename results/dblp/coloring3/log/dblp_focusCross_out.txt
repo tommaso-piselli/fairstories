@@ -1,19 +1,19 @@
 Summary for dblp_focusCross:
 =====================================
 Total characters: 18
-Blue characters: 8
-Red characters: 10
+Blue characters: 10
+Red characters: 8
 ---
 > Crossings
-Blue-Blue crossings: 4
-Red-Red crossings: 0
-Blue-Red crossings: 29
-Total crossings: 33
+Blue-Blue crossings: 16
+Red-Red crossings: 1
+Blue-Red crossings: 11
+Total crossings: 28
 ---
 > FairCrossings
-BlueFair: 4.62
-RedFair: 2.90
-Unfairness 1.73
+BlueFair: 4.30
+RedFair: 1.62
+Unfairness 2.67
 ---
 > Skewness
 BlueSkew: 0

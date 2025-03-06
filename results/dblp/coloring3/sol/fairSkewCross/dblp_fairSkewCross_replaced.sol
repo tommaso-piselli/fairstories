@@ -1,13 +1,13 @@
-# Objective value = 25
-FairSkew 0
+# Objective value = 70
+FairSkew 0.05
 S_FM 1
-S_MN 1
+S_MN 0
 S_AP 0
-S_GL 1
+S_GL 0
 S_WD 0
-S_CB 1
-S_EDG 0
-S_LG 1
+S_CB 0
+S_EDG 1
+S_LG 0
 S_FDL 0
 S_RG 1
 S_SB 1
@@ -16,8 +16,8 @@ S_SM 0
 S_LK 0
 S_AV 0
 S_AT 0
-S_MW 1
-S_TP 1
+S_MW 0
+S_TP 0
 y_0_FM_MN 0
 y_1_FM_MN 0
 y_2_FM_MN 0
@@ -245,14 +245,14 @@ y_9_LG_FDL 0
 y_10_FM_MN 0
 y_10_FM_AP 0
 y_10_FM_GL 0
-y_10_FM_WD 0
+y_10_FM_WD 1
 y_10_FM_CB 0
 y_10_FM_EDG 0
 y_10_FM_LG 0
 y_10_FM_FDL 0
 y_10_MN_AP 0
 y_10_MN_GL 0
-y_10_MN_WD 1
+y_10_MN_WD 0
 y_10_MN_CB 0
 y_10_MN_EDG 0
 y_10_MN_LG 0
@@ -281,14 +281,14 @@ y_10_LG_FDL 0
 y_11_FM_MN 0
 y_11_FM_AP 0
 y_11_FM_GL 0
-y_11_FM_WD 0
+y_11_FM_WD 1
 y_11_FM_CB 0
 y_11_FM_EDG 0
 y_11_FM_LG 0
 y_11_FM_FDL 0
 y_11_MN_AP 0
 y_11_MN_GL 0
-y_11_MN_WD 1
+y_11_MN_WD 0
 y_11_MN_CB 0
 y_11_MN_EDG 0
 y_11_MN_LG 0
@@ -389,7 +389,7 @@ y_13_LG_FDL 0
 y_14_FM_MN 0
 y_14_FM_AP 0
 y_14_FM_GL 0
-y_14_FM_WD 1
+y_14_FM_WD 0
 y_14_FM_CB 0
 y_14_FM_EDG 0
 y_14_FM_LG 0
@@ -425,7 +425,7 @@ y_14_LG_FDL 0
 y_15_FM_MN 0
 y_15_FM_AP 0
 y_15_FM_GL 0
-y_15_FM_WD 0
+y_15_FM_WD 1
 y_15_FM_CB 0
 y_15_FM_EDG 0
 y_15_FM_FDL 0
@@ -498,7 +498,7 @@ y_16_RG_SB 0
 y_17_FM_MN 0
 y_17_FM_AP 0
 y_17_FM_GL 0
-y_17_FM_WD 0
+y_17_FM_WD 1
 y_17_FM_CB 0
 y_17_FM_EDG 0
 y_17_FM_FDL 0
@@ -538,11 +538,11 @@ y_17_EDG_FDL 0
 y_17_EDG_RG 0
 y_17_EDG_SB 0
 y_17_FDL_RG 0
-y_17_FDL_SB 1
+y_17_FDL_SB 0
 y_17_RG_SB 0
 y_18_FM_MN 0
 y_18_FM_GL 0
-y_18_FM_WD 1
+y_18_FM_WD 0
 y_18_FM_CB 0
 y_18_FM_EDG 0
 y_18_FM_FDL 0
@@ -574,7 +574,7 @@ y_18_EDG_FDL 0
 y_18_EDG_RG 0
 y_18_EDG_SB 0
 y_18_FDL_RG 1
-y_18_FDL_SB 0
+y_18_FDL_SB 1
 y_18_RG_SB 0
 y_19_FM_MN 0
 y_19_FM_GL 0
@@ -1077,7 +1077,7 @@ y_31_MN_EDG 0
 y_31_MN_RG 0
 y_31_MN_SB 0
 y_31_GL_CB 0
-y_31_GL_EDG 1
+y_31_GL_EDG 0
 y_31_GL_RG 0
 y_31_GL_SB 0
 y_31_CB_EDG 0
@@ -1098,7 +1098,7 @@ y_32_MN_EDG 0
 y_32_MN_RG 1
 y_32_MN_SB 0
 y_32_GL_CB 0
-y_32_GL_EDG 0
+y_32_GL_EDG 1
 y_32_GL_RG 0
 y_32_GL_SB 0
 y_32_CB_EDG 0
@@ -1107,7 +1107,7 @@ y_32_CB_SB 0
 y_32_EDG_RG 0
 y_32_EDG_SB 0
 y_32_RG_SB 0
-y_33_FM_MN 1
+y_33_FM_MN 0
 y_33_FM_GL 0
 y_33_FM_CB 0
 y_33_FM_EDG 0
@@ -1128,7 +1128,7 @@ y_33_CB_SB 0
 y_33_EDG_RG 0
 y_33_EDG_SB 0
 y_33_RG_SB 0
-y_34_FM_MN 0
+y_34_FM_MN 1
 y_34_FM_GL 0
 y_34_FM_CB 0
 y_34_FM_EDG 0
@@ -1323,7 +1323,7 @@ y_41_CB_EDG 0
 y_42_FM_MN 0
 y_42_FM_GL 0
 y_42_FM_CB 0
-y_42_FM_EDG 1
+y_42_FM_EDG 0
 y_42_FM_AV 0
 y_42_MN_GL 0
 y_42_MN_CB 0
@@ -1337,7 +1337,7 @@ y_42_CB_AV 0
 y_42_EDG_AV 0
 y_43_FM_MN 0
 y_43_FM_GL 0
-y_43_FM_EDG 0
+y_43_FM_EDG 1
 y_43_FM_AV 0
 y_43_MN_GL 0
 y_43_MN_EDG 0
@@ -1397,8 +1397,8 @@ x_2_MN_GL 0
 x_3_MN_GL 0
 x_2_MN_WD 0
 x_3_MN_WD 0
-x_2_AP_GL 1
-x_3_AP_GL 1
+x_2_AP_GL 0
+x_3_AP_GL 0
 x_2_AP_WD 1
 x_3_AP_WD 1
 x_2_GL_WD 1
@@ -1422,7 +1422,7 @@ x_3_MN_EDG 0
 x_4_MN_EDG 0
 x_3_MN_LG 0
 x_4_MN_LG 0
-x_4_AP_GL 1
+x_4_AP_GL 0
 x_4_AP_WD 1
 x_3_AP_CB 0
 x_4_AP_CB 0
@@ -1462,7 +1462,7 @@ x_5_MN_WD 0
 x_5_MN_CB 0
 x_5_MN_EDG 0
 x_5_MN_LG 0
-x_5_AP_GL 1
+x_5_AP_GL 0
 x_5_AP_WD 1
 x_5_AP_CB 0
 x_5_AP_EDG 0
@@ -1490,7 +1490,7 @@ x_6_MN_WD 0
 x_6_MN_CB 0
 x_6_MN_EDG 0
 x_6_MN_LG 0
-x_6_AP_GL 1
+x_6_AP_GL 0
 x_6_AP_WD 1
 x_6_AP_CB 0
 x_6_AP_EDG 0
@@ -1518,7 +1518,7 @@ x_7_MN_WD 0
 x_7_MN_CB 0
 x_7_MN_EDG 0
 x_7_MN_LG 0
-x_7_AP_GL 1
+x_7_AP_GL 0
 x_7_AP_WD 1
 x_7_AP_CB 0
 x_7_AP_EDG 0
@@ -1546,7 +1546,7 @@ x_8_MN_WD 0
 x_8_MN_CB 0
 x_8_MN_EDG 0
 x_8_MN_LG 0
-x_8_AP_GL 1
+x_8_AP_GL 0
 x_8_AP_WD 1
 x_8_AP_CB 0
 x_8_AP_EDG 0
@@ -1578,7 +1578,7 @@ x_9_MN_EDG 0
 x_9_MN_LG 0
 x_8_MN_FDL 1
 x_9_MN_FDL 1
-x_9_AP_GL 1
+x_9_AP_GL 0
 x_9_AP_WD 1
 x_9_AP_CB 0
 x_9_AP_EDG 0
@@ -1620,7 +1620,7 @@ x_10_MN_CB 0
 x_10_MN_EDG 0
 x_10_MN_LG 0
 x_10_MN_FDL 1
-x_10_AP_GL 1
+x_10_AP_GL 0
 x_10_AP_WD 1
 x_10_AP_CB 0
 x_10_AP_EDG 0
@@ -1644,19 +1644,19 @@ x_10_LG_FDL 1
 x_11_FM_MN 1
 x_11_FM_AP 0
 x_11_FM_GL 0
-x_11_FM_WD 1
+x_11_FM_WD 0
 x_11_FM_CB 0
 x_11_FM_EDG 0
 x_11_FM_LG 0
 x_11_FM_FDL 1
 x_11_MN_AP 0
 x_11_MN_GL 0
-x_11_MN_WD 1
+x_11_MN_WD 0
 x_11_MN_CB 0
 x_11_MN_EDG 0
 x_11_MN_LG 0
 x_11_MN_FDL 1
-x_11_AP_GL 1
+x_11_AP_GL 0
 x_11_AP_WD 1
 x_11_AP_CB 0
 x_11_AP_EDG 0
@@ -1692,7 +1692,7 @@ x_12_MN_CB 0
 x_12_MN_EDG 0
 x_12_MN_LG 0
 x_12_MN_FDL 1
-x_12_AP_GL 1
+x_12_AP_GL 0
 x_12_AP_WD 1
 x_12_AP_CB 0
 x_12_AP_EDG 0
@@ -1728,7 +1728,7 @@ x_13_MN_CB 0
 x_13_MN_EDG 0
 x_13_MN_LG 0
 x_13_MN_FDL 1
-x_13_AP_GL 1
+x_13_AP_GL 0
 x_13_AP_WD 1
 x_13_AP_CB 0
 x_13_AP_EDG 0
@@ -1764,7 +1764,7 @@ x_14_MN_CB 0
 x_14_MN_EDG 0
 x_14_MN_LG 0
 x_14_MN_FDL 1
-x_14_AP_GL 1
+x_14_AP_GL 0
 x_14_AP_WD 1
 x_14_AP_CB 0
 x_14_AP_EDG 0
@@ -1788,7 +1788,7 @@ x_14_LG_FDL 1
 x_15_FM_MN 1
 x_15_FM_AP 0
 x_15_FM_GL 0
-x_15_FM_WD 0
+x_15_FM_WD 1
 x_15_FM_CB 0
 x_15_FM_EDG 0
 x_15_FM_LG 0
@@ -1800,7 +1800,7 @@ x_15_MN_CB 0
 x_15_MN_EDG 0
 x_15_MN_LG 0
 x_15_MN_FDL 1
-x_15_AP_GL 1
+x_15_AP_GL 0
 x_15_AP_WD 1
 x_15_AP_CB 0
 x_15_AP_EDG 0
@@ -1834,7 +1834,7 @@ x_16_MN_WD 0
 x_16_MN_CB 0
 x_16_MN_EDG 0
 x_16_MN_FDL 1
-x_16_AP_GL 1
+x_16_AP_GL 0
 x_16_AP_WD 1
 x_16_AP_CB 0
 x_16_AP_EDG 0
@@ -1870,7 +1870,7 @@ x_16_MN_RG 1
 x_17_MN_RG 1
 x_16_MN_SB 1
 x_17_MN_SB 1
-x_17_AP_GL 1
+x_17_AP_GL 0
 x_17_AP_WD 1
 x_17_AP_CB 0
 x_17_AP_EDG 0
@@ -1914,7 +1914,7 @@ x_17_RG_SB 1
 x_18_FM_MN 1
 x_18_FM_AP 0
 x_18_FM_GL 0
-x_18_FM_WD 0
+x_18_FM_WD 1
 x_18_FM_CB 0
 x_18_FM_EDG 0
 x_18_FM_FDL 1
@@ -1928,7 +1928,7 @@ x_18_MN_EDG 0
 x_18_MN_FDL 1
 x_18_MN_RG 1
 x_18_MN_SB 1
-x_18_AP_GL 1
+x_18_AP_GL 0
 x_18_AP_WD 1
 x_18_AP_CB 0
 x_18_AP_EDG 0
@@ -1954,7 +1954,7 @@ x_18_EDG_FDL 1
 x_18_EDG_RG 1
 x_18_EDG_SB 1
 x_18_FDL_RG 0
-x_18_FDL_SB 1
+x_18_FDL_SB 0
 x_18_RG_SB 1
 x_19_FM_MN 1
 x_19_FM_GL 0
@@ -2510,7 +2510,7 @@ x_32_MN_EDG 0
 x_32_MN_RG 1
 x_32_MN_SB 1
 x_32_GL_CB 0
-x_32_GL_EDG 1
+x_32_GL_EDG 0
 x_32_GL_RG 1
 x_32_GL_SB 1
 x_32_CB_EDG 1
@@ -2540,7 +2540,7 @@ x_33_CB_SB 1
 x_33_EDG_RG 1
 x_33_EDG_SB 1
 x_33_RG_SB 1
-x_34_FM_MN 0
+x_34_FM_MN 1
 x_34_FM_GL 0
 x_34_FM_CB 0
 x_34_FM_EDG 0
@@ -2763,7 +2763,7 @@ x_42_CB_EDG 1
 x_43_FM_MN 0
 x_43_FM_GL 0
 x_43_FM_CB 0
-x_43_FM_EDG 1
+x_43_FM_EDG 0
 x_42_FM_AV 1
 x_43_FM_AV 1
 x_43_MN_GL 0
@@ -2840,7 +2840,7 @@ x_2_WD_FM 0
 x_2_AP_MN 1
 x_2_GL_MN 1
 x_2_WD_MN 1
-x_2_GL_AP 0
+x_2_GL_AP 1
 x_2_WD_AP 0
 x_2_WD_GL 0
 x_3_MN_FM 0
@@ -2856,7 +2856,7 @@ x_3_WD_MN 1
 x_3_CB_MN 1
 x_3_EDG_MN 1
 x_3_LG_MN 1
-x_3_GL_AP 0
+x_3_GL_AP 1
 x_3_WD_AP 0
 x_3_CB_AP 1
 x_3_EDG_AP 1
@@ -2884,7 +2884,7 @@ x_4_WD_MN 1
 x_4_CB_MN 1
 x_4_EDG_MN 1
 x_4_LG_MN 1
-x_4_GL_AP 0
+x_4_GL_AP 1
 x_4_WD_AP 0
 x_4_CB_AP 1
 x_4_EDG_AP 1
@@ -2912,7 +2912,7 @@ x_5_WD_MN 1
 x_5_CB_MN 1
 x_5_EDG_MN 1
 x_5_LG_MN 1
-x_5_GL_AP 0
+x_5_GL_AP 1
 x_5_WD_AP 0
 x_5_CB_AP 1
 x_5_EDG_AP 1
@@ -2940,7 +2940,7 @@ x_6_WD_MN 1
 x_6_CB_MN 1
 x_6_EDG_MN 1
 x_6_LG_MN 1
-x_6_GL_AP 0
+x_6_GL_AP 1
 x_6_WD_AP 0
 x_6_CB_AP 1
 x_6_EDG_AP 1
@@ -2968,7 +2968,7 @@ x_7_WD_MN 1
 x_7_CB_MN 1
 x_7_EDG_MN 1
 x_7_LG_MN 1
-x_7_GL_AP 0
+x_7_GL_AP 1
 x_7_WD_AP 0
 x_7_CB_AP 1
 x_7_EDG_AP 1
@@ -2998,7 +2998,7 @@ x_8_CB_MN 1
 x_8_EDG_MN 1
 x_8_LG_MN 1
 x_8_FDL_MN 0
-x_8_GL_AP 0
+x_8_GL_AP 1
 x_8_WD_AP 0
 x_8_CB_AP 1
 x_8_EDG_AP 1
@@ -3034,7 +3034,7 @@ x_9_CB_MN 1
 x_9_EDG_MN 1
 x_9_LG_MN 1
 x_9_FDL_MN 0
-x_9_GL_AP 0
+x_9_GL_AP 1
 x_9_WD_AP 0
 x_9_CB_AP 1
 x_9_EDG_AP 1
@@ -3070,7 +3070,7 @@ x_10_CB_MN 1
 x_10_EDG_MN 1
 x_10_LG_MN 1
 x_10_FDL_MN 0
-x_10_GL_AP 0
+x_10_GL_AP 1
 x_10_WD_AP 0
 x_10_CB_AP 1
 x_10_EDG_AP 1
@@ -3094,19 +3094,19 @@ x_10_FDL_LG 0
 x_11_MN_FM 0
 x_11_AP_FM 1
 x_11_GL_FM 1
-x_11_WD_FM 0
+x_11_WD_FM 1
 x_11_CB_FM 1
 x_11_EDG_FM 1
 x_11_LG_FM 1
 x_11_FDL_FM 0
 x_11_AP_MN 1
 x_11_GL_MN 1
-x_11_WD_MN 0
+x_11_WD_MN 1
 x_11_CB_MN 1
 x_11_EDG_MN 1
 x_11_LG_MN 1
 x_11_FDL_MN 0
-x_11_GL_AP 0
+x_11_GL_AP 1
 x_11_WD_AP 0
 x_11_CB_AP 1
 x_11_EDG_AP 1
@@ -3142,7 +3142,7 @@ x_12_CB_MN 1
 x_12_EDG_MN 1
 x_12_LG_MN 1
 x_12_FDL_MN 0
-x_12_GL_AP 0
+x_12_GL_AP 1
 x_12_WD_AP 0
 x_12_CB_AP 1
 x_12_EDG_AP 1
@@ -3178,7 +3178,7 @@ x_13_CB_MN 1
 x_13_EDG_MN 1
 x_13_LG_MN 1
 x_13_FDL_MN 0
-x_13_GL_AP 0
+x_13_GL_AP 1
 x_13_WD_AP 0
 x_13_CB_AP 1
 x_13_EDG_AP 1
@@ -3214,7 +3214,7 @@ x_14_CB_MN 1
 x_14_EDG_MN 1
 x_14_LG_MN 1
 x_14_FDL_MN 0
-x_14_GL_AP 0
+x_14_GL_AP 1
 x_14_WD_AP 0
 x_14_CB_AP 1
 x_14_EDG_AP 1
@@ -3238,7 +3238,7 @@ x_14_FDL_LG 0
 x_15_MN_FM 0
 x_15_AP_FM 1
 x_15_GL_FM 1
-x_15_WD_FM 1
+x_15_WD_FM 0
 x_15_CB_FM 1
 x_15_EDG_FM 1
 x_15_LG_FM 1
@@ -3250,7 +3250,7 @@ x_15_CB_MN 1
 x_15_EDG_MN 1
 x_15_LG_MN 1
 x_15_FDL_MN 0
-x_15_GL_AP 0
+x_15_GL_AP 1
 x_15_WD_AP 0
 x_15_CB_AP 1
 x_15_EDG_AP 1
@@ -3288,7 +3288,7 @@ x_16_EDG_MN 1
 x_16_FDL_MN 0
 x_16_RG_MN 0
 x_16_SB_MN 0
-x_16_GL_AP 0
+x_16_GL_AP 1
 x_16_WD_AP 0
 x_16_CB_AP 1
 x_16_EDG_AP 1
@@ -3333,7 +3333,7 @@ x_17_EDG_MN 1
 x_17_FDL_MN 0
 x_17_RG_MN 0
 x_17_SB_MN 0
-x_17_GL_AP 0
+x_17_GL_AP 1
 x_17_WD_AP 0
 x_17_CB_AP 1
 x_17_EDG_AP 1
@@ -3364,7 +3364,7 @@ x_17_SB_RG 0
 x_18_MN_FM 0
 x_18_AP_FM 1
 x_18_GL_FM 1
-x_18_WD_FM 1
+x_18_WD_FM 0
 x_18_CB_FM 1
 x_18_EDG_FM 1
 x_18_FDL_FM 0
@@ -3378,7 +3378,7 @@ x_18_EDG_MN 1
 x_18_FDL_MN 0
 x_18_RG_MN 0
 x_18_SB_MN 0
-x_18_GL_AP 0
+x_18_GL_AP 1
 x_18_WD_AP 0
 x_18_CB_AP 1
 x_18_EDG_AP 1
@@ -3404,7 +3404,7 @@ x_18_FDL_EDG 0
 x_18_RG_EDG 0
 x_18_SB_EDG 0
 x_18_RG_FDL 1
-x_18_SB_FDL 0
+x_18_SB_FDL 1
 x_18_SB_RG 0
 x_19_MN_FM 0
 x_19_GL_FM 1
@@ -3960,7 +3960,7 @@ x_32_EDG_MN 1
 x_32_RG_MN 0
 x_32_SB_MN 0
 x_32_CB_GL 1
-x_32_EDG_GL 0
+x_32_EDG_GL 1
 x_32_RG_GL 0
 x_32_SB_GL 0
 x_32_EDG_CB 0
@@ -3990,7 +3990,7 @@ x_33_SB_CB 0
 x_33_RG_EDG 0
 x_33_SB_EDG 0
 x_33_SB_RG 0
-x_34_MN_FM 1
+x_34_MN_FM 0
 x_34_GL_FM 1
 x_34_CB_FM 1
 x_34_EDG_FM 1
@@ -4218,7 +4218,7 @@ x_42_AV_EDG 0
 x_43_MN_FM 1
 x_43_GL_FM 1
 x_43_CB_FM 1
-x_43_EDG_FM 0
+x_43_EDG_FM 1
 x_43_AV_FM 0
 x_43_GL_MN 1
 x_43_CB_MN 1

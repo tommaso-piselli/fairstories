@@ -254,7 +254,7 @@ y_12_LM_TM 0
 y_13_RM_DG 0
 y_13_RM_DS 0
 y_13_RM_DR 0
-y_13_RM_JH 1
+y_13_RM_JH 0
 y_13_RM_DN 0
 y_13_RM_DM 0
 y_13_RM_RA 0
@@ -283,7 +283,7 @@ y_13_DR_LM 0
 y_13_DR_TM 0
 y_13_JH_DN 0
 y_13_JH_DM 0
-y_13_JH_RA 1
+y_13_JH_RA 0
 y_13_JH_LM 0
 y_13_JH_TM 0
 y_13_DN_DM 0
@@ -594,7 +594,7 @@ y_20_DG_RA 0
 y_20_DG_LM 0
 y_20_DG_TM 0
 y_20_DS_DR 0
-y_20_DS_JH 1
+y_20_DS_JH 0
 y_20_DS_DN 0
 y_20_DS_DM 0
 y_20_DS_RA 0
@@ -695,7 +695,7 @@ y_22_RA_TM 0
 y_22_LM_TM 0
 y_23_RM_DS 0
 y_23_RM_DR 0
-y_23_RM_JH 0
+y_23_RM_JH 1
 y_23_RM_DM 0
 y_23_RM_RA 0
 y_23_RM_LM 0
@@ -712,7 +712,7 @@ y_23_DR_RA 0
 y_23_DR_LM 0
 y_23_DR_TM 0
 y_23_JH_DM 0
-y_23_JH_RA 0
+y_23_JH_RA 1
 y_23_JH_LM 0
 y_23_JH_TM 0
 y_23_DM_RA 0
@@ -729,7 +729,7 @@ y_24_RM_RA 0
 y_24_RM_LM 0
 y_24_RM_TM 0
 y_24_DS_DR 0
-y_24_DS_JH 0
+y_24_DS_JH 1
 y_24_DS_DM 0
 y_24_DS_RA 0
 y_24_DS_LM 0
@@ -1315,8 +1315,8 @@ x_13_DG_JH 1
 x_13_DG_DN 1
 x_13_DG_DM 1
 x_13_DG_RA 1
-x_12_DG_LM 1
-x_13_DG_LM 1
+x_12_DG_LM 0
+x_13_DG_LM 0
 x_12_DG_TM 0
 x_13_DG_TM 0
 x_13_DS_DR 0
@@ -1363,7 +1363,7 @@ x_13_LM_TM 0
 x_14_RM_DG 0
 x_14_RM_DS 0
 x_14_RM_DR 0
-x_14_RM_JH 1
+x_14_RM_JH 0
 x_14_RM_DN 1
 x_14_RM_DM 0
 x_14_RM_RA 0
@@ -1375,7 +1375,7 @@ x_14_DG_JH 1
 x_14_DG_DN 1
 x_14_DG_DM 1
 x_14_DG_RA 1
-x_14_DG_LM 1
+x_14_DG_LM 0
 x_14_DG_TM 0
 x_14_DS_DR 0
 x_14_DS_JH 1
@@ -1392,7 +1392,7 @@ x_14_DR_LM 0
 x_14_DR_TM 0
 x_14_JH_DN 1
 x_14_JH_DM 0
-x_14_JH_RA 0
+x_14_JH_RA 1
 x_14_JH_LM 0
 x_14_JH_TM 0
 x_14_DN_DM 0
@@ -1408,7 +1408,7 @@ x_14_LM_TM 0
 x_15_RM_DG 0
 x_15_RM_DS 0
 x_15_RM_DR 0
-x_15_RM_JH 1
+x_15_RM_JH 0
 x_15_RM_DN 1
 x_15_RM_DM 0
 x_15_RM_RA 0
@@ -1420,7 +1420,7 @@ x_15_DG_JH 1
 x_15_DG_DN 1
 x_15_DG_DM 1
 x_15_DG_RA 1
-x_15_DG_LM 1
+x_15_DG_LM 0
 x_15_DG_TM 0
 x_15_DS_DR 0
 x_15_DS_JH 1
@@ -1437,7 +1437,7 @@ x_15_DR_LM 0
 x_15_DR_TM 0
 x_15_JH_DN 1
 x_15_JH_DM 0
-x_15_JH_RA 0
+x_15_JH_RA 1
 x_15_JH_LM 0
 x_15_JH_TM 0
 x_15_DN_DM 0
@@ -1453,7 +1453,7 @@ x_15_LM_TM 0
 x_16_RM_DG 0
 x_16_RM_DS 0
 x_16_RM_DR 0
-x_16_RM_JH 1
+x_16_RM_JH 0
 x_16_RM_DN 1
 x_16_RM_DM 0
 x_16_RM_RA 0
@@ -1465,7 +1465,7 @@ x_16_DG_JH 1
 x_16_DG_DN 1
 x_16_DG_DM 1
 x_16_DG_RA 1
-x_16_DG_LM 1
+x_16_DG_LM 0
 x_16_DG_TM 0
 x_16_DS_DR 0
 x_16_DS_JH 1
@@ -1482,7 +1482,7 @@ x_16_DR_LM 0
 x_16_DR_TM 0
 x_16_JH_DN 1
 x_16_JH_DM 0
-x_16_JH_RA 0
+x_16_JH_RA 1
 x_16_JH_LM 0
 x_16_JH_TM 0
 x_16_DN_DM 0
@@ -1498,7 +1498,7 @@ x_16_LM_TM 0
 x_17_RM_DG 0
 x_17_RM_DS 0
 x_17_RM_DR 0
-x_17_RM_JH 1
+x_17_RM_JH 0
 x_17_RM_DN 1
 x_17_RM_DM 0
 x_17_RM_RA 0
@@ -1510,7 +1510,7 @@ x_17_DG_JH 1
 x_17_DG_DN 1
 x_17_DG_DM 1
 x_17_DG_RA 1
-x_17_DG_LM 1
+x_17_DG_LM 0
 x_17_DG_TM 0
 x_17_DS_DR 0
 x_17_DS_JH 1
@@ -1527,7 +1527,7 @@ x_17_DR_LM 0
 x_17_DR_TM 0
 x_17_JH_DN 1
 x_17_JH_DM 0
-x_17_JH_RA 0
+x_17_JH_RA 1
 x_17_JH_LM 0
 x_17_JH_TM 0
 x_17_DN_DM 0
@@ -1543,7 +1543,7 @@ x_17_LM_TM 0
 x_18_RM_DG 0
 x_18_RM_DS 0
 x_18_RM_DR 0
-x_18_RM_JH 1
+x_18_RM_JH 0
 x_18_RM_DN 0
 x_18_RM_DM 0
 x_18_RM_RA 0
@@ -1557,7 +1557,7 @@ x_18_DG_JH 1
 x_18_DG_DN 1
 x_18_DG_DM 1
 x_18_DG_RA 1
-x_18_DG_LM 1
+x_18_DG_LM 0
 x_18_DG_TM 0
 x_17_DG_GH 0
 x_18_DG_GH 0
@@ -1580,7 +1580,7 @@ x_17_DR_GH 0
 x_18_DR_GH 0
 x_18_JH_DN 0
 x_18_JH_DM 0
-x_18_JH_RA 0
+x_18_JH_RA 1
 x_18_JH_LM 0
 x_18_JH_TM 0
 x_17_JH_GH 0
@@ -1608,7 +1608,7 @@ x_18_TM_GH 0
 x_19_RM_DG 0
 x_19_RM_DS 1
 x_19_RM_DR 0
-x_19_RM_JH 1
+x_19_RM_JH 0
 x_19_RM_DN 0
 x_19_RM_DM 0
 x_19_RM_RA 0
@@ -1620,7 +1620,7 @@ x_19_DG_JH 1
 x_19_DG_DN 1
 x_19_DG_DM 1
 x_19_DG_RA 1
-x_19_DG_LM 1
+x_19_DG_LM 0
 x_19_DG_TM 0
 x_19_DS_DR 0
 x_19_DS_JH 0
@@ -1637,7 +1637,7 @@ x_19_DR_LM 0
 x_19_DR_TM 0
 x_19_JH_DN 0
 x_19_JH_DM 0
-x_19_JH_RA 0
+x_19_JH_RA 1
 x_19_JH_LM 0
 x_19_JH_TM 0
 x_19_DN_DM 0
@@ -1653,7 +1653,7 @@ x_19_LM_TM 0
 x_20_RM_DG 0
 x_20_RM_DS 1
 x_20_RM_DR 0
-x_20_RM_JH 1
+x_20_RM_JH 0
 x_20_RM_DN 0
 x_20_RM_DM 0
 x_20_RM_RA 0
@@ -1665,7 +1665,7 @@ x_20_DG_JH 1
 x_20_DG_DN 1
 x_20_DG_DM 1
 x_20_DG_RA 1
-x_20_DG_LM 1
+x_20_DG_LM 0
 x_20_DG_TM 0
 x_20_DS_DR 0
 x_20_DS_JH 0
@@ -1682,7 +1682,7 @@ x_20_DR_LM 0
 x_20_DR_TM 0
 x_20_JH_DN 0
 x_20_JH_DM 0
-x_20_JH_RA 0
+x_20_JH_RA 1
 x_20_JH_LM 0
 x_20_JH_TM 0
 x_20_DN_DM 0
@@ -1698,7 +1698,7 @@ x_20_LM_TM 0
 x_21_RM_DG 0
 x_21_RM_DS 1
 x_21_RM_DR 0
-x_21_RM_JH 1
+x_21_RM_JH 0
 x_21_RM_DN 0
 x_21_RM_DM 0
 x_21_RM_RA 0
@@ -1710,10 +1710,10 @@ x_21_DG_JH 1
 x_21_DG_DN 1
 x_21_DG_DM 1
 x_21_DG_RA 1
-x_21_DG_LM 1
+x_21_DG_LM 0
 x_21_DG_TM 0
 x_21_DS_DR 0
-x_21_DS_JH 1
+x_21_DS_JH 0
 x_21_DS_DN 0
 x_21_DS_DM 0
 x_21_DS_RA 0
@@ -1727,7 +1727,7 @@ x_21_DR_LM 0
 x_21_DR_TM 0
 x_21_JH_DN 0
 x_21_JH_DM 0
-x_21_JH_RA 0
+x_21_JH_RA 1
 x_21_JH_LM 0
 x_21_JH_TM 0
 x_21_DN_DM 0
@@ -1742,14 +1742,14 @@ x_21_RA_TM 0
 x_21_LM_TM 0
 x_22_RM_DS 1
 x_22_RM_DR 0
-x_22_RM_JH 1
+x_22_RM_JH 0
 x_22_RM_DN 0
 x_22_RM_DM 0
 x_22_RM_RA 0
 x_22_RM_LM 0
 x_22_RM_TM 0
 x_22_DS_DR 0
-x_22_DS_JH 1
+x_22_DS_JH 0
 x_22_DS_DN 0
 x_22_DS_DM 0
 x_22_DS_RA 0
@@ -1763,7 +1763,7 @@ x_22_DR_LM 0
 x_22_DR_TM 0
 x_22_JH_DN 0
 x_22_JH_DM 0
-x_22_JH_RA 0
+x_22_JH_RA 1
 x_22_JH_LM 0
 x_22_JH_TM 0
 x_22_DN_DM 0
@@ -1778,14 +1778,14 @@ x_22_RA_TM 0
 x_22_LM_TM 0
 x_23_RM_DS 1
 x_23_RM_DR 0
-x_23_RM_JH 1
+x_23_RM_JH 0
 x_23_RM_DN 0
 x_23_RM_DM 0
 x_23_RM_RA 0
 x_23_RM_LM 0
 x_23_RM_TM 0
 x_23_DS_DR 0
-x_23_DS_JH 1
+x_23_DS_JH 0
 x_23_DS_DN 0
 x_23_DS_DM 0
 x_23_DS_RA 0
@@ -1799,7 +1799,7 @@ x_23_DR_LM 0
 x_23_DR_TM 0
 x_23_JH_DN 0
 x_23_JH_DM 0
-x_23_JH_RA 0
+x_23_JH_RA 1
 x_23_JH_LM 0
 x_23_JH_TM 0
 x_23_DN_DM 0
@@ -1820,7 +1820,7 @@ x_24_RM_RA 0
 x_24_RM_LM 0
 x_24_RM_TM 0
 x_24_DS_DR 0
-x_24_DS_JH 1
+x_24_DS_JH 0
 x_24_DS_DM 0
 x_24_DS_RA 0
 x_24_DS_LM 0
@@ -2466,7 +2466,7 @@ x_12_JH_DG 0
 x_12_DN_DG 0
 x_12_DM_DG 0
 x_12_RA_DG 0
-x_12_LM_DG 0
+x_12_LM_DG 1
 x_12_TM_DG 1
 x_12_DR_DS 1
 x_12_JH_DS 0
@@ -2511,7 +2511,7 @@ x_13_JH_DG 0
 x_13_DN_DG 0
 x_13_DM_DG 0
 x_13_RA_DG 0
-x_13_LM_DG 0
+x_13_LM_DG 1
 x_13_TM_DG 1
 x_13_DR_DS 1
 x_13_JH_DS 0
@@ -2544,7 +2544,7 @@ x_13_TM_LM 1
 x_14_DG_RM 1
 x_14_DS_RM 1
 x_14_DR_RM 1
-x_14_JH_RM 0
+x_14_JH_RM 1
 x_14_DN_RM 0
 x_14_DM_RM 1
 x_14_RA_RM 1
@@ -2558,7 +2558,7 @@ x_14_JH_DG 0
 x_14_DN_DG 0
 x_14_DM_DG 0
 x_14_RA_DG 0
-x_14_LM_DG 0
+x_14_LM_DG 1
 x_14_TM_DG 1
 x_14_DG_JV 0
 x_14_JV_DG 1
@@ -2581,7 +2581,7 @@ x_14_DR_JV 0
 x_14_JV_DR 1
 x_14_DN_JH 0
 x_14_DM_JH 1
-x_14_RA_JH 1
+x_14_RA_JH 0
 x_14_LM_JH 1
 x_14_TM_JH 1
 x_14_JH_JV 0
@@ -2609,7 +2609,7 @@ x_14_JV_TM 1
 x_15_DG_RM 1
 x_15_DS_RM 1
 x_15_DR_RM 1
-x_15_JH_RM 0
+x_15_JH_RM 1
 x_15_DN_RM 0
 x_15_DM_RM 1
 x_15_RA_RM 1
@@ -2621,7 +2621,7 @@ x_15_JH_DG 0
 x_15_DN_DG 0
 x_15_DM_DG 0
 x_15_RA_DG 0
-x_15_LM_DG 0
+x_15_LM_DG 1
 x_15_TM_DG 1
 x_15_DR_DS 1
 x_15_JH_DS 0
@@ -2638,7 +2638,7 @@ x_15_LM_DR 1
 x_15_TM_DR 1
 x_15_DN_JH 0
 x_15_DM_JH 1
-x_15_RA_JH 1
+x_15_RA_JH 0
 x_15_LM_JH 1
 x_15_TM_JH 1
 x_15_DM_DN 1
@@ -2654,7 +2654,7 @@ x_15_TM_LM 1
 x_16_DG_RM 1
 x_16_DS_RM 1
 x_16_DR_RM 1
-x_16_JH_RM 0
+x_16_JH_RM 1
 x_16_DN_RM 0
 x_16_DM_RM 1
 x_16_RA_RM 1
@@ -2666,7 +2666,7 @@ x_16_JH_DG 0
 x_16_DN_DG 0
 x_16_DM_DG 0
 x_16_RA_DG 0
-x_16_LM_DG 0
+x_16_LM_DG 1
 x_16_TM_DG 1
 x_16_DR_DS 1
 x_16_JH_DS 0
@@ -2683,7 +2683,7 @@ x_16_LM_DR 1
 x_16_TM_DR 1
 x_16_DN_JH 0
 x_16_DM_JH 1
-x_16_RA_JH 1
+x_16_RA_JH 0
 x_16_LM_JH 1
 x_16_TM_JH 1
 x_16_DM_DN 1
@@ -2699,7 +2699,7 @@ x_16_TM_LM 1
 x_17_DG_RM 1
 x_17_DS_RM 1
 x_17_DR_RM 1
-x_17_JH_RM 0
+x_17_JH_RM 1
 x_17_DN_RM 0
 x_17_DM_RM 1
 x_17_RA_RM 1
@@ -2712,7 +2712,7 @@ x_17_JH_DG 0
 x_17_DN_DG 0
 x_17_DM_DG 0
 x_17_RA_DG 0
-x_17_LM_DG 0
+x_17_LM_DG 1
 x_17_TM_DG 1
 x_17_GH_DG 1
 x_17_DR_DS 1
@@ -2732,7 +2732,7 @@ x_17_TM_DR 1
 x_17_GH_DR 1
 x_17_DN_JH 0
 x_17_DM_JH 1
-x_17_RA_JH 1
+x_17_RA_JH 0
 x_17_LM_JH 1
 x_17_TM_JH 1
 x_17_GH_JH 1
@@ -2754,7 +2754,7 @@ x_17_GH_TM 1
 x_18_DG_RM 1
 x_18_DS_RM 1
 x_18_DR_RM 1
-x_18_JH_RM 0
+x_18_JH_RM 1
 x_18_DN_RM 1
 x_18_DM_RM 1
 x_18_RA_RM 1
@@ -2767,7 +2767,7 @@ x_18_JH_DG 0
 x_18_DN_DG 0
 x_18_DM_DG 0
 x_18_RA_DG 0
-x_18_LM_DG 0
+x_18_LM_DG 1
 x_18_TM_DG 1
 x_18_GH_DG 1
 x_18_DR_DS 1
@@ -2787,7 +2787,7 @@ x_18_TM_DR 1
 x_18_GH_DR 1
 x_18_DN_JH 1
 x_18_DM_JH 1
-x_18_RA_JH 1
+x_18_RA_JH 0
 x_18_LM_JH 1
 x_18_TM_JH 1
 x_18_GH_JH 1
@@ -2809,7 +2809,7 @@ x_18_GH_TM 1
 x_19_DG_RM 1
 x_19_DS_RM 0
 x_19_DR_RM 1
-x_19_JH_RM 0
+x_19_JH_RM 1
 x_19_DN_RM 1
 x_19_DM_RM 1
 x_19_RA_RM 1
@@ -2821,7 +2821,7 @@ x_19_JH_DG 0
 x_19_DN_DG 0
 x_19_DM_DG 0
 x_19_RA_DG 0
-x_19_LM_DG 0
+x_19_LM_DG 1
 x_19_TM_DG 1
 x_19_DR_DS 1
 x_19_JH_DS 1
@@ -2838,7 +2838,7 @@ x_19_LM_DR 1
 x_19_TM_DR 1
 x_19_DN_JH 1
 x_19_DM_JH 1
-x_19_RA_JH 1
+x_19_RA_JH 0
 x_19_LM_JH 1
 x_19_TM_JH 1
 x_19_DM_DN 1
@@ -2854,7 +2854,7 @@ x_19_TM_LM 1
 x_20_DG_RM 1
 x_20_DS_RM 0
 x_20_DR_RM 1
-x_20_JH_RM 0
+x_20_JH_RM 1
 x_20_DN_RM 1
 x_20_DM_RM 1
 x_20_RA_RM 1
@@ -2866,7 +2866,7 @@ x_20_JH_DG 0
 x_20_DN_DG 0
 x_20_DM_DG 0
 x_20_RA_DG 0
-x_20_LM_DG 0
+x_20_LM_DG 1
 x_20_TM_DG 1
 x_20_DR_DS 1
 x_20_JH_DS 1
@@ -2883,7 +2883,7 @@ x_20_LM_DR 1
 x_20_TM_DR 1
 x_20_DN_JH 1
 x_20_DM_JH 1
-x_20_RA_JH 1
+x_20_RA_JH 0
 x_20_LM_JH 1
 x_20_TM_JH 1
 x_20_DM_DN 1
@@ -2899,7 +2899,7 @@ x_20_TM_LM 1
 x_21_DG_RM 1
 x_21_DS_RM 0
 x_21_DR_RM 1
-x_21_JH_RM 0
+x_21_JH_RM 1
 x_21_DN_RM 1
 x_21_DM_RM 1
 x_21_RA_RM 1
@@ -2911,10 +2911,10 @@ x_21_JH_DG 0
 x_21_DN_DG 0
 x_21_DM_DG 0
 x_21_RA_DG 0
-x_21_LM_DG 0
+x_21_LM_DG 1
 x_21_TM_DG 1
 x_21_DR_DS 1
-x_21_JH_DS 0
+x_21_JH_DS 1
 x_21_DN_DS 1
 x_21_DM_DS 1
 x_21_RA_DS 1
@@ -2928,7 +2928,7 @@ x_21_LM_DR 1
 x_21_TM_DR 1
 x_21_DN_JH 1
 x_21_DM_JH 1
-x_21_RA_JH 1
+x_21_RA_JH 0
 x_21_LM_JH 1
 x_21_TM_JH 1
 x_21_DM_DN 1
@@ -2943,14 +2943,14 @@ x_21_TM_RA 1
 x_21_TM_LM 1
 x_22_DS_RM 0
 x_22_DR_RM 1
-x_22_JH_RM 0
+x_22_JH_RM 1
 x_22_DN_RM 1
 x_22_DM_RM 1
 x_22_RA_RM 1
 x_22_LM_RM 1
 x_22_TM_RM 1
 x_22_DR_DS 1
-x_22_JH_DS 0
+x_22_JH_DS 1
 x_22_DN_DS 1
 x_22_DM_DS 1
 x_22_RA_DS 1
@@ -2964,7 +2964,7 @@ x_22_LM_DR 1
 x_22_TM_DR 1
 x_22_DN_JH 1
 x_22_DM_JH 1
-x_22_RA_JH 1
+x_22_RA_JH 0
 x_22_LM_JH 1
 x_22_TM_JH 1
 x_22_DM_DN 1
@@ -2979,14 +2979,14 @@ x_22_TM_RA 1
 x_22_TM_LM 1
 x_23_DS_RM 0
 x_23_DR_RM 1
-x_23_JH_RM 0
+x_23_JH_RM 1
 x_23_DN_RM 1
 x_23_DM_RM 1
 x_23_RA_RM 1
 x_23_LM_RM 1
 x_23_TM_RM 1
 x_23_DR_DS 1
-x_23_JH_DS 0
+x_23_JH_DS 1
 x_23_DN_DS 1
 x_23_DM_DS 1
 x_23_RA_DS 1
@@ -3000,7 +3000,7 @@ x_23_LM_DR 1
 x_23_TM_DR 1
 x_23_DN_JH 1
 x_23_DM_JH 1
-x_23_RA_JH 1
+x_23_RA_JH 0
 x_23_LM_JH 1
 x_23_TM_JH 1
 x_23_DM_DN 1
@@ -3021,7 +3021,7 @@ x_24_RA_RM 1
 x_24_LM_RM 1
 x_24_TM_RM 1
 x_24_DR_DS 1
-x_24_JH_DS 0
+x_24_JH_DS 1
 x_24_DM_DS 1
 x_24_RA_DS 1
 x_24_LM_DS 1

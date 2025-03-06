@@ -1,12 +1,12 @@
 Summary for dblp_fairCross:
 =====================================
 Total characters: 18
-Blue characters: 8
-Red characters: 10
+Blue characters: 10
+Red characters: 8
 ---
 > Crossings
-Blue-Blue crossings: 3
-Red-Red crossings: 5
+Blue-Blue crossings: 5
+Red-Red crossings: 3
 Blue-Red crossings: 10
 Total crossings: 18
 ---

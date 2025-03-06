@@ -1,0 +1,32 @@
+Summary for JurassicPark_focusSkewCrossWiggles:
+=====================================
+Total characters: 20
+Blue characters: 17
+Red characters: 3
+---
+> Crossings
+Blue-Blue crossings: 14
+Red-Red crossings: 1
+Blue-Red crossings: 12
+Total crossings: 27
+---
+> FairCrossings
+BlueFair: 2.35
+RedFair: 4.67
+Unfairness 2.31
+---
+> Skewness
+BlueSkew: 6
+RedSkew: 1
+Total skewness: 7
+---
+> FairSkewness
+Unfairness 0.02
+---
+> Wiggles
+Total wiggles: 52
+---
+> FairWiggles
+BlueWiggles: 35.0
+RedWiggles: 17.0
+Unfairness 3.61

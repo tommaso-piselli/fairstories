@@ -27,6 +27,6 @@ Unfairness 0.82
 Total wiggles: 47
 ---
 > FairWiggles
-BlueWiggles: 40.0
-RedWiggles: 7.0
-Unfairness 4.65
+BlueWiggles: 37.0
+RedWiggles: 10.0
+Unfairness 7.82

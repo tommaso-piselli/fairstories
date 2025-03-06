@@ -1,32 +1,32 @@
 Summary for dblp_focusSkewCrossWiggles:
 =====================================
 Total characters: 18
-Blue characters: 8
-Red characters: 10
+Blue characters: 10
+Red characters: 8
 ---
 > Crossings
-Blue-Blue crossings: 4
-Red-Red crossings: 0
-Blue-Red crossings: 30
-Total crossings: 34
+Blue-Blue crossings: 16
+Red-Red crossings: 1
+Blue-Red crossings: 11
+Total crossings: 28
 ---
 > FairCrossings
-BlueFair: 4.75
-RedFair: 3.00
-Unfairness 1.75
+BlueFair: 4.30
+RedFair: 1.62
+Unfairness 2.67
 ---
 > Skewness
-BlueSkew: 5
-RedSkew: 0
+BlueSkew: 4
+RedSkew: 1
 Total skewness: 5
 ---
 > FairSkewness
-Unfairness 0.62
+Unfairness 0.28
 ---
 > Wiggles
-Total wiggles: 79
+Total wiggles: 76
 ---
 > FairWiggles
-BlueWiggles: 45.0
-RedWiggles: 34.0
-Unfairness 2.23
+BlueWiggles: 66.0
+RedWiggles: 10.0
+Unfairness 5.35
