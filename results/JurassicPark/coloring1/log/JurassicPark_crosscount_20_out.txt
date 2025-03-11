@@ -1,0 +1,32 @@
+Summary for JurassicPark_crosscount_20:
+=====================================
+Total characters: 20
+Blue characters: 19
+Red characters: 1
+---
+> Crossings
+Blue-Blue crossings: 18
+Red-Red crossings: 0
+Blue-Red crossings: 2
+Total crossings: 20
+---
+> FairCrossings
+BlueFair: 2.00
+RedFair: 2.00
+Unfairness 0.00
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.00
