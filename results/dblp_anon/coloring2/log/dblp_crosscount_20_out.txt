@@ -1,0 +1,32 @@
+Summary for dblp_crosscount_20:
+=====================================
+Total characters: 18
+Blue characters: 14
+Red characters: 4
+---
+> Crossings
+Blue-Blue crossings: 8
+Red-Red crossings: 1
+Blue-Red crossings: 11
+Total crossings: 20
+---
+> FairCrossings
+BlueFair: 1.93
+RedFair: 3.25
+Unfairness 1.32
+---
+> Skewness
+BlueSkew: 0
+RedSkew: 0
+Total skewness: 0
+---
+> FairSkewness
+Unfairness 0.00
+---
+> Wiggles
+Total wiggles: 0
+---
+> FairWiggles
+BlueWiggles: 0
+RedWiggles: 0
+Unfairness 0.00
