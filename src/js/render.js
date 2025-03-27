@@ -289,80 +289,6 @@ function draw(text, solution, groupsText, experiment) {
     }
   }
 
-  // Add save buttons after creating the SVG
-  const buttonContainer = d3
-    .select("body")
-    .append("div")
-    .style("position", "fixed")
-    .style("bottom", "20px")
-    .style("right", "20px");
-
-  buttonContainer.append("button").text("Save as SVG").on("click", saveSVG);
-
-  buttonContainer
-    .append("button")
-    .text("Save as PNG")
-    .style("margin-left", "10px")
-    .on("click", savePNG);
-
-  // -------------------------------
-  // !Save FUNCTIONS
-  // -------------------------------
-
-  function saveSVG() {
-    // Get the SVG element as a string
-    const serializer = new XMLSerializer();
-    const source = serializer.serializeToString(svg.node());
-
-    // Create a Blob from the SVG source
-    const svgBlob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
-    const url = URL.createObjectURL(svgBlob);
-
-    // Create a temporary link element and trigger download
-    const downloadLink = document.createElement("a");
-    downloadLink.href = url;
-    downloadLink.download = `${subject}_${experiment}.svg`;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-    URL.revokeObjectURL(url);
-  }
-
-  async function savePNG() {
-    const canvas = document.createElement("canvas");
-    canvas.width = visualization_options.width;
-    canvas.height = visualization_options.height;
-    const context = canvas.getContext("2d");
-
-    // Serialize the SVG
-    const serializer = new XMLSerializer();
-    const source = serializer.serializeToString(svg.node());
-    const svgBlob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
-    const url = URL.createObjectURL(svgBlob);
-
-    // Create an image to load the SVG
-    const img = new Image();
-    img.onload = () => {
-      context.drawImage(img, 0, 0);
-      URL.revokeObjectURL(url);
-
-      // Create a link to trigger download of the PNG
-      canvas.toBlob((blob) => {
-        const pngUrl = URL.createObjectURL(blob);
-        const downloadLink = document.createElement("a");
-        downloadLink.href = pngUrl;
-        downloadLink.download = `${subject}_${experiment}.png`;
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-        URL.revokeObjectURL(pngUrl);
-      });
-    };
-    img.src = url;
-  }
-
-  console.log("finished drawing")
-
   return svg;
 }
 
@@ -398,7 +324,7 @@ function assign_node_coordinates(
       if (b_line) timestep_b -= parseInt(b_line.split(" ")[1]);
       timestep_b -= nodes_at_this_timestep.length;
     }
-    if (!experiment.includes("Wiggles")) timestep_b = 0;
+    if (!experiment.includes("wiggles")) timestep_b = 0;
 
     let interactions_at_this_timestep = timesteps
       .split("\n")
