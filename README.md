@@ -1,5 +1,4 @@
-# Storyline Visualization Tool
-
+# F2Stories
 This repository contains tools for creating and analyzing storyline visualizations with a focus on optimizing for different metrics like crossings, skewness, and wiggles.
 
 ## Overview
