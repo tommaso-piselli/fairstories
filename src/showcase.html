@@ -23,6 +23,36 @@
 
       svg {
       }
+
+      select {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        color: #333;
+        outline: none;
+        transition: border-color 0.3s ease;
+      }
+
+      select:focus {
+        border-color: #007BFF;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
     </style>
     <script>
         let visualization_options = {
@@ -34,18 +64,27 @@
             reduce_wiggles: true,
             max_reduce_wiggles_iterations: 20,
             // experiments: ["cross"],
-            coloring: "coloring2",
-            // experiments: ["cross", "crossWiggles", 
-            //   "fairCrossWiggles", "fairSkewCross", "fairSkewCrossWiggles", 
-            //   "skewCross", "skewCrossWiggles"
-            // ],
-            experiments: ["cross", "fairCross", "focusCross"],
-            // experiments: ["fairCross", "fairCrossWiggles", 
-              // "fairSkewCross", "fairSkewCrossWiggles", 
-              // "focusCross", "focusCrossWiggles", "focusSkewCross", "focusSkewCrossWiggles", "skewCross", "skewCrossWiggles", "crosscount_18", "crosscount_19"],
+            coloring: "coloring1",
+            experiments: [
+              "cross", 
+              "fairCross",
+              "focusCross",
+              "crossWiggles", 
+              "fairCrossWiggles", 
+              "focusCrossWiggles",
+              "skewCross",
+              "fairSkewCross",
+              "focusSkewCross",
+              "skewCrossWiggles",
+              "fairSkewCrossWiggles",
+              "focusSkewCrossWiggles",
+            ],
             subject: ["JurassicPark"],
-            speed: 10000,
+
             read_b: true,
+
+            // morphing
+            speed: 10000,
 
             // AESTHETICS
             line_label_font_size: 13,
@@ -62,5 +101,94 @@
     </script>
   </head>
   <body>
+    <script>
+      function createControls() {
+
+        const textBoxLabel = document.createElement('label');
+        textBoxLabel.setAttribute('for', 'custom-textbox');
+        textBoxLabel.innerHTML = 'Select dataset and coloring, then press render to see the visualizations.';
+        textBoxLabel.style.marginBottom = '10px';
+        textBoxLabel.style.display = 'block';
+        textBoxLabel.style.textAlign = 'center';
+        document.body.appendChild(textBoxLabel);
+
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        // container.style.flexDirection = 'row';
+        container.style.alignItems = 'center';
+        container.style.justifyContent = 'center';
+        container.style.padding = '20px';
+        // container.style.marginTop = '50px';
+
+        const datasetLabel = document.createElement('label');
+        datasetLabel.setAttribute('for', 'dataset-select');
+        datasetLabel.textContent = 'Dataset:';
+        datasetLabel.style.marginLeft = '20px';
+        datasetLabel.style.marginRight = '20px';
+        // datasetLabel.style.marginBottom = '10px';
+        container.appendChild(datasetLabel);
+
+        const datasetSelect = document.createElement('select');
+        datasetSelect.id = 'dataset-select';
+        // datasetSelect.style.marginBottom = '20px';
+        const datasets = ['JurassicPark', 'dblp_anon', 'lotr', "star_wars_cut", "animal_farm", "ffvii", "anna3", "jean1", "jean2", "jean5"];
+        datasets.forEach(dataset => {
+          const option = document.createElement('option');
+          option.value = dataset;
+          option.textContent = dataset.replace(/([A-Z])/g, ' $1').trim();
+          datasetSelect.appendChild(option);
+        });
+        datasetSelect.value = visualization_options.subject[0];
+        container.appendChild(datasetSelect);
+
+        const coloringLabel = document.createElement('label');
+        coloringLabel.setAttribute('for', 'coloring-select');
+        coloringLabel.textContent = 'Coloring:';
+        coloringLabel.style.marginLeft = '20px';
+        coloringLabel.style.marginRight = '20px';
+        // coloringLabel.style.marginBottom = '10px';
+        container.appendChild(coloringLabel);
+
+        const coloringSelect = document.createElement('select');
+        coloringSelect.id = 'coloring-select';
+        // coloringSelect.style.marginBottom = '20px';
+        const colorings = ['coloring1', 'coloring2', 'coloring3'];
+        colorings.forEach(coloring => {
+          const option = document.createElement('option');
+          option.value = coloring;
+          option.textContent = coloring.replace(/([A-Z])/g, ' $1').trim();
+          coloringSelect.appendChild(option);
+        });
+        coloringSelect.value = visualization_options.coloring;
+        container.appendChild(coloringSelect);
+
+        const renderButton = document.createElement('button');
+        renderButton.id = 'render-button';
+        renderButton.style.marginLeft = '20px';
+        renderButton.textContent = 'Render';
+
+        // renderButton.style.marginTop = '20px';
+        container.appendChild(renderButton);
+
+        renderButton.addEventListener('click', () => {
+          // Update visualization options based on user input
+          visualization_options.subject = [datasetSelect.value];
+          visualization_options.coloring = coloringSelect.value;
+
+          // Clear the body content
+          document.body.innerHTML = '';
+
+          // Recreate controls
+          createControls();
+
+          // Re-render visualization
+          render();
+        });
+
+        document.body.appendChild(container);
+      }
+
+      createControls();
+    </script>
   </body>
 </html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Description of your page" />
+    <title>Storyline Visualization</title>
+    <style>
+      .page-title {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Courier New", Courier, monospace;
+        z-index: 1000;
+      }
+
+      body {
+        margin: 0;
+        padding: 2%;
+        font-family: Arial, sans-serif;
+      }
+
+      svg {
+      }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+  </body>
+  <script>
+
+    crosscount_range = [10, 60]
+    topic = "dblp"
+    coloring = "coloring3"
+
+    async function init(){
+        let unfairness_array = []
+
+        for (let i = crosscount_range[0]; i <= crosscount_range[1]; i++) {
+          try {
+              let d = await d3.text("../results/" + topic 
+                + "/" + coloring + "/log/" + topic + "_crosscount_" + i + "_out.txt")
+              if (d) {
+                  let lines = d.split("\n")
+                  line = lines.find(l => l.startsWith("Unfairness"))
+                  let unfairness = parseFloat(line.split(" ")[1])
+                  unfairness_array.push([i, unfairness])
+              }
+          } catch (error) {
+              // Silently handle the error
+          }
+        }
+
+        const margin = { top: 20, right: 30, bottom: 40, left: 40 },
+              width = 400 - margin.left - margin.right,
+              height = 150 - margin.top - margin.bottom;
+
+        const svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleLinear()
+            .domain(d3.extent(unfairness_array, d => d[0]))
+            .range([0, width]);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(unfairness_array, d => d[1])])
+            .range([height, 0]);
+
+        svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x).ticks(6));
+
+        svg.append("g")
+            .call(d3.axisLeft(y).ticks(2));
+
+        svg.selectAll("circle")
+          .data(unfairness_array)
+          .enter().append("circle")
+          .attr("cx", d => x(d[0]))
+          .attr("cy", d => y(d[1]))
+          .attr("r", 5)
+            .attr("fill", "steelblue");
+
+          svg.selectAll("path")
+            .attr("stroke", "#ccc")
+            .style("stroke-width", "7");
+
+          svg.selectAll("line")
+            .attr("stroke", "#ccc")
+            .style("stroke-width", "7");
+
+          svg.selectAll("text")
+            .attr("font-size", "25px")
+            .attr("fill", "gray")
+            .style("font-weight", "bold");
+
+        svg.append("path")
+            .datum(unfairness_array)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 5)
+            .attr("d", d3.line()
+          .curve(d3.curveCatmullRom.alpha(0.5))
+          .x(d => x(d[0]))
+          .y(d => y(d[1]))
+            );
+    }
+
+    init();
+  </script>
+</html>
