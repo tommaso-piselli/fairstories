@@ -29,14 +29,27 @@ async function render() {
     try {
       let stats = await d3.text(statspath)
       stats = stats.split("=====================================")[1]
-      let statsDiv = document.createElement("div");
-      let statsElement = document.createElement("pre");
-      statsElement.style.whiteSpace = "pre-wrap";
-      statsElement.style.columnCount = 4;
-      statsElement.style.columnGap = "20px";
-      statsElement.textContent = stats;
-      statsDiv.appendChild(statsElement);
-      document.body.appendChild(statsDiv);
+
+      stats = stats.split("---")
+
+      if (experiment.toLowerCase().includes("skewcrosswiggles")) stats = stats;
+      else if (experiment.toLowerCase().includes("wiggles")) stats = [stats[0], stats[1], stats[2], stats[5], stats[6]]
+      else if (experiment.toLowerCase().includes("skew")) stats = [stats[0], stats[1], stats[2], stats[3], stats[4]]
+      else stats = [stats[0], stats[1], stats[2]]
+      
+      // stats = stats.join("\n---")
+
+      for (let elem of stats){
+        let elemDiv = document.createElement("div");
+        elemDiv.style.display = "inline-block";
+        elemDiv.style.width = "calc(100% / " + stats.length + ")";
+        elemDiv.style.boxSizing = "border-box";
+        elemDiv.style.fontFamily = "monospace";
+        elemDiv.style.padding = "10px";
+        elemDiv.style.textAlign = "left";
+        elemDiv.innerHTML = elem.split("\n").join("<br>");
+        document.body.appendChild(elemDiv);
+      }
 
     } catch (error) { console.log(error) }
 
