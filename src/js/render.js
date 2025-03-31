@@ -249,7 +249,32 @@ function draw(text, solution, groupsText, experiment) {
           characters_selected.push(char);
           d3.selectAll(".char-line-" + char).attr("stroke-width", visualization_options.line_stroke_size * 1.5);
       }})
+  }
 
+  // DRAW THE NODES
+  for (let i = 0; i < max_timesteps; i++) {
+    let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == i);
+
+    for (let j in nodes_at_this_timestep) {
+      svg
+        .append("circle")
+        .attr("r", visualization_options.node_radius)
+        .attr("id", "t" + i + "-" + experiment + "-node-" + nodes_at_this_timestep[j].name)
+        .attr("cx", nodes_at_this_timestep[j].x)
+        .attr("cy", nodes_at_this_timestep[j].y)
+        .attr("fill", character_colors[nodes_at_this_timestep[j].name])
+        .on("mouseover", () => {
+          console.log(i);
+          console.log(character_colors[nodes_at_this_timestep[j].name]);
+          console.log(nodes_at_this_timestep[j].name);
+          console.log(nodes_at_this_timestep[j].y);
+        });
+    }
+  }
+
+  for (let char of Object.keys(character_colors)) {
+    let line_coords = char_line_coords[char];
+    if (line_coords.length <= 3) continue;
     // append a circle and label every few steps
     for (let i = 1; i < line_coords.length - 12; i += 12) {
       if (line_coords[i].y != line_coords[i + 3].y) continue;
@@ -278,27 +303,6 @@ function draw(text, solution, groupsText, experiment) {
         .style("text-anchor", "middle")
         .style("font-weight", "bold")
         .attr("fill", character_colors[char]);
-    }
-  }
-
-  // DRAW THE NODES
-  for (let i = 0; i < max_timesteps; i++) {
-    let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == i);
-
-    for (let j in nodes_at_this_timestep) {
-      svg
-        .append("circle")
-        .attr("r", visualization_options.node_radius)
-        .attr("id", "t" + i + "-" + experiment + "-node-" + nodes_at_this_timestep[j].name)
-        .attr("cx", nodes_at_this_timestep[j].x)
-        .attr("cy", nodes_at_this_timestep[j].y)
-        .attr("fill", character_colors[nodes_at_this_timestep[j].name])
-        .on("mouseover", () => {
-          console.log(i);
-          console.log(character_colors[nodes_at_this_timestep[j].name]);
-          console.log(nodes_at_this_timestep[j].name);
-          console.log(nodes_at_this_timestep[j].y);
-        });
     }
   }
 
@@ -331,13 +335,19 @@ function assign_node_coordinates(
 
     let nodes_at_this_timestep = graph.nodes.filter((n) => n.timestep == i);
 
-    let timestep_b = max_nodes_at_timestep + 1;
+    let min_b = Number.MAX_SAFE_INTEGER;
+    for (let b_line of solution_lines.filter((l) => l.startsWith("b_"))) {
+      let b_value = parseInt(b_line.split(" ")[1]);
+      if (b_value < min_b) min_b = b_value;
+    }
+
+    let timestep_b = max_nodes_at_timestep + 2;
     if (visualization_options.read_b){
       let b_line = solution_lines.find((l) => l.includes("b_" + i + " "));
-      if (b_line) timestep_b -= parseInt(b_line.split(" ")[1]);
+      if (b_line) timestep_b -= parseInt(b_line.split(" ")[1]) - min_b;
       timestep_b -= nodes_at_this_timestep.length;
     }
-    if (!experiment.includes("wiggles")) timestep_b = 0;
+    if (!experiment.toLowerCase().includes("wiggles")) timestep_b = 0;
 
     let interactions_at_this_timestep = timesteps
       .split("\n")
@@ -397,7 +407,7 @@ function assign_node_coordinates(
     }
   }
 
-  if (visualization_options.reduce_wiggles)
+  if (visualization_options.reduce_wiggles && !experiment.toLowerCase().includes("wiggles"))
     iterate_for_better_bendiness(
       graph,
       timesteps,
