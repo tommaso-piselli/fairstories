@@ -540,9 +540,7 @@ def write_ilp_model(filepath, t_activechars, t_interactions, num_chars, lambda1=
                         y_var = f"y_{t}_{char1}_{char2}"
                         crossing_sum_terms.append(y_var)
 
-            # Build the sum of all y variables
             sum_string = " + ".join(crossing_sum_terms)
-            #  file.write(f"{sum_string} <= {crossCount}\n")
             file.write(f"{sum_string} <= {crossCount}\n")
 
         # Write binary variable declarations

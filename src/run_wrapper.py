@@ -2,8 +2,8 @@ import os
 import subprocess
 
 # Define the subject and experiment variables
-subject = "huck"  # Change this to your desired subject
-experiment = "cross"  # Change this to your desired experiment
+subject = "JurassicPark"  # Change this to your desired subject
+experiment = "cross"  # Change this to your desired experiment name (see main.py for the list)
 
 
 def run_python_script(script_name, subject, experiment):
