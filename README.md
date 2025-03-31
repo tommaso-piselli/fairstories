@@ -3,7 +3,7 @@ This repository contains tools for creating and analyzing storyline visualizatio
 
 ## Overview
 
-The Storyline Visualization Tool allows you to:
+The F2Stories framework allows you to:
 
 - Generate visualizations from master files
 - Optimize storylines with different optimization strategies
